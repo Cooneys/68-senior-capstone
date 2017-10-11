@@ -1,0 +1,122 @@
+\documentclass[letterpaper,10pt,titlepage]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{alltt}
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\def\name{Sam Cooney}
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {cs461 ``Problem Statement''},
+  pdftitle = {CS 461 Assignment 1: Problem Statement},
+  pdfsubject = {CS 461 Problem Statement},
+  pdfpagemode = UseNone
+}
+
+\title{CS461 Problem Statement}
+\author{\name}
+\date{October 2017}
+
+\begin{document}
+
+\begin{titlepage}
+   \maketitle
+\end{titlepage}
+
+\section{Abstract}
+
+The Investment Performance Mobile App, sponsored by Brice Lemke from HedgeServ,
+is a cross-platform mobile application that will be intended for use on
+iOS and Android devices. We (Sam Cooney, Avi Sinha, and Tyler Jones) as a 
+team will be developing a full application that will allow fake users to
+access their investment portfolios, look at current, real-time stock prices,
+compare graphs and charts consisting of simulated financial date of the user
+and the real time data taken from resources online. 
+
+We will be developing a GUI that fits both Android and iOS devices that will
+allow users to explore their portfolios with charts and graphs laid out in a
+single easy-to-follow view. The application will also use a database holding the 
+simulated data provided by HedgServ, and as well as have all the necessary 
+required connections of the front to back end structures. This will include
+security for users, database calls, basic algorithms for handling
+real-time data, transaction history, and gains and losses.
+
+\section{Problem Definition}
+
+HedgServ clients are currently lacking a quick and easy way of accessing their
+portfolios from their phones and tablets. They currently have to go through
+the web interface to see this data but are lacking a few crucial elements that
+we will be implementing in our application. These elements include: real-time 
+stock prices (sometimes stocks have not been traded for a few days so stock 
+prices will be misleading, our application will give recommendations on the
+actual perceived value of the stocks), quick log in to one's portfolio (one click
+of the app on phone's home screen), and comparison of transaction history, gains and losses, and holdings,
+all in one screen. 
+
+HedgServe has clients who use various types cell phones while working.
+This requires our application to be readily available on multiple different cellular
+platforms for ease of access as well. 
+
+\section{Proposed Solution}
+
+The Investment Performance Mobile App will be a cross-platform application
+written in Xamarin and C\#. The tool will be easy to use (as defined by at least
+90\% of class members who review it in senior capstone) and provide accurate real-time
+stock prices taken from various resources online. It will also allow clients 
+to view their holdings, gains and losses, transaction history in a simple one view
+slider with graphs/charts and other various data formatting mediums. The app
+will require connection to a database that houses the simulated financial data
+as well as possible user log in information.
+
+
+
+\section{Metrics}
+
+We will have a few key performance metrics that we will be using to test our
+application against. However, since our application involves a GUI we will
+have to use the class for some of the testing. For this, I plan to survey 
+senior capstone students to test our app, at least 90\% must anonymously 
+agree that our application is easy to use and simple to navigate. 
+
+For security,
+our application must defend against multiple forms of attacks, however I am not
+yet informed about the security requirements from our client so we cannot make
+a decision about these metrics yet. Also, our code must pass syntax checkers for 
+Xamarin and C\# without failures. An example of a syntax checkers is FxCop, which
+is integrated into Visual Studio as "Code Analysis". There are others that can
+and will be used as well.
+
+For our database, we will require any and all calls
+to the database have ~1 second response time (from time of request to time 
+the application receives a response). We will also need our application to be
+able to scale up to handle thousands of users. We do not have a requirement 
+set from our client as to what the concurrent user demand and maximum user
+capacity will be yet. So we will keep scalability in mind until we set these
+points. Charts and graphs must be formatted correctly to fit on either iOS or
+Android screens which come in varying sizes. GUI colors must match those of
+HedgServ's color pallet.
+
+\end{document}
