@@ -1,0 +1,94 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\newcommand{\toc}{\tableofcontents}
+
+%\usepackage{hyperref}
+
+\def\name{D. Kevin McGrath}
+
+%pull in the necessary preamble matter for pygments output
+%\input{pygments.tex}
+
+%% The following metadata will show up in the PDF properties
+% \hypersetup{
+%   colorlinks = false,
+%   urlcolor = black,
+%   pdfauthor = {\name},
+%   pdfkeywords = {cs311 ``operating systems'' files filesystem I/O},
+%   pdftitle = {CS 311 Project 1: UNIX File I/O},
+%   pdfsubject = {CS 311 Project 1},
+%   pdfpagemode = UseNone
+% }
+
+\parindent = 0.0 in
+\parskip = 0.1 in
+
+\title{Senior Project Proposal: Investment Performance Mobile App}
+\author{Tyler Jones}
+
+\date{October 9 2017}
+
+\begin{document}
+
+\maketitle
+\begin{center}
+    
+Senior Capstone 1
+
+Fall 2017
+\end{center}
+\begin{abstract}
+Our project entails creating a full front end and back end of a mobile app that will allow users to track their investment performance on a portfolio level. Our challenge is to make an app that is useful, fast, and compatible with both iOS and Android. Moreover, the data we use for this project won't be provided by HedgServe, our client, so we must incorporate real-time, accurate stock prices from a different source, likely Yahoo Finance.
+
+These challenges can be overcome by using C\# for the front end experience, a SQL database on the backend, and a third-party tool called Xamarin to aid in ensuring the app is compatible with both of the desired platforms.
+\end{abstract}
+
+\newpage
+\section{Project Defintion and Description}
+For this project, we are trying to design a mobile app that allows it’s users to get better information and data about the quality or status of their investments. As of this first rough draft, we don’t have all the information from our client about what kinds of data or figures they are wanting to have included within the app. Financial jargon aside, this app intends to supplement users investment experience by allowing them unique insight into the quality of their investment. Our client made it clear that the end goal of this project, at this point in time, is mostly a learning tool for us. Depending upon the quality and usefulness of the finished product, HedgServe may or may not implement our build into production for their clients, but at this point in time has no direct plans to do so. At this point in time, the project and what will be displayed where, and what figures are useful to share with the user are still being discussed. We plan for the end result to contain, at the very least, holdings, gains and losses, transaction history, and charts and graphs. From a birds-eye view, the user will be able to view the status of their entire investment portfolio, and its constituent holdings. It was also shared with us that no financial history or knowledge is necessary to build this project, although it would obviously help. 
+
+\section{Proposed solution}
+Our proposed solution for this project, very simply put, is to use C\# on the Front End, and SQL Server for the backend. The front end will display different charts, facts, and figures regarding the investor’s various investments. The back end will be built on databases that we build, not existing data or databases that are used by HedgServe. For this we plan to use our SQL database that the school provides us. Moreover, HedgServe will not be providing us with real-time stock prices. In order for us to effectively show the user the performance of their investment, we are going to have to pull the price from elsewhere. Our plan is to use Yahoo Finance and integrate their stock data into the necessary calculations to display to the user. Again, the specific calculations, and what data is useful to the user is still being decided at the time of this draft.
+
+This project will culminate into a mobile app that is compatible with both iOS and Android. This means that in order for us to be successful, we are going to need to use a tool that allows for us to effectively migrate between and test both as we construct our project. For this, we plan on utilizing Xamarin. Xamarin is a tool that allows for cross-platform development of mobile apps. It operates on a shared C\# shared codebase, and allows for the use of the same API’s, IDE, and language during development. This will be very helpful as we develop for both Android and iOS. 
+
+We are hoping, that as time progresses, that this project will become more than just a learning tool for us, but more of a useful application that HedgServe could implement in someway to allow their clients and investors to better understand the quality of their investments, and to plan and invest accordingly.
+
+\section{Performance metrics:}
+
+Our performance metrics are from the perspective of an end-user. This means that the metrics we are keeping in mind are likely going to be analyzing the quality of life of the finished product.
+
+To look at these traits, we are going to look firstly at the following performance metrics:
+\begin{itemize}
+\item \textbf{App Crashes}  We are going to aim for a 1-2\% crash rate. Anything greater will result in a lasting, negative impression on the user
+\item \textbf{API/Backend Latency}  Any use of any API’s we use (likely Yahoo Finance), or any calls to our database must take no more than 1 second from initial request to final response
+\item \textbf{Ease of Navigation} Attention span of the user and their desire to go digging for any given piece of data is quite low. Any “subpage” from our intial main page must be no more than 3 clicks/taps away
+\item \textbf{Scalability}  For the back end, we must be able to handle a number of users that's on the scale of thousands. This metric was given to us directly by our client
+\item \textbf{Effectiveness}  The user is able to clearly see and find any data/charts or graphs, and the data must be correct. This will be verified by making sure we properly implement calculations for that data/charts, and ensuring we are only using the most recent data from the source of our choice, likely Yahoo Finance
+\end{itemize}
+
+
+\end{document}
