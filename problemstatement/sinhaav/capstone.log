@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=latex 2016.3.16)  10 OCT 2017 12:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=latex 2016.3.16)  17 OCT 2017 16:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -233,62 +233,102 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/sc' in size <24.09> not available
 ! Undefined control sequence.
 l.58             \CapstoneTeamName
                                   \par
-? 
+? R
+OK, entering \nonstopmode...
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 67.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8.03> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 67.
- [1]
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.69 ...The application will be developed using C#
+                                                   for the front end experie...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+[1]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11.04124> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 75.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 76.
 LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <11.04124> not available
 
-(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 75.
+(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 76.
  (./capstone.toc)
 \tf@toc=\write3
 \openout3 = `capstone.toc'.
 
-[1]
-! You can't use `macro parameter character #' in horizontal mode.
-l.84 ...eServ team we will be using Xamarin and C#
-                                                  /F# to develop financial a...
+ [1]
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
 
-? yes
-Type <return> to proceed, S to scroll future error messages,
-R to run without stopping, Q to run quietly,
-I to insert something, E to edit your file,
-1 or ... or 9 to ignore the next 1 to 9 tokens of input,
-H for help, X to quit.
-? R
-OK, entering \nonstopmode...
 ! You can't use `macro parameter character #' in horizontal mode.
-l.84 ...rv team we will be using Xamarin and C#/F#
-                                                   to develop financial appl...
+l.87 ... other HedgeServ team members, Xamarin, C#
+                                                  , and F# will be used to d...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
 ! You can't use `macro parameter character #' in horizontal mode.
-l.88 ...specifics. We'd using a mix of .NET and C#
-                                                   that will prices of stock...
+l.87 ...edgeServ team members, Xamarin, C#, and F#
+                                                   will be used to develop t...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
+! You can't use `macro parameter character #' in horizontal mode.
+l.90 ...sed solution for this project is to use C#
+                                                   on the front end, and SQL...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
+! You can't use `macro parameter character #' in horizontal mode.
+l.92 ...e applications. It operates on a shared C#
+                                                   codebase, and allows for ...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
 [2
 
-] (./capstone.aux) ) 
+]
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ú in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ù in font pplr7t!
+ [3] (./capstone.aux) ) 
 Here is how much of TeX's memory you used:
  2023 strings out of 495064
  33224 string characters out of 3182224
- 92201 words of memory out of 3000000
+ 91202 words of memory out of 3000000
  5237 multiletter control sequences out of 15000+200000
  28221 words of font info for 70 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 26i,5n,19p,2956b,190s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 26i,5n,19p,991b,190s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on capstone.dvi (3 pages, 6968 bytes).
+Output written on capstone.dvi (4 pages, 9224 bytes).
