@@ -27,7 +27,11 @@ Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty))
+<<<<<<< HEAD
 (./capstone.aux)
+=======
+No file capstone.aux.
+>>>>>>> 3cfed32010580f3172ed7ffa9d5a903634dbdba3
 -- Lines per column: 39 (approximate, difference = 14.73578pt).
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips

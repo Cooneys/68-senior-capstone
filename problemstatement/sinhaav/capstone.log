@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=latex 2016.3.18)  19 OCT 2017 16:33
 entering extended mode
  restricted \write18 enabled.
@@ -290,3 +291,5 @@ Here is how much of TeX's memory you used:
  26i,5n,19p,1017b,190s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on capstone.dvi (4 pages, 9964 bytes).
+=======
+>>>>>>> 3cfed32010580f3172ed7ffa9d5a903634dbdba3
