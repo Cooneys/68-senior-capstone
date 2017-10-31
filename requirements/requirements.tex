@@ -105,14 +105,11 @@ The scope of this project is to provide users with a method to track investments
 	\item SQL: A domain-specific programming language used for managing data held in a database management system.
 \end{itemize}
 
-\subsection{References}
-NULL
-
 \subsection{Overview}
-The project will be written in C\# on the front end, and use SQL on the backend. 
 
+The Investment Performance Mobile Application will allow users to view their investment portfolio on iOS and Android devices
+at a portfolio level. Users will have the ability to see their portfolio as well as drill down to any of their specific investments.
 
-\section{Overall Description}
 
 \subsection{Product perspective}
 
@@ -125,15 +122,6 @@ while simultaneously recieving performace updates for each individual investment
 This mobile app will provide users investment performance from a portfolio level. The user will be able to enter investments, either 
 in bulk or individually, and then be able to drill down in order to get further data on individual investments, or on the entire portfolio.
 
-General Requirements:
-This app must have the following general requirements: Firstly, the app will be written in C\# for the front end, and SQL for the backend. 
-There must be no longer than a 3 second response time on any given query to the database. If queries fail, the data should be blank or missing, 
-rather than inaccurate. Users should be able to rely on 100\% accurate pricing data, even if not 100\% up to date; inaccurate pricing is not an option. 
-Investment types, or asset classes, must not be hard coded - this means that the user must be able to enter any investment into the app, 
-even if there is no automated pricing data for it. The app must support bulk data entry, or individual data entry - the user should be able to 
-add their whole portfolio at once, or add just one new investment. Investments must be able to be removed from the portfolio, as the user should 
-have complete control over what they track. In terms of design, each page in the app should require no more than 2 taps to access from the home screen.
-
 Portfolio and Individual requirements: From a portfolio level, the user will be able to see a pie chart with their portfolio split up into percentages. 
 For instance, if a user owns \$1000 worth of assets, these may be across various different asset classes. A user may have \$500 invested in the stock market, 
 and \$500 in cryptocurrency. The pie chart would reflect this division. Additionally, the user will be able to retrieve benchmarks on their entire portfolio. 
@@ -143,12 +131,25 @@ performance of their investments over either the short or long term. Lastly, the
 Each of these requirements must not only be provided from a portfolio level, but also an individual investment level. This means that the user should be 
 able to retrieve time data, Sharpe ratio, volatility, and benchmarks of their investments, when relevant/available for any specific investment.
 
-
-
-
-
-
 \section{Specific requirements}
+
+\begin{itemize}
+	\item Front end development will be written in C\#, and SQL will be used for the backend. Various API's can be used to recieve data from internet sources. 
+	\item There must be no longer than a 3 second response time on any given query to the database. If queries fail, the data should be blank or missing, 
+		rather than inaccurate. Users should be able to rely on 100\% accurate pricing data, even if not 100\% up to date; inaccurate pricing is not an option. 
+	\item Investment types, or asset classes, must not be hard coded - this means that the user must be able to enter any investment into the app, 
+		even if there is no automated pricing data for it. 
+	\item The app must support bulk data entry, or individual data entry - the user should be able to 
+		add their whole portfolio at once, or add just one new investment. 
+	\item Investments must be able to be removed from the portfolio, as the user should 
+		have complete control over what they track. 
+	\item All pages in the app should require no more than 2 taps to access from the home screen.
+	\item Portfolio level will allow the user to see a pie chart of their total assets with each section being an individual investment.
+	\item The portfolio will have relative benchmarks to industry standard sources like the SMP500.
+	\item An option to view the portfolio's history in a graph must be displayed with a variety of time intervals ranging from a day to weeks to multiple years.
+	\item The portfolio should display the current Sharpe Ratio as well as its volatility.
+	\item Individual investments should also track time data, Sharpe Ratio, Volatility, and relative benchmarks when relevant/available separate from the portfolio benchmarks.
+\end{itemize}
 
 
 \end{document}
