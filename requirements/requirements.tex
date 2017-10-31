@@ -116,13 +116,32 @@ The project will be written in C\# on the front end, and use SQL on the backend.
 
 \subsection{Product perspective}
 
+Currently, most mobile financial applications provide investment performance information on only one investment type at a time. 
+This project seeks to solve the current lack of a tool that concurrently tracks a wide array of different investment assets in 
+one consolidated source. In doing so, this application will allow users to place and view all of their investments in a single location 
+while simultaneously recieving performace updates for each individual investment and the portfolio as a whole.
+
 \subsection{Product Functions}
-This mobile app will provide users investment performance from a portfolio level. The user will be able to enter investments, either in bulk or individually, and then be able to drill down in order to get further data on individual investments, or on the entire portfolio.
+This mobile app will provide users investment performance from a portfolio level. The user will be able to enter investments, either 
+in bulk or individually, and then be able to drill down in order to get further data on individual investments, or on the entire portfolio.
 
 General Requirements:
-This app must have the following general requirements: Firstly, the app will be written in C\# for the front end, and SQL for the backend. There must be no longer than a 3 second response time on any given query to the database. If queries fail, the data should be blank or missing, rather than inaccurate. Users should be able to rely on 100\% accurate pricing data, even if not 100\% up to date; inaccurate pricing is not an option. Investment types, or asset classes, must not be hard coded - this means that the user must be able to enter any investment into the app, even if there is no automated pricing data for it. The app must support bulk data entry, or individual data entry - the user should be able to add their whole portfolio at once, or add just one new investment. Investments must be able to be removed from the portfolio, as the user should have complete control over what they track. In terms of design, each page in the app should require no more than 2 taps to access from the home screen.
+This app must have the following general requirements: Firstly, the app will be written in C\# for the front end, and SQL for the backend. 
+There must be no longer than a 3 second response time on any given query to the database. If queries fail, the data should be blank or missing, 
+rather than inaccurate. Users should be able to rely on 100\% accurate pricing data, even if not 100\% up to date; inaccurate pricing is not an option. 
+Investment types, or asset classes, must not be hard coded - this means that the user must be able to enter any investment into the app, 
+even if there is no automated pricing data for it. The app must support bulk data entry, or individual data entry - the user should be able to 
+add their whole portfolio at once, or add just one new investment. Investments must be able to be removed from the portfolio, as the user should 
+have complete control over what they track. In terms of design, each page in the app should require no more than 2 taps to access from the home screen.
 
-Portfolio and Individual requirements: From a portfolio level, the user will be able to see a pie chart with their portfolio split up into percentages. For instance, if a user owns \$1000 worth of assets, these may be across various different asset classes. A user may have \$500 invested in the stock market, and \$500 in cryptocurrency. The pie chart would reflect this division. Additionally, the user will be able to retrieve benchmarks on their entire portfolio. The smp500, for example, would provide the user with a benchmark by which they could compare the performance of their entire portfolio at once. Morover, the user will be able to disect the peformance of their entire portfolio based off a variety of time intervals. The user will see the aggregate performance of their investments over either the short or long term. Lastly, the user will be able to see their Sharpe ratio and volatility of their portfolio. Each of these requirements must not only be provided from a portfolio level, but also an individual investment level. This means that the user should be able to retrieve time data, Sharpe ratio, volatility, and benchmarks of their investments, when relevant/available for any specific investment.
+Portfolio and Individual requirements: From a portfolio level, the user will be able to see a pie chart with their portfolio split up into percentages. 
+For instance, if a user owns \$1000 worth of assets, these may be across various different asset classes. A user may have \$500 invested in the stock market, 
+and \$500 in cryptocurrency. The pie chart would reflect this division. Additionally, the user will be able to retrieve benchmarks on their entire portfolio. 
+The smp500, for example, would provide the user with a benchmark by which they could compare the performance of their entire portfolio at once. 
+Morover, the user will be able to disect the peformance of their entire portfolio based off a variety of time intervals. The user will see the aggregate 
+performance of their investments over either the short or long term. Lastly, the user will be able to see their Sharpe ratio and volatility of their portfolio. 
+Each of these requirements must not only be provided from a portfolio level, but also an individual investment level. This means that the user should be 
+able to retrieve time data, Sharpe ratio, volatility, and benchmarks of their investments, when relevant/available for any specific investment.
 
 
 
