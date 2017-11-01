@@ -2,7 +2,7 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{setspace}
-
+\usepackage{pdfpages}
 \usepackage{geometry}
 \geometry{textheight=9.5in, textwidth=7in}
 
@@ -120,14 +120,15 @@ while simultaneously recieving performace updates for each individual investment
 
 \subsection{Product Functions}
 This mobile app will provide users investment performance from a portfolio level. The user will be able to enter investments, either 
-in bulk or individually, and then be able to drill down in order to get further data on individual investments, or on the entire portfolio.
+in bulk or individually, and have their portfolio be displayed all together. Then users will have the ability to view different data
+points about their portfolio as well as drill down into individual investments in order to get further data on a single asset.
 
-The application will allow the user to see a pie chart with their portfolio split up into percentages. 
+While in the portfolio view, users will see a pie chart with their portfolio split up into percentages. 
 For instance, if a user owns \$1000 worth of assets, these may be across various different asset classes. A user may have \$500 invested in the stock market, 
 and \$500 in cryptocurrency. The pie chart would reflect this division. Additionally, the user will be able to retrieve benchmarks on their entire portfolio. 
-The SMP500, for example, would provide the user with a benchmark by which they could compare the performance of their entire portfolio. 
+The SMP500, for example, would provide the user with a benchmark by which they could compare the performance of their entire portfolio against. 
 Moreover, the user will be able to disect the peformance of their entire portfolio based off a variety of time intervals. The user will see the aggregate 
-performance of their investments over either the short or long term. Lastly, the user will be able to see their Sharpe ratio and volatility of their portfolio. 
+performance of their investments over time intervals ranging from a week all the way to multiple years+. Lastly, the user will be able to see their Sharpe ratio and volatility of their portfolio. 
 The user will also be able to see all of this data at an individual investment level. This means that this app should provide the user 
 time data, the Sharpe ratio, volatility, and benchmarks of individual investments, when relevant/available.
 
@@ -151,7 +152,7 @@ time data, the Sharpe ratio, volatility, and benchmarks of individual investment
 	\item The portfolio should display the current Sharpe Ratio as well as its volatility.
 	\item Individual investments should also track time data, Sharpe Ratio, Volatility, and relative benchmarks when relevant/available separate from the portfolio benchmarks.
 	\item Users must be able to enter data through the application in two formats. First, one investment at a time manually added in using the user-friendly interface. Second by
-		adding a CSV file or EXCEL file containing the user's portfolio data to the application that will automatically populate the user's profile based off the contents of said file.
+		adding a CSV file or EXCEL file containing the user's portfolio data to the application will automatically populate the user's profile based off the contents of said file.
 	\item Investments should list purchase price and quantity, at a minimum.
 	\item Both the portfolio and individual investments should show returns based off time and purchase price.
 	\item User's portfolio should be cached onto the device when the user logs in.
@@ -160,5 +161,6 @@ time data, the Sharpe ratio, volatility, and benchmarks of individual investment
 	\item The final product must be secure. Usernames and passwords must be safely stored in the database, and prevent hacking attempts such as SQL injections.
 	
 \end{itemize}
-
+\section{Timeline}
+\includepdf{ganttchart.pdf}
 \end{document}
