@@ -125,11 +125,11 @@ in bulk or individually, and then be able to drill down in order to get further 
 The application will allow the user to see a pie chart with their portfolio split up into percentages. 
 For instance, if a user owns \$1000 worth of assets, these may be across various different asset classes. A user may have \$500 invested in the stock market, 
 and \$500 in cryptocurrency. The pie chart would reflect this division. Additionally, the user will be able to retrieve benchmarks on their entire portfolio. 
-The smp500, for example, would provide the user with a benchmark by which they could compare the performance of their entire portfolio. 
+The SMP500, for example, would provide the user with a benchmark by which they could compare the performance of their entire portfolio. 
 Moreover, the user will be able to disect the peformance of their entire portfolio based off a variety of time intervals. The user will see the aggregate 
 performance of their investments over either the short or long term. Lastly, the user will be able to see their Sharpe ratio and volatility of their portfolio. 
-The user will also be able to see all of this data at an individual investment level. This means that there should be 
-time data, Sharpe ratio, volatility, and benchmarks of individual investments, when relevant/available.
+The user will also be able to see all of this data at an individual investment level. This means that this app should provide the user 
+time data, the Sharpe ratio, volatility, and benchmarks of individual investments, when relevant/available.
 
 
 \section{Specific requirements}
@@ -137,7 +137,7 @@ time data, Sharpe ratio, volatility, and benchmarks of individual investments, w
 \begin{itemize}
 	\item Front end development will be written in C\#, and SQL will be used for the backend. Various API's can be used to recieve data from internet sources. 
 	\item There must be no longer than a 3 second response time on any given query to the database. If queries fail, the data should be blank or missing, 
-		rather than inaccurate. Users should be able to rely on 100\% accurate pricing data, even if not 100\% up to date; inaccurate pricing is not an option. 
+		rather than inaccurate. Users should be able to rely on 100\% accurate pricing data, even if not 100\% up to date; inaccurate pricing is not an option. Crashing is better than showing incorrect data, however this crash rate should be low. Moreover, the crash rate will be measured as the number of crashes relative to the number of queries to the database, rather than crashes relative to unit time.
 	\item Investment types, or asset classes, must not be hard coded - this means that the user must be able to enter any investment into the app, 
 		even if there is no automated pricing data for it. 
 	\item The app must support bulk data entry, or individual data entry - the user should be able to 
@@ -150,14 +150,15 @@ time data, Sharpe ratio, volatility, and benchmarks of individual investments, w
 	\item An option to view the portfolio's history in a graph must be displayed with a variety of time intervals ranging from a day to weeks to multiple years.
 	\item The portfolio should display the current Sharpe Ratio as well as its volatility.
 	\item Individual investments should also track time data, Sharpe Ratio, Volatility, and relative benchmarks when relevant/available separate from the portfolio benchmarks.
-	\item Users must be able to enter data through the application in two formats. First, one investment at a time manually added in using the user-friendly interface. Second,
-		adding a CSV file or EXCEL file containing the user's portfolio data to the application and it will automatically populate the user's profile based off the file.
-	\item Investments should list purchase price and quantity at a minimum.
+	\item Users must be able to enter data through the application in two formats. First, one investment at a time manually added in using the user-friendly interface. Second by
+		adding a CSV file or EXCEL file containing the user's portfolio data to the application that will automatically populate the user's profile based off the contents of said file.
+	\item Investments should list purchase price and quantity, at a minimum.
 	\item Both the portfolio and individual investments should show returns based off time and purchase price.
 	\item User's portfolio should be cached onto the device when the user logs in.
 	\item Investment prices stored in the database should be automatically updated daily and store old data so that portfolios can track historical data.
 	\item Stock splits should properlly increase investment quantity and reduce price when such event occurs (investment value should remain unchanged).
-	\item 
+	\item The final product must be secure. Usernames and passwords must be safely stored in the database, and prevent hacking attempts such as SQL injections.
+	
 \end{itemize}
 
 \end{document}
