@@ -131,12 +131,22 @@ time data, the Sharpe ratio, volatility, and benchmarks of individual investment
 
 \section{Specific requirements}
 
+\subsection{Backend}
+
 \begin{itemize}
-	\item Front end development will be written in C\#, and SQL will be used for the backend. Various API's can be used to recieve data from internet sources. 
-	\item There must be no longer than a 3 second response time on any given query to the database. If queries fail, the data should be blank or missing, 
+\item There must be no longer than a 3 second response time on any given query to the database. If queries fail, the data should be blank or missing, 
 		rather than inaccurate. Users should be able to rely on 100\% accurate pricing data, even if not 100\% up to date; inaccurate pricing is not an option. Crashing is better than showing incorrect data, however this crash rate should be low. Moreover, the crash rate will be measured as the number of crashes relative to the number of queries to the database, rather than crashes relative to unit time.
-	\item Investment types, or asset classes, must not be hard coded - this means that the user must be able to enter any investment into the app, 
-		even if there is no automated pricing data for it. 
+
+\item Database must be able to accomodate users having more than one portfolio/account
+\item Database must be able to accomodate users having a joint portfolio/investment.
+\item All transactions must be stored in the database
+\item The final product must be secure. Usernames and passwords must be safely stored in the database, and prevent hacking attempts such as SQL injections.
+\item Investment prices stored in the database should be automatically updated daily and store old data so that portfolios can track historical data.
+\end{itemize}
+
+\subsection{Frontend}
+\begin{itemize}
+	\item Front end development will be written in C\#, and SQL will be used for the backend. Various API's can be used to recieve data from internet sources.  
 	\item The app must support bulk data entry, or individual data entry - the user should be able to 
 		add their whole portfolio at once, or add just one new investment. 
 	\item Investments must be able to be removed from the portfolio, as the user should 
@@ -152,9 +162,8 @@ time data, the Sharpe ratio, volatility, and benchmarks of individual investment
 	\item Investments should list purchase price and quantity, at a minimum.
 	\item Both the portfolio and individual investments should show returns based off time and purchase price.
 	\item User's portfolio should be cached onto the device when the user logs in.
-	\item Investment prices stored in the database should be automatically updated daily and store old data so that portfolios can track historical data.
-	\item Stock splits should properlly increase investment quantity and reduce price when such event occurs (investment value should remain unchanged).
-	\item The final product must be secure. Usernames and passwords must be safely stored in the database, and prevent hacking attempts such as SQL injections.
+	\item Stock splits should properly increase investment quantity and reduce price when such event occurs (investment value should remain unchanged).
+
 	
 \end{itemize}
 \section{Timeline}
