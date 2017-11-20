@@ -77,10 +77,13 @@
 \section{Introduction}
 
 \subsection{Purpose}
-The purpose of this mobile application will be to provide it's users insight into the quality of their investments from a portfolio level. By using this application, a user will be able to track and gain valuable insight that wouldn't be possible otherwise.
+The purpose of this mobile application will be to provide it's users insight into the quality of their investments from a portfolio level. 
+By using this application, a user will be able to track and gain valuable insight that wouldn't be possible otherwise.
 
 \subsection{Scope}
-The scope of this project is to provide users with a method to track investments of a variety of different asset classes. Users will be able to either add investments in bulk or one investment at a time through the user interface. Upon entering an investment, the user will have a variety of options at their disposal to learn more about the quality of their investment.
+The scope  of this project is to provide users with a method to track investment portfolios containing stocks and stock options. Users will have
+the ability  to enter in investments and recieve detailed tracking information on these assets. Data will be displayed including prices, purchase
+dates, volatility, and more for both portfolio wide and individual investments.
 
 \subsection{Definitions, acronyms, and abbreviations}
 \begin{itemize}
@@ -94,7 +97,6 @@ The scope of this project is to provide users with a method to track investments
 	\item Investments: An asset or item puchased with the hope that it will geenerate income and is not consumed today and used to create wealth in the future.
 	\item Portfolio: A group of financial assets that are held by investors or managed by financial professionals.
 	\item Options: Contracts that grant the right but not obligation to buy or sell an underlying asset at a set price before a certain date.
-	\item Currency: Money in any form that is in actual use or circulation as a medium of exchange
 	\item Front End: The view of an application that provides the end user with a friendly interface to interact with.
 	\item Back End: The behind the scenes of an application that typically handles business logic and the storage of data.
 	\item Domain-Specific Lanuage: (Often refered to as \textit{DSL}) A programming language that has been specialized to a particular application domain.
@@ -104,13 +106,13 @@ The scope of this project is to provide users with a method to track investments
 \subsection{Overview}
 
 The Investment Performance Mobile Application will allow users to view their investment portfolio on iOS and Android devices
-at a portfolio level. Users will have the ability to see their portfolio as well as drill down to any of their specific investments.
+at a portfolio level. Users will recieve data at a portfolio level as well as drill down to any of their specific investments.
 
 
 \subsection{Product perspective}
 
 Currently, most mobile financial applications provide investment performance information on only one investment type at a time. 
-This project seeks to solve the current lack of a tool that concurrently tracks a wide array of different investment assets in 
+This project seeks to solve the current lack of a tool that concurrently tracks a variety of different investment assets in 
 one consolidated source. In doing so, this application will allow users to place and view all of their investments in a single location 
 while simultaneously recieving performace updates for each individual investment and the portfolio as a whole.
 
@@ -120,8 +122,8 @@ in bulk or individually, and have their portfolio be displayed all together. The
 points about their portfolio as well as drill down into individual investments in order to get further data on a single asset.
 
 While in the portfolio view, users will see a pie chart with their portfolio split up into percentages. 
-For instance, if a user owns \$1000 worth of assets, these may be across various different asset classes. A user may have \$500 invested in the stock market, 
-and \$500 in cryptocurrency. The pie chart would reflect this division. Additionally, the user will be able to retrieve benchmarks on their entire portfolio. 
+For instance, if a user owns \$1000 worth of assets, these may be across stocks or stock options. A user may have \$500 invested in the stock market, 
+and \$500 in a call option. The pie chart would reflect this division. Additionally, the user will be able to retrieve benchmarks on their entire portfolio. 
 The S\&P 500, for example, would provide the user with a benchmark by which they could compare the performance of their entire portfolio against. 
 Moreover, the user will be able to disect the peformance of their entire portfolio based off a variety of time intervals. The user will see the aggregate 
 performance of their investments over time intervals ranging from a week all the way to multiple years+. Lastly, the user will be able to see their Sharpe ratio and volatility of their portfolio. 
@@ -147,11 +149,8 @@ time data, the Sharpe ratio, volatility, and benchmarks of individual investment
 \subsection{Frontend}
 \begin{itemize}
 	\item Front end development will be written in C\#, and SQL will be used for the backend. Various API's can be used to recieve data from internet sources.  
-	\item The app must support bulk data entry, or individual data entry - the user should be able to 
-		add their whole portfolio at once, or add just one new investment. 
 	\item Investments must be able to be removed from the portfolio, as the user should 
 		have complete control over what they track. 
-	\item All pages in the app should require no more than 2 taps to access from the home screen.
 	\item Portfolio level will allow the user to see a pie chart of their total assets with each section being an individual investment.
 	\item The portfolio will have relative benchmarks to industry standard sources like the S\&P500.
 	\item An option to view the portfolio's history in a graph must be displayed with a variety of time intervals ranging from a day to weeks to multiple years.
