@@ -1,5 +1,5 @@
 LATEXPATH=/usr/local/apps/tex_live/current/bin/x86_64-linux/
-LATEX	= $(LATEXPATH)latex -shell-escape
+LATEX	= $(LATEXPATH)pdflatex -shell-escape
 BIBTEX	= $(LATEXPATH)bibtex
 DVIPS	= $(LATEXPATH)dvips
 DVIPDF  = $(LATEXPATH)dvipdft
