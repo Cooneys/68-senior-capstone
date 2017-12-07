@@ -66,7 +66,8 @@
         }
         \begin{abstract}
         % 6. Fill in your abstract    
-        The purpose of this document is to go over design decisions for our Investment Performance Mobile Application. This document serves to clarify the intended audience of the application, elaborate upon design decisions, and discuss the design decisions from various viewpoints. 
+        The purpose of this document is to go over design decisions for the Investment Performance Mobile Application. This document serves to clarify the intended 
+	audience of the application as well as elaborate upon and discuss the design decisions from various viewpoints. 
         \end{abstract}     
     \end{singlespace}
 \end{titlepage}
@@ -113,40 +114,55 @@
 
 
 \section{Context viewpoint}
-Our financial mobile application aims to supplement users' investment experience by providing insight into the quality of investments from a individual and portfolio level. Relevant stakeholders include the developers of this application, namely Tyler Jones, Avi Sinha, and Sam Cooney, as well as HedgServe employees namely Edison Tsai and Ronald Olshausen.
+	Our financial mobile application aims to supplement users' investment experience by providing insight into the quality of investments from a individual and portfolio level. 
+	Relevant stakeholders include the developers of this application, namely Tyler Jones, Avi Sinha, and Sam Cooney, as well as HedgServe employees namely Edison Tsai and Ronald Olshausen.
 
-From a "black box" perspective, the application will allows users to enter an investment, including type of asset class, either stock or stock option, company name and ticker symbol, and amount invested combined with shares purchased. The user will then have proper pricing data displayed for the investment for a given time period, and the portfolio and individual investments will display the performance of the user's investments based on such pricing.
+	From a "black box" perspective, the application will allows users to enter an investment, including type of asset class, either stock or stock option, company name and ticker symbol, 
+	and amount invested combined with shares purchased. The user will then have proper pricing data displayed for the investment for a given time period, and the portfolio and individual 
+	investments will display the performance of the user's investments based on such pricing.
 
 \subsection{Design concerns}
-The scope and use of this application is to be a learning tool, both for the relevant developers, as well as any future users. Typically, in an enterprise environment, many audits and checkpoints must be performed on the application in order to verify it as a reliable source of financial advice. Due to the time span and scope of this application, such regulation and checkpoints are not going to be made, and as such, this application is not intended for the purpose of either handling real finances, nor to be used to make fully informed financial decisions. Any relevant statistics displayed for the user based on their current investments should be investigated more in depth by said user.
+	The scope and use of this application is to be a learning tool, both for the relevant developers, as well as any future users. Typically, in an enterprise environment, many audits and 
+	checkpoints must be performed on the application in order to verify it as a reliable source of financial advice. Due to the time span and scope of this application, such regulation and 
+	checkpoints are not going to be made, and as such, this application is not intended for the purpose of either handling real finances, nor to be used to make fully informed financial decisions. 
+	Any relevant statistics displayed for the user based on their current investments should be investigated more in depth by said user.
 
 \subsection{Design Elements}
-Design entities: Actors - A MySQL database will be interacting directly with the front end of the application, and thus the user. When a user enters a new investment into the application through the UI, said entry is stored in the MySQL database and can later be retrieved as the user needs. Moreover, API (Quandl, Avi?) calls will be made that allow the users stored investment information to have relevant pricing data displayed.
+	Design entities: Actors - A MySQL database will be interacting directly with the front end of the application, and thus the user. When a user enters a new investment into the application 
+	through the UI, said entry is stored in the MySQL database and can later be retrieved as the user needs. Moreover, API (Quandl, Avi?) calls will be made that allow the users stored investment 
+	information to have relevant pricing data displayed.
 
 \section{Composition viewpoint}
 \subsection{Design Elements}
-Design Entities: The investment performance mobile application can be broken down in 3 primary components/entities. These components are the user interface, the database, and the API.
+	Design Entities: The investment performance mobile application can be broken down in 3 primary components/entities. These components are the user interface, the database, and the API.
 
 \subsection{Design Relationships}
-The database, and chosen financial data API both will work with the user interface. The database will contain the financial information that was entered by the user, and the API will supplement such data with relevant pricing info in order to give performance metrics. Both the API and database will be displayed on the front end of the application, and will appear to the user in a desirable fashion through the interface.
+	The database, and chosen financial data API both will work with the user interface. The database will contain the financial information that was entered by the user, and the API will 
+	supplement such data with relevant pricing info in order to give performance metrics. Both the API and database will be displayed on the front end of the application, and will appear
+	to the user in a desirable fashion through the interface.
 
 \subsubsection{Function Attribute: API}
 \subsubsection{Function Attribute: User Interface}
 \subsubsection{Function Attribute: Database}
-The database will hold the financial data that was entered by the user. This database will be a relational database that is hosted by Oregon State University. Such a choice was made due to the financial advantage that using this database provides. Every student at the university is given 1 free database, and for this reason it was chosen. The database management system that will be used is MySQL.
+	The database will hold the financial data that was entered by the user. This database will be a relational database that is hosted by Oregon State University. Such a choice was 
+	made due to the financial advantage that using this database provides. Every student at the university is given 1 free database, and for this reason it was chosen. The database 
+	management system that will be used is MySQL.
 
-The database will contain not only financial data, but will also contain login information, and the number of portfolios that belong to a specified user. A user can share a portfolio with another user, as well as have an individual portfolio. In the case of joint custody, the two users will both be able to retrieve and access the portfolio from their interface. A relational database, such as the one that will be implemented, is perfect for this purpose.
+	The database will contain not only financial data, but will also contain login information, and the number of portfolios that belong to a specified user. A user can share a portfolio 
+	with another user, as well as have an individual portfolio. In the case of joint custody, the two users will both be able to retrieve and access the portfolio from their interface. 
+	A relational database, such as the one that will be implemented, is perfect for this purpose.
 
 
 
 \section{Logical viewpoint}
-I dont think this section is relevant. Need Sam and Avi approval to delete.
+	I dont think this section is relevant. Need Sam and Avi approval to delete.
 \section{Dependency viewpoint}
-This section seems redundant with section 3.2 (design relationships) . Need Sam and Avi approval to delete. Perhaps this can be more detailed than 3.2?
+	This section seems redundant with section 3.2 (design relationships) . Need Sam and Avi approval to delete. Perhaps this can be more detailed than 3.2?
 \section{Information viewpoint}
-As stated previously, the users financial data will be stored in a MySQL database. This section intends on going into more detail about the implementation and expectation of stored data based on what the user will be able to enter from within the user interface.
+	As stated previously, the users financial data will be stored in a MySQL database. This section intends on going into more detail about the implementation and expectation of stored 
+	data based on what the user will be able to enter from within the user interface.
 
-At this point in time, the user will be able to provide the following to the application, and will contain two primary types of tables:
+	At this point in time, the user will be able to provide the following to the application, and will contain two primary types of tables:
 
 \subsection{User Table}
 \begin{itemize}
