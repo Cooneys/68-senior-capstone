@@ -82,16 +82,24 @@
 
 % 8. now you write!
 \section{Introduction}
-    In the following sections we will look at the main design elements of the Investment Performance Mobile
-    Application for HedgeServ. We will go over the various technologies and tools being implemented and their
+
+    The following sections will cover the main design elements of the Investment Performance Mobile
+    Application for HedgeServ. This document wil also go over the various technologies and tools being implemented and their
     relationship with each other. As a disclaimer, this application will be a student made learning tool and is in
-    no way recommended as a tool  to make financial decisions from. As we are still in early stages of development,
+    no way recommended as a tool  to make financial decisions from. As the members of this team are still in early stages of development,
     not everything mentioned in this document will be rigid. 
-    
-    
+      
+
+
+\section{Context viewpoint}
+        This financial mobile application aims to supplement users' investment experience by providing insight into the quality of investments from a individual and portfolio level.
+        Relevant stakeholders include the developers of this application, namely Tyler Jones, Avi Sinha, and Sam Cooney, as well as HedgServe employees namely Edison Tsai and Ronald Olshausen.
+
+        From a "black box" perspective, the application will allows users to enter an investment, including type of asset class, either stock or stock option, company name and ticker symbol,
+        and amount invested combined with shares purchased. The user will then have proper pricing data displayed for the investment for a given time period, and the portfolio and individual
+        investments will display the performance of the user's investments based on such pricing.
 \begin{table}
                         \caption{Table 1 - Summary of Design Viewpoints}
-                        \begin{center}
                                 \begin{tabular}{| p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} | }
                                         \hline
                                          \textbf{Design Viewpoint} & \textbf{Design Concerns} & \textbf{Example Design Languages} \\ [0.5ex]
@@ -117,17 +125,7 @@
                                         \hline
 
                                 \end{tabular}
-                        \end{center}
-                        \end{table}
-
-
-\section{Context viewpoint}
-        Our financial mobile application aims to supplement users' investment experience by providing insight into the quality of investments from a individual and portfolio level.
-        Relevant stakeholders include the developers of this application, namely Tyler Jones, Avi Sinha, and Sam Cooney, as well as HedgServe employees namely Edison Tsai and Ronald Olshausen.
-
-        From a "black box" perspective, the application will allows users to enter an investment, including type of asset class, either stock or stock option, company name and ticker symbol,
-        and amount invested combined with shares purchased. The user will then have proper pricing data displayed for the investment for a given time period, and the portfolio and individual
-        investments will display the performance of the user's investments based on such pricing.
+\end{table}
 
 \subsection{Design concerns}
         The scope and use of this application is to be a learning tool, both for the relevant developers, as well as any future users. Typically, in an enterprise environment, many audits and
@@ -150,9 +148,14 @@
         to the user in a desirable fashion through the interface.
 
 \subsubsection{Function Attribute: APIs}
-        For our application we will handling various data sets that need to be constantly pulled and updated. Instead of manually uploading individual sets we will be utilizing Quandl as recommended by our client. Through this application we will be able access various financial, economic, and alternative data. The API will be used in a python like environment where we can use a vast array of free data sets provided by many reputable sources. Since HedgeServ primarily serves buy side firms that not only look at typical investments like stocks and options but alternative investments that may prove useful in the future if the application wants to expand beyond what we have right now. 
+        This application will be handling various data sets that need to be constantly pulled and updated. Instead of manually uploading individual sets, Quandl will be utilized as recommended by HedgeServ. Through Quandl,
+	various financial, economic, and alternative data will be accessable. The API will be used in a python like environment where a vast array of free data sets provided by many reputable sources are open for use.
+	Since HedgeServ primarily serves buy side firms that not only look at typical investments like stocks and options but alternative investments that may prove useful in the future if the application wants to expand
+	beyond what is outlined in the original scope. 
         
-        Our data will also need to be visualized through charts and graphs that allow the user to quickly glance at an investment. The visualizations will show historical investment prices as well as other variables related to that security. Since this will be an application for both Android and iOS we needed a visualization tool that would be supported by both platforms. Using Google Charts our data will be shown in a visually appealing manner using various libraries, resources, and tools. 
+        Portfolio data will also need to be visualized through charts and graphs that allow the user to quickly glance at an investment. The visualizations will show historical investment prices as well as other
+	variables related to that security. Since this will be an application for both Android and iOS a visualization tool that would be supported by both platforms is required. Google Charts will allow portfolio data to
+	be shown in a visually appealing manner using various libraries, resources, and tools. 
         
 \subsubsection{Function Attribute: User Interface}
         The user interface will all be handled through Android and iOS devices. Users must be able to quickly and
@@ -174,15 +177,30 @@
         A relational database, such as the one that will be implemented, is perfect for this purpose.
 
 \subsubsection{Function Attribute: Development Tools}
-    As recommended by HedgeServ we will be using Xamarin as our main tool for development to make our development process as smooth as possible. Its native libraries make use of C\# and .NET to allow cross platform development which will be key with the utilization of various data tools. With our application we want to be able to develop cross platform easily without losing application performance. By having a platform specific UI the application will look at home on both iOS and Android with specific design cues and functions. Thanks to its open source technology we will get compatibility with most APIs and eliminate the risk of having to go back to the drawing board when implementing a crucial part of the application. The use of a single stack will allow a quick time to market which means we can simultaneously run testing on various versions while continuing development By using Xamarin we will be able to streamline our development process to make sure our final product is fully functional and visually appealing for our client. 
+    As recommended by HedgeServ, Xamarin will be the main tool for development to ensure a smooth and efficient development process. Its native libraries make use of C\# and .NET to allow cross platform
+    development which will be key with the utilization of various data tools. The Investment Performance Mobile Application requires the ability to develop cross platform easily without losing 
+    application performance. By having a platform specific UI the application will look at home on both iOS and Android with specific design cues and functions. Thanks to Xamarin's open source technology,
+    compatibility with most APIs will be ensured and eliminate the risk of having to go back to the drawing board when implementing a crucial part of the application. The use of a single stack will allow 
+    a quick time to market which means simultaneously running testing on various versions while continuing development. By using Xamarin, the development process will be streamlined to ensure the final product
+    is fully functional and visually appealing for HedgeServ. 
 
 
 \section{Logical viewpoint}
-        From a logical point of view we looked at various other financial applications for influence in our design. Most notably Robinhood which makes use of a mobile friendly user interface which allows the user to easily buy and sell stocks, look at historical data, other info, and news related to the investment's industry. Their model is built on the goal to appeal to a mobile generation that needs all of their investments on the go. Even though our project is meant to be a learning tool for us and not intended to be released as a HedgeServ product, we aim to develop our application with that intent to ensure the highest quality. This holds especially true when we looked at industry leaders like Robinhood and Merrill Edge who have essentially made consumer versions of what was once only available to trading firms. 
+        Various other financial applications were researched for influence in the design of this application. Most notably Robinhood which makes use of a mobile friendly user interface which allows the user to
+	easily buy and sell stocks, look at historical data, other info, and news related to the investment's industry. Their model is built on the goal to appeal to a mobile generation that needs all of their
+	investments on the go. Even though this project is meant to be a learning tool and is not intended to be released as a HedgeServ product, ensuring the highest quality will be intended in the development
+	of this applicaiton. This holds especially true for industry leaders like Robinhood and Merrill Edge who have essentially made consumer versions of what was once only available to trading firms. 
      
 \section{Dependency viewpoint}
-      For the most part all of our design tools will be heavily dependant on each other. This project is relatively small in scale due it mainly being a mobile application. We really have 4 main Functions within our project: APIs, User Interface, Database, and Development Tools. These consist of what our application will actually be in addition what is required to make the end product possible. Without the various APIs we won't be able to properly get the data sets nor visualize it, the database allows for all the vast amount of data to come in from Quandl and be organized in a fashion that allows the user to easily access the information they need. These all depend on a working user interface because while there may be tables with thousands of data points it will all be somewhat useless in the context of our project if we can't make our application navigable and intuitive. This all hinges on Xamarin which is our main development tool and our primary ecosystem for all aspects of the application development. 
+
+      For the most part all of the design tools will be heavily dependant on each other. This project is relatively small in scale due it mainly being a mobile application. This project can be broken down into four main
+      sections: APIs, User Interface, Database, and Development Tools. These consist of what our application will actually be in addition what is required to make the end product possible. Without the various APIs this
+      application won't be able to properly get the data sets nor visualize it and the database allows for all the vast amount of data to come in from Quandl and be organized in a fashion that allows the user to easily access the
+      information they need. These all depend on a working user interface because while there may be tables with thousands of data points it will all be somewhat useless in the context of this project the application is not
+      navigable and intuitive. All of this relies on the strong foundation Xamarin provides which is the main development tool and the primary ecosystem for all aspects of the application development. 
+
 \section{Information viewpoint}
+
         User financial data will be stored in a MySQL database. This section intends on going into more detail
         about the implementation and expectation of stored
         data based on what the user will be able to enter from within the user interface.
@@ -221,7 +239,8 @@
 \subsection{Design Concerns}
 
 \section{Interface viewpoint}
-    Interface viewpoint outlines how three of our core functions interface and interact with one another.
+
+    Interface viewpoint outlines how three of the core functions interface and interact with one another.
     Beginning with the user interface where portfolio owners can add and remove stocks and options which
     sends updates to the database where the data is stored. The portfolio view also has graphs, charts, histograms,
     and data tables which will be retrieved from various APIs including websites like Quandl and Google Finance.
