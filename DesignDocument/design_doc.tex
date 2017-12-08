@@ -156,7 +156,7 @@
         securely log into their account and be loaded to the dashboard. From here, the user can select a specific
         portfolio to look at, create a new individual or shared portfolio, or edit account information.
         When selecting a portfolio, the user can see information and statistics on their portfolio in the 
-        form of charts, graphs, histograms, and data tables. The portfolio view will also allow users to edit their
+        form of charts, graphs, history displays, and data tables. The portfolio view will also allow users to edit their
         portfolio by adding or removing stocks and stock options. By selecting a specific option or stock on the
         pie chart, users can see individual information on the stock including purchase price(s), current price,
         and purchase date.
@@ -236,7 +236,7 @@
 
     Interface viewpoint outlines how three of the core functions interface and interact with one another.
     Beginning with the user interface where portfolio owners can add and remove stocks and options which
-    sends updates to the database where the data is stored. The portfolio view also has graphs, charts, histograms,
+    sends updates to the database where the data is stored. The portfolio view also has graphs, charts, history displays,
     and data tables which will be retrieved from various APIs including websites like Quandl and Google Finance.
     
 \subsection{Design Elements}
@@ -262,7 +262,7 @@
 \end{figure}
     
     The web services and APIs that will be connected to our application will mainly be called from the user
-    interface. When a portfolio attempts to display a histogram of stock prices, calls will be made from the user
+    interface. When a portfolio attempts to display a history display of stock prices, calls will be made from the user
     interface to a wrapper for Quandl's API. Periodically, the web service will make calls to the APIs and 
     then report this information to the database. This will continually keep our database's information
     up to date which allows for quicker loading on the front end.
