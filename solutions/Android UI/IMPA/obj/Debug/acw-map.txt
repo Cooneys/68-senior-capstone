@@ -1,0 +1,16 @@
+IMPA.PortfolioActivity, IMPA;md5c2abdc0498d742323d9e0e67a660cb4d.PortfolioActivity
+IMPA.PortfolioActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5c2abdc0498d742323d9e0e67a660cb4d.PortfolioActivity
+IMPA.PortfolioActivity;md5c2abdc0498d742323d9e0e67a660cb4d.PortfolioActivity
+impa.PortfolioActivity;md5c2abdc0498d742323d9e0e67a660cb4d.PortfolioActivity
+IMPA.SettingsActivity, IMPA;md5c2abdc0498d742323d9e0e67a660cb4d.SettingsActivity
+IMPA.SettingsActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5c2abdc0498d742323d9e0e67a660cb4d.SettingsActivity
+IMPA.SettingsActivity;md5c2abdc0498d742323d9e0e67a660cb4d.SettingsActivity
+impa.SettingsActivity;md5c2abdc0498d742323d9e0e67a660cb4d.SettingsActivity
+IMPA.HomeActivity, IMPA;md5c2abdc0498d742323d9e0e67a660cb4d.HomeActivity
+IMPA.HomeActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5c2abdc0498d742323d9e0e67a660cb4d.HomeActivity
+IMPA.HomeActivity;md5c2abdc0498d742323d9e0e67a660cb4d.HomeActivity
+impa.HomeActivity;md5c2abdc0498d742323d9e0e67a660cb4d.HomeActivity
+IMPA.MainActivity, IMPA;md5c2abdc0498d742323d9e0e67a660cb4d.MainActivity
+IMPA.MainActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5c2abdc0498d742323d9e0e67a660cb4d.MainActivity
+IMPA.MainActivity;md5c2abdc0498d742323d9e0e67a660cb4d.MainActivity
+impa.MainActivity;md5c2abdc0498d742323d9e0e67a660cb4d.MainActivity
