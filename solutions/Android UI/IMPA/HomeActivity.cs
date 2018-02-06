@@ -26,6 +26,8 @@ namespace IMPA {
         }
 
         public void NewPortfolioClick() {
+            //Intent i = new Intent(this, InfoPortfolioActivity.class);
+            //private startActivityForResult(i, 1);
             Button newPortfolio = new Button(this);
 
             LinearLayout ll = (LinearLayout)FindViewById(Resource.Id.HomeLinLayout);
