@@ -1,6 +1,8 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Android.Content;
+using Android.Runtime;
 
 namespace IMPA {
     [Activity(Label = "HomeActivity")]
@@ -26,12 +28,20 @@ namespace IMPA {
         }
 
         public void NewPortfolioClick() {
-            //Intent i = new Intent(this, InfoPortfolioActivity.class);
-            //private startActivityForResult(i, 1);
-            Button newPortfolio = new Button(this);
+            var i = new Intent(this, typeof(InfoPortfolioActivity));
+            StartActivityForResult(i, 0);
+        }
 
-            LinearLayout ll = (LinearLayout)FindViewById(Resource.Id.HomeLinLayout);
-            ll.AddView(newPortfolio);
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data) {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (resultCode == Result.Ok) {
+                Button newPortfolio = new Button(this) {
+                    Text = data.GetStringExtra("text")
+                };
+
+                LinearLayout ll = (LinearLayout)FindViewById(Resource.Id.HomeLinLayout);
+                ll.AddView(newPortfolio);
+            }
         }
     }
 }

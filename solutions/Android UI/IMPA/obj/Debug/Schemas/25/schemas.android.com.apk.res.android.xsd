@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>2/3/2018 4:16:05 PM</xs:documentation>
+    <xs:documentation>2/6/2018 6:53:20 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -16905,11 +16905,15 @@
             <xs:enumeration value="@+id/" />
             <xs:enumeration value="@+id/checkedTextView1" />
             <xs:enumeration value="@id/AccountSettings" />
+            <xs:enumeration value="@id/AddOwners" />
             <xs:enumeration value="@id/AssetName" />
             <xs:enumeration value="@id/button1" />
+            <xs:enumeration value="@id/cancelNP" />
             <xs:enumeration value="@id/ChangePass" />
+            <xs:enumeration value="@id/CreatePortfolio" />
             <xs:enumeration value="@id/deleteAccount" />
             <xs:enumeration value="@id/editPassword" />
+            <xs:enumeration value="@id/editPortfolioName" />
             <xs:enumeration value="@id/editUsername" />
             <xs:enumeration value="@id/goToHome" />
             <xs:enumeration value="@id/goToPortfolio" />
@@ -16920,6 +16924,7 @@
             <xs:enumeration value="@id/linearLayout2" />
             <xs:enumeration value="@id/LogInButton" />
             <xs:enumeration value="@id/newPortfolio" />
+            <xs:enumeration value="@id/NewPortfolioText" />
             <xs:enumeration value="@id/PortfolioName" />
             <xs:enumeration value="@id/textSettings" />
             <xs:enumeration value="@android:id/accessibilityActionContextClick" />

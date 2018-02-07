@@ -8,6 +8,7 @@
     <activity android:label="PortfolioActivity" android:name="md5c2abdc0498d742323d9e0e67a660cb4d.PortfolioActivity" />
     <activity android:label="SettingsActivity" android:name="md5c2abdc0498d742323d9e0e67a660cb4d.SettingsActivity" />
     <activity android:label="HomeActivity" android:name="md5c2abdc0498d742323d9e0e67a660cb4d.HomeActivity" />
+    <activity android:label="InfoPortfolioActivity" android:name="md5c2abdc0498d742323d9e0e67a660cb4d.InfoPortfolioActivity" />
     <activity android:label="IMPA" android:name="md5c2abdc0498d742323d9e0e67a660cb4d.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

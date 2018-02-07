@@ -47,11 +47,17 @@ namespace IMPA
 			// aapt resource value: 0x7f050008
 			public const int AccountSettings = 2131034120;
 			
+			// aapt resource value: 0x7f05000c
+			public const int AddOwners = 2131034124;
+			
 			// aapt resource value: 0x7f050003
 			public const int AssetName = 2131034115;
 			
-			// aapt resource value: 0x7f050011
-			public const int ChangePass = 2131034129;
+			// aapt resource value: 0x7f050016
+			public const int ChangePass = 2131034134;
+			
+			// aapt resource value: 0x7f05000d
+			public const int CreatePortfolio = 2131034125;
 			
 			// aapt resource value: 0x7f050006
 			public const int Hello = 2131034118;
@@ -59,32 +65,41 @@ namespace IMPA
 			// aapt resource value: 0x7f050005
 			public const int HomeLinLayout = 2131034117;
 			
-			// aapt resource value: 0x7f05000b
-			public const int LogInButton = 2131034123;
+			// aapt resource value: 0x7f050010
+			public const int LogInButton = 2131034128;
 			
-			// aapt resource value: 0x7f05000e
-			public const int PortfolioName = 2131034126;
+			// aapt resource value: 0x7f05000a
+			public const int NewPortfolioText = 2131034122;
+			
+			// aapt resource value: 0x7f050013
+			public const int PortfolioName = 2131034131;
 			
 			// aapt resource value: 0x7f050004
 			public const int button1 = 2131034116;
 			
-			// aapt resource value: 0x7f050010
-			public const int deleteAccount = 2131034128;
-			
-			// aapt resource value: 0x7f05000a
-			public const int editPassword = 2131034122;
-			
 			// aapt resource value: 0x7f050009
-			public const int editUsername = 2131034121;
+			public const int cancelNP = 2131034121;
 			
-			// aapt resource value: 0x7f05000d
-			public const int goToHome = 2131034125;
+			// aapt resource value: 0x7f050015
+			public const int deleteAccount = 2131034133;
+			
+			// aapt resource value: 0x7f05000f
+			public const int editPassword = 2131034127;
+			
+			// aapt resource value: 0x7f05000b
+			public const int editPortfolioName = 2131034123;
+			
+			// aapt resource value: 0x7f05000e
+			public const int editUsername = 2131034126;
+			
+			// aapt resource value: 0x7f050012
+			public const int goToHome = 2131034130;
 			
 			// aapt resource value: 0x7f050002
 			public const int goToPortfolio = 2131034114;
 			
-			// aapt resource value: 0x7f05000c
-			public const int guestSignIn = 2131034124;
+			// aapt resource value: 0x7f050011
+			public const int guestSignIn = 2131034129;
 			
 			// aapt resource value: 0x7f050000
 			public const int linearLayout1 = 2131034112;
@@ -95,8 +110,8 @@ namespace IMPA
 			// aapt resource value: 0x7f050007
 			public const int newPortfolio = 2131034119;
 			
-			// aapt resource value: 0x7f05000f
-			public const int textSettings = 2131034127;
+			// aapt resource value: 0x7f050014
+			public const int textSettings = 2131034132;
 			
 			static Id()
 			{
@@ -118,13 +133,16 @@ namespace IMPA
 			public const int Home = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Login = 2130903042;
+			public const int InfoPortfolio = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Portfolio = 2130903043;
+			public const int Login = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int Settings = 2130903044;
+			public const int Portfolio = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int Settings = 2130903045;
 			
 			static Layout()
 			{

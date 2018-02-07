@@ -1,7 +1,7 @@
 package md5c2abdc0498d742323d9e0e67a660cb4d;
 
 
-public class HomeActivity
+public class InfoPortfolioActivity
 	extends android.app.Activity
 	implements
 		mono.android.IGCUserPeer
@@ -11,17 +11,16 @@ public class HomeActivity
 	static {
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
-			"n_onActivityResult:(IILandroid/content/Intent;)V:GetOnActivityResult_IILandroid_content_Intent_Handler\n" +
 			"";
-		mono.android.Runtime.register ("IMPA.HomeActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", HomeActivity.class, __md_methods);
+		mono.android.Runtime.register ("IMPA.InfoPortfolioActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", InfoPortfolioActivity.class, __md_methods);
 	}
 
 
-	public HomeActivity ()
+	public InfoPortfolioActivity ()
 	{
 		super ();
-		if (getClass () == HomeActivity.class)
-			mono.android.TypeManager.Activate ("IMPA.HomeActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+		if (getClass () == InfoPortfolioActivity.class)
+			mono.android.TypeManager.Activate ("IMPA.InfoPortfolioActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 
@@ -31,14 +30,6 @@ public class HomeActivity
 	}
 
 	private native void n_onCreate (android.os.Bundle p0);
-
-
-	public void onActivityResult (int p0, int p1, android.content.Intent p2)
-	{
-		n_onActivityResult (p0, p1, p2);
-	}
-
-	private native void n_onActivityResult (int p0, int p1, android.content.Intent p2);
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

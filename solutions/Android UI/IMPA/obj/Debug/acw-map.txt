@@ -10,6 +10,10 @@ IMPA.HomeActivity, IMPA;md5c2abdc0498d742323d9e0e67a660cb4d.HomeActivity
 IMPA.HomeActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5c2abdc0498d742323d9e0e67a660cb4d.HomeActivity
 IMPA.HomeActivity;md5c2abdc0498d742323d9e0e67a660cb4d.HomeActivity
 impa.HomeActivity;md5c2abdc0498d742323d9e0e67a660cb4d.HomeActivity
+IMPA.InfoPortfolioActivity, IMPA;md5c2abdc0498d742323d9e0e67a660cb4d.InfoPortfolioActivity
+IMPA.InfoPortfolioActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5c2abdc0498d742323d9e0e67a660cb4d.InfoPortfolioActivity
+IMPA.InfoPortfolioActivity;md5c2abdc0498d742323d9e0e67a660cb4d.InfoPortfolioActivity
+impa.InfoPortfolioActivity;md5c2abdc0498d742323d9e0e67a660cb4d.InfoPortfolioActivity
 IMPA.MainActivity, IMPA;md5c2abdc0498d742323d9e0e67a660cb4d.MainActivity
 IMPA.MainActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5c2abdc0498d742323d9e0e67a660cb4d.MainActivity
 IMPA.MainActivity;md5c2abdc0498d742323d9e0e67a660cb4d.MainActivity
