@@ -25,6 +25,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/NewPortfolioText" />
+        <Button
+            android:text="Create Portfolio"
+            android:id="@+id/CreatePortfolio"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
     </LinearLayout>
     <EditText
         android:id="@+id/editPortfolioName"
@@ -36,9 +41,4 @@
         android:hint="Additional Owners:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <Button
-        android:text="Create Portfolio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/CreatePortfolio" />
 </LinearLayout>
