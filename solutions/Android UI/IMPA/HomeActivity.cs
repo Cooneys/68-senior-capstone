@@ -15,6 +15,7 @@ namespace IMPA {
             Button accountSettings = FindViewById<Button>(Resource.Id.AccountSettings);
             Button newPortfolio = FindViewById<Button>(Resource.Id.newPortfolio);
 
+
             newPortfolio.Click += delegate {
                 NewPortfolioClick();
             };
@@ -22,6 +23,8 @@ namespace IMPA {
             accountSettings.Click += delegate {
                 GotoSettingsButtonClick();
             };
+
+            
         }
         public void GotoSettingsButtonClick() {
             StartActivity(typeof(SettingsActivity));
@@ -41,7 +44,16 @@ namespace IMPA {
 
                 LinearLayout ll = (LinearLayout)FindViewById(Resource.Id.HomeLinLayout);
                 ll.AddView(newPortfolio);
+
+                newPortfolio.Click += delegate {
+                    PortfolioClicked(newPortfolio.Text);
+                };
             }
+        }
+        public void PortfolioClicked(string pName) {
+            Intent myIntent = new Intent(this, typeof(PortfolioActivity));
+            myIntent.PutExtra("text", pName);
+            StartActivity(myIntent);
         }
     }
 }

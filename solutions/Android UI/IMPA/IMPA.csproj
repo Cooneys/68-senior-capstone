@@ -57,6 +57,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InfoAssetActivity.cs" />
     <Compile Include="PortfolioActivity.cs" />
     <Compile Include="SettingsActivity.cs" />
     <Compile Include="HomeActivity.cs" />
@@ -83,6 +84,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\InfoPortfolio.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\InfoAsset.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

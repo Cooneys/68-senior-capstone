@@ -23,6 +23,7 @@ C:\Users\Coondog\source\repos\68-senior-capstone\solutions\Android UI\IMPA\obj\D
 C:\Users\Coondog\source\repos\68-senior-capstone\solutions\Android UI\IMPA\obj\Debug\res\layout\portfolio.xml
 C:\Users\Coondog\source\repos\68-senior-capstone\solutions\Android UI\IMPA\obj\Debug\res\layout\asset.xml
 C:\Users\Coondog\source\repos\68-senior-capstone\solutions\Android UI\IMPA\obj\Debug\res\layout\infoportfolio.xml
+C:\Users\Coondog\source\repos\68-senior-capstone\solutions\Android UI\IMPA\obj\Debug\res\layout\infoasset.xml
 C:\Users\Coondog\source\repos\68-senior-capstone\solutions\Android UI\IMPA\bin\Debug\IMPA.dll
 bin\Debug\Mono.Android.pdb
 bin\Debug\mscorlib.pdb
