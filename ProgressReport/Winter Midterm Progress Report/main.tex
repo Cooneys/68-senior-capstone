@@ -42,7 +42,7 @@
 }
 
 \title{Investment Performance Mobile App: Fall Term Progress Report}
-\author{Tyler Jones, Avi Sinha, Sam Cooney}
+\author{Tyler Jones, Aviral Sinha, Sam Cooney}
 
 \begin{document}
 \begin{titlingpage}
@@ -63,14 +63,136 @@
 
 \section{Purpose and Goals}
 
-\tab Our project is an investment performance mobile application. Our main goal with this application is to provide users with a way to enter and track the progress of their investments, so they can gain unique financial insight about the quality of said investments. Typically, through a brokerage, for example, users may only see what investments they have, and they are not always given a composite performance, as is the goal with our project. We aim to give the user a metric for both their entire investment portfolio, as well as the ability to drill down into individual investments for a more localized look.
+\tab Our project is an investment performance mobile application. Our main goal with this application is to provide users with a way to enter and track the progress of their investments, so they can gain unique financial insight about the quality of said investments. Typically, through a brokerage, for example, users may only see what investments they have, and they are not always given a composite performance, as is the goal with our project. We aim to give the user a metric for both their entire investment portfolio, as well as the ability to drill down into individual investments for a more localized look. As of this date, a significant amount of documentation and research has been done about the project. Our problem statement, requirements document, technology review, and design document will all serve us well going forward into Winter term. Each one has a different role, and describes the different pieces of the project in greater detail. The problem statement served to further clarify what is going to be done, and what exactly the end product will do and be. The requirements document stated more rigorously what our goals for the project are, and what metrics we will use to identify if we succeeded in such goals, while the technology review helped explore the various options available to us that we will use to achieve them. The design document further elaborates on how such technologies will be related and connected in order to make sure our requirements are met to a satisfactory degree.
 
 \section{UI Development}
 
     
-\section{Quandl API and Business Logic}
+\section{API's and Business Logic}
+The API part of the project is being utilized through the use of 2 major tools: Quandl and Google Charts. We’ve started with the Quandl API as it is necessary for all the latest financial data to be fed into our application.Right now our project is just past the alpha level of development where the APIs we are implementing are currently being adapted into being compatible with Xamarin. 
+The API part of the project is being utilized through the use of 2 major tools: Quandl and Google Charts. We’ve started with the Quandl API as it is necessary for all the latest financial data to be fed into our application. Since Xamarin is primarily written in C# we’ve had to take the existing documentation for Quandl and redevelop it to be functional within the application. The API consists of both time series and tables of various stocks and options. Time series data ranges from specific ones that can be outputted as follows in JSON: 
 
-As of this date, a significant amount of documentation and research has been done about the project. Our problem statement, requirements document, technology review, and design document will all serve us well going forward into Winter term. Each one has a different role, and describes the different pieces of the project in greater detail. The problem statement served to further clarify what is going to be done, and what exactly the end product will do and be. The requirements document stated more rigorously what our goals for the project are, and what metrics we will use to identify if we succeeded in such goals, while the technology review helped explore the various options available to us that we will use to achieve them. The design document further elaborates on how such technologies will be related and connected in order to make sure our requirements are met to a satisfactory degree.
+\begin{lstlisting}
+
+{
+  "dataset_data":{
+     "limit":null,
+     "transform":null,
+     "column_index":null,
+     "column_names":[
+        "Date",
+        "Open",
+        "High",
+        "Low"
+     ],
+     "start_date":"2015-05-24",
+     "end_date":"2015-05-28",
+     "frequency":"daily",
+     "data":[
+        [
+           "2015-05-28",
+           9.58,
+           10.17,
+           12.96
+        ],
+        [
+           "2015-05-27",
+           9.53,
+           10.13,
+           12.97
+        ],
+        [
+           "2015-05-26",
+           9.53,
+           10.11,
+           12.98
+        ]
+     ],
+     "collapse":null,
+     "order":"desc"
+  }
+}
+
+\end{lstlisting}
+
+This request will give a the metadata of a specific time series for Facebook (FB) from the May 25th to May 28th. We can also send requests that will slice and customize the specific metadata of a time series data set prior to download. Using the facebook example again we would get this
+\begin{lstlisting}
+{  
+  "database":{  
+     "id":4922,
+     "database_code":"FB",
+     "name":"Facebook EOD Stock Prices",
+     "description":"End of day stock prices, dividends and splits for 30000 US companies 
+     curated by the Quandl community 
+     and released into the public domain.",
+     "datasets_count":3179,
+     "downloads":186224033,
+     "premium":false,
+  }
+}
+\end{lstlisting}
+
+
+
+ We can get the monthly percent changes for FB’s closing price at the the end of the day. All of the requests will output to a JSON file that will be accessed by the database and be visible in the user interface. The main purpose of the API is for it to provide type safety guarantees and basic validation on data before requesting. Everything is based on the concept of a request with all the download requests being implemented into a single interface. In terms of what we have left for this is setting up the various requests that a user will be making for retrieving their financial data. These will consist of download, Multiset Download, Metadata Download, Favorites Download, and Search.
+ 
+ In addition to this we’ll also be implementing a Google Charts API which hasn’t begun development yet. Using the data from the SQL server the data will be binding the financial data together that is pulled from two major sources. The financial information provided by Quandl and then the user data of what specific investments the portfolio consists of. Using the ASP.NET environment we will use SQL to show which tables are being utilized and have the queries binded for the specific information that the chart is asking for. Then using .NET we pass the data into google charts in a JSON format. Since the ASP.NET environment will connect the SQL data.
+ 
+The main problem impeding our progress with the API is that it was started much later than both the front and back end development. Originally we were going to divide both iOS and Android development with xamarin but then we figured out that Xamarin has a feature that allows for the same codebase to easily be shared so we began porting the existing code to forms and then starting the development. 
+
+Below we have provided a few code snippets of what the Quandl API interface will look like within the application, these functions will call additional files that will house most of the data necessary for accurate information to be provided. 
+
+ \textbf{Download:} 
+\begin{lstlisting}
+using System;
+using QuandlCS.Requests;
+using QuandlCS.Types;
+
+namespace QuandlCSTest
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      QuandlDownloadRequest request = new QuandlDownloadRequest();
+      request.APIKey = "1234-FAKE-KEY-4321";
+      request.Datacode = new Datacode("PRAGUESE", "PX"); // PRAGUESE is the source, PX is the datacode
+      request.Format = FileFormats.JSON;
+      request.Frequency = Frequencies.Monthly;
+      request.Truncation = 150;
+      request.Sort = SortOrders.Ascending;
+      request.Transformation = Transformations.Difference;
+
+      Console.WriteLine("The request string is : {0}", request.ToRequestString());
+    }
+  }
+}
+\end{lstlisting}
+
+\textbf{Metadata Download}
+\begin{lstlisting}
+using System;
+using QuandlCS.Requests;
+using QuandlCS.Types;
+
+namespace QuandlCSTest
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      QuandlMetadataRequest request = new QuandlMetadataRequest();
+      request.APIKey = "1234-FAKE-KEY-4321";
+      request.Datacode = new Datacode("NSE", "OIL");      
+      request.Format = FileFormats.XML;
+
+      Console.WriteLine("The request string is : {0}", request.ToRequestString());
+    }
+  }
+}
+\end{lstlisting}
+
+Overall the progress with the API's we need has been going smoothly in terms of getting everything set up. More than likely we will be running into hurdles with having be properly compatible with Xamarin but that can be troubleshooted. Once the API's are completed we will begin setting up the business logic of the financial data that will be displayed. We will need to set up functions that properly calculate, volatility, return on investment, risk, and any other points that will be key to having displaying proper metrics. 
 
 \section{User Data and Backend}
 \subsection{Current status}
@@ -89,7 +211,7 @@ All of that being said, Sam, Avi, and I are all individually working on componen
 
 \subection{What I have left to do}
 
-What I have left to do and what the project have left to do are two different things. When composing the final product and putting all of our pieces together, my backend portions will mostly be plugged in to Sam’s work with the UI. The work I personally have left to do on the backend is registering a new user, adding another user to an existing portfolio, figuring out how to configure the database to handle specific numbers of shares being associated with a portfolio, and lastly, adding hashing functionality to our users’ passwords, as right now they are being stored just as plain text. As far as the application as a whole is concerned, the biggest piece that we need working now is calls to the financial API, Quandl, that will use fetched data in order to actually allow our app to do what it was intended to do. This will be a challenge not so much from a technical standpoint, but rather from a business standpoint, and will require verification from our client going forward that we are using the correct data, and generating and showing the user their investment performance properly. Overall, as I have gotten a much better sense over these first few weeks about what degree of work is going to be required for all the components, as well as a more complete and solid picture of how our app is going to work as a complete unit, I feel confident moving forward about the state of the project.
+What I have left to do and what the project have left to do are two different things. When composing the final product and putting all of our pieces together, my backend portions will mostly be plugged in to Sam’s work with the UI. The work I personally have left to do on the backend is registering a new user, adding another user to an existing portfolio, figuring out how to configure the database to handle specific numbers of shares being associated with a portfolio, and lastly, adding hashing functionality to our users’ passwords, as right now they are being stored just as plain text. As far as the application as a whole is concerned, the biggest piece that we need working now is calls to the financial API, Quandl, that will use fetched data in order to actually allow our app to do what it was intended to do. This will be a challenge not so much from a technical standpoint, but rather from a business standpoint, and will require verification from our client going forward that we are using the correct data, and generating and showing the user their investment performance properly. Overall, as wehave gotten a much better sense over these first few weeks about what degree of work is going to be required for all the components, as well as a more complete and solid picture of how our app is going to work as a complete unit, we feel confident moving forward about the state of the project.
 
 
 
