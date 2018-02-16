@@ -2,6 +2,10 @@ IMPA.InfoAssetActivity, IMPA;md5c2abdc0498d742323d9e0e67a660cb4d.InfoAssetActivi
 IMPA.InfoAssetActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5c2abdc0498d742323d9e0e67a660cb4d.InfoAssetActivity
 IMPA.InfoAssetActivity;md5c2abdc0498d742323d9e0e67a660cb4d.InfoAssetActivity
 impa.InfoAssetActivity;md5c2abdc0498d742323d9e0e67a660cb4d.InfoAssetActivity
+IMPA.AssetActivity, IMPA;md5c2abdc0498d742323d9e0e67a660cb4d.AssetActivity
+IMPA.AssetActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5c2abdc0498d742323d9e0e67a660cb4d.AssetActivity
+IMPA.AssetActivity;md5c2abdc0498d742323d9e0e67a660cb4d.AssetActivity
+impa.AssetActivity;md5c2abdc0498d742323d9e0e67a660cb4d.AssetActivity
 IMPA.PortfolioActivity, IMPA;md5c2abdc0498d742323d9e0e67a660cb4d.PortfolioActivity
 IMPA.PortfolioActivity, IMPA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5c2abdc0498d742323d9e0e67a660cb4d.PortfolioActivity
 IMPA.PortfolioActivity;md5c2abdc0498d742323d9e0e67a660cb4d.PortfolioActivity

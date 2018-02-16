@@ -12,11 +12,15 @@ namespace IMPA {
             SetContentView(Resource.Layout.InfoAsset);
 
             EditText assetNameText = FindViewById<EditText>(Resource.Id.editAssetName);
+            EditText assetPriceText = FindViewById<EditText>(Resource.Id.editAssetPrice);
+            EditText assetNumberText = FindViewById<EditText>(Resource.Id.editAssetOwned);
             Button addAsset = FindViewById<Button>(Resource.Id.AddAsset);
 
             addAsset.Click += delegate {
                 Intent myIntent = new Intent(this, typeof(PortfolioActivity));
-                myIntent.PutExtra("text", assetNameText.Text);
+                myIntent.PutExtra("aname", assetNameText.Text);
+                myIntent.PutExtra("aprice", assetPriceText.Text);
+                myIntent.PutExtra("anum", assetNumberText.Text);
                 SetResult(Result.Ok, myIntent);
                 Finish();
             };

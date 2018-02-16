@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InfoAssetActivity.cs" />
+    <Compile Include="AssetActivity.cs" />
     <Compile Include="PortfolioActivity.cs" />
     <Compile Include="SettingsActivity.cs" />
     <Compile Include="HomeActivity.cs" />

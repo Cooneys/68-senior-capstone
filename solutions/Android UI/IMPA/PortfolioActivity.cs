@@ -30,21 +30,26 @@ namespace IMPA {
             base.OnActivityResult(requestCode, resultCode, data);
             if (resultCode == Result.Ok) {
                 Button newAsset = new Button(this) {
-                    Text = data.GetStringExtra("text")
+                    Text = data.GetStringExtra("aname"),                  
                 };
-
+           
                 LinearLayout ll = (LinearLayout)FindViewById(Resource.Id.AssetLayout);
                 ll.AddView(newAsset);
-                    
+                var n = data.GetStringExtra("aname");
+                var o = data.GetStringExtra("anum");
+                var p = data.GetStringExtra("aprice");
+
                 newAsset.Click += delegate {
-                    AssetClicked(newAsset.Text);
+                    AssetClicked(n, o, p);
                 };
             }
         }
-        public void AssetClicked(string pName) {
-            //Intent myIntent = new Intent(this, typeof(AssetActivity));
-            //myIntent.PutExtra("text", pName);
-            //StartActivity(myIntent);
+        public void AssetClicked(string n, string o, string p) {
+            Intent myIntent = new Intent(this, typeof(AssetActivity));
+            myIntent.PutExtra("AssetName", n);
+            myIntent.PutExtra("AssetNumber", o);
+            myIntent.PutExtra("AssetPrice", p);
+            StartActivity(myIntent);
         }
     }
 }

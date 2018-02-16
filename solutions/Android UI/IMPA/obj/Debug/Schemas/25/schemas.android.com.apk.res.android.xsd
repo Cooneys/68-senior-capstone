@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>2/14/2018 2:50:41 PM</xs:documentation>
+    <xs:documentation>2/15/2018 4:21:09 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -16906,25 +16906,31 @@
             <xs:enumeration value="@+id/checkedTextView1" />
             <xs:enumeration value="@id/AccountSettings" />
             <xs:enumeration value="@id/AddAsset" />
+            <xs:enumeration value="@id/AddMore" />
             <xs:enumeration value="@id/AddOwners" />
+            <xs:enumeration value="@id/AmountOwned" />
             <xs:enumeration value="@id/AssetLayout" />
             <xs:enumeration value="@id/AssetName" />
-            <xs:enumeration value="@id/button1" />
+            <xs:enumeration value="@id/AvgPurchasePrice" />
             <xs:enumeration value="@id/cancelNP" />
             <xs:enumeration value="@id/ChangePass" />
             <xs:enumeration value="@id/CreatePortfolio" />
             <xs:enumeration value="@id/deleteAccount" />
             <xs:enumeration value="@id/editAssetName" />
+            <xs:enumeration value="@id/editAssetOwned" />
+            <xs:enumeration value="@id/editAssetPrice" />
             <xs:enumeration value="@id/editPassword" />
             <xs:enumeration value="@id/editPortfolioName" />
             <xs:enumeration value="@id/editUsername" />
-            <xs:enumeration value="@id/goToPortfolio" />
+            <xs:enumeration value="@id/graph" />
             <xs:enumeration value="@id/guestSignIn" />
             <xs:enumeration value="@id/Hello" />
             <xs:enumeration value="@id/HomeLinLayout" />
             <xs:enumeration value="@id/linearLayout1" />
             <xs:enumeration value="@id/linearLayout2" />
             <xs:enumeration value="@id/linearLayout3" />
+            <xs:enumeration value="@id/linearLayout4" />
+            <xs:enumeration value="@id/linearLayout5" />
             <xs:enumeration value="@id/LogInButton" />
             <xs:enumeration value="@id/newAsset" />
             <xs:enumeration value="@id/NewAssetText" />
@@ -16932,6 +16938,10 @@
             <xs:enumeration value="@id/NewPortfolioText" />
             <xs:enumeration value="@id/PortfolioName" />
             <xs:enumeration value="@id/textSettings" />
+            <xs:enumeration value="@id/textView1" />
+            <xs:enumeration value="@id/textView2" />
+            <xs:enumeration value="@id/textView3" />
+            <xs:enumeration value="@id/textView4" />
             <xs:enumeration value="@android:id/accessibilityActionContextClick" />
             <xs:enumeration value="@android:id/accessibilityActionScrollDown" />
             <xs:enumeration value="@android:id/accessibilityActionScrollLeft" />
