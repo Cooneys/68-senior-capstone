@@ -8,6 +8,7 @@
 
 \usepackage{alltt}                                           
 \usepackage{float}
+\usepackage{wrapfig}
 \usepackage{color}
 \usepackage{url}
 \usepackage{listings}
@@ -69,11 +70,15 @@
 \subsection{Description of Current Status}
 As of our alpha release, our UI is fully functional with all pages, buttons, and placeholders for charts/data implemented. Because of issues regarding iOS testing, the initial functional UI was built using Android libraries. Since I am new to UI design, I am using the Android test function UI to learn Xamarin and layout design. Since the functional Android UI is used to test connections to other parts of our project, I decided to create a Mock Up of our planned Beta release for the UI. We are using Xamarin.Forms for the Beta release which is a set of libraries that allows for a single codebase UI that at runtime, elements are compiled into the platform specific views. The mock-up for this beta release was created using Marvel, a mobile app mock-up site, offering free mock-up design.
 
-This is the Portfolio View where from here users can add or remove assets from their portfolio, view vital financial data from a summarized point of all the assets currently in the portfolio. Our chart is a placeholder and will be replaced with a Google Charts designed pie chart that will be received from the web APIs.  
-\begin{figure}[h]
+\begin{wrapfigure}{l}{0.5\textwidth}
    \caption{Portfolio View Example}
-   \includegraphics[scale=.5]{portfolio_screenshot}
-\end{figure}
+   \begin{center}
+   \includegraphics[width=.25\textwidth]{portfolio_screenshot}
+\end{center}
+\end{wrapfigure}
+This is the Portfolio View where from here users can add or remove assets from their portfolio, view vital financial data from a summarized point of all the assets currently in the portfolio. Our chart is a placeholder and will be replaced with a Google Charts designed pie chart that will be received from the web APIs.  
+
+
 The Portfolio view will be where users spend majority of their time. Since we are looking to have design be built for quick, on-the-go access, the information in this view needs to be referenced quickly. This has created a challenge with balancing both simplicity but also retaining enough information that the user understands what they are looking at. Not having taken any graphical design or artistic classes, this is new and difficult for me but is proving to be an exciting task.
 
 Our current UI functions exactly as viewed in the mock-up, what is missing is the design and the web calls. The Asset view is similarly programmed. It functions very closely to the portfolio, except the view expresses the individual asset data instead of the portfolio as a whole.
