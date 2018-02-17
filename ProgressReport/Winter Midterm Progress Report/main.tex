@@ -1,7 +1,7 @@
 \documentclass[letterpaper,10pt,titlepage,journal,compsoc,draftclsnofoot,onecolumn]{IEEEtran}
 \linespread{1}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
-\usepackage{graphicx}                                        
+\usepackage{graphicx}                   \graphicspath{{images/}}                     
 \usepackage{amssymb}                                         
 \usepackage{amsmath}                                         
 \usepackage{amsthm}                                          
@@ -35,9 +35,9 @@
 \hypersetup{
   urlcolor = black,
   pdfauthor = {\name},
-  pdfkeywords = {cs461 ''Senior Capstone''},
-  pdftitle = {CS 461 Senior Capstone: Progress Report},
-  pdfsubject = {CS461 Senior Capstone},
+  pdfkeywords = {cs462 ''Senior Capstone''},
+  pdftitle = {CS 462 Senior Capstone: Progress Report},
+  pdfsubject = {CS462 Senior Capstone},
   pdfpagemode = UseNone
 }
 
@@ -50,7 +50,7 @@
 	\centering{}
     \begin{abstract}
         
-     The purpose of the following document is two-fold. The primary purpose is to serve as a means of reflection upon the term, and review what happened and when. The second purpose is to look-back and consider the problems and issues that we faced this term, either as a group or individual, and how to improve on those problems as we progress into development in the coming term.
+     The purpose of the following document is to review and discuss the current state of our investment performance mobile application as our development has begun over the last 6 weeks of Winter term. Our group will break down the struggles that we faced with the project as individuals, as well as struggles with the project overall.
         
     \end{abstract}
 \end{titlingpage}
@@ -61,16 +61,24 @@
 
 \newpage
 
-\section{Purpose and Goals}
+\section{Introduction to Project}
 
-\tab Our project is an investment performance mobile application. Our main goal with this application is to provide users with a way to enter and track the progress of their investments, so they can gain unique financial insight about the quality of said investments. Typically, through a brokerage, for example, users may only see what investments they have, and they are not always given a composite performance, as is the goal with our project. We aim to give the user a metric for both their entire investment portfolio, as well as the ability to drill down into individual investments for a more localized look. As of this date, a significant amount of documentation and research has been done about the project. Our problem statement, requirements document, technology review, and design document will all serve us well going forward into Winter term. Each one has a different role, and describes the different pieces of the project in greater detail. The problem statement served to further clarify what is going to be done, and what exactly the end product will do and be. The requirements document stated more rigorously what our goals for the project are, and what metrics we will use to identify if we succeeded in such goals, while the technology review helped explore the various options available to us that we will use to achieve them. The design document further elaborates on how such technologies will be related and connected in order to make sure our requirements are met to a satisfactory degree.
+\tab Our project is an investment performance mobile application. Our main goal with this application is to provide users with a way to enter and track the progress of their investments, so they can gain unique financial insight about the quality of said investments. Typically, through a brokerage, for example, users may only see what investments they have, and they are not always given a composite performance, as is the goal with our project. We aim to give the user a metric for both their entire investment portfolio, as well as the ability to drill down into individual investments for a more localized look. At the beginning of development, we sat down as a group and went over the pieces of the project and what would be a good way to breakdown the work. Essentially, we decided that the project could be divided into 3 major components, being the API, the development of the UI, and the backend/database. As will be discussed in this progress report, Avi has taken the lead on the API, Sam on UI development, and Tyler on the backend/database.
 
-\section{UI Development}
-
+\section{UI Development - Sam Cooney}
+\subsection{Description of Current Status}
+\subsection{What's left to do}
+\subsection{Problems impeding progress/Solutions}
+\subsection{Other relevant/interesting information about project}
     
-\section{API's and Business Logic}
-The API part of the project is being utilized through the use of 2 major tools: Quandl and Google Charts. We’ve started with the Quandl API as it is necessary for all the latest financial data to be fed into our application.Right now our project is just past the alpha level of development where the APIs we are implementing are currently being adapted into being compatible with Xamarin. 
-The API part of the project is being utilized through the use of 2 major tools: Quandl and Google Charts. We’ve started with the Quandl API as it is necessary for all the latest financial data to be fed into our application. Since Xamarin is primarily written in C# we’ve had to take the existing documentation for Quandl and redevelop it to be functional within the application. The API consists of both time series and tables of various stocks and options. Time series data ranges from specific ones that can be outputted as follows in JSON: 
+\section{Avi Sinha - API's and Business Logic}
+
+\subsection{Description of Current Status}
+\subsection{What's left to do}
+\subsection{Problems impeding progress/Solutions}
+\subsection{Other relevant/interesting information about project}
+The API part of the project is being utilized through the use of 2 major tools: Quandl and Google Charts. We've started with the Quandl API as it is necessary for all the latest financial data to be fed into our application.Right now our project is just past the alpha level of development where the APIs we are implementing are currently being adapted into being compatible with Xamarin. 
+The API part of the project is being utilized through the use of 2 major tools: Quandl and Google Charts. We've started with the Quandl API as it is necessary for all the latest financial data to be fed into our application. Since Xamarin is primarily written in C\# we've had to take the existing documentation for Quandl and redevelop it to be functional within the application. The API consists of both time series and tables of various stocks and options. Time series data ranges from specific ones that can be outputted as follows in JSON: 
 
 \begin{lstlisting}
 
@@ -134,11 +142,11 @@ This request will give a the metadata of a specific time series for Facebook (FB
 
 
 
- We can get the monthly percent changes for FB’s closing price at the the end of the day. All of the requests will output to a JSON file that will be accessed by the database and be visible in the user interface. The main purpose of the API is for it to provide type safety guarantees and basic validation on data before requesting. Everything is based on the concept of a request with all the download requests being implemented into a single interface. In terms of what we have left for this is setting up the various requests that a user will be making for retrieving their financial data. These will consist of download, Multiset Download, Metadata Download, Favorites Download, and Search.
+ We can get the monthly percent changes for FB’s closing price at the end of the day. All of the requests will output to a JSON file that will be accessed by the database and be visible in the user interface. The main purpose of the API is for it to provide type safety guarantees and basic validation on data before requesting. Everything is based on the concept of a request with all the download requests being implemented into a single interface. In terms of what we have left for this is setting up the various requests that a user will be making for retrieving their financial data. These will consist of download, Multiset Download, Metadata Download, Favorites Download, and Search.
  
  In addition to this we’ll also be implementing a Google Charts API which hasn’t begun development yet. Using the data from the SQL server the data will be binding the financial data together that is pulled from two major sources. The financial information provided by Quandl and then the user data of what specific investments the portfolio consists of. Using the ASP.NET environment we will use SQL to show which tables are being utilized and have the queries binded for the specific information that the chart is asking for. Then using .NET we pass the data into google charts in a JSON format. Since the ASP.NET environment will connect the SQL data.
  
-The main problem impeding our progress with the API is that it was started much later than both the front and back end development. Originally we were going to divide both iOS and Android development with xamarin but then we figured out that Xamarin has a feature that allows for the same codebase to easily be shared so we began porting the existing code to forms and then starting the development. 
+The main problem impeding our progress with the API is that it was started much later than both the front and back end development. Originally we were going to divide both iOS and Android development with Xamarin but then we figured out that Xamarin has a feature that allows for the same codebase to easily be shared so we began porting the existing code to forms and then starting the development. 
 
 Below we have provided a few code snippets of what the Quandl API interface will look like within the application, these functions will call additional files that will house most of the data necessary for accurate information to be provided. 
 
@@ -194,24 +202,31 @@ namespace QuandlCSTest
 
 Overall the progress with the API's we need has been going smoothly in terms of getting everything set up. More than likely we will be running into hurdles with having be properly compatible with Xamarin but that can be troubleshooted. Once the API's are completed we will begin setting up the business logic of the financial data that will be displayed. We will need to set up functions that properly calculate, volatility, return on investment, risk, and any other points that will be key to having displaying proper metrics. 
 
-\section{User Data and Backend}
-\subsection{Current status}
-Where I currently am, and feel like I constantly am, is in a research phase on this project. What I mean by this is no matter how much I felt like I planned effectively during fall term, I never quite got a great feel for what pieces were required until I started programming and actually implementing the pieces that I definitely knew we needed. Coming into this project I have never worked with mobile applications, and I haven’t taken the databases course, yet I am handling the backend for a mobile application so I have had quite the ramp up time in terms of learning how to handle my portion of the work. During fall term, it was hard to gauge if my planning and research was complete, because I didn’t know what I didn’t know, and if there were components that I was perhaps missing or not understanding, which definitely ended up being the case. 
+\section{Tyler Jones - User Data and Backend}
+
+\subsection{Description of Current Status}
+ Coming into this project I have never worked with mobile applications, and I haven't taken the databases course, yet I am handling the backend for a mobile application so I have had quite the ramp up time in terms of learning how to handle my portion of the work. During fall term, it was hard to gauge if my planning and research was complete, because I didn't know what I didn’t know, and if there were components that I was perhaps missing or not understanding, which definitely ended up being the case. 
 
 Currently, however, I am working on improving the database structure. As is, it has been a significant time gate for myself to research and understand how to implement our data relationship into a relational database, as well as how to effectively interact with such data from a mobile application. The basic relationship we need to have configured for our data is as follows: Multiple users can share a portfolio and a single user can have multiple portfolios. Moreover, a portfolio can and will be comprised of multiple investments, and a certain investment can belong to more than one portfolio (multiple people can buy Apple stock). Currently, with this multiple many to many relationship structure that needs to be setup, my database structure can be seen below.
 
+\begin{figure}[h]
+\caption{Database Table Overview}
+\centering
+\includegraphics[width=\textwidth]{database_screenshot}
+\end{figure}
+A many to many relationship, as I have learned as I have been building my database, is best fixed by adding a 3rd joining table for the relationship. As is demonstrated by the screenshot of all the tables in my database, the naming conventions I have set up, for instance with UsersPortfolios, allows the relationship between multiple users and multiple portfolios to be achieved. The same goes for PortfoliosInvestments when showing the multiple investments that make up a portfolio. Without going into too much detail, how the process will work and is working currently, will be that when a user adds a new portfolio, our application will make a call to the API and push the information about that portfolio, including portfolio name and total amount invested in the portfolio into the Porfolios table, as well as insert a new entry into the UsersPortfolios table that specifies who owns that new portfolio, which could be one or multiple users. All of the data that will be queried from the database is from the pictured UsersPortfoliosView, which places all of the portfolios and their owners into a single table, or technically a view in this case, that is able to be queried by our API effectively. This same strategy is applied in the PortfoliosInvestments table, and will also have a corresponding view that allows for effective queries.
+Another thing that I have been working on is the interaction of this data with my database. Coming into this term, I wasn’t aware what an API was or what it was used for, but I ended up having to build and use one for our application. These first few weeks of the term have been dedicated to research, as well as constructing our REST web API on our web.engr hosted OSU site. This REST web API is based in php and returns JSON for our C\# based application to parse and display for the user.  The API is generalized so that calls are made to it in the form of “…/api.php/{TableName}”, the output from such a URL is JSON of all the content of the desired table. I felt that making my API simple enough so that calls to it can be generalized and simply return all the content from the table allows me to do my complexities involving the data  through the database and client side, rather than getting bogged down in making an overly complex API. 
 
-A many to many relationship, as I have learned as I have been building my database, is best fixed by adding a 3rd joining table for the relationship. As is demonstrated by a screenshot of all the tables in my database, the naming conventions I have set up for instance with UsersPortfolios, allows the relationship between multiple users and multiple portfolios to be setup. The same goes for PortfoliosInvestments when showing the multiple investments that make up a portfolio. Without going into too much detail, how the process will work and is working currently, will be that when a user adds a new portfolio, our application will make a call to the API and push the information about that portfolio, including portfolio name and total amount invested in the portfolio into the Porfolios table, as well as insert a new entry into the UsersPortfolios table that specifies who owns that new portfolio, which could be one or multiple users. All of the data that will be queried from the database is from the pictured UsersPortfoliosView, which places all of the portfolios and their owners into a single table, or technically a view in this case, that is able to be queried by our API effectively. This same strategy is applied in the PortfoliosInvestments table, and will also have a corresponding view that allows for effective queries.
-Another thing that I have been working on is the interaction of this data with my database. Coming into this term, I wasn’t aware what an API was or what it was used for, but I ended up having to build and use one for our application. These first few weeks of the term have been dedicated to research, as well as constructing our REST web API on our web.engr hosted OSU site. This REST web API is based in php and returns JSON for our C# based application to parse and display for the user.  The API is generalized so that calls are made to it in the form of “…/api.php/{TableName}”, the output from such a URL is JSON of all the content of the desired table. I felt that making my API simple enough so that calls to it can be generalized and simply return all the content from the table allows me to do my complexities involving the data actually through the database and through the client. 
+\subsection{What's left to do}
 
-\subection{Problems and Setbacks}
+What I have left to do and where the project as a whole is going are two different things. When composing the final product and putting all of our pieces together, my backend portions will mostly be plugged in to Sam’s work with the UI. The work I personally have left to do on the backend is registering a new user, adding another user to an existing portfolio, figuring out how to configure the database to handle specific numbers of shares being associated with a portfolio, and lastly, adding hashing functionality to our users’ passwords, as right now they are being stored just as plain text. As far as the application as a whole is concerned, the biggest piece that we need working now are our calls to the financial API, Quandl, that will use fetched data in order to actually allow our app to do what it was intended to do. This will be a challenge not so much from a technical standpoint, but rather from a business standpoint, and will require verification from our client going forward that we are using the correct data, and generating and showing the user their investment performance properly. Overall, as we have gotten a much better sense over these first few weeks about what degree of work is going to be required for all the components, as well as a more complete and solid picture of how our app is going to work as a complete unit, we feel confident moving forward about the state of the project.
 
-One bottleneck and problem, as I previously mentioned, that I have experienced so far is being thrown into many, many components of this project that are entirely new. The paradigm of mobile development, C# which our app is written in, MySQL for the database, php for the API, and JSON parsing within the app are all completely new tools that I am having to both learn and effectively use all without having any prior knowledge of.
-All of that being said, Sam, Avi, and I are all individually working on components of the application, so although we haven’t put them all together yet, the act of doing so will be trivial. All of us are new to mobile development, as well as Xamarin, so we figured this work flow would be much more efficient while we more or less figure out how to get each of our necessary components working. Where my portion of the work currently stands is mostly with allowing the user to communicate with the database within the application. Currently, users have the ability to log-in, albeit insecurely at the moment, load their portfolios, and load the investments contained within said portfolios.  
+\subsection{Problems impeding progress/Solutions}
 
-\subection{What I have left to do}
+One bottleneck and problem, as I previously mentioned, that I have experienced so far is being thrown into many components of this project that are entirely new. The paradigm of mobile development, C\# which our app is written in, MySQL for the database, php for the API, and JSON parsing within the app are all completely new tools that I am having to both learn and effectively use all without having any prior knowledge of.
 
-What I have left to do and what the project have left to do are two different things. When composing the final product and putting all of our pieces together, my backend portions will mostly be plugged in to Sam’s work with the UI. The work I personally have left to do on the backend is registering a new user, adding another user to an existing portfolio, figuring out how to configure the database to handle specific numbers of shares being associated with a portfolio, and lastly, adding hashing functionality to our users’ passwords, as right now they are being stored just as plain text. As far as the application as a whole is concerned, the biggest piece that we need working now is calls to the financial API, Quandl, that will use fetched data in order to actually allow our app to do what it was intended to do. This will be a challenge not so much from a technical standpoint, but rather from a business standpoint, and will require verification from our client going forward that we are using the correct data, and generating and showing the user their investment performance properly. Overall, as wehave gotten a much better sense over these first few weeks about what degree of work is going to be required for all the components, as well as a more complete and solid picture of how our app is going to work as a complete unit, we feel confident moving forward about the state of the project.
+\subsection{Other relevant/interesting information about project}
+Regarding the work breakdown of the project, Sam, Avi, and I are all individually working on components of the application, so although we haven’t put them all together yet, the act of doing so will be trivial. All of us are new to mobile development, as well as Xamarin, so we figured this work flow would be much more efficient while we more or less figure out how to get each of our necessary components working. Where my portion of the work currently stands is mostly with allowing the user to communicate with the database within the application. Currently, users have the ability to log-in, albeit insecurely at the moment, load their portfolios, and load the investments contained within said portfolios.  
 
 
 
