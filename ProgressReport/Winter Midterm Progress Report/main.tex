@@ -74,9 +74,6 @@
 \section{Avi Sinha - API's and Business Logic}
 
 \subsection{Description of Current Status}
-\subsection{What's left to do}
-\subsection{Problems impeding progress/Solutions}
-\subsection{Other relevant/interesting information about project}
 The API part of the project is being utilized through the use of 2 major tools: Quandl and Google Charts. We've started with the Quandl API as it is necessary for all the latest financial data to be fed into our application.Right now our project is just past the alpha level of development where the APIs we are implementing are currently being adapted into being compatible with Xamarin. 
 The API part of the project is being utilized through the use of 2 major tools: Quandl and Google Charts. We've started with the Quandl API as it is necessary for all the latest financial data to be fed into our application. Since Xamarin is primarily written in C\# we've had to take the existing documentation for Quandl and redevelop it to be functional within the application. The API consists of both time series and tables of various stocks and options. Time series data ranges from specific ones that can be outputted as follows in JSON: 
 
@@ -122,13 +119,15 @@ The API part of the project is being utilized through the use of 2 major tools: 
 }
 
 \end{lstlisting}
+The code above shows how the data retrieved is takes a specific dataset, then outputs into the following columns: Date, Open, High, and Low. It also shows a daily frequency upload from May 26 to May 28th in a decreasing order. This JSON file will then be entered into the database and can be used for other information that the user will need to make a sound financial decision in maximizing their portfolio. 
 
-This request will give a the metadata of a specific time series for Facebook (FB) from the May 25th to May 28th. We can also send requests that will slice and customize the specific metadata of a time series data set prior to download. Using the facebook example again we would get this
+ We can also send requests that will slice and customize the specific metadata of a time series data set prior to download. Using the following example  we would get this
+
 \begin{lstlisting}
 {  
   "database":{  
      "id":4922,
-     "database_code":"FB",
+     "database_code":"WIKI",
      "name":"Facebook EOD Stock Prices",
      "description":"End of day stock prices, dividends and splits for 30000 US companies 
      curated by the Quandl community 
@@ -139,14 +138,21 @@ This request will give a the metadata of a specific time series for Facebook (FB
   }
 }
 \end{lstlisting}
+With this we get the overall listing of all end of day stock prices and any stock splits that have occurred. We also are able to see how many times this particular data set has been downloaded and if a premium membership is required for this. This type of alternative data is what makes Quandl superior over other data tools because we can get various types of financial data that can influence decisions and the market as a whole. 
 
+ We can get the monthly percent changes for FB’s closing price at the end of the day. All of the requests will output to a JSON file that will be accessed by the database and be visible in the user interface. The main purpose of the API is for it to provide type safety guarantees and basic validation on data before requesting. Everything is based on the concept of a request with all the download requests being implemented into a single interface.
+ 
+\subsection{What's left to do}
 
-
- We can get the monthly percent changes for FB’s closing price at the end of the day. All of the requests will output to a JSON file that will be accessed by the database and be visible in the user interface. The main purpose of the API is for it to provide type safety guarantees and basic validation on data before requesting. Everything is based on the concept of a request with all the download requests being implemented into a single interface. In terms of what we have left for this is setting up the various requests that a user will be making for retrieving their financial data. These will consist of download, Multiset Download, Metadata Download, Favorites Download, and Search.
+In terms of what we have left for this is setting up the various requests that a user will be making for retrieving their financial data. These will consist of download, Multiset Download, Metadata Download, Favorites Download, and Search.
  
  In addition to this we’ll also be implementing a Google Charts API which hasn’t begun development yet. Using the data from the SQL server the data will be binding the financial data together that is pulled from two major sources. The financial information provided by Quandl and then the user data of what specific investments the portfolio consists of. Using the ASP.NET environment we will use SQL to show which tables are being utilized and have the queries binded for the specific information that the chart is asking for. Then using .NET we pass the data into google charts in a JSON format. Since the ASP.NET environment will connect the SQL data.
  
+\subsection{Problems impeding progress/Solutions}
+
 The main problem impeding our progress with the API is that it was started much later than both the front and back end development. Originally we were going to divide both iOS and Android development with Xamarin but then we figured out that Xamarin has a feature that allows for the same codebase to easily be shared so we began porting the existing code to forms and then starting the development. 
+
+\subsection{Other relevant/interesting information about project}
 
 Below we have provided a few code snippets of what the Quandl API interface will look like within the application, these functions will call additional files that will house most of the data necessary for accurate information to be provided. 
 
@@ -177,7 +183,10 @@ namespace QuandlCSTest
 }
 \end{lstlisting}
 
+This specific code, shows a download request, asks for the API key, the specific datacode. The file format by default will also be in JSON and consistently updates at a frequency of once per month and ascends up. 
+
 \textbf{Metadata Download}
+
 \begin{lstlisting}
 using System;
 using QuandlCS.Requests;
@@ -199,6 +208,8 @@ namespace QuandlCSTest
   }
 }
 \end{lstlisting}
+
+The multiset download is similar to the previous one but instead looks at the market as a whole and compares NASDAQ to a specific investment you want to look at. These are the first couple requests that a user will want to use and then make their portfolio more detailed while also looking at it in a macro level. 
 
 Overall the progress with the API's we need has been going smoothly in terms of getting everything set up. More than likely we will be running into hurdles with having be properly compatible with Xamarin but that can be troubleshooted. Once the API's are completed we will begin setting up the business logic of the financial data that will be displayed. We will need to set up functions that properly calculate, volatility, return on investment, risk, and any other points that will be key to having displaying proper metrics. 
 
