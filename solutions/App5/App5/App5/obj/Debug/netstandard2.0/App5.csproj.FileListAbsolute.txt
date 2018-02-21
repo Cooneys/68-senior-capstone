@@ -1,0 +1,13 @@
+C:\Users\tylerdj96\source\repos\App5\App5\App5\bin\Debug\netstandard2.0\App5.deps.json
+C:\Users\tylerdj96\source\repos\App5\App5\App5\bin\Debug\netstandard2.0\App5.dll
+C:\Users\tylerdj96\source\repos\App5\App5\App5\bin\Debug\netstandard2.0\App5.pdb
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.csprojResolveAssemblyReference.cache
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.csproj.CoreCompileInputs.cache
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.App.xaml.g.cs
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.MainPage.xaml.g.cs
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.AssemblyInfoInputs.cache
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.AssemblyInfo.cs
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.dll
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.pdb
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.Views.LoginPage.xaml.g.cs
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.Views.AllPortfolios.xaml.g.cs
