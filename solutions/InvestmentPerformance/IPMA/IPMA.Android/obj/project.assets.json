@@ -693,11 +693,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Coondog\\source\\repos\\68-senior-capstone2\\solutions\\IPMA\\IPMA\\IPMA\\IPMA.Android\\IPMA.Android.csproj",
+      "projectUniqueName": "C:\\Users\\Coondog\\Source\\Repos\\68-senior-capstone2\\solutions\\InvestmentPerformance\\IPMA\\IPMA.Android\\IPMA.Android.csproj",
       "projectName": "IPMA.Android",
-      "projectPath": "C:\\Users\\Coondog\\source\\repos\\68-senior-capstone2\\solutions\\IPMA\\IPMA\\IPMA\\IPMA.Android\\IPMA.Android.csproj",
+      "projectPath": "C:\\Users\\Coondog\\Source\\Repos\\68-senior-capstone2\\solutions\\InvestmentPerformance\\IPMA\\IPMA.Android\\IPMA.Android.csproj",
       "packagesPath": "C:\\Users\\Coondog\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Coondog\\source\\repos\\68-senior-capstone2\\solutions\\IPMA\\IPMA\\IPMA\\IPMA.Android\\obj\\",
+      "outputPath": "C:\\Users\\Coondog\\Source\\Repos\\68-senior-capstone2\\solutions\\InvestmentPerformance\\IPMA\\IPMA.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [

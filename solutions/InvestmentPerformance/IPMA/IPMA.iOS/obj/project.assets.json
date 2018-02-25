@@ -701,11 +701,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Coondog\\source\\repos\\68-senior-capstone2\\solutions\\IPMA\\IPMA\\IPMA\\IPMA.iOS\\IPMA.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\Coondog\\Source\\Repos\\68-senior-capstone2\\solutions\\InvestmentPerformance\\IPMA\\IPMA.iOS\\IPMA.iOS.csproj",
       "projectName": "IPMA.iOS",
-      "projectPath": "C:\\Users\\Coondog\\source\\repos\\68-senior-capstone2\\solutions\\IPMA\\IPMA\\IPMA\\IPMA.iOS\\IPMA.iOS.csproj",
+      "projectPath": "C:\\Users\\Coondog\\Source\\Repos\\68-senior-capstone2\\solutions\\InvestmentPerformance\\IPMA\\IPMA.iOS\\IPMA.iOS.csproj",
       "packagesPath": "C:\\Users\\Coondog\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Coondog\\source\\repos\\68-senior-capstone2\\solutions\\IPMA\\IPMA\\IPMA\\IPMA.iOS\\obj\\",
+      "outputPath": "C:\\Users\\Coondog\\Source\\Repos\\68-senior-capstone2\\solutions\\InvestmentPerformance\\IPMA\\IPMA.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [

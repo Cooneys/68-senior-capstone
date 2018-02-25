@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:IPMA"
+             x:Class="IPMA.AssetView"
+             BackgroundColor="WhiteSmoke">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New" TextColor="DarkSlateGray" Clicked="OnNewPortfolioClicked"/>
+        <ToolbarItem Text="Settings" TextColor="DarkSlateGray" Clicked="OnSettingsClicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="65*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="40*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Row="0"
+                         Grid.Column="1"
+                         VerticalOptions="Center">
+                <StackLayout BackgroundColor="#e5e5e5"
+                             Margin="5, 0, 5, 0">
+                    <Label Grid.Row="1"
+                           Text="Volatility:"
+                           TextColor="Black"
+                           HorizontalOptions="Center"/>
+                    <Label Grid.Row="1"
+                           Text="Not Found"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout BackgroundColor="#e5e5e5"
+                             Margin="5, 0, 5, 0">
+                    <Label Grid.Row="2"
+                           Text="Return On Investment:"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                    <Label Grid.Row="1"
+                           Text="Not Found"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout BackgroundColor="#e5e5e5"
+                             Margin="5, 0, 5, 0">
+                    <Label Grid.Row="3"
+                           Text="Sharpe Ratio:"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                    <Label Grid.Row="1"
+                           Text="Not Found"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+            <Frame Grid.Row="0"
+                   Grid.Column="0"
+                   CornerRadius="200"
+                   BackgroundColor="Gray"
+                   Margin="10, 10, 10, 10">
+                <Label HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Text="Placeholder for Piechart"
+                       TextColor="WhiteSmoke"/>
+            </Frame>
+            <ListView x:Name="AssetList"
+                      Grid.Row="1"
+                      Grid.ColumnSpan="2">
+                
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+ </ContentPage>

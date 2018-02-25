@@ -4,64 +4,72 @@
              xmlns:local="clr-namespace:IPMA"
              x:Class="IPMA.MainPage"
              BackgroundColor="WhiteSmoke">
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="30*"/>
-        </Grid.RowDefinitions>
-        <Label Text="Investment Performance"
-               FontSize="Large"
-               TextColor="DarkSlateGray"
-               VerticalOptions="End" 
-               HorizontalOptions="Center"
-               Grid.Row="0"/>
-        <Label VerticalOptions="Start" 
-               HorizontalOptions="Center" 
-               Grid.Row="1">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Text="Sponsored By:    " ForegroundColor="DarkSlateGray"/>
-                    <Span Text="HEDGE " ForegroundColor="#F95F62"/>
-                    <Span Text="SERV " ForegroundColor="Black"/>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Entry Placeholder="Enter Username:" 
-               VerticalOptions="Start" 
-               HorizontalOptions="Fill" 
-               Grid.Row="2"
-               PlaceholderColor="LightGray"/>
-        <Entry Placeholder="Enter Password:" 
-               IsPassword="True"
-               VerticalOptions="End" 
-               HorizontalOptions="Fill" 
-               Grid.Row="2"
-               PlaceholderColor="LightGray"/>
-        <Grid Grid.Row="3">
+    <ContentPage.Content>
+        <Grid Margin="20">
             <Grid.RowDefinitions>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
                 <RowDefinition Height="30*"/>
-                <RowDefinition Height="50*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="50*"/>
-            </Grid.ColumnDefinitions>
-            <Button Text="Sign Up"
-                    Grid.Column="0"
-                    BackgroundColor="DarkGray"
-                    VerticalOptions="Start" 
-                    HorizontalOptions="Center"
-                    TextColor="WhiteSmoke"
-                    />
-            <Button Text="Log In"
-                    Grid.Column="1"
-                    BackgroundColor="DarkGray"
-                    VerticalOptions="Start" 
-                    HorizontalOptions="Center"
-                    TextColor="WhiteSmoke"
-                    />
+            <Label Text="Investment Performance"
+                   FontSize="Large"
+                   TextColor="DarkSlateGray"
+                   VerticalOptions="End" 
+                   HorizontalOptions="Center"
+                   Grid.Row="0"/>
+            <Label VerticalOptions="Start" 
+                   HorizontalOptions="Center" 
+                   Grid.Row="1">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Sponsored By:    " ForegroundColor="DarkSlateGray"/>
+                        <Span Text="HEDGE " ForegroundColor="#F95F62"/>
+                        <Span Text="SERV " ForegroundColor="Black"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Entry x:Name="usernameEntry"
+                Placeholder="Enter Username:" 
+                VerticalOptions="Start" 
+                HorizontalOptions="Fill" 
+                Grid.Row="2"
+                PlaceholderColor="LightGray"/>
+            <Entry x:Name="passwordEntry"
+                Placeholder="Enter Password:" 
+                IsPassword="True"
+                VerticalOptions="End" 
+                HorizontalOptions="Fill" 
+                Grid.Row="2"
+                PlaceholderColor="LightGray"/>
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="50*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Button Text="Sign Up"
+                        Grid.Column="0"
+                        BackgroundColor="DarkGray"
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Center"
+                        TextColor="WhiteSmoke"
+                        Clicked="OnSignUpButtonClicked"
+                        />
+                <Button Text="Log In"
+                        Grid.Column="1"
+                        BackgroundColor="DarkGray"
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Center"
+                        TextColor="WhiteSmoke"
+                        Clicked="OnLoginButtonClicked"
+                        />
+            </Grid>
+            <Label x:Name="messageLabel"
+                   VerticalOptions="End"/>
         </Grid>
-    </Grid>
+    </ContentPage.Content>
 </ContentPage>
