@@ -2,6 +2,54 @@ App5.Droid.MainActivity, App5.Android;md5de47df706dc937e5e021bb38f069bff2.MainAc
 App5.Droid.MainActivity, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5de47df706dc937e5e021bb38f069bff2.MainActivity
 App5.Droid.MainActivity;md5de47df706dc937e5e021bb38f069bff2.MainActivity
 app5.droid.MainActivity;md5de47df706dc937e5e021bb38f069bff2.MainActivity
+Microcharts.Droid.ChartView, Microcharts.Droid;md53d40bc03ae9a8760d3cc8ffd2d061aa9.ChartView
+Microcharts.Droid.ChartView, Microcharts.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53d40bc03ae9a8760d3cc8ffd2d061aa9.ChartView
+Microcharts.Droid.ChartView;md53d40bc03ae9a8760d3cc8ffd2d061aa9.ChartView
+microcharts.droid.ChartView;md53d40bc03ae9a8760d3cc8ffd2d061aa9.ChartView
+OxyPlot.Xamarin.Android.PlotView, OxyPlot.Xamarin.Android;md576548fdf6897b70553b6b405e9653aa0.PlotView
+OxyPlot.Xamarin.Android.PlotView, OxyPlot.Xamarin.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md576548fdf6897b70553b6b405e9653aa0.PlotView
+OxyPlot.Xamarin.Android.PlotView;md576548fdf6897b70553b6b405e9653aa0.PlotView
+oxyplot.xamarin.android.PlotView;md576548fdf6897b70553b6b405e9653aa0.PlotView
+OxyPlot.Xamarin.Forms.Platform.Android.PlotViewRenderer, OxyPlot.Xamarin.Forms.Platform.Android;md5c8feee4b08a9919828f8d567dfe427a4.PlotViewRenderer
+OxyPlot.Xamarin.Forms.Platform.Android.PlotViewRenderer, OxyPlot.Xamarin.Forms.Platform.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5c8feee4b08a9919828f8d567dfe427a4.PlotViewRenderer
+OxyPlot.Xamarin.Forms.Platform.Android.PlotViewRenderer;md5c8feee4b08a9919828f8d567dfe427a4.PlotViewRenderer
+oxyplot.xamarin.forms.platform.android.PlotViewRenderer;md5c8feee4b08a9919828f8d567dfe427a4.PlotViewRenderer
+SkiaSharp.Views.Android.SKCanvasView, SkiaSharp.Views.Android;md50a429594d0894eb20c31b81b4e1d1aaf.SKCanvasView
+SkiaSharp.Views.Android.SKCanvasView, SkiaSharp.Views.Android, Version=1.59.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756;md50a429594d0894eb20c31b81b4e1d1aaf.SKCanvasView
+SkiaSharp.Views.Android.SKCanvasView;md50a429594d0894eb20c31b81b4e1d1aaf.SKCanvasView
+skiasharp.views.android.SKCanvasView;md50a429594d0894eb20c31b81b4e1d1aaf.SKCanvasView
+SkiaSharp.Views.Android.SKGLSurfaceViewRenderer, SkiaSharp.Views.Android;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceViewRenderer
+SkiaSharp.Views.Android.SKGLSurfaceViewRenderer, SkiaSharp.Views.Android, Version=1.59.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceViewRenderer
+SkiaSharp.Views.Android.SKGLSurfaceViewRenderer;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceViewRenderer
+skiasharp.views.android.SKGLSurfaceViewRenderer;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceViewRenderer
+SkiaSharp.Views.Android.SKGLSurfaceView, SkiaSharp.Views.Android;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceView
+SkiaSharp.Views.Android.SKGLSurfaceView, SkiaSharp.Views.Android, Version=1.59.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceView
+SkiaSharp.Views.Android.SKGLSurfaceView;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceView
+skiasharp.views.android.SKGLSurfaceView;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceView
+SkiaSharp.Views.Android.SKGLSurfaceView/InternalRenderer, SkiaSharp.Views.Android;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceView_InternalRenderer
+SkiaSharp.Views.Android.SKGLSurfaceView+InternalRenderer, SkiaSharp.Views.Android, Version=1.59.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceView_InternalRenderer
+SkiaSharp.Views.Android.SKGLSurfaceView.InternalRenderer;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceView_InternalRenderer
+skiasharp.views.android.SKGLSurfaceView_InternalRenderer;md50a429594d0894eb20c31b81b4e1d1aaf.SKGLSurfaceView_InternalRenderer
+SkiaSharp.Views.Android.SKSurfaceView, SkiaSharp.Views.Android;md50a429594d0894eb20c31b81b4e1d1aaf.SKSurfaceView
+SkiaSharp.Views.Android.SKSurfaceView, SkiaSharp.Views.Android, Version=1.59.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756;md50a429594d0894eb20c31b81b4e1d1aaf.SKSurfaceView
+SkiaSharp.Views.Android.SKSurfaceView;md50a429594d0894eb20c31b81b4e1d1aaf.SKSurfaceView
+skiasharp.views.android.SKSurfaceView;md50a429594d0894eb20c31b81b4e1d1aaf.SKSurfaceView
+SkiaSharp.Views.Forms.SKCanvasViewRenderer, SkiaSharp.Views.Forms;md55430eeafbf000a5ac5c6dc7e4c10488b.SKCanvasViewRenderer
+SkiaSharp.Views.Forms.SKCanvasViewRenderer, SkiaSharp.Views.Forms, Version=1.59.0.0, Culture=neutral, PublicKeyToken=null;md55430eeafbf000a5ac5c6dc7e4c10488b.SKCanvasViewRenderer
+SkiaSharp.Views.Forms.SKCanvasViewRenderer;md55430eeafbf000a5ac5c6dc7e4c10488b.SKCanvasViewRenderer
+skiasharp.views.forms.SKCanvasViewRenderer;md55430eeafbf000a5ac5c6dc7e4c10488b.SKCanvasViewRenderer
+SkiaSharp.Views.Forms.SKGLViewRenderer, SkiaSharp.Views.Forms;md55430eeafbf000a5ac5c6dc7e4c10488b.SKGLViewRenderer
+SkiaSharp.Views.Forms.SKGLViewRenderer, SkiaSharp.Views.Forms, Version=1.59.0.0, Culture=neutral, PublicKeyToken=null;md55430eeafbf000a5ac5c6dc7e4c10488b.SKGLViewRenderer
+SkiaSharp.Views.Forms.SKGLViewRenderer;md55430eeafbf000a5ac5c6dc7e4c10488b.SKGLViewRenderer
+skiasharp.views.forms.SKGLViewRenderer;md55430eeafbf000a5ac5c6dc7e4c10488b.SKGLViewRenderer
+SkiaSharp.Views.Forms.SKCanvasViewRendererBase`2, SkiaSharp.Views.Forms;md55430eeafbf000a5ac5c6dc7e4c10488b.SKCanvasViewRendererBase_2
+SkiaSharp.Views.Forms.SKCanvasViewRendererBase`2, SkiaSharp.Views.Forms, Version=1.59.0.0, Culture=neutral, PublicKeyToken=null;md55430eeafbf000a5ac5c6dc7e4c10488b.SKCanvasViewRendererBase_2
+SkiaSharp.Views.Forms.SKCanvasViewRendererBase`2;md55430eeafbf000a5ac5c6dc7e4c10488b.SKCanvasViewRendererBase_2
+skiasharp.views.forms.SKCanvasViewRendererBase_2;md55430eeafbf000a5ac5c6dc7e4c10488b.SKCanvasViewRendererBase_2
+SkiaSharp.Views.Forms.SKGLViewRendererBase`2, SkiaSharp.Views.Forms;md55430eeafbf000a5ac5c6dc7e4c10488b.SKGLViewRendererBase_2
+SkiaSharp.Views.Forms.SKGLViewRendererBase`2, SkiaSharp.Views.Forms, Version=1.59.0.0, Culture=neutral, PublicKeyToken=null;md55430eeafbf000a5ac5c6dc7e4c10488b.SKGLViewRendererBase_2
+SkiaSharp.Views.Forms.SKGLViewRendererBase`2;md55430eeafbf000a5ac5c6dc7e4c10488b.SKGLViewRendererBase_2
+skiasharp.views.forms.SKGLViewRendererBase_2;md55430eeafbf000a5ac5c6dc7e4c10488b.SKGLViewRendererBase_2
 Android.Support.V4.Widget.SearchViewCompat/IOnCloseListenerImplementor, Xamarin.Android.Support.Compat;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat+IOnCloseListenerImplementor, Xamarin.Android.Support.Compat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat.IOnCloseListenerImplementor;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor

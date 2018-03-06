@@ -41,3 +41,13 @@ System.Threading
 System.Reflection.Extensions
 System.Reflection.Primitives
 System.Text.Encoding.Extensions
+Microcharts
+Microcharts.Droid
+Microcharts.Forms
+SkiaSharp
+SkiaSharp.Views.Android
+SkiaSharp.Views.Forms
+OxyPlot
+OxyPlot.Xamarin.Android
+OxyPlot.Xamarin.Forms
+OxyPlot.Xamarin.Forms.Platform.Android

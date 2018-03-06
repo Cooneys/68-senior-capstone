@@ -28,8 +28,17 @@ C:\Users\tylerdj96\source\repos\App5\App5\App5.Android\obj\Debug\android\assets\
 C:\Users\tylerdj96\source\repos\App5\App5\App5.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
 C:\Users\tylerdj96\source\repos\App5\App5\App5.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 C:\Users\tylerdj96\source\repos\App5\App5\App5.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
+C:\Users\tylerdj96\source\repos\App5\App5\App5.Android\bin\Debug\OxyPlot.dll.mdb
+C:\Users\tylerdj96\source\repos\App5\App5\App5.Android\bin\Debug\OxyPlot.Xamarin.Forms.dll.mdb
+C:\Users\tylerdj96\source\repos\App5\App5\App5.Android\bin\Debug\OxyPlot.Xamarin.Forms.Platform.Android.dll.mdb
+C:\Users\tylerdj96\source\repos\App5\App5\App5.Android\obj\Debug\android\assets\OxyPlot.dll.mdb
+C:\Users\tylerdj96\source\repos\App5\App5\App5.Android\obj\Debug\android\assets\OxyPlot.Xamarin.Forms.dll.mdb
+C:\Users\tylerdj96\source\repos\App5\App5\App5.Android\obj\Debug\android\assets\OxyPlot.Xamarin.Forms.Platform.Android.dll.mdb
 C:\Users\tylerdj96\source\repos\App5\App5\App5.Android\bin\Debug\App5.Android.dll
 bin\Debug\FormsViewGroup.dll.mdb
+bin\Debug\OxyPlot.dll.mdb
+bin\Debug\OxyPlot.Xamarin.Forms.dll.mdb
+bin\Debug\OxyPlot.Xamarin.Forms.Platform.Android.dll.mdb
 bin\Debug\Xamarin.Forms.Core.dll.mdb
 bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
 bin\Debug\Xamarin.Forms.Xaml.dll.mdb
@@ -54,6 +63,9 @@ bin\Debug\System.ServiceModel.Internals.pdb
 bin\Debug\System.Web.Services.pdb
 obj\Debug\linksrc\App5.Android.dll.mdb
 obj\Debug\linksrc\FormsViewGroup.dll.mdb
+obj\Debug\linksrc\OxyPlot.dll.mdb
+obj\Debug\linksrc\OxyPlot.Xamarin.Forms.dll.mdb
+obj\Debug\linksrc\OxyPlot.Xamarin.Forms.Platform.Android.dll.mdb
 obj\Debug\linksrc\Xamarin.Forms.Core.dll.mdb
 obj\Debug\linksrc\Xamarin.Forms.Platform.Android.dll.mdb
 obj\Debug\linksrc\Xamarin.Forms.Xaml.dll.mdb

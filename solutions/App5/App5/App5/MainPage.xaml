@@ -4,8 +4,25 @@
              xmlns:local="clr-namespace:App5"
              x:Class="App5.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New Portfolio" Clicked="OnNewPortfolioButtonClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <StackLayout>
+            <!--<Button x:Name="Btn_Signin" Text="Sign in" Clicked="PageFetchPortfolios"/>-->
+
+            <ListView x:Name="portfolioListView" ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding TotalValue}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+
+        </ListView>
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>

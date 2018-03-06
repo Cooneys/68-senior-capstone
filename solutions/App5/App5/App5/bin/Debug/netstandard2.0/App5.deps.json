@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "704f253d4e7b4dcd1e403f7f73302f9953fec8f3"
+    "signature": "d014a4230858382a9c3c2bcaee22c76853f824c2"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,12 +9,34 @@
     ".NETStandard,Version=v2.0/": {
       "App5/1.0.0": {
         "dependencies": {
+          "Microcharts.Forms": "0.8.3-pre",
           "NETStandard.Library": "2.0.1",
           "Newtonsoft.Json": "10.0.3",
+          "OxyPlot.Xamarin.Forms": "1.0.0",
           "Xamarin.Forms": "2.5.0.122203"
         },
         "runtime": {
           "App5.dll": {}
+        }
+      },
+      "Microcharts/0.8.3-pre": {
+        "dependencies": {
+          "SkiaSharp": "1.59.1",
+          "System.ValueTuple": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.3-pre": {
+        "dependencies": {
+          "Microcharts": "0.8.3-pre",
+          "SkiaSharp.Views.Forms": "1.59.1.1",
+          "System.ValueTuple": "4.4.0",
+          "Xamarin.Forms": "2.5.0.122203"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         }
       },
       "Microsoft.CSharp/4.3.0": {
@@ -58,6 +80,34 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "OxyPlot.Core/1.0.0": {
+        "runtime": {
+          "lib/net45/OxyPlot.dll": {}
+        }
+      },
+      "OxyPlot.Xamarin.Forms/1.0.0": {
+        "dependencies": {
+          "OxyPlot.Core": "1.0.0",
+          "Xamarin.Forms": "2.5.0.122203"
+        },
+        "runtime": {
+          "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10/OxyPlot.Xamarin.Forms.dll": {}
+        }
+      },
+      "SkiaSharp/1.59.1": {
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.59.1.1": {
+        "dependencies": {
+          "SkiaSharp": "1.59.1",
+          "Xamarin.Forms": "2.5.0.122203"
+        },
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Collections/4.3.0": {
@@ -436,6 +486,7 @@
           "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.4.0": {},
       "System.Xml.ReaderWriter/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -490,6 +541,20 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microcharts/0.8.3-pre": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8RF/nktCobZ2PBQ9t9BROI/v78azWePKzLv/X3W4h6UrsNLUjrusc/fA5sgh10lD4n6R7jP+LaDXx1p/sKd89w==",
+      "path": "microcharts/0.8.3-pre",
+      "hashPath": "microcharts.0.8.3-pre.nupkg.sha512"
+    },
+    "Microcharts.Forms/0.8.3-pre": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sw7TRWZbrodd+R26lpSm5o4ckoYPlj6rxiedXVeWyLJemKevOflWfX8W3HWjoadFDAhuOczEilHJOS5eXFeapQ==",
+      "path": "microcharts.forms/0.8.3-pre",
+      "hashPath": "microcharts.forms.0.8.3-pre.nupkg.sha512"
+    },
     "Microsoft.CSharp/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -524,6 +589,34 @@
       "sha512": "sha512-hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
       "path": "newtonsoft.json/10.0.3",
       "hashPath": "newtonsoft.json.10.0.3.nupkg.sha512"
+    },
+    "OxyPlot.Core/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4CdN5a7xg7rdXAn0MqofQQV7Y2mt0e8nch3Zko5XSien2eTZo+lkkX9IjMhipMiwu2/SQnggS3ZMzvhEThRnIw==",
+      "path": "oxyplot.core/1.0.0",
+      "hashPath": "oxyplot.core.1.0.0.nupkg.sha512"
+    },
+    "OxyPlot.Xamarin.Forms/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GKqCS5K2CvwVizIFPjw4WYPQAo+PND8QLsAArf6UtOO8UFe17AD5SbwNDl48RRSN/4lpUMV1UNsd8vJDlUdXYA==",
+      "path": "oxyplot.xamarin.forms/1.0.0",
+      "hashPath": "oxyplot.xamarin.forms.1.0.0.nupkg.sha512"
+    },
+    "SkiaSharp/1.59.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Le+YqP0aWwJ5ImHikWiLWOWjdH8oOV6F2D7fknzKp9ArzDIrtPASeiHpI1RgqQEK/GGvR56B2l5belsDzwK7uQ==",
+      "path": "skiasharp/1.59.1",
+      "hashPath": "skiasharp.1.59.1.nupkg.sha512"
+    },
+    "SkiaSharp.Views.Forms/1.59.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9SvUAas8A7Tj4NuvFX3Z+tCQFbC+XSayRJPI3zxrzfc8g0WTc2S0yCj8+wm/eSTB5fHmFguu9FOoiyYMj53fiw==",
+      "path": "skiasharp.views.forms/1.59.1.1",
+      "hashPath": "skiasharp.views.forms.1.59.1.1.nupkg.sha512"
     },
     "System.Collections/4.3.0": {
       "type": "package",
@@ -776,6 +869,13 @@
       "sha512": "sha512-npvJkVKl5rKXrtl1Kkm6OhOUaYGEiF9wFbppFRWSMoApKzt2PiPHT2Bb8a5sAWxprvdOAtvaARS9QYMznEUtug==",
       "path": "system.threading.tasks.extensions/4.3.0",
       "hashPath": "system.threading.tasks.extensions.4.3.0.nupkg.sha512"
+    },
+    "System.ValueTuple/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BahUww/+mdP4ARCAh2RQhQTg13wYLVrBb9SYVgW8ZlrwjraGCXHGjo0oIiUfZ34LUZkMMR+RAzR7dEY4S1HeQQ==",
+      "path": "system.valuetuple/4.4.0",
+      "hashPath": "system.valuetuple.4.4.0.nupkg.sha512"
     },
     "System.Xml.ReaderWriter/4.3.0": {
       "type": "package",

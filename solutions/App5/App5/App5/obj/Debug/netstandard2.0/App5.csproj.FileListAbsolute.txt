@@ -10,4 +10,7 @@ C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.Ass
 C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.dll
 C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.pdb
 C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.Views.LoginPage.xaml.g.cs
-C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.Views.AllPortfolios.xaml.g.cs
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.Views.SignUpPage.xaml.g.cs
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.Views.PortfolioDetails.xaml.g.cs
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.Views.CreatePortfolioPage.xaml.g.cs
+C:\Users\tylerdj96\source\repos\App5\App5\App5\obj\Debug\netstandard2.0\App5.Views.AddInvestmenttoPortfolio.xaml.g.cs

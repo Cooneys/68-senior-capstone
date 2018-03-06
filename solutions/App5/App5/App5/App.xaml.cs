@@ -1,4 +1,5 @@
 ﻿using App5.Data;
+using App5.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,10 @@ namespace App5
 	{
 
         static RestService restService;
+
+        public static User currentUser { get; set; }
+        public static Portfolio currentPortfolio { get; set; }
+        public static bool IsUserLoggedIn { get; set; }
 
 		public App ()
 		{

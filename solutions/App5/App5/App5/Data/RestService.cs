@@ -18,9 +18,11 @@ namespace App5.Data
         public WebClient wclient;
         public List<User> mUserInfo;
         public List<Portfolio> portfolioList;
+        public List<Investment> investmentList;
         public JArray data;
         public string json;
         public Portfolio tempPortfolio;
+        public Investment tempInvestment;
 
         public RestService()
         {
@@ -31,7 +33,9 @@ namespace App5.Data
             mUserInfo = new List<User>();
             data = new JArray();
             portfolioList = new List<Portfolio>();
-            tempPortfolio = new Portfolio();
+            //tempPortfolio = new Portfolio();
+            Portfolio tempPortfolio = new Portfolio();
+            investmentList = new List<Investment>();
 
         }
 
@@ -54,48 +58,72 @@ namespace App5.Data
         {
             //string json = Encoding.UTF8.GetString(e.Result);
             //Xamarin.Forms.Device.BeginInvokeOnMainThread(() => {
-                //object data = JsonConvert.DeserializeObject(Encoding.UTF8.GetString(e.Result));
-                data = JArray.Parse(Encoding.UTF8.GetString(e.Result));
-                Debug.WriteLine(data);
-     
+            //object data = JsonConvert.DeserializeObject(Encoding.UTF8.GetString(e.Result));
+            data = JArray.Parse(Encoding.UTF8.GetString(e.Result));
+            //Debug.WriteLine(data);
+
 
             //});
         }
 
-        public List<Portfolio> FetchPortfolios(User user)
+        public async  Task<List<Portfolio>> FetchPortfolios(User user)
         {
-            wclient = new WebClient();
-            Uri mUrl = new Uri("http://web.engr.oregonstate.edu/~jonesty/api.php/UsersPortfoliosView");
+            client = new HttpClient();
+            //Uri mUrl = new Uri("http://web.engr.oregonstate.edu/~jonesty/api.php/UsersPortfoliosView");*/
+
+            string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/UsersPortfoliosView";
 
             //List<Portfolio> portfolioList = new List<Portfolio>();
             //Portfolio tempPortfolio = new Portfolio();
-            wclient.DownloadDataAsync(mUrl);
-            wclient.DownloadDataCompleted += mDownloadDataCompleted;
+            //await wclient.DownloadDataAsync(mUrl);
 
-            if (data.Count == 0)
+            /*wclient.DownloadDataCompleted += mDownloadDataCompleted;
+            wclient.DownloadDataAsync(mUrl);*/
+
+            string content = await client.GetStringAsync(Url);
+            JArray portfolios = JArray.Parse(content);//JsonConvert.DeserializeObject<List<Portfolio>>(content);
+
+            //Debug.WriteLine(portfolios[0][);
+
+            //data = JArray.Parse(Encoding.UTF8.GetString(portfolios));
+            //_portfolios = new ObservableCollection<Portfolio>(portfolios);
+
+
+            if (portfolios.Count == 0)
             {
+                Debug.WriteLine("null returned");
                 return null;
+                //Debug.WriteLine("null returned");
             }
 
             else
             {
-                for (var i = 0; i < data.Count; i++)
+                for (var i = 0; i < portfolios.Count; i++)
 
                 {
-                    Debug.WriteLine((string)data[i]["username"]);
-                    if (user.Username.Equals((string)data[i]["username"]))
+                    //Debug.WriteLine((string)portfolios[i]["username"]);
+                    if (user.Username.Equals((string)portfolios[i]["username"]))
                     {
+                        tempPortfolio = new Portfolio();
                         //tempPortfolio.Owners.Add((string)data[i]["username"]);
-                        tempPortfolio.TotalValue = ((int)data[i]["totalvalue"]);
-                        tempPortfolio.Name = (string)data[i]["portfolioname"];
+                        tempPortfolio.TotalValue = ((int)portfolios[i]["totalvalue"]);
+                        tempPortfolio.Name = (string)portfolios[i]["portfolioname"];
 
-                        //Debug.WriteLine(tempPortfolio.TotalValue);
+                        Debug.WriteLine(tempPortfolio.TotalValue);
+                        Debug.WriteLine(tempPortfolio.Name);
 
                         portfolioList.Add(tempPortfolio);
+
+
                     }
 
                 }
-
+                Debug.WriteLine("break");
+                for (var i = 0; i < portfolioList.Count; i++)
+                {
+                    Debug.WriteLine(portfolioList[i].TotalValue);
+                    Debug.WriteLine(portfolioList[i].Name);
+                }
                 return portfolioList;
 
             }
@@ -106,54 +134,101 @@ namespace App5.Data
         {
             //string confirmString;
 
-            wclient = new WebClient();
-            Uri mUrl = new Uri("http://web.engr.oregonstate.edu/~jonesty/api.php/"+ parameter);
+           // wclient = new WebClient();
+            //Uri mUrl = new Uri("http://web.engr.oregonstate.edu/~jonesty/api.php/" + parameter);
 
-            wclient.DownloadDataAsync(mUrl);
-            wclient.DownloadDataCompleted += mDownloadDataCompleted;
+           // wclient.DownloadDataCompleted += mDownloadDataCompleted;
+            //wclient.DownloadDataAsync(mUrl);
+
+            client = new HttpClient();
+            //Uri mUrl = new Uri("http://web.engr.oregonstate.edu/~jonesty/api.php/UsersPortfoliosView");*/
+
+            string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/UserInfo";
+
+            //List<Portfolio> portfolioList = new List<Portfolio>();
+            //Portfolio tempPortfolio = new Portfolio();
+            //await wclient.DownloadDataAsync(mUrl);
+
+            /*wclient.DownloadDataCompleted += mDownloadDataCompleted;
+            wclient.DownloadDataAsync(mUrl);*/
+
+            string content = await client.GetStringAsync(Url);
+            JArray users = JArray.Parse(content);//JsonConvert.DeserializeObject<List<Portfolio>>(content);
 
 
 
-            if(data.Count == 0)
+            if (users.Count == 0)
             {
                 return false;
             }
 
             else
             {
-                for (var i = 0; i < data.Count; i++)
+                for (var i = 0; i < users.Count; i++)
                 //Debug.WriteLine((string)data[i]["username"]);
                 {
                     //Debug.WriteLine((string)data[i]["username"]);
-                    if (user.Username.Equals((string)data[i]["username"]))
+                    if (user.Username.Equals((string)users[i]["username"]) && user.Password.Equals((string)users[i]["password"]))
                     {
                         return true;
                     }
-                    
+
                 }
 
                 return false;
-                
+
             }
-
-
-        
-            //displayText.Text = mContacts[3].username;
 
         }
 
-        /*public async Task<Token> RegisterUser(User user)
+        public async Task<List<Investment>> FetchPortfolioDetails(Portfolio portfolio)
         {
-            WebClient client = new WebClient();
-            Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/registerNewUser.php");
-            NameValueCollection parameters = new NameValueCollection();
+            client = new HttpClient();
+            //Uri mUrl = new Uri("http://web.engr.oregonstate.edu/~jonesty/api.php/UsersPortfoliosView");*/
 
-            parameters.Add("Name", user.Username);
-            parameters.Add("Number", user.Password);
+            string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/PortfoliosInvestments";
 
-            //client.UploadValuesCompleted += client_UploadValuesCompleted;
-            client.UploadValuesAsync(uri, parameters);
-        }*/
-        
+            //List<Portfolio> portfolioList = new List<Portfolio>();
+            //Portfolio tempPortfolio = new Portfolio();
+            //await wclient.DownloadDataAsync(mUrl);
+
+            /*wclient.DownloadDataCompleted += mDownloadDataCompleted;
+            wclient.DownloadDataAsync(mUrl);*/
+
+            string content = await client.GetStringAsync(Url);
+            JArray investments = JArray.Parse(content);//JsonConvert.DeserializeObject<List<Portfolio>>(content);
+
+            if (investments.Count == 0)
+            {
+                return null;
+            }
+
+            else
+            {
+                for (var i = 0; i < investments.Count; i++)
+                //Debug.WriteLine((string)data[i]["username"]);
+                {
+                    //Debug.WriteLine((string)data[i]["username"]);
+                    if (portfolio.Name.Equals((string)investments[i]["portfolioname"]))
+                    {
+                        tempInvestment = new Investment();
+                        //tempPortfolio.Owners.Add((string)data[i]["username"]);
+                        tempInvestment.tickersymbol = ((string)investments[i]["tickersymbol"]);
+                        tempInvestment.numberofshares = (int)investments[i]["numshares"];
+                        tempInvestment.numberofshares = (int)investments[i]["pricepurchased"];
+
+                        investmentList.Add(tempInvestment);
+                    }
+
+                }
+
+                return investmentList;
+
+            }
+
+        }
+
+
     }
+
 }

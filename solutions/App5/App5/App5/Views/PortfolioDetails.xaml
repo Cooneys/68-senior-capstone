@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+             x:Class="App5.Views.PortfolioDetails">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Investment to Portfolio" Clicked="OnInvestmentButtonClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<Button x:Name="Btn_Signin" Text="Sign in" Clicked="GetPortfolioDetails"/>-->
+            <ListView x:Name="investmentListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding tickersymbol}" Detail="{Binding numberofshares}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <oxy:PlotView Model="{Binding PieModel}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

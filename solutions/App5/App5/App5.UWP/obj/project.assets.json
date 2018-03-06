@@ -2,6 +2,35 @@
   "version": 3,
   "targets": {
     "UAP,Version=v10.0.16299": {
+      "Microcharts/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.59.1.1"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.3-pre",
+          "SkiaSharp.Views.Forms": "1.59.1.1",
+          "System.ValueTuple": "4.4.0",
+          "Xamarin.Forms": "2.4.0.282"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -287,6 +316,42 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
+      "OxyPlot.Core/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        }
+      },
+      "OxyPlot.Windows/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Core": "[1.0.0]"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        }
+      },
+      "OxyPlot.Xamarin.Forms/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Windows": "1.0.0",
+          "Xamarin.Forms": "2.3.3.180"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
+        }
+      },
       "runtime.win10-arm.Microsoft.Net.UWPCoreRuntimeSdk/2.1.1": {
         "type": "package",
         "build": {
@@ -306,6 +371,91 @@
         "build": {
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
+        }
+      },
+      "SkiaSharp/1.59.1": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          },
+          "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          },
+          "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          },
+          "runtimes/win7-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          },
+          "runtimes/win7-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
+          }
+        }
+      },
+      "SkiaSharp.Views/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1",
+          "SkiaSharp.Views": "1.59.1.1",
+          "Xamarin.Forms": "2.3.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Collections/4.3.0": {
@@ -831,6 +981,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.4.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -901,7 +1060,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts.Forms": "0.8.3-pre",
           "Newtonsoft.Json": "10.0.3",
+          "OxyPlot.Xamarin.Forms": "1.0.0",
           "Xamarin.Forms": "2.5.0.122203"
         },
         "compile": {
@@ -913,6 +1074,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-arm": {
+      "Microcharts/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.59.1.1"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.3-pre",
+          "SkiaSharp.Views.Forms": "1.59.1.1",
+          "System.ValueTuple": "4.4.0",
+          "Xamarin.Forms": "2.4.0.282"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1197,6 +1387,42 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "OxyPlot.Core/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        }
+      },
+      "OxyPlot.Windows/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Core": "[1.0.0]"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        }
+      },
+      "OxyPlot.Xamarin.Forms/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Windows": "1.0.0",
+          "Xamarin.Forms": "2.3.3.180"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
         }
       },
       "runtime.any.System.Collections/4.3.0": {
@@ -1571,6 +1797,46 @@
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SkiaSharp/1.59.1": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1",
+          "SkiaSharp.Views": "1.59.1.1",
+          "Xamarin.Forms": "2.3.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Buffers/4.3.0": {
@@ -2124,6 +2390,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.4.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2194,7 +2469,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts.Forms": "0.8.3-pre",
           "Newtonsoft.Json": "10.0.3",
+          "OxyPlot.Xamarin.Forms": "1.0.0",
           "Xamarin.Forms": "2.5.0.122203"
         },
         "compile": {
@@ -2206,6 +2483,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-arm-aot": {
+      "Microcharts/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.59.1.1"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.3-pre",
+          "SkiaSharp.Views.Forms": "1.59.1.1",
+          "System.ValueTuple": "4.4.0",
+          "Xamarin.Forms": "2.4.0.282"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2490,6 +2796,42 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "OxyPlot.Core/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        }
+      },
+      "OxyPlot.Windows/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Core": "[1.0.0]"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        }
+      },
+      "OxyPlot.Xamarin.Forms/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Windows": "1.0.0",
+          "Xamarin.Forms": "2.3.3.180"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.3.0": {
@@ -2897,6 +3239,46 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
+      "SkiaSharp/1.59.1": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1",
+          "SkiaSharp.Views": "1.59.1.1",
+          "Xamarin.Forms": "2.3.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
       "System.Buffers/4.3.0": {
         "type": "package",
         "compile": {
@@ -3448,6 +3830,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.4.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3518,7 +3909,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts.Forms": "0.8.3-pre",
           "Newtonsoft.Json": "10.0.3",
+          "OxyPlot.Xamarin.Forms": "1.0.0",
           "Xamarin.Forms": "2.5.0.122203"
         },
         "compile": {
@@ -3530,6 +3923,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x64": {
+      "Microcharts/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.59.1.1"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.3-pre",
+          "SkiaSharp.Views.Forms": "1.59.1.1",
+          "System.ValueTuple": "4.4.0",
+          "Xamarin.Forms": "2.4.0.282"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3814,6 +4236,42 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "OxyPlot.Core/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        }
+      },
+      "OxyPlot.Windows/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Core": "[1.0.0]"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        }
+      },
+      "OxyPlot.Xamarin.Forms/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Windows": "1.0.0",
+          "Xamarin.Forms": "2.3.3.180"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
         }
       },
       "runtime.any.System.Collections/4.3.0": {
@@ -4188,6 +4646,46 @@
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SkiaSharp/1.59.1": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1",
+          "SkiaSharp.Views": "1.59.1.1",
+          "Xamarin.Forms": "2.3.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Buffers/4.3.0": {
@@ -4741,6 +5239,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.4.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -4811,7 +5318,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts.Forms": "0.8.3-pre",
           "Newtonsoft.Json": "10.0.3",
+          "OxyPlot.Xamarin.Forms": "1.0.0",
           "Xamarin.Forms": "2.5.0.122203"
         },
         "compile": {
@@ -4823,6 +5332,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x64-aot": {
+      "Microcharts/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.59.1.1"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.3-pre",
+          "SkiaSharp.Views.Forms": "1.59.1.1",
+          "System.ValueTuple": "4.4.0",
+          "Xamarin.Forms": "2.4.0.282"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5107,6 +5645,42 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "OxyPlot.Core/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        }
+      },
+      "OxyPlot.Windows/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Core": "[1.0.0]"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        }
+      },
+      "OxyPlot.Xamarin.Forms/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Windows": "1.0.0",
+          "Xamarin.Forms": "2.3.3.180"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.3.0": {
@@ -5514,6 +6088,46 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
+      "SkiaSharp/1.59.1": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1",
+          "SkiaSharp.Views": "1.59.1.1",
+          "Xamarin.Forms": "2.3.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
       "System.Buffers/4.3.0": {
         "type": "package",
         "compile": {
@@ -6065,6 +6679,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.4.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -6135,7 +6758,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts.Forms": "0.8.3-pre",
           "Newtonsoft.Json": "10.0.3",
+          "OxyPlot.Xamarin.Forms": "1.0.0",
           "Xamarin.Forms": "2.5.0.122203"
         },
         "compile": {
@@ -6147,6 +6772,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x86": {
+      "Microcharts/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.59.1.1"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.3-pre",
+          "SkiaSharp.Views.Forms": "1.59.1.1",
+          "System.ValueTuple": "4.4.0",
+          "Xamarin.Forms": "2.4.0.282"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -6431,6 +7085,42 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "OxyPlot.Core/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        }
+      },
+      "OxyPlot.Windows/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Core": "[1.0.0]"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        }
+      },
+      "OxyPlot.Xamarin.Forms/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Windows": "1.0.0",
+          "Xamarin.Forms": "2.3.3.180"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
         }
       },
       "runtime.any.System.Collections/4.3.0": {
@@ -6805,6 +7495,46 @@
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SkiaSharp/1.59.1": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1",
+          "SkiaSharp.Views": "1.59.1.1",
+          "Xamarin.Forms": "2.3.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Buffers/4.3.0": {
@@ -7358,6 +8088,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.4.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -7428,7 +8167,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts.Forms": "0.8.3-pre",
           "Newtonsoft.Json": "10.0.3",
+          "OxyPlot.Xamarin.Forms": "1.0.0",
           "Xamarin.Forms": "2.5.0.122203"
         },
         "compile": {
@@ -7440,6 +8181,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x86-aot": {
+      "Microcharts/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.59.1.1"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.3-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.3-pre",
+          "SkiaSharp.Views.Forms": "1.59.1.1",
+          "System.ValueTuple": "4.4.0",
+          "Xamarin.Forms": "2.4.0.282"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -7724,6 +8494,42 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "OxyPlot.Core/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        }
+      },
+      "OxyPlot.Windows/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Core": "[1.0.0]"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Windows.dll": {}
+        }
+      },
+      "OxyPlot.Xamarin.Forms/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Windows": "1.0.0",
+          "Xamarin.Forms": "2.3.3.180"
+        },
+        "compile": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll": {},
+          "lib/uap10.0/OxyPlot.Xamarin.Forms.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.3.0": {
@@ -8129,6 +8935,46 @@
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SkiaSharp/1.59.1": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.59.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.1",
+          "SkiaSharp.Views": "1.59.1.1",
+          "Xamarin.Forms": "2.3.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Buffers/4.3.0": {
@@ -8682,6 +9528,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.4.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -8752,7 +9607,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts.Forms": "0.8.3-pre",
           "Newtonsoft.Json": "10.0.3",
+          "OxyPlot.Xamarin.Forms": "1.0.0",
           "Xamarin.Forms": "2.5.0.122203"
         },
         "compile": {
@@ -8765,6 +9622,36 @@
     }
   },
   "libraries": {
+    "Microcharts/0.8.3-pre": {
+      "sha512": "8RF/nktCobZ2PBQ9t9BROI/v78azWePKzLv/X3W4h6UrsNLUjrusc/fA5sgh10lD4n6R7jP+LaDXx1p/sKd89w==",
+      "type": "package",
+      "path": "microcharts/0.8.3-pre",
+      "files": [
+        "lib/MonoAndroid10/Microcharts.Droid.dll",
+        "lib/MonoAndroid10/Microcharts.dll",
+        "lib/Xamarin.iOS10/Microcharts.dll",
+        "lib/Xamarin.iOS10/Microcharts.iOS.dll",
+        "lib/netstandard1.3/Microcharts.dll",
+        "lib/portable-net45+win8+wpa81+wp8/Microcharts.dll",
+        "lib/uap/Microcharts.Uwp.dll",
+        "lib/uap/Microcharts.dll",
+        "lib/xamarinmac/Microcharts.dll",
+        "lib/xamarinmac/Microcharts.macOS.dll",
+        "microcharts.0.8.3-pre.nupkg.sha512",
+        "microcharts.nuspec"
+      ]
+    },
+    "Microcharts.Forms/0.8.3-pre": {
+      "sha512": "sw7TRWZbrodd+R26lpSm5o4ckoYPlj6rxiedXVeWyLJemKevOflWfX8W3HWjoadFDAhuOczEilHJOS5eXFeapQ==",
+      "type": "package",
+      "path": "microcharts.forms/0.8.3-pre",
+      "files": [
+        "lib/netstandard1.3/Microcharts.Forms.dll",
+        "lib/portable-net45+win8+wpa81+wp8/Microcharts.Forms.dll",
+        "microcharts.forms.0.8.3-pre.nupkg.sha512",
+        "microcharts.forms.nuspec"
+      ]
+    },
     "Microsoft.CSharp/4.3.0": {
       "sha512": "P+MBhIM0YX+JqROuf7i306ZLJEjQYA9uUyRDE+OqwUI5sh41e2ZbPQV3LfAPh+29cmceE1pUffXsGfR4eMY3KA==",
       "type": "package",
@@ -11251,6 +12138,102 @@
         "tools/install.ps1"
       ]
     },
+    "OxyPlot.Core/1.0.0": {
+      "sha512": "4CdN5a7xg7rdXAn0MqofQQV7Y2mt0e8nch3Zko5XSien2eTZo+lkkX9IjMhipMiwu2/SQnggS3ZMzvhEThRnIw==",
+      "type": "package",
+      "path": "oxyplot.core/1.0.0",
+      "files": [
+        "AUTHORS",
+        "CHANGELOG.md",
+        "CONTRIBUTORS",
+        "LICENSE",
+        "README.md",
+        "lib/net40-client/OxyPlot.XML",
+        "lib/net40-client/OxyPlot.dll",
+        "lib/net40-client/OxyPlot.pdb",
+        "lib/net40/OxyPlot.XML",
+        "lib/net40/OxyPlot.dll",
+        "lib/net40/OxyPlot.pdb",
+        "lib/net45/OxyPlot.dll",
+        "lib/net45/OxyPlot.pdb",
+        "lib/net45/OxyPlot.xml",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.pdb",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.xml",
+        "lib/sl5/OxyPlot.XML",
+        "lib/sl5/OxyPlot.dll",
+        "lib/sl5/OxyPlot.pdb",
+        "oxyplot.core.1.0.0.nupkg.sha512",
+        "oxyplot.core.nuspec"
+      ]
+    },
+    "OxyPlot.Windows/1.0.0": {
+      "sha512": "XPhP/tr2VeLdLUBql55iLhaOR3srj3fETzcKpUQ93qfE+gualH7ha3UVnGhwbAvBPgwILj2HtUQbxJA2IB8phA==",
+      "type": "package",
+      "path": "oxyplot.windows/1.0.0",
+      "files": [
+        "AUTHORS",
+        "CHANGELOG.md",
+        "CONTRIBUTORS",
+        "LICENSE",
+        "README.md",
+        "lib/portable-windows8+wpa81/OxyPlot.Windows.dll",
+        "lib/portable-windows8+wpa81/OxyPlot.Windows.pdb",
+        "lib/portable-windows8+wpa81/OxyPlot.Windows.pri",
+        "lib/portable-windows8+wpa81/OxyPlot.Windows.xml",
+        "lib/portable-windows8+wpa81/OxyPlot.Windows/OxyPlot.Windows.xr.xml",
+        "lib/portable-windows8+wpa81/OxyPlot.Windows/Themes/Generic.xbf",
+        "lib/uap10.0/OxyPlot.Windows.dll",
+        "lib/uap10.0/OxyPlot.Windows.pdb",
+        "lib/uap10.0/OxyPlot.Windows.pri",
+        "lib/uap10.0/OxyPlot.Windows/OxyPlot.Windows.xr.xml",
+        "lib/uap10.0/OxyPlot.Windows/Properties/OxyPlot.Windows10.rd.xml",
+        "lib/uap10.0/OxyPlot.Windows/Themes/Generic.xbf",
+        "oxyplot.windows.1.0.0.nupkg.sha512",
+        "oxyplot.windows.nuspec"
+      ]
+    },
+    "OxyPlot.Xamarin.Forms/1.0.0": {
+      "sha512": "GKqCS5K2CvwVizIFPjw4WYPQAo+PND8QLsAArf6UtOO8UFe17AD5SbwNDl48RRSN/4lpUMV1UNsd8vJDlUdXYA==",
+      "type": "package",
+      "path": "oxyplot.xamarin.forms/1.0.0",
+      "files": [
+        "AUTHORS",
+        "CHANGELOG.md",
+        "CONTRIBUTORS",
+        "LICENSE",
+        "README.md",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.Platform.Android.XML",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.Platform.Android.dll",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.Platform.Android.pdb",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.dll",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.pdb",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.xml",
+        "lib/Xamarin.iOS10/OxyPlot.Xamarin.Forms.Platform.iOS.XML",
+        "lib/Xamarin.iOS10/OxyPlot.Xamarin.Forms.Platform.iOS.dll",
+        "lib/Xamarin.iOS10/OxyPlot.Xamarin.Forms.dll",
+        "lib/Xamarin.iOS10/OxyPlot.Xamarin.Forms.pdb",
+        "lib/Xamarin.iOS10/OxyPlot.Xamarin.Forms.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10/OxyPlot.Xamarin.Forms.XML",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10/OxyPlot.Xamarin.Forms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10/OxyPlot.Xamarin.Forms.pdb",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.XML",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.pdb",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.pri",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.dll",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.pdb",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.xml",
+        "lib/wp80/OxyPlot.Xamarin.Forms.Platform.WP8.XML",
+        "lib/wp80/OxyPlot.Xamarin.Forms.Platform.WP8.dll",
+        "lib/wp80/OxyPlot.Xamarin.Forms.Platform.WP8.pdb",
+        "lib/wp80/OxyPlot.Xamarin.Forms.XML",
+        "lib/wp80/OxyPlot.Xamarin.Forms.dll",
+        "lib/wp80/OxyPlot.Xamarin.Forms.pdb",
+        "oxyplot.xamarin.forms.1.0.0.nupkg.sha512",
+        "oxyplot.xamarin.forms.nuspec"
+      ]
+    },
     "runtime.any.System.Collections/4.3.0": {
       "sha512": "23g6rqftKmovn2cLeGsuHUYm0FD7pdutb0uQMJpZ3qTvq+zHkgmt6J65VtRry4WDGYlmkMa4xDACtaQ94alNag==",
       "type": "package",
@@ -12923,6 +13906,78 @@
         "runtimes/aot/lib/netcore50/System.Private.Uri.dll",
         "runtimes/win/lib/netcore50/System.Private.Uri.dll",
         "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll"
+      ]
+    },
+    "SkiaSharp/1.59.1": {
+      "sha512": "Le+YqP0aWwJ5ImHikWiLWOWjdH8oOV6F2D7fknzKp9ArzDIrtPASeiHpI1RgqQEK/GGvR56B2l5belsDzwK7uQ==",
+      "type": "package",
+      "path": "skiasharp/1.59.1",
+      "files": [
+        "build/net45/SkiaSharp.dll.config",
+        "build/net45/SkiaSharp.targets",
+        "lib/MonoAndroid/SkiaSharp.dll",
+        "lib/MonoAndroid/SkiaSharp.xml",
+        "lib/XamarinMac/SkiaSharp.dll",
+        "lib/XamarinMac/SkiaSharp.xml",
+        "lib/XamariniOS/SkiaSharp.dll",
+        "lib/XamariniOS/SkiaSharp.xml",
+        "lib/XamarintvOS/SkiaSharp.dll",
+        "lib/XamarintvOS/SkiaSharp.xml",
+        "lib/net45/SkiaSharp.dll",
+        "lib/net45/SkiaSharp.dll.config",
+        "lib/net45/SkiaSharp.xml",
+        "lib/netstandard1.3/SkiaSharp.dll",
+        "lib/netstandard1.3/SkiaSharp.xml",
+        "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.dll",
+        "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.xml",
+        "lib/uap10.0/SkiaSharp.dll",
+        "lib/uap10.0/SkiaSharp.xml",
+        "runtimes/osx/native/libSkiaSharp.dylib",
+        "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win7-x64/native/libSkiaSharp.dll",
+        "runtimes/win7-x86/native/libSkiaSharp.dll",
+        "skiasharp.1.59.1.nupkg.sha512",
+        "skiasharp.nuspec",
+        "xamarin.interactive/SkiaSharp.Workbooks.dll"
+      ]
+    },
+    "SkiaSharp.Views/1.59.1.1": {
+      "sha512": "1MQmOh3OjdrCD87Ehdn986RoD43WEe8D9zzncCotuAckYHB++JmDv1poOhaiWtoYqCLXU6Vk5IcQR6+EgZ0ofQ==",
+      "type": "package",
+      "path": "skiasharp.views/1.59.1.1",
+      "files": [
+        "lib/MonoAndroid/SkiaSharp.Views.Android.dll",
+        "lib/XamarinMac/SkiaSharp.Views.Mac.dll",
+        "lib/XamariniOS/SkiaSharp.Views.iOS.dll",
+        "lib/XamarintvOS/SkiaSharp.Views.tvOS.dll",
+        "lib/net45/SkiaSharp.Views.Desktop.dll",
+        "lib/net45/SkiaSharp.Views.WPF.dll",
+        "lib/uap10.0/SkiaSharp.Views.UWP.dll",
+        "skiasharp.views.1.59.1.1.nupkg.sha512",
+        "skiasharp.views.nuspec"
+      ]
+    },
+    "SkiaSharp.Views.Forms/1.59.1.1": {
+      "sha512": "9SvUAas8A7Tj4NuvFX3Z+tCQFbC+XSayRJPI3zxrzfc8g0WTc2S0yCj8+wm/eSTB5fHmFguu9FOoiyYMj53fiw==",
+      "type": "package",
+      "path": "skiasharp.views.forms/1.59.1.1",
+      "files": [
+        "lib/MonoAndroid/SkiaSharp.Views.Forms.dll",
+        "lib/XamarinMac/SkiaSharp.Views.Forms.dll",
+        "lib/XamariniOS/SkiaSharp.Views.Forms.dll",
+        "lib/netstandard1.3/SkiaSharp.Views.Forms.dll",
+        "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.Views.Forms.dll",
+        "lib/uap10.0/SkiaSharp.Views.Forms.dll",
+        "skiasharp.views.forms.1.59.1.1.nupkg.sha512",
+        "skiasharp.views.forms.nuspec"
       ]
     },
     "System.Buffers/4.3.0": {
@@ -14957,6 +16012,49 @@
         "system.threading.tasks.extensions.nuspec"
       ]
     },
+    "System.ValueTuple/4.4.0": {
+      "sha512": "BahUww/+mdP4ARCAh2RQhQTg13wYLVrBb9SYVgW8ZlrwjraGCXHGjo0oIiUfZ34LUZkMMR+RAzR7dEY4S1HeQQ==",
+      "type": "package",
+      "path": "system.valuetuple/4.4.0",
+      "files": [
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.ValueTuple.dll",
+        "lib/net461/System.ValueTuple.xml",
+        "lib/net47/System.ValueTuple.dll",
+        "lib/net47/System.ValueTuple.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.ValueTuple.dll",
+        "lib/netstandard1.0/System.ValueTuple.xml",
+        "lib/netstandard2.0/_._",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.ValueTuple.dll",
+        "ref/net461/System.ValueTuple.xml",
+        "ref/net47/System.ValueTuple.dll",
+        "ref/net47/System.ValueTuple.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard2.0/_._",
+        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.valuetuple.4.4.0.nupkg.sha512",
+        "system.valuetuple.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Xml.ReaderWriter/4.3.0": {
       "sha512": "GrprA+Z0RUXaR4N7/eW71j1rgMnEnEVlgii49GZyAjTH7uliMnrOU3HNFBr6fEDBCJCIdlVNq9hHbaDR621XBA==",
       "type": "package",
@@ -15259,7 +16357,9 @@
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.16299": [
       "App5 >= 1.0.0",
+      "Microcharts.Forms >= 0.8.3-pre",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.0.1",
+      "OxyPlot.Xamarin.Forms >= 1.0.0",
       "Xamarin.Forms >= 2.5.0.122203"
     ]
   },
@@ -15290,6 +16390,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\tylerdj96\\Downloads": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -15305,9 +16406,17 @@
     "frameworks": {
       "uap10.0.16299": {
         "dependencies": {
+          "Microcharts.Forms": {
+            "target": "Package",
+            "version": "[0.8.3-pre, )"
+          },
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
             "version": "[6.0.1, )"
+          },
+          "OxyPlot.Xamarin.Forms": {
+            "target": "Package",
+            "version": "[1.0.0, )"
           },
           "Xamarin.Forms": {
             "target": "Package",
