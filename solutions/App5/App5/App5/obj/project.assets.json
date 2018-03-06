@@ -3593,11 +3593,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5\\App5.csproj",
+      "projectUniqueName": "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5\\App5.csproj",
       "projectName": "App5",
-      "projectPath": "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5\\App5.csproj",
+      "projectPath": "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5\\App5.csproj",
       "packagesPath": "C:\\Users\\tylerdj96\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5\\obj\\",
+      "outputPath": "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

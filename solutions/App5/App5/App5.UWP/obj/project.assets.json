@@ -16370,11 +16370,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5.UWP\\App5.UWP.csproj",
+      "projectUniqueName": "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5.UWP\\App5.UWP.csproj",
       "projectName": "App5.UWP",
-      "projectPath": "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5.UWP\\App5.UWP.csproj",
+      "projectPath": "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5.UWP\\App5.UWP.csproj",
       "packagesPath": "C:\\Users\\tylerdj96\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5.UWP\\obj\\",
+      "outputPath": "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5.UWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -16396,8 +16396,8 @@
       "frameworks": {
         "uap10.0.16299": {
           "projectReferences": {
-            "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5\\App5.csproj": {
-              "projectPath": "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5\\App5.csproj"
+            "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5\\App5.csproj": {
+              "projectPath": "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5\\App5.csproj"
             }
           }
         }

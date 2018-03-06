@@ -4513,11 +4513,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5.Android\\App5.Android.csproj",
+      "projectUniqueName": "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5.Android\\App5.Android.csproj",
       "projectName": "App5.Android",
-      "projectPath": "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5.Android\\App5.Android.csproj",
+      "projectPath": "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5.Android\\App5.Android.csproj",
       "packagesPath": "C:\\Users\\tylerdj96\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5.Android\\obj\\",
+      "outputPath": "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -4539,8 +4539,8 @@
       "frameworks": {
         "monoandroid80": {
           "projectReferences": {
-            "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5\\App5.csproj": {
-              "projectPath": "C:\\Users\\tylerdj96\\source\\repos\\App5\\App5\\App5\\App5.csproj"
+            "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5\\App5.csproj": {
+              "projectPath": "C:\\Users\\tylerdj96\\Source\\Repos\\68-senior-capstone\\solutions\\App5\\App5\\App5\\App5.csproj"
             }
           }
         }
