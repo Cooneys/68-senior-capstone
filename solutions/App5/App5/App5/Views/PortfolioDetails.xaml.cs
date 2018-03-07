@@ -19,30 +19,7 @@ namespace App5.Views
     public partial class PortfolioDetails : ContentPage
     {
         Data.RestService restService = new Data.RestService();
-        List<Microcharts.Entry> entries = new List<Microcharts.Entry>
-        {
-
-            new Microcharts.Entry(200)
-            {
-                Color = SKColor.Parse("#000000"),
-                Label = "january",
-                ValueLabel = "200"
-            },
-            
-            new Microcharts.Entry(300)
-            {
-                Color = SKColor.Parse("#00BFFF"),
-                Label = "january1",
-                ValueLabel = "300"
-            },
-            new Microcharts.Entry(400)
-            {
-                Color = SKColor.Parse("#00CED1"),
-                Label = "january2",
-                ValueLabel = "4+00"
-            },
-        };
-
+        List<Microcharts.Entry> entries = new List<Microcharts.Entry>();
         public PlotModel PieModel { get; set; }
 
         public PortfolioDetails (Portfolio selectedPortfolio)
@@ -53,8 +30,8 @@ namespace App5.Views
             App.currentPortfolio = selectedPortfolio;
             //MyChart.Chart = new DonutChart() { Entries = entires };
             GetPortfolioDetails();
-            var chart = new PieChart() { Entries = entries };
-            this.chartView.Chart = chart;
+            //var chart = new PieChart() { Entries = entries };
+            //this.chartView.Chart = chart;
 		}
 
         public async void GetPortfolioDetails()
@@ -69,6 +46,21 @@ namespace App5.Views
             if (investmentList != null)
 
             {
+	    	for (var i = 0; i < investmentList.Count; i++)
+                {
+                    Debug.WriteLine(investmentList[i].numberofshares);
+                    Debug.WriteLine(investmentList[i].pricepurchased);
+                    float tempvalue = investmentList[i].numberofshares; //*price purchased ;
+                    Debug.WriteLine("test");
+                    Debug.WriteLine(tempvalue);
+                    Microcharts.Entry tempEntry = new Microcharts.Entry(tempvalue)
+                    {
+                        Label = investmentList[i].tickersymbol
+                    };
+                    entries.Add(tempEntry);
+                }
+		var chart = new DonutChart() { Entries = entries };
+                this.chartView.Chart = chart;
                 investmentListView.ItemsSource = investmentList;
             }
             else
