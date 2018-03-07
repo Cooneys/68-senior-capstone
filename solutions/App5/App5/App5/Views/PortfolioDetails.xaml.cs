@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SkiaSharp.Views.Forms;
 
 namespace App5.Views
 {
@@ -30,8 +31,6 @@ namespace App5.Views
             App.currentPortfolio = selectedPortfolio;
             //MyChart.Chart = new DonutChart() { Entries = entires };
             GetPortfolioDetails();
-            //var chart = new PieChart() { Entries = entries };
-            //this.chartView.Chart = chart;
 		}
 
         public async void GetPortfolioDetails()
@@ -44,22 +43,27 @@ namespace App5.Views
             //investmentList = restService.FetchPortfolioDetails(App.currentPortfolio);
             
             if (investmentList != null)
-
             {
-	    	for (var i = 0; i < investmentList.Count; i++)
+                int n = 200 / investmentList.Count;
+                for (var i = 0; i < investmentList.Count; i++)
                 {
                     Debug.WriteLine(investmentList[i].numberofshares);
                     Debug.WriteLine(investmentList[i].pricepurchased);
                     float tempvalue = investmentList[i].numberofshares; //*price purchased ;
                     Debug.WriteLine("test");
                     Debug.WriteLine(tempvalue);
+                    investmentList[i].color = CustColors.grabColor(i * n);
+
+                    //Temp solution for dynamically making colors. This should be improved and moved to its own class or function
+                    
                     Microcharts.Entry tempEntry = new Microcharts.Entry(tempvalue)
                     {
-                        Label = investmentList[i].tickersymbol
+                        Label = investmentList[i].tickersymbol,
+                        Color = CustColors.grabColor(i*n).ToSKColor()
                     };
                     entries.Add(tempEntry);
                 }
-		var chart = new DonutChart() { Entries = entries };
+		    var chart = new DonutChart() { Entries = entries };
                 this.chartView.Chart = chart;
                 investmentListView.ItemsSource = investmentList;
             }

@@ -15,10 +15,13 @@
             <!--<Button x:Name="Btn_Signin" Text="Sign in" Clicked="GetPortfolioDetails"/>-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="45*"/>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="35*"/>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="37*"/>
             </Grid.RowDefinitions>
-            <microcharts:ChartView x:Name="chartView" Grid.Row="0" Margin="20, 20, 20, 5"/>
+            <Frame HasShadow="True" Margin="20, 20, 20, 5" Grid.Row="0">
+                <microcharts:ChartView x:Name="chartView"/>
+            </Frame>
+            
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50*"/>
@@ -43,7 +46,7 @@
                         <ViewCell>
                             <StackLayout BackgroundColor="White" Orientation="Vertical" Margin="10, 1, 10, 1">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame Padding="10" BackgroundColor="Blue"/>
+                                    <Frame Padding="10" BackgroundColor="{Binding color}"/>
                                     <StackLayout Orientation="Vertical">
                                         <Label Text="{Binding tickersymbol}"/>
                                         <Label Text="{Binding numberofshares}"/>
@@ -54,7 +57,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <oxy:PlotView Model="{Binding PieModel}" />
+            <!--oxy:PlotView Model="{Binding PieModel}" /!-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

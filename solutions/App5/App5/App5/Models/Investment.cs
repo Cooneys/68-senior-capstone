@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace App5.Models
 {
@@ -11,6 +12,7 @@ namespace App5.Models
         public float numberofshares { get; set; }
         public float pricepurchased { get; set; }
         public string type { get; set; }
+        public Color color { get; set; }
 
         public Investment() { }
 
