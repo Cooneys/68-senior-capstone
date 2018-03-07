@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:App5"
-             x:Class="App5.MainPage">
+             x:Class="App5.MainPage"
+             BackgroundColor="WhiteSmoke">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New Portfolio" Clicked="OnNewPortfolioButtonClicked" />
@@ -10,19 +11,31 @@
 
     <ContentPage.Content>
 
-        <StackLayout>
+        <Grid>
             <!--<Button x:Name="Btn_Signin" Text="Sign in" Clicked="PageFetchPortfolios"/>-->
-
-            <ListView x:Name="portfolioListView" ItemSelected="OnItemSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding TotalValue}" TextColor="Black"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-
-
-        </ListView>
-        </StackLayout>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <ListView x:Name="portfolioListView" ItemSelected="OnItemSelected" Margin="10" Grid.Row="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--TextCell Text="{Binding Name}" Detail="{Binding TotalValue}" TextColor="Black"/!-->
+                        <ViewCell>
+                            <StackLayout BackgroundColor="White" Orientation="Vertical" Margin="10, 1, 10, 1">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Name}"/>
+                                        <Label Text="{Binding TotalValue}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Log Out" Clicked="OnLogOutButtonClicked"/>
+        </Grid>
     </ContentPage.Content>
 
 </ContentPage>

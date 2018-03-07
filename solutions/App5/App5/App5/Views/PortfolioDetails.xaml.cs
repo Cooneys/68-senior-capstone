@@ -25,6 +25,7 @@ namespace App5.Views
 
         public PortfolioDetails (Portfolio selectedPortfolio)
 		{
+            Title = selectedPortfolio.Name;
             PieModel = CreatePieChart();
             InitializeComponent ();
             //PieModel = CreatePieChart();
@@ -44,7 +45,6 @@ namespace App5.Views
             
             if (investmentList != null)
             {
-                int n = 200 / investmentList.Count;
                 for (var i = 0; i < investmentList.Count; i++)
                 {
                     Debug.WriteLine(investmentList[i].numberofshares);
@@ -52,6 +52,7 @@ namespace App5.Views
                     float tempvalue = investmentList[i].numberofshares; //*price purchased ;
                     Debug.WriteLine("test");
                     Debug.WriteLine(tempvalue);
+                    int n = 200 / investmentList.Count;
                     investmentList[i].color = CustColors.grabColor(i * n);
 
                     //Temp solution for dynamically making colors. This should be improved and moved to its own class or function
@@ -59,7 +60,7 @@ namespace App5.Views
                     Microcharts.Entry tempEntry = new Microcharts.Entry(tempvalue)
                     {
                         Label = investmentList[i].tickersymbol,
-                        Color = CustColors.grabColor(i*n).ToSKColor()
+                        Color = investmentList[i].color.ToSKColor()
                     };
                     entries.Add(tempEntry);
                 }

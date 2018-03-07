@@ -59,12 +59,14 @@ namespace App5.Views
             //var signUpSucceeded = AreDetailsValid(user);
 
             var rootPage = Navigation.NavigationStack.FirstOrDefault();
-                if (rootPage != null)
-                {
-                    Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
-                    await Navigation.PopToRootAsync();
-                }
+            if (rootPage != null)
+            {
+                Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
+                await Navigation.PopToRootAsync();
+            }
             //await Navigation.PushAsync(new MainPage());
         }
+
+        protected override async 
 	}
 }

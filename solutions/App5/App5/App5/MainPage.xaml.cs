@@ -23,8 +23,9 @@ namespace App5
         string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/UsersPortfoliosView";
         public MainPage()
 		{
+            Title = "Welcome, " + App.currentUser.Username;
 
-			InitializeComponent();
+            InitializeComponent();
             //TestLabel.Text = App.currentUser.Username;
 
             //TestLabel.Text = portfolioList[0].Name;
