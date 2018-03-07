@@ -16,7 +16,7 @@
             <ListView x:Name="portfolioListView" ItemSelected="OnItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding TotalValue}"/>
+                    <TextCell Text="{Binding Name}" Detail="{Binding TotalValue}" TextColor="Black"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
 

@@ -19,7 +19,7 @@ namespace App5.Views
     public partial class PortfolioDetails : ContentPage
     {
         Data.RestService restService = new Data.RestService();
-        List<Microcharts.Entry> entires = new List<Microcharts.Entry>
+        List<Microcharts.Entry> entries = new List<Microcharts.Entry>
         {
 
             new Microcharts.Entry(200)
@@ -53,6 +53,8 @@ namespace App5.Views
             App.currentPortfolio = selectedPortfolio;
             //MyChart.Chart = new DonutChart() { Entries = entires };
             GetPortfolioDetails();
+            var chart = new PieChart() { Entries = entries };
+            this.chartView.Chart = chart;
 		}
 
         public async void GetPortfolioDetails()

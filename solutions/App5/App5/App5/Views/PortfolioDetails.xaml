@@ -3,24 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
-             x:Class="App5.Views.PortfolioDetails">
-
+             x:Class="App5.Views.PortfolioDetails"
+             BackgroundColor="WhiteSmoke">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Investment to Portfolio" Clicked="OnInvestmentButtonClicked" />
+        <ToolbarItem Text="Add Asset" Clicked="OnInvestmentButtonClicked" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
+        <Grid>
             <!--<Button x:Name="Btn_Signin" Text="Sign in" Clicked="GetPortfolioDetails"/>-->
-            <ListView x:Name="investmentListView">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="35*"/>
+            </Grid.RowDefinitions>
+            <microcharts:ChartView x:Name="chartView" Grid.Row="0" Margin="20, 20, 20, 5"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="35*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Placeholder: $10" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="Placeholder: $10" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="Placeholder: $10" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="Placeholder: $10" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="Placeholder: $10" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="Placeholder: $10" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+            <ListView x:Name="investmentListView" Grid.Row="2">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding tickersymbol}" Detail="{Binding numberofshares}"/>
+                        <!--TextCell Text="{Binding tickersymbol}" Detail="{Binding numberofshares}" TextColor="Black"/!-->
+                        <ViewCell>
+                            <StackLayout BackgroundColor="White" Orientation="Vertical" Margin="10, 1, 10, 1">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame Padding="10" BackgroundColor="Blue"/>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding tickersymbol}"/>
+                                        <Label Text="{Binding numberofshares}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <oxy:PlotView Model="{Binding PieModel}" />
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
