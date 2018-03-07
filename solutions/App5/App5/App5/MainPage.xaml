@@ -34,7 +34,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Log Out" Clicked="OnLogOutButtonClicked"/>
+            <!--Button Text="Log Out" Clicked="OnLogOutButtonClicked"/!-->
         </Grid>
     </ContentPage.Content>
 

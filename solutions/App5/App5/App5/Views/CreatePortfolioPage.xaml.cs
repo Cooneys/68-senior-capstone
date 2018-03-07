@@ -67,6 +67,6 @@ namespace App5.Views
             //await Navigation.PushAsync(new MainPage());
         }
 
-        protected override async 
+        //protected override async 
 	}
 }
