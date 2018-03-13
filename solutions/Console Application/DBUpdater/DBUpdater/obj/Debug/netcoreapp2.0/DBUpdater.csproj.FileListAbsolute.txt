@@ -1,0 +1,11 @@
+/Users/richard/Documents/tyler_folder/DBUpdater/DBUpdater/bin/Debug/netcoreapp2.0/DBUpdater.deps.json
+/Users/richard/Documents/tyler_folder/DBUpdater/DBUpdater/bin/Debug/netcoreapp2.0/DBUpdater.runtimeconfig.json
+/Users/richard/Documents/tyler_folder/DBUpdater/DBUpdater/bin/Debug/netcoreapp2.0/DBUpdater.runtimeconfig.dev.json
+/Users/richard/Documents/tyler_folder/DBUpdater/DBUpdater/bin/Debug/netcoreapp2.0/DBUpdater.dll
+/Users/richard/Documents/tyler_folder/DBUpdater/DBUpdater/bin/Debug/netcoreapp2.0/DBUpdater.pdb
+/Users/richard/Documents/tyler_folder/DBUpdater/DBUpdater/obj/Debug/netcoreapp2.0/DBUpdater.csprojResolveAssemblyReference.cache
+/Users/richard/Documents/tyler_folder/DBUpdater/DBUpdater/obj/Debug/netcoreapp2.0/DBUpdater.csproj.CoreCompileInputs.cache
+/Users/richard/Documents/tyler_folder/DBUpdater/DBUpdater/obj/Debug/netcoreapp2.0/DBUpdater.AssemblyInfoInputs.cache
+/Users/richard/Documents/tyler_folder/DBUpdater/DBUpdater/obj/Debug/netcoreapp2.0/DBUpdater.AssemblyInfo.cs
+/Users/richard/Documents/tyler_folder/DBUpdater/DBUpdater/obj/Debug/netcoreapp2.0/DBUpdater.dll
+/Users/richard/Documents/tyler_folder/DBUpdater/DBUpdater/obj/Debug/netcoreapp2.0/DBUpdater.pdb
