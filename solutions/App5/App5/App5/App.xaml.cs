@@ -16,6 +16,7 @@ namespace App5
 
         public static User currentUser { get; set; }
         public static Portfolio currentPortfolio { get; set; }
+        public static Investment currentInvestment { get; set; }
         public static bool IsUserLoggedIn { get; set; }
 
 		public App ()

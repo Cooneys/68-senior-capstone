@@ -15,8 +15,8 @@
             <!--<Button x:Name="Btn_Signin" Text="Sign in" Clicked="GetPortfolioDetails"/>-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="45*"/>
-                <RowDefinition Height="18*"/>
-                <RowDefinition Height="37*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="46*"/>
             </Grid.RowDefinitions>
             <Frame HasShadow="True" Margin="20, 20, 20, 5" Grid.Row="0">
                 <microcharts:ChartView x:Name="chartView"/>
@@ -35,9 +35,6 @@
                 <Label Text="Placeholder: $10" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Label Text="Placeholder: $10" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Label Text="Placeholder: $10" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label Text="Placeholder: $10" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label Text="Placeholder: $10" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label Text="Placeholder: $10" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
             </Grid>
             <ListView x:Name="investmentListView" Grid.Row="2">
                 <ListView.ItemTemplate>
