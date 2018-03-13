@@ -26,7 +26,7 @@ namespace App5.Views
         public PortfolioDetails (Portfolio selectedPortfolio)
 		{
             Title = selectedPortfolio.Name;
-            PieModel = CreatePieChart();
+            //PieModel = CreatePieChart();
             InitializeComponent ();
             //PieModel = CreatePieChart();
             App.currentPortfolio = selectedPortfolio;
@@ -64,9 +64,16 @@ namespace App5.Views
                     };
                     entries.Add(tempEntry);
                 }
-		    var chart = new DonutChart() { Entries = entries };
+                var chart = new DonutChart() { Entries = entries };
                 this.chartView.Chart = chart;
                 investmentListView.ItemsSource = investmentList;
+                investmentListView.ItemTapped += async (sender, args) =>
+                {
+                    var item = args.Item as Investment;
+                    if (item == null) return;
+                    await Navigation.PushAsync(new AssetDetails(item));
+                    investmentListView.SelectedItem = null;
+                };
             }
             else
             {
@@ -79,6 +86,7 @@ namespace App5.Views
             await Navigation.PushAsync(new AddInvestmenttoPortfolio());
         }
 
+        /*
         private PlotModel CreatePieChart()
         {
             var model = new PlotModel { Title = "World population by continent" };
@@ -101,5 +109,6 @@ namespace App5.Views
             model.Series.Add(ps);
             return model;
         }
+        */
     }
 }

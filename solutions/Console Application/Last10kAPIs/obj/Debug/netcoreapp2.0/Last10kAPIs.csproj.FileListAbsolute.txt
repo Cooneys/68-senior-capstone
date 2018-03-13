@@ -1,0 +1,11 @@
+/Users/avisinha/Projects/Last10kAPIs/Last10kAPIs/obj/Debug/netcoreapp2.0/Last10kAPIs.csprojResolveAssemblyReference.cache
+/Users/avisinha/Projects/Last10kAPIs/Last10kAPIs/obj/Debug/netcoreapp2.0/Last10kAPIs.csproj.CoreCompileInputs.cache
+/Users/avisinha/Projects/Last10kAPIs/Last10kAPIs/obj/Debug/netcoreapp2.0/Last10kAPIs.AssemblyInfoInputs.cache
+/Users/avisinha/Projects/Last10kAPIs/Last10kAPIs/obj/Debug/netcoreapp2.0/Last10kAPIs.AssemblyInfo.cs
+/Users/avisinha/Projects/Last10kAPIs/Last10kAPIs/bin/Debug/netcoreapp2.0/Last10kAPIs.deps.json
+/Users/avisinha/Projects/Last10kAPIs/Last10kAPIs/bin/Debug/netcoreapp2.0/Last10kAPIs.runtimeconfig.json
+/Users/avisinha/Projects/Last10kAPIs/Last10kAPIs/bin/Debug/netcoreapp2.0/Last10kAPIs.runtimeconfig.dev.json
+/Users/avisinha/Projects/Last10kAPIs/Last10kAPIs/bin/Debug/netcoreapp2.0/Last10kAPIs.dll
+/Users/avisinha/Projects/Last10kAPIs/Last10kAPIs/bin/Debug/netcoreapp2.0/Last10kAPIs.pdb
+/Users/avisinha/Projects/Last10kAPIs/Last10kAPIs/obj/Debug/netcoreapp2.0/Last10kAPIs.dll
+/Users/avisinha/Projects/Last10kAPIs/Last10kAPIs/obj/Debug/netcoreapp2.0/Last10kAPIs.pdb
