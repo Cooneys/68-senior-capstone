@@ -6,7 +6,7 @@ namespace DBUpdater
 {
     public class DBConnect
     {
-        private MySqlConnection connection;
+        public MySqlConnection connection;
         private string server;
         private string database;
         private string uid;
@@ -23,8 +23,9 @@ namespace DBUpdater
             password = "HYv5EsultqYNRbP0";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";" + "Connection Timeout=60" + ";" + "Command Timeout=60" + ";";
 
+            Console.Write(connectionString);
             connection = new MySqlConnection(connectionString);
         }
 
@@ -67,7 +68,7 @@ namespace DBUpdater
             }
             catch (MySqlException ex)
             {
-                Console(ex.Message);
+                Console.Write(ex.Message);
                 return false;
             }
         }
@@ -118,10 +119,13 @@ namespace DBUpdater
             List<string> list = new List<string>();
 
             //Open connection
-            if (this.OpenConnection() == true)
-            {
-                //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+            /*if (this.OpenConnection() == true)
+            {*/
+            //Create Command
+            //connection.ConnectionTimeout = int.MaxValue;
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.CommandTimeout = int.MaxValue;
                 //Create a data reader and Execute the command
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 Console.Write("here1");
@@ -141,12 +145,12 @@ namespace DBUpdater
 
                 //return list to be displayed
                 return list;
-            }
+            /*}
             else
             {
                 Console.Write("there");
                 return list;
-            }
+            }*/
         }
     }
 }
