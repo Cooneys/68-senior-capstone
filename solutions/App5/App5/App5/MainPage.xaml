@@ -6,7 +6,7 @@
              BackgroundColor="WhiteSmoke">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New Portfolio" Clicked="OnNewPortfolioButtonClicked" />
+        <ToolbarItem Text="New Portfolio" Clicked="OnNewPortfolioButtonClicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -17,19 +17,21 @@
                 <RowDefinition Height="90*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            <ListView x:Name="portfolioListView" ItemSelected="OnItemSelected" Margin="10" Grid.Row="0">
+            <ListView x:Name="portfolioListView" ItemSelected="OnItemSelected" Margin="10, 10, 10, 10" Grid.Row="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <!--TextCell Text="{Binding Name}" Detail="{Binding TotalValue}" TextColor="Black"/!-->
                         <ViewCell>
-                            <StackLayout BackgroundColor="White" Orientation="Vertical" Margin="10, 1, 10, 1">
-                                <StackLayout Orientation="Horizontal">
-                                    <StackLayout Orientation="Vertical">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding TotalValue}"/>
+                            <Frame Padding="0" CornerRadius="1" BackgroundColor="White" Margin="0, 1, 0, 1">
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding Name}"/>
+                                            <Label Text="{Binding TotalValue}"/>
+                                        </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

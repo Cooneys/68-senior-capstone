@@ -18,42 +18,49 @@
                 <RowDefinition Height="9*"/>
                 <RowDefinition Height="46*"/>
             </Grid.RowDefinitions>
-            <Frame HasShadow="True" Margin="20, 20, 20, 5" Grid.Row="0">
+            <Frame HasShadow="True" Margin="10, 10, 10, 5" Grid.Row="0">
                 <microcharts:ChartView x:Name="chartView"/>
             </Frame>
             
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50*"/>
-                    <RowDefinition Height="50*"/>
-                </Grid.RowDefinitions>
+            <Grid Grid.Row="1" Margin="10, 0, 10, 0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="33*"/>
+                    <ColumnDefinition Width="34*"/>
+                    <ColumnDefinition Width="33*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="Placeholder: $10" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label Text="Placeholder: $10" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label Text="Placeholder: $10" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Frame CornerRadius="1" HasShadow="True" Padding="0" BackgroundColor="White" Grid.Column="0">
+                    <Label Text="Sharp Ratio: .8346" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Frame>
+                <Frame CornerRadius="1" HasShadow="True" Padding="0" BackgroundColor="White" Grid.Column="1">
+                    <Label Text="Returns: $0" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                </Frame>
+                <Frame CornerRadius="1" HasShadow="True" Padding="0" BackgroundColor="White" Grid.Column="2">
+                    <Label Text="Alpha: 1.2%" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Frame>
             </Grid>
-            <ListView x:Name="investmentListView" Grid.Row="2">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <!--TextCell Text="{Binding tickersymbol}" Detail="{Binding numberofshares}" TextColor="Black"/!-->
-                        <ViewCell>
-                            <StackLayout BackgroundColor="White" Orientation="Vertical" Margin="10, 1, 10, 1">
-                                <StackLayout Orientation="Horizontal">
-                                    <Frame Padding="10" BackgroundColor="{Binding color}"/>
-                                    <StackLayout Orientation="Vertical">
-                                        <Label Text="{Binding tickersymbol}"/>
-                                        <Label Text="{Binding numberofshares}"/>
+
+            <Frame Grid.Row="2" Margin="10, 4, 10, 0" HasShadow="True" Padding="0">
+                <ListView x:Name="investmentListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <!--TextCell Text="{Binding tickersymbol}" Detail="{Binding numberofshares}" TextColor="Black"/!-->
+                            <ViewCell>
+                                <Frame Padding="0" HasShadow="True" CornerRadius="1" Margin="0, 1, 0, 1">
+                                    <StackLayout BackgroundColor="White" Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Frame Padding="10" BackgroundColor="{Binding color}"/>
+                                            <StackLayout Orientation="Vertical">
+                                                <Label Text="{Binding tickersymbol}"/>
+                                                <Label Text="{Binding numberofshares}"/>
+                                            </StackLayout>
+                                        </StackLayout>
                                     </StackLayout>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
             <!--oxy:PlotView Model="{Binding PieModel}" /!-->
         </Grid>
     </ContentPage.Content>

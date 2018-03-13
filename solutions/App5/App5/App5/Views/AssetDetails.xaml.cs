@@ -28,7 +28,6 @@ namespace App5.Views
             this.FindByName<Label>("investmentName").Text = App.currentInvestment.tickersymbol;
             this.FindByName<Label>("investmentCount").Text = App.currentInvestment.numberofshares.ToString();
             this.FindByName<Label>("investmentPrice").Text = App.currentInvestment.pricepurchased.ToString();
-            this.FindByName<Label>("investmentType").Text = App.currentInvestment.type;
         }
     }
 }
