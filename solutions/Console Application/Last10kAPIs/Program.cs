@@ -1,45 +1,90 @@
-﻿using System;
-using System.Net.Http.Headers;
-using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
 using System.Net.Http;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Last10kAPIs
 {
-    static class Program
+    class Program
     {
-        static void Main()
+
+        private static List<string> data;
+        private static List<string> datalist;
+
+        public class inventoryturnover
         {
-            MakeRequest();
-            Console.WriteLine("Hit ENTER to exit...");
-            Console.ReadLine();
-            Console.WriteLine("Json data........");
-            Console.ReadLine();
+            [JsonProperty(PropertyName = "Name")]
+            public string name { get; set; }
+            [JsonProperty(PropertyName = "Historical")]
+            public Dictionary<DateTime, float> historical { get; set; }
+            [JsonProperty(PropertyName = "Recent")]
+            public Dictionary<string, float> recent { get; set; }
+
+
+            public class Ratios
+            {
+                [JsonProperty(PropertyName = "InventoryTurnover")]
+                public inventoryturnover inventory { get; set; }
+            }
+
+
+            static void Main(string[] args)
+            {
+                Task T = new Task(GetRatio);
+                T.Start();
+                Console.WriteLine("Financial Ratios for ROA, ROE, EBITDA Margin, Inventory Turnover, and others ");
+                Console.ReadLine();
+            }
+
+
+            static async void GetRatio()
+            {   
+                var client = new HttpClient();
+                var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+                using (client)
+                {
+                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "ced63a48eaa34a288772c71c62da184a");
+                    HttpResponseMessage response = await client.GetAsync("https://services.last10k.com/v1/company/AAPL/ratios");
+
+                    response.EnsureSuccessStatusCode();
+
+                    Ratios R = new Ratios();
+                    inventoryturnover I = new inventoryturnover();
+
+
+
+                    using (HttpContent content = response.Content)
+                    {
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        //Console.WriteLine(responseBody);
+
+
+                        var articles = JsonConvert.DeserializeObject<dynamic>(responseBody);
+                        I.name = articles.InventoryTurnover.Name;
+                        I.historical = articles.InventoryTurnover.Historical;
+
+
+                            Console.WriteLine(I.name);
+
+                        //foreach (KeyValuePair<DateTime, float> kvp in Dictionary) ;
+                        //Console.WriteLine(articles.InventoryTurnover.Historical[0]);
+                            //data.Add(Emp.datasymbol);
+
+
+                    }
+
+                }
+            }
+
+
+
+
         }
-        
-        static async void MakeRequest()
-        {
-            var client = new HttpClient();
-            var queryString = HttpUtility.ParseQueryString(string.Empty);
-
-            // Request headers
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "ced63a48eaa34a288772c71c62da184a");
-
-            // Request parameters
-            queryString["formType"] = "10-K";
-            queryString["filingOrder"] = "0";
-            var uri1 = "https://services.last10k.com/v1/company/{ticker}/balancesheet?" + queryString;
-            var uri2 = "https://services.last10k.com/v1/company/{ticker}/income?" + queryString;
-            var uri3 = "https://services.last10k.com/v1/company/{ticker}/cashflows?" + queryString;
-            var uri4 = "https://services.last10k.com/v1/company/{ticker}/ratios?" + queryString;
-            var uri5 = "https://services.last10k.com/v1/company/{ticker}/operations?" + queryString;
 
 
-            var response1 = await client.GetAsync(uri1);
-            var response2 = await client.GetAsync(uri2);
-            var response3 = await client.GetAsync(uri3);
-            var response4 = await client.GetAsync(uri4);
-            var response5 = await client.GetAsync(uri5);
-        }
     }
-}   
+}
