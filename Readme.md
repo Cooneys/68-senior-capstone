@@ -9,3 +9,10 @@ Avi calculations for creating the 7 pieces from the api calls
 
 Finished - Sam create the spots in the UI to hold the 7 pieces on each individual assets and page navigation to access new information
 
+
+
+Tyler: Establish pricing data into the database, sharp ratio r^2 and alpha as well
+
+Avi: Balance sheet income statement and cash flow parsing and finishing the calculation and classes for freecash to equity, return on common equity, and bet server coverage.
+
+Sam: Deleting investments and portfolios as well as working with tyler to get the pricing data represented properly.
