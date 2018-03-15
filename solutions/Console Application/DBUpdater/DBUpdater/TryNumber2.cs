@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Avapi.AvapiTIME_SERIES_MONTHLY_ADJUSTED;
+using Avapi;
+using System.Globalization;
 
 namespace IPMAConsole
 {
@@ -378,6 +381,131 @@ namespace IPMAConsole
 
         }
 
+        static async void SharpeRatioCalculator(string ticker)
+        {
+            // Creating the connection object
+            List<string> tickers = new List<string>();
+            using (var client = new HttpClient())
+            {
+                //List<string> tickers = new List<string>();
+                HttpResponseMessage response = await client.GetAsync("https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + ticker + "&apikey=7NIMRBR8G8UB7P8C");
+
+                response.EnsureSuccessStatusCode();
+                Console.WriteLine("here");
+
+                using (HttpContent content = response.Content)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+
+
+                    var jObj = JObject.Parse(responseBody);
+                    var metadata = jObj["Meta Data"].ToObject<Dictionary<string, string>>();
+                    var timeseries = jObj["Monthly Adjusted Time Series"].ToObject<Dictionary<string, Dictionary<string, string>>>();
+
+                    Console.WriteLine(timeseries);
+
+                    //var articles = JsonConvert.DeserializeObject<dynamic>(responseBody);
+
+                    //articles.Monthly
+
+                    //foreach (var Emp in articles)
+                    //{
+
+                    //tickers.Add(Emp.tickersymbol);
+
+
+                    //}
+
+                }
+
+            }
+
+        }
+
+        static async Task<decimal> GetYearlyAverageStockPrice(string ticker)
+
+
+        {
+            List<decimal> priceslastyear = new List<decimal>();
+            // Creating the connection object
+            IAvapiConnection connection = AvapiConnection.Instance;
+            IAvapiResponse_TIME_SERIES_MONTHLY_ADJUSTED m_time_series_monthly_adjustedResponse;
+
+            // Set up the connection and pass the API_KEY provided by alphavantage.co
+            connection.Connect("7NIMRBR8G8UB7P8C");
+
+            // Get the TIME_SERIES_MONTHLY_ADJUSTED query object
+            Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted =
+                connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();
+
+            // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
+            m_time_series_monthly_adjustedResponse = await time_series_monthly_adjusted.QueryPrimitiveAsync(
+                 ticker);
+
+            // Printout the results
+            //Console.WriteLine("******** RAW DATA TIME_SERIES_MONTHLY_ADJUSTED ********");
+            //Console.WriteLine(m_time_series_monthly_adjustedResponse.RawData);
+
+            Console.WriteLine("******** STRUCTURED DATA TIME_SERIES_MONTHLY_ADJUSTED ********");
+            var data = m_time_series_monthly_adjustedResponse.Data;
+            if (data.Error)
+            {
+                Console.WriteLine(data.ErrorMessage);
+                return 0;
+            }
+            else
+            {
+                /*Console.WriteLine("Information: " + data.MetaData.Information);
+                Console.WriteLine("Symbol: " + data.MetaData.Symbol);
+                Console.WriteLine("LastRefreshed: " + data.MetaData.LastRefreshed);
+                Console.WriteLine("TimeZone: " + data.MetaData.TimeZone);
+                Console.WriteLine("========================");
+                Console.WriteLine("========================");*/
+
+                int counter = 0;
+                foreach (var timeseries in data.TimeSeries)
+                {
+                    if (counter < 12)
+                    {
+                        /*Console.WriteLine("open: " + timeseries.open);
+                        Console.WriteLine("high: " + timeseries.high);
+                        Console.WriteLine("low: " + timeseries.low);
+                        Console.WriteLine("close: " + timeseries.close);
+                        Console.WriteLine("adjustedclose: " + timeseries.adjustedclose);
+                        Console.WriteLine("volume: " + timeseries.volume);
+                        Console.WriteLine("dividendamount: " + timeseries.dividendamount);
+                        Console.WriteLine("DateTime: " + timeseries.DateTime);
+                        Console.WriteLine("========================");*/
+
+                        priceslastyear.Add(decimal.Parse(timeseries.adjustedclose, CultureInfo.InvariantCulture.NumberFormat));
+                        counter = counter + 1;
+                    }
+                }
+
+                decimal averager = 0;
+
+                for (var i = 0; i < priceslastyear.Count; i++)
+                {
+                    //Console.WriteLine(monthprice);
+                    averager = averager + priceslastyear[i];
+                }
+
+                averager = averager / 12;
+
+                decimal lastmeasuredprice = priceslastyear[0];
+                decimal percentchange = ((lastmeasuredprice - averager) / averager) * 100;
+                //Console.WriteLine("====================");
+                //Console.WriteLine(ticker);
+                //Console.WriteLine(averager / 12);
+                return (percentchange);
+
+
+
+            }
+        }
+
+
+
         static private async Task RunAsync()
         {
             //Grab our ticker List
@@ -385,13 +513,25 @@ namespace IPMAConsole
             tickers = await GetTickers();
 
             //Grab ratios for all companies in ticker list and store the results in a list of Ratios
-            List<Ratios> ratiosfortickers = new List<Ratios>();
+
+
+            /*List<Ratios> ratiosfortickers = new List<Ratios>();
             foreach(string ticker in tickers)
             {
                 Ratios tempRatio = new Ratios();
                 tempRatio = await GetRatio(ticker);
                 ratiosfortickers.Add(tempRatio);
+            }*/
+
+            //Grab yearly average returns for the companies for calculating sharperatio
+            List<decimal> yearlyaveragereturns = new List<decimal>();
+            foreach(string ticker in tickers)
+            {
+                Console.Write("here");
+                decimal averagereturnsinglecompany = await GetYearlyAverageStockPrice(ticker);
+                yearlyaveragereturns.Add(averagereturnsinglecompany);
             }
+            //GetYearlyAverageStockPrice("MSFT");
 
 
         }
