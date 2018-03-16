@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Avapi.AvapiTIME_SERIES_MONTHLY_ADJUSTED;
 using Avapi;
 using System.Globalization;
+using System.Linq;
+using System.Net;
+using System.Collections.Specialized;
 
 namespace IPMAConsole
 {
@@ -22,6 +25,7 @@ namespace IPMAConsole
         //[JsonProperty(PropertyName = "Name")]
         public string name { get; set; }
         public List<Investment> contents { get; set; }
+        public int totalvalue { get; set; }
 
         public bool Equals(Portfolio obj)
         {
@@ -136,14 +140,16 @@ namespace IPMAConsole
             Console.ReadLine();
         }
 
-        static async void FetchTickers()
+        /*static async void FetchTickers()
         {
-            var client = new HttpClient();
-            List<string> tickerList = new List<string>();
-            string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/Investments";
+             WebClient client = new WebClient();
+            Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/SignUp.php");
 
-            string content = await client.GetStringAsync(Url);
-            JArray tickerlistC = JArray.Parse(content);
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("username", user.Username);
+            parameters.Add("password", user.Password);
+
+            client.UploadValuesAsync(uri, parameters);
 
 
             if (tickerlistC.Count == 0)
@@ -170,7 +176,7 @@ namespace IPMAConsole
 
             }
 
-        }
+        }*/
         static async Task<List<string>> GetTickers()
         {
             List<string> tickers = new List<string>();
@@ -580,6 +586,7 @@ namespace IPMAConsole
                     List<Investment> portfoliocontents = new List<Investment>();
                     Investment tempinvestment = new Investment();
                     tempportfolio.name = (string)portfoliolistC[i]["portfolioname"];
+                    //tempportfolio.totalvalue = (int)portfoliolistC[i]["totalvalue"];
                     tempportfolio.contents = portfoliocontents;
                     if (!portfolioList.Contains(tempportfolio))
                     {
@@ -587,10 +594,12 @@ namespace IPMAConsole
                         tempinvestment.tickersymbol = (string)portfoliolistC[i]["tickersymbol"];
                         tempinvestment.numshares = (int)portfoliolistC[i]["numshares"];
                         tempinvestment.purchaseprice = (int)portfoliolistC[i]["pricepurchased"];
+                        
 
 
                         tempportfolio.contents.Add(tempinvestment);
-                       // Console.WriteLine((string)portfoliolistC[i]["tickersymbol"]);
+                        //tempportfolio.totalvalue = (int)portfoliolistC[i]["totalvalue"];
+                        //Console.WriteLine(tempportfolio.totalvalue);
                         portfolioList.Add(tempportfolio);
                     }
                     else
@@ -604,6 +613,8 @@ namespace IPMAConsole
                                 tempinvestment.tickersymbol = (string)portfoliolistC[i]["tickersymbol"];
                                 tempinvestment.numshares = (int)portfoliolistC[i]["numshares"];
                                 tempinvestment.purchaseprice = (int)portfoliolistC[i]["pricepurchased"];
+
+                               
 
                                 portfolioList[j].contents.Add(tempinvestment);
                             }
@@ -630,6 +641,21 @@ namespace IPMAConsole
 
             }
 
+        }
+
+        static async void UploadSharpeRatio(string portfolioname, double sharperatio)
+        {
+            WebClient client = new WebClient();
+            Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/UploadSharpeRatio.php");
+
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("portfolioname", portfolioname);
+            parameters.Add("sharperatio", sharperatio.ToString());
+
+            client.UploadValuesAsync(uri, parameters);
+            Console.WriteLine(sharperatio.ToString());
+            Console.WriteLine(portfolioname);
+            Console.WriteLine("Data Added");
         }
 
 
@@ -660,6 +686,15 @@ namespace IPMAConsole
                 SharpeRatios.Add(SharpeRatioForcompany);
             }
 
+            var ExpectedReturnOfCompanies = tickers.Zip(SharpeRatios, (k, v) => new { k, v })
+              .ToDictionary(x => x.k, x => x.v);
+        
+            foreach (KeyValuePair<string, double> kvp in ExpectedReturnOfCompanies)
+            {
+                //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                Console.Write(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
+            }
+
             List<Portfolio> portfolioList = new List<Portfolio>();
             portfolioList = await FetchPortfoliosandContents();
 
@@ -668,18 +703,34 @@ namespace IPMAConsole
             //1) Calculate the Expected Return of the Portfolio based on weighted average of the
             // expected return of the investments within it. Make a list to store the expected return for all of our returned portfolios
 
-            List<double> ExpectedReturnPortfolioList = new List<double>();
+            Dictionary<string, double> ExpectedReturnPortfolioList = new Dictionary<string, double>();
             double weights = 0;
-
+            double tempsum = 0;
+            
+            //Need to do this for each portfolio
             for (var i = 0; i<portfolioList.Count; i++)
             {
+                //Need to do the calculation for each investment in the portfolio
                 for(var j = 0; j <portfolioList[i].contents.Count; j++)
                 {
-                    weights =  portfolioList[i].contents[j].purchaseprice * portfolioList[i].contents[j].numshares;
+                    weights = (portfolioList[i].contents[j].purchaseprice * portfolioList[i].contents[j].numshares);/// portfolioList[i].totalvalue;
+                    //Console.WriteLine(ExpectedReturnOfCompanies[portfolioList[i].contents[j].tickersymbol]);
+                    tempsum = tempsum + (weights* ExpectedReturnOfCompanies[portfolioList[i].contents[j].tickersymbol]);
                 }
+                //Console.WriteLine("ahasdfhasdfasdf");
+                ExpectedReturnPortfolioList.Add(portfolioList[i].name, tempsum);
             }
-            
+            foreach (KeyValuePair<string, double> kvp in ExpectedReturnPortfolioList)
+            {
+                //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                Console.Write(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
+            }
 
+            //Upload the SharpeRatios to our database!
+            foreach(KeyValuePair<string, double> kvp in ExpectedReturnPortfolioList)
+            {
+                UploadSharpeRatio(kvp.Key, kvp.Value);
+            }
 
         }
 
