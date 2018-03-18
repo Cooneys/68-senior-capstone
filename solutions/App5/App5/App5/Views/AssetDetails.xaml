@@ -2,10 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App5.Views.AssetDetails"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
-        <StackLayout Margin="10">
-            <Frame BackgroundColor="White">
+        <microcharts:ChartView x:Name="chartView"/>
+        <!--<StackLayout Margin="10">-->
+            
+            
+                <!--<microcharts:ChartView x:Name="chartView"/>-->
+            
+            
+            <!--<Frame BackgroundColor="White">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Ticker Symbol: " VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Label x:Name="investmentName" VerticalOptions="Center" HorizontalOptions="Start"/>
@@ -69,7 +76,7 @@
                     <Label x:Name="eBITM" VerticalOptions="Center" HorizontalOptions="Start"/>
 
                 </StackLayout>
-            </Frame>
-        </StackLayout>
+            </Frame>-->
+        <!--</StackLayout>-->
     </ContentPage.Content>
 </ContentPage>
