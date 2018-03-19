@@ -7,7 +7,8 @@
              BackgroundColor="WhiteSmoke">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Asset" Clicked="OnInvestmentButtonClicked" />
+        <ToolbarItem Icon="ic_add_circle_outline_white_24dp.png" Clicked="OnInvestmentButtonClicked" />
+        <ToolbarItem Icon="ic_delete_forever_white_24dp.png" Clicked="OnTrashButtonClicked" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -18,7 +19,7 @@
                 <RowDefinition Height="9*"/>
                 <RowDefinition Height="46*"/>
             </Grid.RowDefinitions>
-            <Frame HasShadow="True" Margin="10, 10, 10, 5" Grid.Row="0">
+            <Frame HasShadow="True" Margin="10, 10, 10, 5" Grid.Row="0" Padding="10">
                 <microcharts:ChartView x:Name="chartView"/>
             </Frame>
             

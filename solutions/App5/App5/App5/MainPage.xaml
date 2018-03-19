@@ -6,7 +6,7 @@
              BackgroundColor="WhiteSmoke">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New Portfolio" Clicked="OnNewPortfolioButtonClicked"/>
+        <ToolbarItem Icon="ic_add_circle_outline_white_24dp.png" Clicked="OnNewPortfolioButtonClicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

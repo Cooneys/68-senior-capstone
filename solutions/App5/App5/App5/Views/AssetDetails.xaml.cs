@@ -28,6 +28,20 @@ namespace App5.Views
             GetAssetDetails();
         }
 
+        async void OnInvestmentButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddMoreAsset());
+        }
+
+        async void OnTrashButtonClicked(object sender, EventArgs e)
+        {
+            var answer = await DisplayAlert("Delete", "Do you want to delete this Asset?", "Yes", "No");
+            if (answer)
+            {
+
+            }
+        }
+
         private void GetAssetDetails()
         {
             //string iname = this.FindByName<Label>("investmentName").Text;

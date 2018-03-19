@@ -4,79 +4,95 @@
              x:Class="App5.Views.AssetDetails"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              BackgroundColor="WhiteSmoke">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_add_circle_outline_white_24dp.png" Clicked="OnInvestmentButtonClicked" />
+        <ToolbarItem Icon="ic_delete_forever_white_24dp.png" Clicked="OnTrashButtonClicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <microcharts:ChartView x:Name="chartView"/>
-        <!--<StackLayout Margin="10">-->
-            
-            
-                <!--<microcharts:ChartView x:Name="chartView"/>-->
-            
-            
-            <!--<Frame BackgroundColor="White">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Ticker Symbol: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label x:Name="investmentName" VerticalOptions="Center" HorizontalOptions="Start"/>
-                </StackLayout>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="55*"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" CornerRadius="2" HasShadow="True" Padding="10">
+                <microcharts:ChartView x:Name="chartView"/>
             </Frame>
-            
-            <Frame BackgroundColor="White">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Amount Purchased: " VerticalOptions="Center"/>
-                    <Label x:Name="investmentCount" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label Text="  Purchased at the price: " VerticalOptions="Center"/>
-                    <Label x:Name="investmentPrice" VerticalOptions="Center" HorizontalOptions="Start"/>
-                </StackLayout>
-            </Frame>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Frame BackgroundColor="White" CornerRadius="2">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Free Cash Flow To Equity: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label x:Name="freeCFTE" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Frame BackgroundColor="White" CornerRadius="2" Padding="5" Grid.Row="0" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Free Cash Flow To Equity: " VerticalOptions="Center"/>
+                        <Label x:Name="freeCFTE" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+                
+                <Frame BackgroundColor="White" CornerRadius="2" Padding="5" Grid.Row="0" Grid.Column="1">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Return on Assets: " VerticalOptions="Center"/>
+                        <Label x:Name="rOA" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+                
+                <Frame BackgroundColor="White" CornerRadius="2" Padding="5" Grid.Row="1" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Return on Equity: " VerticalOptions="Center"/>
+                        <Label x:Name="rOE" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="2" Padding="5" Grid.Row="1" Grid.Column="1">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Return On Common Equity: " VerticalOptions="Center"/>
+                        <Label x:Name="rOCE" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+                
+                <Frame BackgroundColor="White" CornerRadius="2" Padding="5" Grid.Row="2" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Debt Service Coverage: " VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label x:Name="dSCR" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    </StackLayout>
+                </Frame>
+                
+                <Frame BackgroundColor="White" CornerRadius="2" Padding="5" Grid.Row="2" Grid.Column="1">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="EBIT Margin: " VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label x:Name="eBITM" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    </StackLayout>
+                </Frame>
 
-                </StackLayout>
-            </Frame>
-            <Frame BackgroundColor="White" CornerRadius="2">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Ticker Symbol: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label x:Name="rOA" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Frame BackgroundColor="White" CornerRadius="2" Padding="5" Grid.Row="3" Grid.ColumnSpan="2">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Receivables, Assets, and Inventory Turnover Ratio: " VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label x:Name="rAITR" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    </StackLayout>
+                </Frame>
 
-                </StackLayout>
-            </Frame>
-            <Frame BackgroundColor="White" CornerRadius="2">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Ticker Symbol: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label x:Name="rOE" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Frame BackgroundColor="White" Padding="5" Grid.Row="4" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Amount Purchased: " VerticalOptions="Center"/>
+                        <Label x:Name="investmentCount" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="White" Padding="5" Grid.Row="4"  Grid.Column="1">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="  Purchased at the price: " VerticalOptions="Center"/>
+                        <Label x:Name="investmentPrice" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
 
-                </StackLayout>
-            </Frame>
-            <Frame BackgroundColor="White" CornerRadius="2">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Ticker Symbol: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label x:Name="rOCE" VerticalOptions="Center" HorizontalOptions="Start"/>
-
-                </StackLayout>
-            </Frame>
-            <Frame BackgroundColor="White" CornerRadius="2">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Ticker Symbol: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label x:Name="dSCR" VerticalOptions="Center" HorizontalOptions="Start"/>
-
-                </StackLayout>
-            </Frame>
-            <Frame BackgroundColor="White" CornerRadius="2">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Ticker Symbol: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label x:Name="rAITR" VerticalOptions="Center" HorizontalOptions="Start"/>
-
-                </StackLayout>
-            </Frame>
-            <Frame BackgroundColor="White" CornerRadius="2">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Ticker Symbol: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label x:Name="eBITM" VerticalOptions="Center" HorizontalOptions="Start"/>
-
-                </StackLayout>
-            </Frame>-->
-        <!--</StackLayout>-->
+            </Grid>
+        </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

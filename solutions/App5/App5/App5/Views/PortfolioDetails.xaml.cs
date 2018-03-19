@@ -86,6 +86,15 @@ namespace App5.Views
             await Navigation.PushAsync(new AddInvestmenttoPortfolio());
         }
 
+        async void OnTrashButtonClicked(object sender, EventArgs e)
+        {
+            var answer = await DisplayAlert("Delete", "Do you want to delete this portfolio?", "Yes", "No");
+            if (answer)
+            {
+
+            }
+        }
+
         /*
         private PlotModel CreatePieChart()
         {
