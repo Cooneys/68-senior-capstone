@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SkiaSharp.Views.Forms;
+using Avapi.AvapiTIME_SERIES_DAILY_ADJUSTED;
+using Avapi;
+using System.Globalization;
 
 namespace App5.Views
 {
@@ -42,14 +45,17 @@ namespace App5.Views
             List<Investment> investmentList = investmentListT.Result;
             //var selectedPortfolio = sender as Portfolio;
             //investmentList = restService.FetchPortfolioDetails(App.currentPortfolio);
-            
+            float totalportfoliovalue = 0;
             if (investmentList != null)
             {
                 for (var i = 0; i < investmentList.Count; i++)
                 {
                     Debug.WriteLine(investmentList[i].numberofshares);
                     Debug.WriteLine(investmentList[i].pricepurchased);
-                    float tempvalue = investmentList[i].numberofshares; //*price purchased ;
+                    float recentprice = new float();
+                    recentprice = await GetRecentPricingDataForCompany(investmentList[i].tickersymbol);
+                    float tempvalue = investmentList[i].numberofshares * recentprice;
+                    totalportfoliovalue = totalportfoliovalue + (recentprice * tempvalue);
                     Debug.WriteLine("test");
                     Debug.WriteLine(tempvalue);
                     int n = 200 / investmentList.Count;
@@ -64,6 +70,7 @@ namespace App5.Views
                     };
                     entries.Add(tempEntry);
                 }
+                App.currentPortfolioTotalValue = totalportfoliovalue;
                 var chart = new DonutChart() { Entries = entries };
                 this.chartView.Chart = chart;
                 investmentListView.ItemsSource = investmentList;
@@ -86,14 +93,44 @@ namespace App5.Views
             await Navigation.PushAsync(new AddInvestmenttoPortfolio());
         }
 
-        async void OnTrashButtonClicked(object sender, EventArgs e)
+        async Task<float> GetRecentPricingDataForCompany(string ticker)
         {
-            var answer = await DisplayAlert("Delete", "Do you want to delete this portfolio?", "Yes", "No");
-            if (answer)
+            IAvapiConnection connection = AvapiConnection.Instance;
+            float recentprice = 0;
+            IAvapiResponse_TIME_SERIES_DAILY_ADJUSTED m_time_series_daily_adjustedResponse;
+
+            // Set up the connection and pass the API_KEY provided by alphavantage.co
+            connection.Connect("7NIMRBR8G8UB7P8C");
+
+            // Get the TIME_SERIES_MONTHLY_ADJUSTED query object
+            Int_TIME_SERIES_DAILY_ADJUSTED time_series_daily_adjusted =
+                connection.GetQueryObject_TIME_SERIES_DAILY_ADJUSTED();
+
+            // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
+            m_time_series_daily_adjustedResponse = await time_series_daily_adjusted.QueryAsync(
+                 ticker);
+
+            var data = m_time_series_daily_adjustedResponse.Data;
+            if (data.Error)
+            {
+                Console.WriteLine(data.ErrorMessage);
+            }
+            else
             {
 
+                int counter = 0;
+                foreach (var timeseries in data.TimeSeries)
+                {
+                    if (counter < 1)
+                    {
+                        recentprice = float.Parse(timeseries.adjustedclose, CultureInfo.InvariantCulture.NumberFormat);
+                        Debug.WriteLine(recentprice);
+                    }
+                }
             }
-        }
+
+            return recentprice;
+        } 
 
         /*
         private PlotModel CreatePieChart()
