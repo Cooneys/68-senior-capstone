@@ -9,13 +9,14 @@ using Xamarin.Forms;
 
 namespace App5
 {
-	public partial class App : Application
-	{
+    public partial class App : Application
+    {
 
         static RestService restService;
 
         public static User currentUser { get; set; }
         public static Portfolio currentPortfolio { get; set; }
+        public static float currentPortfolioTotalValue { get; set; }
         public static Investment currentInvestment { get; set; }
         public static bool IsUserLoggedIn { get; set; }
 
