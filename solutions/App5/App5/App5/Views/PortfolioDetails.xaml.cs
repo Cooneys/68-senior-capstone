@@ -93,6 +93,15 @@ namespace App5.Views
             await Navigation.PushAsync(new AddInvestmenttoPortfolio());
         }
 
+        async void OnTrashButtonClicked(object sender, EventArgs e)
+        {
+            var answer = await DisplayAlert("Delete", "Do you want to delete this Portfolio?", "Yes", "No");
+            if (answer)
+            {
+
+            }
+        }
+
         async Task<float> GetRecentPricingDataForCompany(string ticker)
         {
             IAvapiConnection connection = AvapiConnection.Instance;
