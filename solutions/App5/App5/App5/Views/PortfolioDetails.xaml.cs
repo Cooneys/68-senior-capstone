@@ -39,47 +39,34 @@ namespace App5.Views
 
         public async void GetPortfolioDetails()
         {
-
             Task<List<Investment>> investmentListT = restService.FetchPortfolioDetails(App.currentPortfolio);
             await investmentListT;
             //restService.FetchPortfolios(App.currentUser);
             List<Investment> investmentList = investmentListT.Result;
-
-
-            Task<List<CompanyInfo>> companyInfoT = restService.FetchCompanyDetails();
-            await companyInfoT;
-            List<CompanyInfo> companyInfo = companyInfoT.Result;
-
-            //This is a pretty brute force method of doing this, rather than a double for loop can we override equality operator? 
-            //Restructure classes? May be good enough for now
-
-
+            //var selectedPortfolio = sender as Portfolio;
+            //investmentList = restService.FetchPortfolioDetails(App.currentPortfolio);
             float totalportfoliovalue = 0;
             if (investmentList != null)
             {
                 for (var i = 0; i < investmentList.Count; i++)
                 {
-                    Debug.WriteLine(investmentList[i].numberofshares);
-                    Debug.WriteLine(investmentList[i].pricepurchased);
-                    float recentprice = 0;
-                    //float recentprice = new float();
-                    for (var j = 0; j < companyInfo.Count; j++)
-                    {
-                        if (investmentList[i].tickersymbol.Equals(companyInfo[j].tickersymbol))
-                        {
-                            recentprice = (float)companyInfo[i].currentprice;
-                        }
-                    }
-                    //recentprice = await GetRecentPricingDataForCompany(investmentList[i].tickersymbol);
+                    
+                    float recentprice = new float();
+                    recentprice = await GetRecentPricingDataForCompany(investmentList[i].tickersymbol);
                     float tempvalue = investmentList[i].numberofshares * recentprice;
+                    investmentList[i].percentChange = ((recentprice - investmentList[i].pricepurchased) / investmentList[i].pricepurchased);
                     totalportfoliovalue = totalportfoliovalue + (recentprice * tempvalue);
-                    Debug.WriteLine(recentprice);
-                    Debug.WriteLine("test");
-                    Debug.WriteLine(tempvalue);
+
                     int n = 200 / investmentList.Count;
                     investmentList[i].color = CustColors.grabColor(i * n);
-
-                    //Temp solution for dynamically making colors. This should be improved and moved to its own class or function
+                    if (investmentList[i].percentChange >= 0)
+                    {
+                        investmentList[i].changeColor = Color.FromRgb(0, 0, 0);
+                    }
+                    else
+                    {
+                        investmentList[i].changeColor = Color.FromRgb(255, 0, 0);
+                    }
                     
                     Microcharts.Entry tempEntry = new Microcharts.Entry(tempvalue)
                     {
@@ -120,7 +107,7 @@ namespace App5.Views
             }
         }
 
-        /*async Task<float> GetRecentPricingDataForCompany(string ticker)
+        async Task<float> GetRecentPricingDataForCompany(string ticker)
         {
             IAvapiConnection connection = AvapiConnection.Instance;
             float recentprice = 0;
@@ -157,31 +144,6 @@ namespace App5.Views
             }
 
             return recentprice;
-        } */
-
-        /*
-        private PlotModel CreatePieChart()
-        {
-            var model = new PlotModel { Title = "World population by continent" };
-
-            var ps = new PieSeries
-            {
-                StrokeThickness = .25,
-                InsideLabelPosition = .25,
-                AngleSpan = 360,
-                StartAngle = 0
-            };
-
-            // http://www.nationsonline.org/oneworld/world_population.htm  
-            // http://en.wikipedia.org/wiki/Continent  
-            ps.Slices.Add(new PieSlice("Africa", 1030) { IsExploded = false });
-            ps.Slices.Add(new PieSlice("Americas", 929) { IsExploded = false });
-            ps.Slices.Add(new PieSlice("Asia", 4157));
-            ps.Slices.Add(new PieSlice("Europe", 739) { IsExploded = false });
-            ps.Slices.Add(new PieSlice("Oceania", 35) { IsExploded = false });
-            model.Series.Add(ps);
-            return model;
-        }
-        */
+        } 
     }
 }
