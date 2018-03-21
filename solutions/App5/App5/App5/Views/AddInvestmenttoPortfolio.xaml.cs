@@ -1,13 +1,10 @@
 ﻿using App5.Models;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,9 +13,9 @@ using Xamarin.Forms.Xaml;
 
 namespace App5.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddInvestmenttoPortfolio : ContentPage
-    {
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class AddInvestmenttoPortfolio : ContentPage
+	{
         Dictionary<string, string> assetTypes = new Dictionary<string, string>
         {
             { "Stock", "stock" }, { "Stock Option", "option" },
@@ -27,12 +24,10 @@ namespace App5.Views
 
         Investment newInvestment = new Investment();
 
-        public AddInvestmenttoPortfolio()
+        public AddInvestmenttoPortfolio ()
 
 
-        {
-            //List<string> tickerlist = new List<string>();
-            //tickerlist = await FetchPossibleTickers();
+		{
             Picker picker = new Picker
             {
                 Title = "Investment Type",
@@ -44,8 +39,8 @@ namespace App5.Views
                 picker.Items.Add(colorName);
             }
 
-            InitializeComponent();
-        }
+            InitializeComponent ();
+		}
 
         void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
@@ -83,41 +78,6 @@ namespace App5.Views
             }*/
             // await Navigation.PushAsync(new PortfolioDetails(App.currentPortfolio));
             await Navigation.PopAsync();
-        }
-       
-        async Task<List<string>> FetchPossibleTickers()
-        {
-            HttpClient client = new HttpClient();
-            List<string> tickerlist = new List<string>();
-
-            string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/Investments";
-
-            string content = await client.GetStringAsync(Url);
-            JArray tickers = JArray.Parse(content);//JsonConvert.DeserializeObject<List<Portfolio>>(content);
-
-            //Debug.WriteLine(portfolios[0][);
-
-            //data = JArray.Parse(Encoding.UTF8.GetString(portfolios));
-            //_portfolios = new ObservableCollection<Portfolio>(portfolios);
-
-
-            if (tickers.Count == 0)
-            {
-                Debug.WriteLine("null returned");
-                return null;
-            }
-
-            else
-            {
-                for (var i = 0; i < tickers.Count; i++)
-
-                {
-                    tickerlist.Add((string)tickers[i]["tickersymbol"]);
-
-                }
-                return tickerlist;
-            }
-            
         }
     }
 }
