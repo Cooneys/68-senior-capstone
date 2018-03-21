@@ -50,18 +50,23 @@ namespace App5.Views
             {
                 for (var i = 0; i < investmentList.Count; i++)
                 {
-                    Debug.WriteLine(investmentList[i].numberofshares);
-                    Debug.WriteLine(investmentList[i].pricepurchased);
+                    
                     float recentprice = new float();
                     recentprice = await GetRecentPricingDataForCompany(investmentList[i].tickersymbol);
                     float tempvalue = investmentList[i].numberofshares * recentprice;
+                    investmentList[i].percentChange = ((recentprice - investmentList[i].pricepurchased) / investmentList[i].pricepurchased);
                     totalportfoliovalue = totalportfoliovalue + (recentprice * tempvalue);
-                    Debug.WriteLine("test");
-                    Debug.WriteLine(tempvalue);
+
                     int n = 200 / investmentList.Count;
                     investmentList[i].color = CustColors.grabColor(i * n);
-
-                    //Temp solution for dynamically making colors. This should be improved and moved to its own class or function
+                    if (investmentList[i].percentChange >= 0)
+                    {
+                        investmentList[i].changeColor = Color.FromRgb(0, 0, 0);
+                    }
+                    else
+                    {
+                        investmentList[i].changeColor = Color.FromRgb(255, 0, 0);
+                    }
                     
                     Microcharts.Entry tempEntry = new Microcharts.Entry(tempvalue)
                     {
@@ -140,30 +145,5 @@ namespace App5.Views
 
             return recentprice;
         } 
-
-        /*
-        private PlotModel CreatePieChart()
-        {
-            var model = new PlotModel { Title = "World population by continent" };
-
-            var ps = new PieSeries
-            {
-                StrokeThickness = .25,
-                InsideLabelPosition = .25,
-                AngleSpan = 360,
-                StartAngle = 0
-            };
-
-            // http://www.nationsonline.org/oneworld/world_population.htm  
-            // http://en.wikipedia.org/wiki/Continent  
-            ps.Slices.Add(new PieSlice("Africa", 1030) { IsExploded = false });
-            ps.Slices.Add(new PieSlice("Americas", 929) { IsExploded = false });
-            ps.Slices.Add(new PieSlice("Asia", 4157));
-            ps.Slices.Add(new PieSlice("Europe", 739) { IsExploded = false });
-            ps.Slices.Add(new PieSlice("Oceania", 35) { IsExploded = false });
-            model.Series.Add(ps);
-            return model;
-        }
-        */
     }
 }

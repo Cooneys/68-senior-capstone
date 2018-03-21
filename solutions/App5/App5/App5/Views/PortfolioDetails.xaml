@@ -54,6 +54,7 @@
                                                 <Label Text="{Binding tickersymbol}"/>
                                                 <Label Text="{Binding numberofshares}"/>
                                             </StackLayout>
+                                            <Label Text="{Binding percentChange}" VerticalOptions="Center" HorizontalOptions="End" TextColor="{Binding changeColor}"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>

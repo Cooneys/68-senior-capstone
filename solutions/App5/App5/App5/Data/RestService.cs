@@ -215,7 +215,7 @@ namespace App5.Data
                         //tempPortfolio.Owners.Add((string)data[i]["username"]);
                         tempInvestment.tickersymbol = ((string)investments[i]["tickersymbol"]);
                         tempInvestment.numberofshares = (int)investments[i]["numshares"];
-                        tempInvestment.numberofshares = (int)investments[i]["pricepurchased"];
+                        tempInvestment.pricepurchased = (int)investments[i]["pricepurchased"];
 
                         investmentList.Add(tempInvestment);
                     }
