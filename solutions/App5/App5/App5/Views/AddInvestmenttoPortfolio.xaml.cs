@@ -65,8 +65,8 @@ namespace App5.Views
             NameValueCollection parameters = new NameValueCollection();
             parameters.Add("portfolioname", App.currentPortfolio.Name);
             parameters.Add("tickersymbol", tickerEntry.Text);
-            parameters.Add("numshares", purchasepriceEntry.Text);
-            parameters.Add("pricepurchased", numSharesEntry.Text);
+            parameters.Add("numshares", numSharesEntry.Text);
+            parameters.Add("pricepurchased", purchasepriceEntry.Text);
 
             client.UploadValuesAsync(uri, parameters);
 
