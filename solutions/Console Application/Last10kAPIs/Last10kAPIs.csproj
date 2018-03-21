@@ -8,11 +8,30 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
+    <PackageReference Include="MySql.Data" Version="6.10.6" />
+    <PackageReference Include="SystemWebPackage" Version="1.0.0" />
+    <PackageReference Include="System.IO" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
+    <PackageReference Include="System.Windows.Forms.Ribbon35" Version="3.5.8" />
+    <PackageReference Include="IronPython.StdLib" Version="2.7.8.1" />
+    <PackageReference Include="IronPython" Version="2.7.8.1" />
+    <PackageReference Include="IronPython.Interpreter" Version="2.7.4" />
+    <PackageReference Include="python" Version="3.6.4" />
+    <PackageReference Include="IronJint" Version="1.0.0.1" />
+    <PackageReference Include="Avapi" Version="1.4.8.1" />
+    <PackageReference Include="martin2250.Calculator" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Cashflow.cs" />
     <Compile Remove="Income.cs" />
     <Compile Remove="Operations.cs" />
     <Compile Remove="Ratios.cs" />
+    <Compile Remove="DBConnect.cs" />
+    <Compile Remove="DBManager.cs" />
+    <Compile Remove="HttpClient.cs" />
+    <Compile Remove="EmptyClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="sample_script.py" />
   </ItemGroup>
 </Project>

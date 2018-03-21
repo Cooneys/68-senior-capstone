@@ -15,6 +15,7 @@ Goals for 3/27
   Meet the remaining requirements in our requirements document for a beta release presentation on 3/28
 
 Tyler: Establish pricing data into the database, sharp ratio r^2 and alpha as well
+REVISED: portfolio level calculaions are relatively complex, and will need more thought/planning. GOALS for this week now include getting price change displayed as percentage in portfolio details, daily pricing to factor into portfolio graph into console application/database to streamline user experience. 
 
 Avi: Balance sheet income statement and cash flow parsing and finishing the calculation and classes for freecash to equity, return on common equity, and bet server coverage.
 

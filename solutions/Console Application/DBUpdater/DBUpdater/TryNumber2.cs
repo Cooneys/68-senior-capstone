@@ -11,6 +11,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Collections.Specialized;
+using Avapi.AvapiTIME_SERIES_DAILY_ADJUSTED;
 
 namespace IPMAConsole
 {
@@ -60,6 +61,7 @@ namespace IPMAConsole
     {
         //[JsonProperty(PropertyName = "Company")]
         public string tickersymbol { get; set; }
+        public double currentprice { get; set; }
     }
     public class returnonassets
     {
@@ -658,13 +660,78 @@ namespace IPMAConsole
             Console.WriteLine("Data Added");
         }
 
+        static async void CalculateRSquaredforPortfolio()
+        {
 
+        }
+
+        static async Task<int> FetchandUpdateCurrentPriceDataforCompany(string ticker)
+        {
+                IAvapiConnection connection = AvapiConnection.Instance;
+                float recentprice = 0;
+                IAvapiResponse_TIME_SERIES_DAILY_ADJUSTED m_time_series_daily_adjustedResponse;
+
+                // Set up the connection and pass the API_KEY provided by alphavantage.co
+                connection.Connect("7NIMRBR8G8UB7P8C");
+
+                // Get the TIME_SERIES_MONTHLY_ADJUSTED query object
+                Int_TIME_SERIES_DAILY_ADJUSTED time_series_daily_adjusted =
+                    connection.GetQueryObject_TIME_SERIES_DAILY_ADJUSTED();
+
+                // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
+                m_time_series_daily_adjustedResponse = await time_series_daily_adjusted.QueryAsync(
+                     ticker);
+
+                var data = m_time_series_daily_adjustedResponse.Data;
+
+                WebClient client = new WebClient();
+                Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/UpdateCompanyInfo.php");
+
+                NameValueCollection parameters = new NameValueCollection();
+                if (data.Error)
+                {
+                    Console.WriteLine(data.ErrorMessage);
+                    return 0;
+                }
+                else
+                {
+
+                    int counter = 0;
+                    foreach (var timeseries in data.TimeSeries)
+                    {
+                        if (counter < 1)
+                        {
+                            
+                            recentprice = float.Parse(timeseries.adjustedclose, CultureInfo.InvariantCulture.NumberFormat);
+                            
+                        }
+                    counter = counter + 1;
+                    }
+                }
+                Console.WriteLine(recentprice);
+                Console.WriteLine(ticker);
+                parameters.Add("tickersymbol", ticker);
+                parameters.Add("currentprice", recentprice.ToString());
+
+                client.UploadValuesAsync(uri, parameters);
+                return 1;
+        }
 
         static private async Task RunAsync()
         {
             //Grab our ticker List
             List<string> tickers = new List<string>();
             tickers = await GetTickers();
+
+
+            //Update our tickers with current price
+
+            int updatersuccess = new int();
+            foreach(var ticker in tickers)
+            {
+                Console.WriteLine("there");
+                updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker);
+            }
 
             //Grab ratios for all companies in ticker list and store the results in a list of Ratios
 
