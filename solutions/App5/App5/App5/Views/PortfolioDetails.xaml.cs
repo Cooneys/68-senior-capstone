@@ -45,14 +45,27 @@ namespace App5.Views
             List<Investment> investmentList = investmentListT.Result;
             //var selectedPortfolio = sender as Portfolio;
             //investmentList = restService.FetchPortfolioDetails(App.currentPortfolio);
+
+            Task<List<CompanyInfo>> companyInfoT = restService.FetchCompanyDetails();
+            await companyInfoT;
+            List<CompanyInfo> companyInfo = companyInfoT.Result;
+
+            //This is a pretty brute force method of doing this, rather than a double for loop can we override equality operator? 
+            //Restructure classes? May be good enough for now
             float totalportfoliovalue = 0;
             if (investmentList != null)
             {
                 for (var i = 0; i < investmentList.Count; i++)
                 {
-                    
-                    float recentprice = new float();
-                    recentprice = await GetRecentPricingDataForCompany(investmentList[i].tickersymbol);
+                    float recentprice = 0;
+                    //float recentprice = new float();
+                    for (var j = 0; j < companyInfo.Count; j++)
+                    {
+                        if (investmentList[i].tickersymbol.Equals(companyInfo[j].tickersymbol))
+                        {
+                            recentprice = (float)companyInfo[i].currentprice;
+                        }
+                    }
                     float tempvalue = investmentList[i].numberofshares * recentprice;
                     investmentList[i].percentChange = ((recentprice - investmentList[i].pricepurchased) / investmentList[i].pricepurchased);
                     totalportfoliovalue = totalportfoliovalue + (recentprice * tempvalue);
@@ -107,7 +120,7 @@ namespace App5.Views
             }
         }
 
-        async Task<float> GetRecentPricingDataForCompany(string ticker)
+        /*async Task<float> GetRecentPricingDataForCompany(string ticker)
         {
             IAvapiConnection connection = AvapiConnection.Instance;
             float recentprice = 0;
@@ -144,6 +157,6 @@ namespace App5.Views
             }
 
             return recentprice;
-        } 
+        } */
     }
 }
