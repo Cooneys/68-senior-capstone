@@ -39,12 +39,21 @@ namespace App5.Views
 
         public async void GetPortfolioDetails()
         {
+
             Task<List<Investment>> investmentListT = restService.FetchPortfolioDetails(App.currentPortfolio);
             await investmentListT;
             //restService.FetchPortfolios(App.currentUser);
             List<Investment> investmentList = investmentListT.Result;
-            //var selectedPortfolio = sender as Portfolio;
-            //investmentList = restService.FetchPortfolioDetails(App.currentPortfolio);
+
+
+            Task<List<CompanyInfo>> companyInfoT = restService.FetchCompanyDetails();
+            await companyInfoT;
+            List<CompanyInfo> companyInfo = companyInfoT.Result;
+
+            //This is a pretty brute force method of doing this, rather than a double for loop can we override equality operator? 
+            //Restructure classes? May be good enough for now
+
+
             float totalportfoliovalue = 0;
             if (investmentList != null)
             {
@@ -52,10 +61,19 @@ namespace App5.Views
                 {
                     Debug.WriteLine(investmentList[i].numberofshares);
                     Debug.WriteLine(investmentList[i].pricepurchased);
-                    float recentprice = new float();
-                    recentprice = await GetRecentPricingDataForCompany(investmentList[i].tickersymbol);
+                    float recentprice = 0;
+                    //float recentprice = new float();
+                    for (var j = 0; j < companyInfo.Count; j++)
+                    {
+                        if (investmentList[i].tickersymbol.Equals(companyInfo[j].tickersymbol))
+                        {
+                            recentprice = (float)companyInfo[i].currentprice;
+                        }
+                    }
+                    //recentprice = await GetRecentPricingDataForCompany(investmentList[i].tickersymbol);
                     float tempvalue = investmentList[i].numberofshares * recentprice;
                     totalportfoliovalue = totalportfoliovalue + (recentprice * tempvalue);
+                    Debug.WriteLine(recentprice);
                     Debug.WriteLine("test");
                     Debug.WriteLine(tempvalue);
                     int n = 200 / investmentList.Count;
@@ -102,7 +120,7 @@ namespace App5.Views
             }
         }
 
-        async Task<float> GetRecentPricingDataForCompany(string ticker)
+        /*async Task<float> GetRecentPricingDataForCompany(string ticker)
         {
             IAvapiConnection connection = AvapiConnection.Instance;
             float recentprice = 0;
@@ -139,7 +157,7 @@ namespace App5.Views
             }
 
             return recentprice;
-        } 
+        } */
 
         /*
         private PlotModel CreatePieChart()
