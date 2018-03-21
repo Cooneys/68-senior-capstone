@@ -19,6 +19,7 @@ namespace App5.Data
         public List<User> mUserInfo;
         public List<Portfolio> portfolioList;
         public List<Investment> investmentList;
+        public List<CompanyInfo> companyinfolist;
         public JArray data;
         public string json;
         public Portfolio tempPortfolio;
@@ -36,6 +37,8 @@ namespace App5.Data
             //tempPortfolio = new Portfolio();
             Portfolio tempPortfolio = new Portfolio();
             investmentList = new List<Investment>();
+            companyinfolist = new List<CompanyInfo>();
+
 
         }
 
@@ -223,6 +226,54 @@ namespace App5.Data
                 }
 
                 return investmentList;
+
+            }
+
+        }
+
+        public async Task<List<CompanyInfo>> FetchCompanyDetails()
+        {
+            client = new HttpClient();
+            CompanyInfo tempCompanyInfo;
+            //Uri mUrl = new Uri("http://web.engr.oregonstate.edu/~jonesty/api.php/UsersPortfoliosView");*/
+
+            string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/Investments";
+
+            //List<Portfolio> portfolioList = new List<Portfolio>();
+            //Portfolio tempPortfolio = new Portfolio();
+            //await wclient.DownloadDataAsync(mUrl);
+
+            /*wclient.DownloadDataCompleted += mDownloadDataCompleted;
+            wclient.DownloadDataAsync(mUrl);*/
+
+            string content = await client.GetStringAsync(Url);
+            JArray investments = JArray.Parse(content);//JsonConvert.DeserializeObject<List<Portfolio>>(content);
+
+            if (investments.Count == 0)
+            {
+                return null;
+            }
+
+            else
+            {
+                for (var i = 0; i < investments.Count; i++)
+                //Debug.WriteLine((string)data[i]["username"]);
+                {
+                    //if (ticker.Equals((string)investments[i]["tickersymbol"]))
+                    //{
+                        //Debug.WriteLine((string)data[i]["username"]);
+                        tempCompanyInfo = new CompanyInfo();
+                        //tempPortfolio.Owners.Add((string)data[i]["username"]);
+                        tempCompanyInfo.tickersymbol = ((string)investments[i]["tickersymbol"]);
+                        tempCompanyInfo.currentprice = (double)investments[i]["currentprice"];
+
+                        companyinfolist.Add(tempCompanyInfo);
+                    //}
+                    
+
+                }
+
+                return companyinfolist;
 
             }
 
