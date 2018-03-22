@@ -1,3 +1,19 @@
+
+*********** REFERENCES & DISCLAIMERS **********************
+
+1) Anywhere that AlphaVantage API is called/used, either in our mobile application, or within our console application, the following wrapper was used that made it possible. 
+
+https://github.com/dyh1213/AlphaVantage_C-_ApiWrapper
+
+Documentation was not provided or very sparce on AlphaVantage's site, so this wrapper provided us with the ability to initially fetch all of our pricing data!
+
+Quandl code also came from this source: https://github.com/HubertJ/QuandlCS/blob/master/QuandlCS/Connection/QuandlConnection.cs
+
+*************************************************************
+
+
+
+
 Goals For 3/13
 Setup database to handle Free cash to equit, return on assets, return on equity, return on common equity, debt service coverage
 ratio, receivables asset and inventory turnover ratios, ebit margin.
