@@ -7,6 +7,8 @@ https://github.com/dyh1213/AlphaVantage_C-_ApiWrapper
 
 Documentation was not provided or very sparce on AlphaVantage's site, so this wrapper provided us with the ability to initially fetch all of our pricing data!
 
+Quandl code also came from this source: https://github.com/HubertJ/QuandlCS/blob/master/QuandlCS/Connection/QuandlConnection.cs
+
 *************************************************************
 
 
