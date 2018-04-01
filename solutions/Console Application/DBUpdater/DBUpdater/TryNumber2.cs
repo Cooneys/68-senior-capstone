@@ -184,7 +184,7 @@ namespace IPMAConsole
         //
         // If the second argument is True, evaluate as a sample.
         // If the second argument is False, evaluate as a population.
-        public static double StdDev(this IEnumerable<double> values,
+        public static double StdDev(IEnumerable<double> values,
             bool as_sample)
         {
             // Get the mean.
@@ -193,7 +193,7 @@ namespace IPMAConsole
             // Get the sum of the squares of the differences
             // between the values and the mean.
             var squares_query =
-                from int value in values
+                from double value in values
                 select (value - mean) * (value - mean);
             double sum_of_squares = squares_query.Sum();
 
@@ -779,7 +779,7 @@ namespace IPMAConsole
             //The purpose of this function is to do all calculations related to sharperatio that involve pricing data
             // for a single company. This includes STDdev, and expected return. These will be stored in a dictionary
             //******************************************************************************************
-            Dictionary<string, double> pricingcontents = new Dictionary<string, double>();
+            
 
             List<double> priceslastyear = new List<double>();
             List<double> monthlyreturnpercentages = new List<double>();
@@ -842,9 +842,12 @@ namespace IPMAConsole
                 running_average = running_average / monthlyreturnpercentages.Count();
 
                 //Annualize the average (multiply by 12 since monthly)
-                running_average = running_average * 12.0;
+                running_average = running_average * 12;
 
-                //Add the contents of the values to tuple!
+                //Add the values to the tuple and print!
+                Console.Write(ticker + ", ");
+                Console.Write(std_dev + ", ");
+                Console.Write(running_average + ", ");
 
                 var pricingdata = Tuple.Create(std_dev, running_average, monthlyreturnpercentages);
                 //Return this value
@@ -852,12 +855,14 @@ namespace IPMAConsole
             }
         }
 
-        static async Task<Portfolio> SR_CalculateSharpeforPortfolio(Portfolio currentportfolio)
+        static async void SR_CalculateSharpeforPortfolio(Portfolio currentportfolio)
         {
             //*********************************************************************************************************
             //First, we need to fetch pricing data for all the companies in the portfolio
             // Typically, this is done with perhaps a 3 year horizon of daily prices, but we will do monthly over 5 years to start
             //*********************************************************************************************************
+
+            Console.WriteLine("Calculating sharpe for: {0}", currentportfolio.name);
 
             //This list will hold all of our expected returns for all the companies in our portfolio
             List<double> expectedreturnforallcompanies  = new List<double>();
@@ -865,6 +870,10 @@ namespace IPMAConsole
             List<double> stddevforallcompanies = new List<double>();
             //This list will hold all of the raw pricing data for later covariance calculations
             List<List<double>> pricingdataforcovariance = new List<List<double>>();
+
+            List<double> covariances = new List<double>();
+
+            //var pricingdata = new Tuple<double, double, List<double>>();
 
             
             
@@ -874,7 +883,8 @@ namespace IPMAConsole
 
 
                 //Get pricing data for that company
-                var pricingdata = await SR_FetchPricingDataandExpectedReturn(currentportfolio.contents[i].ToString());
+                Console.WriteLine("Fetching pricing data for: {0}", currentportfolio.contents[i].tickersymbol);
+                Tuple<double, double, List<double>> pricingdata = await SR_FetchPricingDataandExpectedReturn(currentportfolio.contents[i].tickersymbol.ToString());
 
                 //grab values out of Tuple and assign to local variables
                 double expectedreturnforsinglecompany = pricingdata.Item2;
@@ -885,6 +895,21 @@ namespace IPMAConsole
                 stddevforallcompanies.Add(stddevforcompany);
                 pricingdataforcovariance.Add(pricingdata.Item3);
             }
+
+            //Now we need to calculate the sample covariance for each pair of companies in our portfolio
+            for (var i = 0; i< pricingdataforcovariance.Count()-1; i++)
+            {
+                for (var j = i+1; j<pricingdataforcovariance.Count(); j++)
+                {
+                    double temp = Covariance(pricingdataforcovariance[i], pricingdataforcovariance[j]);
+                    Console.WriteLine("Comparing {0} & {1}", i, j);
+                    covariances.Add(temp);
+                }
+            }
+            
+            // Sharpe Ratio calculation now that we have all of our pieces! :)
+
+
  
 
         }
@@ -898,12 +923,12 @@ namespace IPMAConsole
 
             //Update our tickers with current price
 
-            int updatersuccess = new int();
+            /*int updatersuccess = new int();
             foreach(var ticker in tickers)
             {
-                Console.WriteLine("there");
+                //Console.WriteLine("there");
                 updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker);
-            }
+            }*/
 
 
             //Grab ratios for all companies in ticker list and store the results in a list of Ratios
@@ -920,10 +945,14 @@ namespace IPMAConsole
             List<Portfolio> portfolioList = new List<Portfolio>();
             portfolioList = await FetchPortfoliosandContents();
 
-            for(var i = 0; i<portfolioList.Count(); i++)
+            Console.WriteLine(portfolioList[5].contents[0].tickersymbol);
+
+            SR_CalculateSharpeforPortfolio(portfolioList[5]);
+
+            /*for(var i = 0; i<portfolioList.Count(); i++)
             {
 
-            }
+            }*/
             
             
             
