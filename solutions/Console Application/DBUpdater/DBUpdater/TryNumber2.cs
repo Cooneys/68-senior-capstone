@@ -856,7 +856,7 @@ namespace IPMAConsole
         {
             //*********************************************************************************************************
             //First, we need to fetch pricing data for all the companies in the portfolio
-            // Typically, this is done with perhaps a 3 year horizon of daily prices, but we will do monthly to start
+            // Typically, this is done with perhaps a 3 year horizon of daily prices, but we will do monthly over 5 years to start
             //*********************************************************************************************************
 
             //This list will hold all of our expected returns for all the companies in our portfolio
