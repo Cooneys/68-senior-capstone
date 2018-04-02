@@ -142,43 +142,45 @@ namespace IPMAConsole
             Console.ReadLine();
         }
 
-        /*static async void FetchTickers()
+        static async Task<List<company>> FetchTickers()
         {
-             WebClient client = new WebClient();
-            Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/SignUp.php");
+            var client = new HttpClient();
+            List<company> portfolioList = new List<company>();
+            string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/Investments";
 
-            NameValueCollection parameters = new NameValueCollection();
-            parameters.Add("username", user.Username);
-            parameters.Add("password", user.Password);
-
-            client.UploadValuesAsync(uri, parameters);
+            string content = await client.GetStringAsync(Url);
+            JArray portfoliolistC = JArray.Parse(content);
 
 
-            if (tickerlistC.Count == 0)
+            if (portfoliolistC.Count == 0)
             {
                 Console.WriteLine("null returned");
-                //return null;
+                return null;
                 //Debug.WriteLine("null returned");
             }
 
             else
             {
-                for (var i = 0; i < tickerlistC.Count; i++)
+                //Console.WriteLine(portfoliolistC);
+                for (var i = 0; i < portfoliolistC.Count; i++)
 
                 {
                     //Debug.WriteLine((string)portfolios[i]["username"]);
+                    company tempcompany = new company();
+                    
+                    
+                    tempcompany.tickersymbol = (string)portfoliolistC[i]["tickersymbol"];
+                    tempcompany.currentprice = (double)portfoliolistC[i]["currentprice"];
 
-                    tickerList.Add((string)tickerlistC[i]["tickersymbol"]);
-                    Console.Write(tickerList[i]);
-
-
+                    //tempportfolio.totalvalue = (int)portfoliolistC[i]["totalvalue"];
+                    portfolioList.Add(tempcompany);
                 }
-                //Console.Write()
-                //return tickerList;
 
+                return portfolioList;
             }
 
-        }*/
+
+        }
 
         // Return the standard deviation of an array of Doubles.
         //
@@ -917,18 +919,24 @@ namespace IPMAConsole
         static private async Task RunAsync()
         {
             //Grab our ticker List
-            List<string> tickers = new List<string>();
-            tickers = await GetTickers();
+            /*List<string> tickers = new List<string>();
+            tickers = await GetTickers();*/
+
+            List<company> companies = new List<company>();
+            companies = await FetchTickers();
+
+            Console.Write(companies[0].currentprice);
+            Console.Write(companies[0].tickersymbol);
 
 
             //Update our tickers with current price
 
-            /*int updatersuccess = new int();
-            foreach(var ticker in tickers)
+            int updatersuccess = new int();
+            foreach(var ticker in companies)
             {
                 //Console.WriteLine("there");
-                updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker);
-            }*/
+                updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker.tickersymbol);
+            }
 
 
             //Grab ratios for all companies in ticker list and store the results in a list of Ratios
