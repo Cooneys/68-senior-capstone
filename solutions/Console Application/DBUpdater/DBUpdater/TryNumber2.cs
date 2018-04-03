@@ -135,7 +135,10 @@ namespace IPMAConsole
         {       //List<string> tickers = new List<string>();
             //List<string> tickerList;
 
-            RunAsync().Wait();
+             RunAsync().Wait();
+
+            //System.Threading.Thread.Sleep(90000);
+
             //Console.WriteLine(Program.tickers[0]);
             //await RunAsync;
             Console.WriteLine("Jobs Completed! Press Enter to Exit.");
@@ -809,7 +812,7 @@ namespace IPMAConsole
             }
             else
             {
-
+                Console.WriteLine("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                 int counter = 0;
                 foreach (var timeseries in data.TimeSeries)
                 {
@@ -886,7 +889,7 @@ namespace IPMAConsole
 
                 //Get pricing data for that company
                 Console.WriteLine("Fetching pricing data for: {0}", currentportfolio.contents[i].tickersymbol);
-                Tuple<double, double, List<double>> pricingdata = await SR_FetchPricingDataandExpectedReturn(currentportfolio.contents[i].tickersymbol.ToString());
+                Tuple<double, double, List<double>> pricingdata = await SR_FetchPricingDataandExpectedReturn(currentportfolio.contents[i].tickersymbol);
 
                 //grab values out of Tuple and assign to local variables
                 double expectedreturnforsinglecompany = pricingdata.Item2;
@@ -959,9 +962,6 @@ namespace IPMAConsole
 
             List<company> companies = new List<company>();
             companies = await FetchTickers();
-
-            Console.Write(companies[0].currentprice);
-            Console.Write(companies[0].tickersymbol);
 
 
             //Update our tickers with current price
