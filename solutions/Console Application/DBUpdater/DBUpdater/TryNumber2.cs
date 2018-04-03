@@ -857,7 +857,7 @@ namespace IPMAConsole
             }
         }
 
-        static async void SR_CalculateSharpeforPortfolio(Portfolio currentportfolio)
+        static async void SR_CalculateSharpeforPortfolio(Portfolio currentportfolio, List<company> companies)
         {
             //*********************************************************************************************************
             //First, we need to fetch pricing data for all the companies in the portfolio
@@ -908,9 +908,44 @@ namespace IPMAConsole
                     covariances.Add(temp);
                 }
             }
-            
+
             // Sharpe Ratio calculation now that we have all of our pieces! :)
 
+            // Sharpe Ratio (p) = (Expected Return(P) - Risk Free Rate)/Standard Deviation(P)
+
+            // 1) Lets get Expected return of portfolio based on expected returns of assets (calculated already) times the 
+            // weight that each asset holds ((number of shares * current price of stock)/total value of portfolio)
+
+            // a) Make a list to hold our weights
+            List<double> weights = new List<double>();
+            double totalportfoliovalue = 0;
+            for(var i=0; i < currentportfolio.contents.Count(); i++)
+            {
+                int numshares = currentportfolio.contents[i].numshares;
+                for(var j = 0; j<companies.Count(); j++)
+                {
+                    if (currentportfolio.contents[i].tickersymbol.Equals(companies[j].tickersymbol))
+                    {
+                        totalportfoliovalue = totalportfoliovalue + (numshares * companies[j].currentprice);
+                        weights.Add(numshares * companies[j].currentprice);
+                    }
+                }
+            }
+
+            //NOTE: there is likely a much more efficient way to do this, perhaps calculate total portfolio value earlier?
+
+            for(var i=0; i<weights.Count(); i++)
+            {
+                weights[i] = weights[i] / totalportfoliovalue;
+            }
+
+            double portfolioexpectedreturn = 0;
+            for (var i = 0; i<weights.Count(); i++){
+                portfolioexpectedreturn = portfolioexpectedreturn + (weights[i] * expectedreturnforallcompanies[i]);
+            }
+
+            // 2) Now lets get standard deviation of the portfolio!
+            
 
  
 
@@ -955,7 +990,7 @@ namespace IPMAConsole
 
             Console.WriteLine(portfolioList[5].contents[0].tickersymbol);
 
-            SR_CalculateSharpeforPortfolio(portfolioList[5]);
+            SR_CalculateSharpeforPortfolio(portfolioList[5], companies);
 
             /*for(var i = 0; i<portfolioList.Count(); i++)
             {
