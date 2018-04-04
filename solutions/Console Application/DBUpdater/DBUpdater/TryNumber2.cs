@@ -860,7 +860,7 @@ namespace IPMAConsole
             }
         }
 
-        static async void SR_CalculateSharpeforPortfolio(Portfolio currentportfolio, List<company> companies)
+        static async Task SR_CalculateSharpeforPortfolio(Portfolio currentportfolio, List<company> companies)
         {
             //*********************************************************************************************************
             //First, we need to fetch pricing data for all the companies in the portfolio
@@ -990,7 +990,7 @@ namespace IPMAConsole
 
             Console.WriteLine(portfolioList[5].contents[0].tickersymbol);
 
-            SR_CalculateSharpeforPortfolio(portfolioList[5], companies);
+            await SR_CalculateSharpeforPortfolio(portfolioList[5], companies);
 
             /*for(var i = 0; i<portfolioList.Count(); i++)
             {
