@@ -133,15 +133,17 @@ namespace IPMAConsole
 
         static void Main(string[] args)
         {       //List<string> tickers = new List<string>();
-            //List<string> tickerList;
+                //List<string> tickerList;
 
-             RunAsync().Wait();
+            //RunAsync().Wait();
+            Action completionMethod = () => Console.WriteLine("Completed!");
 
+            RunAsync().GetAwaiter().OnCompleted(completionMethod);
             //System.Threading.Thread.Sleep(90000);
 
             //Console.WriteLine(Program.tickers[0]);
             //await RunAsync;
-            Console.WriteLine("Jobs Completed! Press Enter to Exit.");
+            //Console.WriteLine("Jobs Completed! Press Enter to Exit.");
             Console.ReadLine();
         }
 
@@ -989,9 +991,12 @@ namespace IPMAConsole
             portfolioList = await FetchPortfoliosandContents();
 
             Console.WriteLine(portfolioList[5].contents[0].tickersymbol);
+            Console.WriteLine(portfolioList.Count());
 
-            await SR_CalculateSharpeforPortfolio(portfolioList[5], companies);
-
+            foreach (Portfolio portfolio in portfolioList)
+            {
+                await SR_CalculateSharpeforPortfolio(portfolio, companies);
+            }
             /*for(var i = 0; i<portfolioList.Count(); i++)
             {
 
