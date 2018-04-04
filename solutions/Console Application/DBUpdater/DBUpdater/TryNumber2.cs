@@ -991,7 +991,7 @@ namespace IPMAConsole
             portfolioList = await FetchPortfoliosandContents();
 
             Console.WriteLine(portfolioList[5].contents[0].tickersymbol);
-            Console.WriteLine(portfolioList.Count());
+            //Console.WriteLine(portfolioList.Count());
 
             foreach (Portfolio portfolio in portfolioList)
             {
