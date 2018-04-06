@@ -12,6 +12,7 @@ using System.Linq;
 using System.Net;
 using System.Collections.Specialized;
 using Avapi.AvapiTIME_SERIES_DAILY_ADJUSTED;
+using System.Threading;
 
 namespace IPMAConsole
 {
@@ -33,7 +34,7 @@ namespace IPMAConsole
             // Check if the object is a RecommendationDTO.
             // The initial null check is unnecessary as the cast will result in null
             // if obj is null to start with.
-            var portfolio= obj as Portfolio;
+            var portfolio = obj as Portfolio;
 
             if (portfolio == null)
             {
@@ -131,20 +132,35 @@ namespace IPMAConsole
 
 
 
+
         static void Main(string[] args)
         {       //List<string> tickers = new List<string>();
                 //List<string> tickerList;
 
+            Action completionMethod = () => Console.WriteLine("Completed Successfully");
+
             //RunAsync().Wait();
-            Action completionMethod = () => Console.WriteLine("Completed!");
 
             RunAsync().GetAwaiter().OnCompleted(completionMethod);
+            //while (true)
+            //{
+            //    if (RunAsync().IsCompleted)
+            //    {
+            //        Console.WriteLine("Finished all jobs successfully");
+            //        break;
+            //    }
+
+            //}
+
+            Console.ReadLine();
+
+
             //System.Threading.Thread.Sleep(90000);
 
             //Console.WriteLine(Program.tickers[0]);
             //await RunAsync;
             //Console.WriteLine("Jobs Completed! Press Enter to Exit.");
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         static async Task<List<company>> FetchTickers()
@@ -153,7 +169,7 @@ namespace IPMAConsole
             List<company> portfolioList = new List<company>();
             string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/Investments";
 
-            string content = await client.GetStringAsync(Url);
+            string content = await client.GetStringAsync(Url).ConfigureAwait(false);
             JArray portfoliolistC = JArray.Parse(content);
 
 
@@ -172,8 +188,8 @@ namespace IPMAConsole
                 {
                     //Debug.WriteLine((string)portfolios[i]["username"]);
                     company tempcompany = new company();
-                    
-                    
+
+
                     tempcompany.tickersymbol = (string)portfoliolistC[i]["tickersymbol"];
                     tempcompany.currentprice = (double)portfoliolistC[i]["currentprice"];
 
@@ -219,7 +235,7 @@ namespace IPMAConsole
             double xbar = 0;
             double ybar = 0;
 
-            for(var i=0; i<set1.Count(); i++)
+            for (var i = 0; i < set1.Count(); i++)
             {
                 xbar = xbar + set1[i];
                 ybar = ybar + set2[i];
@@ -230,12 +246,12 @@ namespace IPMAConsole
 
             double sum = 0;
 
-            for (var i=0; i<set1.Count(); i++)
+            for (var i = 0; i < set1.Count(); i++)
             {
                 sum = sum + ((set1[i] - xbar) * (set2[i] - ybar));
             }
 
-            sum = sum / (set1.Count()-1);
+            sum = sum / (set1.Count() - 1);
 
             return sum;
         }
@@ -255,7 +271,7 @@ namespace IPMAConsole
                 using (HttpContent content = response.Content)
                 {
                     string responseBody = await response.Content.ReadAsStringAsync();
-                    
+
 
 
                     var articles = JsonConvert.DeserializeObject<List<company>>(responseBody);
@@ -264,10 +280,10 @@ namespace IPMAConsole
 
                     foreach (var Emp in articles)
                     {
-                        
+
                         tickers.Add(Emp.tickersymbol);
-                        
-                       
+
+
                     }
 
                 }
@@ -359,15 +375,12 @@ namespace IPMAConsole
                     /*Console.WriteLine(I.name);
                     Console.WriteLine(historicalIT);
                     Console.WriteLine(historicalIT["TTM"]);
-
                     Console.WriteLine(A.name);
                     Console.WriteLine(historicalROA);
                     Console.WriteLine(historicalROA["TTM"]);
-
                     Console.WriteLine(E.name);
                     Console.WriteLine(historicalROE);
                     Console.WriteLine(historicalROE["TTM"]);
-
                     Console.WriteLine(M.name);
                     Console.WriteLine(historicalEBT);
                     Console.WriteLine(historicalEBT["TTM"]);*/
@@ -561,11 +574,11 @@ namespace IPMAConsole
                         //add raw prices to array
                         priceslastyear.Add(double.Parse(timeseries.adjustedclose, CultureInfo.InvariantCulture.NumberFormat));
 
-                        if(counter > 0)
+                        if (counter > 0)
                         {
                             //take pricing data and calculate percent change between each pair of months
                             //Console.Write(((priceslastyear[counter] / priceslastyear[counter - 1]) - 1) * 100);
-                            monthlyreturnpercentages.Add(((priceslastyear[counter] / priceslastyear[counter - 1]) - 1)*100);
+                            monthlyreturnpercentages.Add(((priceslastyear[counter] / priceslastyear[counter - 1]) - 1) * 100);
                         }
                         counter = counter + 1;
                     }
@@ -579,7 +592,7 @@ namespace IPMAConsole
                     HistAvgMonthlyReturn = HistAvgMonthlyReturn + monthlyreturnpercentages[i];
                 }
 
-                
+
                 //Calculate the average monthly return
                 HistAvgMonthlyReturn = HistAvgMonthlyReturn / monthlyreturnpercentages.Count;
 
@@ -590,7 +603,7 @@ namespace IPMAConsole
                 // of the monthlyreturnpercentages
                 double Summation = 0;
 
-                for (var i = 0; i<monthlyreturnpercentages.Count; i++)
+                for (var i = 0; i < monthlyreturnpercentages.Count; i++)
                 {
                     Summation = Summation + Math.Pow(monthlyreturnpercentages[i] - HistAvgMonthlyReturn, 2);
                 }
@@ -614,7 +627,7 @@ namespace IPMAConsole
                 double SharpeRatioforCompany = (AnnualReturn - Riskfreerate) / AnnualStdDev;
 
                 //Console.WriteLine(SharpeRatioforCompany);
-                
+
                 return (AnnualReturn);
 
 
@@ -628,7 +641,7 @@ namespace IPMAConsole
             List<Portfolio> portfolioList = new List<Portfolio>();
             string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/PortfoliosInvestments";
 
-            string content = await client.GetStringAsync(Url);
+            string content = await client.GetStringAsync(Url).ConfigureAwait(false);
             JArray portfoliolistC = JArray.Parse(content);
 
 
@@ -658,7 +671,7 @@ namespace IPMAConsole
                         tempinvestment.tickersymbol = (string)portfoliolistC[i]["tickersymbol"];
                         tempinvestment.numshares = (int)portfoliolistC[i]["numshares"];
                         tempinvestment.purchaseprice = (int)portfoliolistC[i]["pricepurchased"];
-                        
+
 
 
                         tempportfolio.contents.Add(tempinvestment);
@@ -668,7 +681,7 @@ namespace IPMAConsole
                     }
                     else
                     {
-                        for (var j = 0; j<portfolioList.Count; j++)
+                        for (var j = 0; j < portfolioList.Count; j++)
                         {
                             if (portfolioList[j].name == tempportfolio.name)
                             {
@@ -678,7 +691,7 @@ namespace IPMAConsole
                                 tempinvestment.numshares = (int)portfoliolistC[i]["numshares"];
                                 tempinvestment.purchaseprice = (int)portfoliolistC[i]["pricepurchased"];
 
-                               
+
 
                                 portfolioList[j].contents.Add(tempinvestment);
                             }
@@ -701,6 +714,7 @@ namespace IPMAConsole
                     }
                     Console.WriteLine(portfolioList[k].contents[0].tickersymbol);
                 }*/
+                Console.Write("PortList: " + portfolioList[0].ToString());
                 return portfolioList;
 
             }
@@ -727,232 +741,281 @@ namespace IPMAConsole
 
         }
 
+
         static async Task<int> FetchandUpdateCurrentPriceDataforCompany(string ticker)
         {
-                IAvapiConnection connection = AvapiConnection.Instance;
-                float recentprice = 0;
-                IAvapiResponse_TIME_SERIES_DAILY_ADJUSTED m_time_series_daily_adjustedResponse;
-
-                // Set up the connection and pass the API_KEY provided by alphavantage.co
-                connection.Connect("7NIMRBR8G8UB7P8C");
-
-                // Get the TIME_SERIES_MONTHLY_ADJUSTED query object
-                Int_TIME_SERIES_DAILY_ADJUSTED time_series_daily_adjusted =
-                    connection.GetQueryObject_TIME_SERIES_DAILY_ADJUSTED();
-
-                // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
-                m_time_series_daily_adjustedResponse = await time_series_daily_adjusted.QueryAsync(
-                     ticker);
-
-                var data = m_time_series_daily_adjustedResponse.Data;
-
-                WebClient client = new WebClient();
-                Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/UpdateCompanyInfo.php");
-
-                NameValueCollection parameters = new NameValueCollection();
-                if (data.Error)
-                {
-                    Console.WriteLine(data.ErrorMessage);
-                    return 0;
-                }
-                else
-                {
-
-                    int counter = 0;
-                    foreach (var timeseries in data.TimeSeries)
-                    {
-                        if (counter < 1)
-                        {
-                            
-                            recentprice = float.Parse(timeseries.adjustedclose, CultureInfo.InvariantCulture.NumberFormat);
-                            
-                        }
-                    counter = counter + 1;
-                    }
-                }
-                Console.WriteLine(recentprice);
-                Console.WriteLine(ticker);
-                parameters.Add("tickersymbol", ticker);
-                parameters.Add("currentprice", recentprice.ToString());
-
-                client.UploadValuesAsync(uri, parameters);
-                return 1;
-        }
-
-
-        static async Task<Tuple<double, double, List<double>>> SR_FetchPricingDataandExpectedReturn(string ticker)
-        {
-            //******************************************************************************************
-            //The purpose of this function is to do all calculations related to sharperatio that involve pricing data
-            // for a single company. This includes STDdev, and expected return. These will be stored in a dictionary
-            //******************************************************************************************
-            
-
-            List<double> priceslastyear = new List<double>();
-            List<double> monthlyreturnpercentages = new List<double>();
-            // Creating the connection object
             IAvapiConnection connection = AvapiConnection.Instance;
-            IAvapiResponse_TIME_SERIES_MONTHLY_ADJUSTED m_time_series_monthly_adjustedResponse;
+            float recentprice = 0;
+            IAvapiResponse_TIME_SERIES_DAILY_ADJUSTED m_time_series_daily_adjustedResponse;
 
             // Set up the connection and pass the API_KEY provided by alphavantage.co
             connection.Connect("7NIMRBR8G8UB7P8C");
 
             // Get the TIME_SERIES_MONTHLY_ADJUSTED query object
-            Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted =
-                connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();
+            Int_TIME_SERIES_DAILY_ADJUSTED time_series_daily_adjusted =
+                connection.GetQueryObject_TIME_SERIES_DAILY_ADJUSTED();
 
             // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
-            m_time_series_monthly_adjustedResponse = await time_series_monthly_adjusted.QueryPrimitiveAsync(
-                 ticker);
+            m_time_series_daily_adjustedResponse = await time_series_daily_adjusted.QueryAsync(
+                 ticker).ConfigureAwait(false);
 
-            Console.WriteLine("******** STRUCTURED DATA TIME_SERIES_MONTHLY_ADJUSTED ********");
-            var data = m_time_series_monthly_adjustedResponse.Data;
+            var data = m_time_series_daily_adjustedResponse.Data;
+
+            WebClient client = new WebClient();
+            HttpClient client2 = new HttpClient();
+            Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/UpdateCompanyInfo.php");
+
+            NameValueCollection parameters = new NameValueCollection();
             if (data.Error)
             {
                 Console.WriteLine(data.ErrorMessage);
-                return null;
+                return 0;
             }
             else
             {
-                Console.WriteLine("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+
                 int counter = 0;
                 foreach (var timeseries in data.TimeSeries)
                 {
-                    //Grab 5 years worth of months data
-                    if (counter < 60)
+                    if (counter < 1)
                     {
-                        //add raw prices to array
-                        priceslastyear.Add(double.Parse(timeseries.adjustedclose, CultureInfo.InvariantCulture.NumberFormat));
 
-                        if (counter > 0)
-                        {
-                            //take pricing data and calculate percent change between each pair of months
-                            //Console.Write(((priceslastyear[counter] / priceslastyear[counter - 1]) - 1) * 100);
-                            monthlyreturnpercentages.Add(((priceslastyear[counter] / priceslastyear[counter - 1]) - 1) * 100);
-                        }
-                        counter = counter + 1;
+                        recentprice = float.Parse(timeseries.adjustedclose, CultureInfo.InvariantCulture.NumberFormat);
+
                     }
+                    counter = counter + 1;
                 }
+            }
+            Console.WriteLine(recentprice);
+            Console.WriteLine(ticker);
+            //parameters.Add("tickersymbol", ticker);
+            //parameters.Add("currentprice", recentprice.ToString());
 
-                //Setup counter to average pricing data
-                double running_average = 0;
-                //Calculate STDDev of data
-                double std_dev = StdDev(monthlyreturnpercentages, true);
+            //byte[] returnVal;
+            //returnVal = await client.UploadValuesTaskAsync(uri, parameters);
 
-                //Sum all the values in our list
-                for(var i = 0; i<monthlyreturnpercentages.Count(); i++)
+            var postData = new List<KeyValuePair<string, string>>();
+
+            postData.Add(new KeyValuePair<string, string>("tickersymbol", ticker));
+            postData.Add(new KeyValuePair<string, string>("currentprice", recentprice.ToString()));
+
+            HttpContent content = new FormUrlEncodedContent(postData);
+
+            var response = await client2.PostAsync(uri, content);
+
+            //Console.WriteLine("Response from server was: " + response.ToString());
+
+            return 1;
+        }
+
+
+        static async Task<Tuple<double, double, List<double>>> SR_FetchPricingDataandExpectedReturn(string ticker, Int_TIME_SERIES_MONTHLY_ADJUSTED data1)
+        {
+            //******************************************************************************************
+            //The purpose of this function is to do all calculations related to sharperatio that involve pricing data
+            // for a single company. This includes STDdev, and expected return. These will be stored in a dictionary
+            //******************************************************************************************
+            var pricingData = new Tuple<double, double, List<double>>(0, 0, null);
+            IAvapiResponse_TIME_SERIES_MONTHLY_ADJUSTED m_time_series_monthly_adjustedResponse = null;
+            try
+            {
+                List<double> priceslastyear = new List<double>();
+                List<double> monthlyreturnpercentages = new List<double>();
+                // Creating the connection object
+                //IAvapiConnection connection = AvapiConnection.Instance;
+
+
+                //// Set up the connection and pass the API_KEY provided by alphavantage.co
+                //connection.Connect("7NIMRBR8G8UB7P8C");
+
+                //// Get the TIME_SERIES_MONTHLY_ADJUSTED query object
+                //Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted = connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();
+                Console.WriteLine("1");
+                Console.WriteLine("X:" + data1.ToString());
+                // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
+                m_time_series_monthly_adjustedResponse = await data1.QueryPrimitiveAsync(ticker.ToString()).ConfigureAwait(false);
+                Console.WriteLine("2");
+                Console.WriteLine("******** STRUCTURED DATA TIME_SERIES_MONTHLY_ADJUSTED ********");
+                var data = m_time_series_monthly_adjustedResponse.Data;
+                if (data.Error)
                 {
-                    running_average = monthlyreturnpercentages[i] + running_average;
+                    Console.WriteLine(data.ErrorMessage);
+                    return pricingData;
                 }
+                else
+                {
+                    Console.WriteLine("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+                    int counter = 0;
+                    foreach (var timeseries in data.TimeSeries)
+                    {
+                        //Grab 5 years worth of months data
+                        if (counter < 60)
+                        {
+                            //add raw prices to array
+                            priceslastyear.Add(double.Parse(timeseries.adjustedclose, CultureInfo.InvariantCulture.NumberFormat));
 
-                //Finishing taking average by dividing by the number of entries
-                running_average = running_average / monthlyreturnpercentages.Count();
+                            if (counter > 0)
+                            {
+                                //take pricing data and calculate percent change between each pair of months
+                                //Console.Write(((priceslastyear[counter] / priceslastyear[counter - 1]) - 1) * 100);
+                                monthlyreturnpercentages.Add(((priceslastyear[counter] / priceslastyear[counter - 1]) - 1) * 100);
+                            }
+                            counter = counter + 1;
+                        }
+                    }
 
-                //Annualize the average (multiply by 12 since monthly)
-                running_average = running_average * 12;
+                    //Setup counter to average pricing data
+                    double running_average = 0;
+                    //Calculate STDDev of data
+                    double std_dev = StdDev(monthlyreturnpercentages, true);
 
-                //Add the values to the tuple and print!
-                Console.Write(ticker + ", ");
-                Console.Write(std_dev + ", ");
-                Console.Write(running_average + ", ");
+                    //Sum all the values in our list
+                    for (var i = 0; i < monthlyreturnpercentages.Count(); i++)
+                    {
+                        running_average = monthlyreturnpercentages[i] + running_average;
+                    }
 
-                var pricingdata = Tuple.Create(std_dev, running_average, monthlyreturnpercentages);
-                //Return this value
-                return pricingdata;
+                    //Finishing taking average by dividing by the number of entries
+                    running_average = running_average / monthlyreturnpercentages.Count();
+
+                    //Annualize the average (multiply by 12 since monthly)
+                    running_average = running_average * 12;
+
+                    //Add the values to the tuple and print!
+                    Console.Write(ticker + ", ");
+                    Console.Write(std_dev + ", ");
+                    Console.Write(running_average + ", ");
+
+                    pricingData = Tuple.Create(std_dev, running_average, monthlyreturnpercentages);
+                    //Return this value
+                    return pricingData;
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("Inner Exception was: " + e.Message.ToString());
+                Console.WriteLine("The object was: " + m_time_series_monthly_adjustedResponse.RawData.ToString());
+                return pricingData;
             }
         }
 
         static async Task SR_CalculateSharpeforPortfolio(Portfolio currentportfolio, List<company> companies)
         {
-            //*********************************************************************************************************
-            //First, we need to fetch pricing data for all the companies in the portfolio
-            // Typically, this is done with perhaps a 3 year horizon of daily prices, but we will do monthly over 5 years to start
-            //*********************************************************************************************************
-
-            Console.WriteLine("Calculating sharpe for: {0}", currentportfolio.name);
-
-            //This list will hold all of our expected returns for all the companies in our portfolio
-            List<double> expectedreturnforallcompanies  = new List<double>();
-            //This list will hold all of our standard deviations for all the companies in our portfolio
-            List<double> stddevforallcompanies = new List<double>();
-            //This list will hold all of the raw pricing data for later covariance calculations
-            List<List<double>> pricingdataforcovariance = new List<List<double>>();
-
-            List<double> covariances = new List<double>();
-
-            //var pricingdata = new Tuple<double, double, List<double>>();
-
-            
-            
-
-            //We need to iterate through all the tickers in our portfolio, and add that expected return to our list above
-            for (var i = 0; i < currentportfolio.contents.Count(); i++) {
-
-
-                //Get pricing data for that company
-                Console.WriteLine("Fetching pricing data for: {0}", currentportfolio.contents[i].tickersymbol);
-                Tuple<double, double, List<double>> pricingdata = await SR_FetchPricingDataandExpectedReturn(currentportfolio.contents[i].tickersymbol);
-
-                //grab values out of Tuple and assign to local variables
-                double expectedreturnforsinglecompany = pricingdata.Item2;
-                double stddevforcompany = pricingdata.Item1;
-
-                //Add values to their appropriate lists for later use
-                expectedreturnforallcompanies.Add(expectedreturnforsinglecompany);
-                stddevforallcompanies.Add(stddevforcompany);
-                pricingdataforcovariance.Add(pricingdata.Item3);
-            }
-
-            //Now we need to calculate the sample covariance for each pair of companies in our portfolio
-            for (var i = 0; i< pricingdataforcovariance.Count()-1; i++)
+            try
             {
-                for (var j = i+1; j<pricingdataforcovariance.Count(); j++)
+                //*********************************************************************************************************
+                //First, we need to fetch pricing data for all the companies in the portfolio
+                // Typically, this is done with perhaps a 3 year horizon of daily prices, but we will do monthly over 5 years to start
+                //*********************************************************************************************************
+
+                Console.WriteLine("Calculating sharpe for: {0}", currentportfolio.name);
+
+                //This list will hold all of our expected returns for all the companies in our portfolio
+                List<double> expectedreturnforallcompanies = new List<double>();
+                //This list will hold all of our standard deviations for all the companies in our portfolio
+                List<double> stddevforallcompanies = new List<double>();
+                //This list will hold all of the raw pricing data for later covariance calculations
+                List<List<double>> pricingdataforcovariance = new List<List<double>>();
+
+                List<double> covariances = new List<double>();
+
+                //var pricingdata = new Tuple<double, double, List<double>>();
+                IAvapiConnection connection = AvapiConnection.Instance;
+                connection.Connect("7NIMRBR8G8UB7P8C");
+                Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted = connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();
+
+
+
+                //We need to iterate through all the tickers in our portfolio, and add that expected return to our list above
+                for (var i = 0; i < currentportfolio.contents.Count(); i++)
                 {
-                    double temp = Covariance(pricingdataforcovariance[i], pricingdataforcovariance[j]);
-                    Console.WriteLine("Comparing {0} & {1}", i, j);
-                    covariances.Add(temp);
-                }
-            }
 
-            // Sharpe Ratio calculation now that we have all of our pieces! :)
 
-            // Sharpe Ratio (p) = (Expected Return(P) - Risk Free Rate)/Standard Deviation(P)
-
-            // 1) Lets get Expected return of portfolio based on expected returns of assets (calculated already) times the 
-            // weight that each asset holds ((number of shares * current price of stock)/total value of portfolio)
-
-            // a) Make a list to hold our weights
-            List<double> weights = new List<double>();
-            double totalportfoliovalue = 0;
-            for(var i=0; i < currentportfolio.contents.Count(); i++)
-            {
-                int numshares = currentportfolio.contents[i].numshares;
-                for(var j = 0; j<companies.Count(); j++)
-                {
-                    if (currentportfolio.contents[i].tickersymbol.Equals(companies[j].tickersymbol))
+                    //Get pricing data for that company
+                    Console.WriteLine(string.Format("Fetching pricing data for: {0}", currentportfolio.contents[i].tickersymbol));
+                    try
                     {
-                        totalportfoliovalue = totalportfoliovalue + (numshares * companies[j].currentprice);
-                        weights.Add(numshares * companies[j].currentprice);
+                        Console.WriteLine("Preline: " + currentportfolio.contents[i].tickersymbol);
+
+                        Tuple<double, double, List<double>> pricingdata = await SR_FetchPricingDataandExpectedReturn(currentportfolio.contents[i].tickersymbol, time_series_monthly_adjusted).ConfigureAwait(false);
+
+                        Console.WriteLine("After pricing data");
+
+
+                        //grab values out of Tuple and assign to local variables
+                        double expectedreturnforsinglecompany = pricingdata.Item2;
+                        double stddevforcompany = pricingdata.Item1;
+
+                        //Add values to their appropriate lists for later use
+                        expectedreturnforallcompanies.Add(expectedreturnforsinglecompany);
+                        stddevforallcompanies.Add(stddevforcompany);
+                        pricingdataforcovariance.Add(pricingdata.Item3);
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Exception was: ", e.Message.ToString());
                     }
                 }
+
+                //Now we need to calculate the sample covariance for each pair of companies in our portfolio
+                for (var i = 0; i < pricingdataforcovariance.Count() - 1; i++)
+                {
+                    for (var j = i + 1; j < pricingdataforcovariance.Count(); j++)
+                    {
+                        double temp = Covariance(pricingdataforcovariance[i], pricingdataforcovariance[j]);
+                        Console.WriteLine("Comparing {0} & {1}", i, j);
+                        covariances.Add(temp);
+                    }
+                }
+
+                // Sharpe Ratio calculation now that we have all of our pieces! :)
+
+                // Sharpe Ratio (p) = (Expected Return(P) - Risk Free Rate)/Standard Deviation(P)
+
+                // 1) Lets get Expected return of portfolio based on expected returns of assets (calculated already) times the 
+                // weight that each asset holds ((number of shares * current price of stock)/total value of portfolio)
+
+                // a) Make a list to hold our weights
+                List<double> weights = new List<double>();
+                double totalportfoliovalue = 0;
+                for (var i = 0; i < currentportfolio.contents.Count(); i++)
+                {
+                    int numshares = currentportfolio.contents[i].numshares;
+                    for (var j = 0; j < companies.Count(); j++)
+                    {
+                        if (currentportfolio.contents[i].tickersymbol.Equals(companies[j].tickersymbol))
+                        {
+                            totalportfoliovalue = totalportfoliovalue + (numshares * companies[j].currentprice);
+                            weights.Add(numshares * companies[j].currentprice);
+                        }
+                    }
+                }
+
+                //NOTE: there is likely a much more efficient way to do this, perhaps calculate total portfolio value earlier?
+
+                for (var i = 0; i < weights.Count(); i++)
+                {
+                    weights[i] = weights[i] / totalportfoliovalue;
+                }
+
+                double portfolioexpectedreturn = 0;
+                for (var i = 0; i < weights.Count(); i++)
+                {
+                    portfolioexpectedreturn = portfolioexpectedreturn + (weights[i] * expectedreturnforallcompanies[i]);
+                }
+
+
+                // 2) Now lets get standard deviation of the portfolio!
+
             }
-
-            //NOTE: there is likely a much more efficient way to do this, perhaps calculate total portfolio value earlier?
-
-            for(var i=0; i<weights.Count(); i++)
+            catch (Exception e)
             {
-                weights[i] = weights[i] / totalportfoliovalue;
+
+                Console.WriteLine("Outer Level Exception: " + e.ToString());
             }
 
-            double portfolioexpectedreturn = 0;
-            for (var i = 0; i<weights.Count(); i++){
-                portfolioexpectedreturn = portfolioexpectedreturn + (weights[i] * expectedreturnforallcompanies[i]);
-            }
-
-            // 2) Now lets get standard deviation of the portfolio!
-            
-
- 
 
         }
 
@@ -963,16 +1026,16 @@ namespace IPMAConsole
             tickers = await GetTickers();*/
 
             List<company> companies = new List<company>();
-            companies = await FetchTickers();
+            companies = await FetchTickers().ConfigureAwait(false);
 
 
             //Update our tickers with current price
 
             int updatersuccess = new int();
-            foreach(var ticker in companies)
+            foreach (var ticker in companies)
             {
                 //Console.WriteLine("there");
-                updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker.tickersymbol);
+                updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker.tickersymbol).ConfigureAwait(false);
             }
 
 
@@ -988,43 +1051,44 @@ namespace IPMAConsole
             }*/
 
             List<Portfolio> portfolioList = new List<Portfolio>();
-            portfolioList = await FetchPortfoliosandContents();
+            portfolioList = await FetchPortfoliosandContents().ConfigureAwait(false);
 
             Console.WriteLine(portfolioList[5].contents[0].tickersymbol);
-            //Console.WriteLine(portfolioList.Count());
 
-            foreach (Portfolio portfolio in portfolioList)
+            foreach (Portfolio p in portfolioList)
             {
-                await SR_CalculateSharpeforPortfolio(portfolio, companies);
+                await SR_CalculateSharpeforPortfolio(p, companies).ConfigureAwait(false);
             }
+
+            //SR_CalculateSharpeforPortfolio(portfolioList[5], companies).Wait();
+
             /*for(var i = 0; i<portfolioList.Count(); i++)
             {
-
             }*/
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             /*
             
             
@@ -1036,7 +1100,6 @@ namespace IPMAConsole
                 double SharpeRatioForcompany = await CalculateSharpeRatioForCompany(ticker);
                 SharpeRatios.Add(SharpeRatioForcompany);
             }
-
             var ExpectedReturnOfCompanies = tickers.Zip(SharpeRatios, (k, v) => new { k, v })
               .ToDictionary(x => x.k, x => x.v);
         
@@ -1045,15 +1108,11 @@ namespace IPMAConsole
                 //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
                 Console.Write(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
             }
-
             List<Portfolio> portfolioList = new List<Portfolio>();
             portfolioList = await FetchPortfoliosandContents();
-
             //Now calculate Sharpe Ratio for Portfolio!
-
             //1) Calculate the Expected Return of the Portfolio based on weighted average of the
             // expected return of the investments within it. Make a list to store the expected return for all of our returned portfolios
-
             Dictionary<string, double> ExpectedReturnPortfolioList = new Dictionary<string, double>();
             double weights = 0;
             double tempsum = 0;
@@ -1076,7 +1135,6 @@ namespace IPMAConsole
                 //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
                 Console.Write(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
             }
-
             //Upload the SharpeRatios to our database!
             foreach(KeyValuePair<string, double> kvp in ExpectedReturnPortfolioList)
             {
@@ -1088,5 +1146,3 @@ namespace IPMAConsole
 
     }
 }
-
-
