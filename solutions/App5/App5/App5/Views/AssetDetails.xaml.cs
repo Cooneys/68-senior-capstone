@@ -9,9 +9,10 @@ using Xamarin.Forms.Xaml;
 using App5.Models;
 using Avapi;
 using Avapi.AvapiTIME_SERIES_MONTHLY_ADJUSTED;
-using OxyPlot;
+using System.Net;
 using System.Globalization;
 using Microcharts;
+using System.Collections.Specialized;
 
 namespace App5.Views
 {
@@ -19,7 +20,7 @@ namespace App5.Views
     public partial class AssetDetails : ContentPage
     {
         List<Microcharts.Entry> entries = new List<Microcharts.Entry>();
-        //public PlotModel PieModel { get; set; }
+
         public AssetDetails(Investment selectedInvestment)
         {
             Title = selectedInvestment.tickersymbol;
@@ -35,20 +36,22 @@ namespace App5.Views
 
         async void OnTrashButtonClicked(object sender, EventArgs e)
         {
-            var answer = await DisplayAlert("Delete", "Do you want to delete this Asset?", "Yes", "No");
+            var answer = await DisplayAlert("Delete", "Do you want to delete " + App.currentPortfolio.Name + " " + App.currentInvestment.tickersymbol, "Yes", "No");
             if (answer)
             {
+                WebClient client = new WebClient();
+                Uri uri = new Uri("http://web.engr.oregonstate.edu/~cooneys/capstone/deleteInvestment.php");
+                NameValueCollection parameters = new NameValueCollection();
+                parameters.Add("portfolioname", App.currentPortfolio.Name);
+                parameters.Add("tickersymbol", App.currentInvestment.tickersymbol);
+                client.UploadValuesAsync(uri, parameters);
 
+                await Navigation.PopAsync();
             }
         }
 
         private void GetAssetDetails()
         {
-            //string iname = this.FindByName<Label>("investmentName").Text;
-            //iname = App.currentInvestment.tickersymbol;
-            //this.FindByName<Label>("investmentName").Text = App.currentInvestment.tickersymbol;
-            //this.FindByName<Label>("investmentCount").Text = App.currentInvestment.numberofshares.ToString();
-            //this.FindByName<Label>("investmentPrice").Text = App.currentInvestment.pricepurchased.ToString();
             DisplayPricingData(App.currentInvestment.tickersymbol);
         }
 

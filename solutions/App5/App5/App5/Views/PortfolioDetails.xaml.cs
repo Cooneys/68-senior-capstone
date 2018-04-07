@@ -16,6 +16,8 @@ using SkiaSharp.Views.Forms;
 using Avapi.AvapiTIME_SERIES_DAILY_ADJUSTED;
 using Avapi;
 using System.Globalization;
+using System.Net;
+using System.Collections.Specialized;
 
 namespace App5.Views
 {
@@ -116,47 +118,15 @@ namespace App5.Views
             var answer = await DisplayAlert("Delete", "Do you want to delete this Portfolio?", "Yes", "No");
             if (answer)
             {
+                WebClient client = new WebClient();
+                Uri uri = new Uri("http://web.engr.oregonstate.edu/~cooneys/capstone/deletePortfolio.php");
+                NameValueCollection parameters = new NameValueCollection();
+                parameters.Add("portfolioname", App.currentPortfolio.Name);
+                parameters.Add("currentuser", App.currentUser.Username);
+                client.UploadValuesAsync(uri, parameters);
 
+                await Navigation.PopAsync();
             }
         }
-
-        /*async Task<float> GetRecentPricingDataForCompany(string ticker)
-        {
-            IAvapiConnection connection = AvapiConnection.Instance;
-            float recentprice = 0;
-            IAvapiResponse_TIME_SERIES_DAILY_ADJUSTED m_time_series_daily_adjustedResponse;
-
-            // Set up the connection and pass the API_KEY provided by alphavantage.co
-            connection.Connect("7NIMRBR8G8UB7P8C");
-
-            // Get the TIME_SERIES_MONTHLY_ADJUSTED query object
-            Int_TIME_SERIES_DAILY_ADJUSTED time_series_daily_adjusted =
-                connection.GetQueryObject_TIME_SERIES_DAILY_ADJUSTED();
-
-            // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
-            m_time_series_daily_adjustedResponse = await time_series_daily_adjusted.QueryAsync(
-                 ticker);
-
-            var data = m_time_series_daily_adjustedResponse.Data;
-            if (data.Error)
-            {
-                Console.WriteLine(data.ErrorMessage);
-            }
-            else
-            {
-
-                int counter = 0;
-                foreach (var timeseries in data.TimeSeries)
-                {
-                    if (counter < 1)
-                    {
-                        recentprice = float.Parse(timeseries.adjustedclose, CultureInfo.InvariantCulture.NumberFormat);
-                        Debug.WriteLine(recentprice);
-                    }
-                }
-            }
-
-            return recentprice;
-        } */
     }
 }
