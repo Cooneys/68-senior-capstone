@@ -42,7 +42,7 @@ Completed: Deletion of portfolios and assets all working and implemented. Pricin
 
 
 
-Goals for 4/15
+Goals for 4/15  
 Sam: Implement daily percentage change and get change since purchase working as well
 
 
