@@ -44,5 +44,6 @@ Completed: Deletion of portfolios and assets all working and implemented. Pricin
 
 Goals for 4/15  
 Sam: Implement daily percentage change and get change since purchase working as well
+Avi: Get Last10k to display properly within the application. Start fixing bugs in the iOS version of the applicationn. 
 
 
