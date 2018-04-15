@@ -140,19 +140,25 @@ namespace IPMAConsole
             Action completionMethod = () => Console.WriteLine("Completed Successfully");
 
             //RunAsync().Wait();
+            try
+            {
+                RunAsync().GetAwaiter().OnCompleted(completionMethod);
+                //while (true)
+                //{
+                //    if (RunAsync().IsCompleted)
+                //    {
+                //        Console.WriteLine("Finished all jobs successfully");
+                //        break;
+                //    }
 
-            RunAsync().GetAwaiter().OnCompleted(completionMethod);
-            //while (true)
-            //{
-            //    if (RunAsync().IsCompleted)
-            //    {
-            //        Console.WriteLine("Finished all jobs successfully");
-            //        break;
-            //    }
+                //}
 
-            //}
-
-            Console.ReadLine();
+                Console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception occured in main: " + e.Message.ToString());
+            }
 
 
             //System.Threading.Thread.Sleep(90000);
@@ -375,12 +381,15 @@ namespace IPMAConsole
                     /*Console.WriteLine(I.name);
                     Console.WriteLine(historicalIT);
                     Console.WriteLine(historicalIT["TTM"]);
+
                     Console.WriteLine(A.name);
                     Console.WriteLine(historicalROA);
                     Console.WriteLine(historicalROA["TTM"]);
+
                     Console.WriteLine(E.name);
                     Console.WriteLine(historicalROE);
                     Console.WriteLine(historicalROE["TTM"]);
+
                     Console.WriteLine(M.name);
                     Console.WriteLine(historicalEBT);
                     Console.WriteLine(historicalEBT["TTM"]);*/
@@ -758,7 +767,7 @@ namespace IPMAConsole
             // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
             m_time_series_daily_adjustedResponse = await time_series_daily_adjusted.QueryAsync(
                  ticker).ConfigureAwait(false);
-
+            Thread.Sleep(1500);
             var data = m_time_series_daily_adjustedResponse.Data;
 
             WebClient client = new WebClient();
@@ -834,6 +843,7 @@ namespace IPMAConsole
                 Console.WriteLine("X:" + data1.ToString());
                 // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
                 m_time_series_monthly_adjustedResponse = await data1.QueryPrimitiveAsync(ticker.ToString()).ConfigureAwait(false);
+                Thread.Sleep(1500);
                 Console.WriteLine("2");
                 Console.WriteLine("******** STRUCTURED DATA TIME_SERIES_MONTHLY_ADJUSTED ********");
                 var data = m_time_series_monthly_adjustedResponse.Data;
@@ -849,7 +859,7 @@ namespace IPMAConsole
                     foreach (var timeseries in data.TimeSeries)
                     {
                         //Grab 5 years worth of months data
-                        if (counter < 60)
+                        if (counter < 12)
                         {
                             //add raw prices to array
                             priceslastyear.Add(double.Parse(timeseries.adjustedclose, CultureInfo.InvariantCulture.NumberFormat));
@@ -1035,7 +1045,7 @@ namespace IPMAConsole
             foreach (var ticker in companies)
             {
                 //Console.WriteLine("there");
-                updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker.tickersymbol).ConfigureAwait(false);
+                updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker.tickersymbol.ToString()).ConfigureAwait(false);
             }
 
 
@@ -1064,6 +1074,7 @@ namespace IPMAConsole
 
             /*for(var i = 0; i<portfolioList.Count(); i++)
             {
+
             }*/
 
 
@@ -1100,6 +1111,7 @@ namespace IPMAConsole
                 double SharpeRatioForcompany = await CalculateSharpeRatioForCompany(ticker);
                 SharpeRatios.Add(SharpeRatioForcompany);
             }
+
             var ExpectedReturnOfCompanies = tickers.Zip(SharpeRatios, (k, v) => new { k, v })
               .ToDictionary(x => x.k, x => x.v);
         
@@ -1108,11 +1120,15 @@ namespace IPMAConsole
                 //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
                 Console.Write(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
             }
+
             List<Portfolio> portfolioList = new List<Portfolio>();
             portfolioList = await FetchPortfoliosandContents();
+
             //Now calculate Sharpe Ratio for Portfolio!
+
             //1) Calculate the Expected Return of the Portfolio based on weighted average of the
             // expected return of the investments within it. Make a list to store the expected return for all of our returned portfolios
+
             Dictionary<string, double> ExpectedReturnPortfolioList = new Dictionary<string, double>();
             double weights = 0;
             double tempsum = 0;
@@ -1135,6 +1151,7 @@ namespace IPMAConsole
                 //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
                 Console.Write(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
             }
+
             //Upload the SharpeRatios to our database!
             foreach(KeyValuePair<string, double> kvp in ExpectedReturnPortfolioList)
             {
