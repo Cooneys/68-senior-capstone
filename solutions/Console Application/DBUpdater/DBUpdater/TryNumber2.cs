@@ -767,7 +767,7 @@ namespace IPMAConsole
             // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
             m_time_series_daily_adjustedResponse = await time_series_daily_adjusted.QueryAsync(
                  ticker).ConfigureAwait(false);
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
             var data = m_time_series_daily_adjustedResponse.Data;
 
             WebClient client = new WebClient();
@@ -818,14 +818,34 @@ namespace IPMAConsole
         }
 
 
-        static async Task<Tuple<double, double, List<double>>> SR_FetchPricingDataandExpectedReturn(string ticker, Int_TIME_SERIES_MONTHLY_ADJUSTED data1)
+        static async Task<Tuple<double, double, List<double>>> SR_FetchPricingDataandExpectedReturn(string ticker /*Int_TIME_SERIES_MONTHLY_ADJUSTED data1*/)
         {
             //******************************************************************************************
             //The purpose of this function is to do all calculations related to sharperatio that involve pricing data
             // for a single company. This includes STDdev, and expected return. These will be stored in a dictionary
             //******************************************************************************************
             var pricingData = new Tuple<double, double, List<double>>(0, 0, null);
-            IAvapiResponse_TIME_SERIES_MONTHLY_ADJUSTED m_time_series_monthly_adjustedResponse = null;
+            //IAvapiResponse_TIME_SERIES_MONTHLY_ADJUSTED m_time_series_monthly_adjustedResponse = null;
+
+            /*//var pricingdata = new Tuple<double, double, List<double>>();
+            IAvapiConnection connection = AvapiConnection.Instance;
+            connection.Connect("MPZ08O0AO11KVYYX");
+            //await Task.Delay(3000);
+            Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted = connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();*/
+            IAvapiConnection connection = AvapiConnection.Instance;
+            float recentprice = 0;
+            IAvapiResponse_TIME_SERIES_MONTHLY_ADJUSTED m_time_series_monthly_adjustedResponse;
+
+            // Set up the connection and pass the API_KEY provided by alphavantage.co
+            connection.Connect("7NIMRBR8G8UB7P8C");
+
+            // Get the TIME_SERIES_MONTHLY_ADJUSTED query object
+            /*Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted =
+                connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();*/
+
+            // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
+            /*m_time_series_monthly_adjustedResponse = await time_series_monthly_adjusted.QueryPrimitiveAsync(
+                 ticker).ConfigureAwait(false);*/
             try
             {
                 List<double> priceslastyear = new List<double>();
@@ -840,10 +860,18 @@ namespace IPMAConsole
                 //// Get the TIME_SERIES_MONTHLY_ADJUSTED query object
                 //Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted = connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();
                 Console.WriteLine("1");
-                Console.WriteLine("X:" + data1.ToString());
+                // Console.WriteLine("X:" + data1.ToString());
+                Thread.Sleep(3000);
+                //TRY Putting this here? Maybe this should be waited on as well
+                Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted =
+                connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();
+
+
+                Thread.Sleep(5000);
                 // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
-                m_time_series_monthly_adjustedResponse = await data1.QueryPrimitiveAsync(ticker.ToString()).ConfigureAwait(false);
-                Thread.Sleep(1500);
+                m_time_series_monthly_adjustedResponse = await time_series_monthly_adjusted.QueryPrimitiveAsync(ticker.ToString()).ConfigureAwait(false);
+                Thread.Sleep(5000);
+                //await Task.Delay(10000);
                 Console.WriteLine("2");
                 Console.WriteLine("******** STRUCTURED DATA TIME_SERIES_MONTHLY_ADJUSTED ********");
                 var data = m_time_series_monthly_adjustedResponse.Data;
@@ -905,7 +933,7 @@ namespace IPMAConsole
             {
 
                 Console.WriteLine("Inner Exception was: " + e.Message.ToString());
-                Console.WriteLine("The object was: " + m_time_series_monthly_adjustedResponse.RawData.ToString());
+                //Console.WriteLine("The object was: " + m_time_series_monthly_adjustedResponse.RawData.ToString());
                 return pricingData;
             }
         }
@@ -931,9 +959,10 @@ namespace IPMAConsole
                 List<double> covariances = new List<double>();
 
                 //var pricingdata = new Tuple<double, double, List<double>>();
-                IAvapiConnection connection = AvapiConnection.Instance;
-                connection.Connect("7NIMRBR8G8UB7P8C");
-                Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted = connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();
+                /*IAvapiConnection connection = AvapiConnection.Instance;
+                connection.Connect("MPZ08O0AO11KVYYX");
+                //await Task.Delay(3000);
+                Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted = connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();*/
 
 
 
@@ -948,8 +977,9 @@ namespace IPMAConsole
                     {
                         Console.WriteLine("Preline: " + currentportfolio.contents[i].tickersymbol);
 
-                        Tuple<double, double, List<double>> pricingdata = await SR_FetchPricingDataandExpectedReturn(currentportfolio.contents[i].tickersymbol, time_series_monthly_adjusted).ConfigureAwait(false);
-
+                        //await Task.Delay(3000);
+                        Tuple<double, double, List<double>> pricingdata = await SR_FetchPricingDataandExpectedReturn(currentportfolio.contents[i].tickersymbol/*, time_series_monthly_adjusted*/).ConfigureAwait(false);
+                        //Thread.Sleep(3000);
                         Console.WriteLine("After pricing data");
 
 
@@ -1041,12 +1071,12 @@ namespace IPMAConsole
 
             //Update our tickers with current price
 
-            int updatersuccess = new int();
+            /*int updatersuccess = new int();
             foreach (var ticker in companies)
             {
                 //Console.WriteLine("there");
                 updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker.tickersymbol.ToString()).ConfigureAwait(false);
-            }
+            }*/
 
 
             //Grab ratios for all companies in ticker list and store the results in a list of Ratios
