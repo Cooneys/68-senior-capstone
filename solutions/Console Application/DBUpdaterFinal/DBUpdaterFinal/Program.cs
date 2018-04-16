@@ -1016,24 +1016,44 @@ namespace IPMAConsole
                 {
                     portfolioexpectedreturn = portfolioexpectedreturn + (weights[i] * expectedreturnforallcompanies[i]);
                 }
+                Console.WriteLine("Portfolioexpectedreturn: {0}", portfolioexpectedreturn);
 
 
                 // 2) Now lets get standard deviation of the portfolio!
                 double part1 = 0;
                 for (var i = 0; i<weights.Count(); i++)
                 {
-                    part1 = part1 + (weights[i] + stddevforallcompanies[i]);
+                    part1 = part1 + (Math.Pow(weights[i],2) + Math.Pow(stddevforallcompanies[i],2));
                 }
-
+                Console.WriteLine("Part 1: {0}", part1);
                 double part2 = 0;
-                for (var i = 0; i < covariances.Count() - 1; i++)
+                double counter = 0;
+                for (var i = 0; i < weights.Count() - 1; i++)
                 {
-                    for (var j = i + 1; j < covariances.Count(); j++)
+                    for (var j = i + 1; j < weights.Count(); j++)
                     {
                         part2 = part2 + (covariances[i] * weights[i] * weights[j] * 2);
+
                         Console.WriteLine("calculating: {0}, {1}, {2}", weights[i], weights[j], covariances[i]);
+                        counter = counter + 1;
+                        
                     }
                 }
+
+                WebClient client = new WebClient();
+                HttpClient client2 = new HttpClient();
+                Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/UploadSharpeRatio.php");
+
+                NameValueCollection parameters = new NameValueCollection();
+
+                var postData = new List<KeyValuePair<string, string>>();
+
+                postData.Add(new KeyValuePair<string, string>("portfolioname", currentportfolio.name));
+                postData.Add(new KeyValuePair<string, string>("sharperatio", sharpeforportfolio);
+
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                var response = await client2.PostAsync(uri, content);
 
             }
             catch (Exception e)
