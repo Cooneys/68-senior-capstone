@@ -137,6 +137,9 @@ namespace IPMAConsole
         {       //List<string> tickers = new List<string>();
                 //List<string> tickerList;
 
+            Console.WriteLine("********************************************* START EXECUTION ***********************************************************");
+            Console.WriteLine(DateTime.Now);
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             Action completionMethod = () => Console.WriteLine("Completed Successfully");
 
             //RunAsync().Wait();
@@ -152,11 +155,14 @@ namespace IPMAConsole
                 //    }
 
                 //}
-
+                watch.Stop();
+                var elapsedMs = watch.ElapsedMilliseconds;
+                Console.WriteLine("Execution time: {0}", elapsedMs);
                 Console.ReadLine();
             }
             catch (Exception e)
             {
+                watch.Stop();
                 Console.WriteLine("Exception occured in main: " + e.Message.ToString());
             }
 
@@ -761,6 +767,7 @@ namespace IPMAConsole
             connection.Connect("7NIMRBR8G8UB7P8C");
 
             // Get the TIME_SERIES_MONTHLY_ADJUSTED query object
+            Thread.Sleep(3000);
             Int_TIME_SERIES_DAILY_ADJUSTED time_series_daily_adjusted =
                 connection.GetQueryObject_TIME_SERIES_DAILY_ADJUSTED();
 
@@ -1071,14 +1078,14 @@ namespace IPMAConsole
 
             //Update our tickers with current price
 
-            /*int updatersuccess = new int();
+            int updatersuccess = new int();
             foreach (var ticker in companies)
             {
                 //Console.WriteLine("there");
                 updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker.tickersymbol.ToString()).ConfigureAwait(false);
-            }*/
+            }
 
-
+            Thread.Sleep(5000);
             //Grab ratios for all companies in ticker list and store the results in a list of Ratios
 
 
