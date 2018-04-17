@@ -203,6 +203,7 @@ namespace IPMAConsole
     }
 
 
+
     public class Ratios
     {
         [JsonProperty(PropertyName = "InventoryTurnover")]
@@ -233,24 +234,23 @@ namespace IPMAConsole
         public Freecashflow fcf { get; set; }
         [JsonProperty(PropertyName = "Revenue")]
         public Revenue rev { get; set; }
-
         public string companyname { get; set; }
     }
 
     public class BalanceSheets
     {
-        //currently having it output all balancesheet data will specify what is needed in next git push
+        //currently having it output all balancesheet data
     }
 
 
     public class CashFlows
     {
-        //same as balancesheet public class. specific cash flow will be coming soon for global variable usage
+        //all cash flow
     }
 
     public class Income
     {
-        //same as balancesheet and cash flow public class. specific income data will be coming soon for global variable usage
+        //all income
     }
 
     class Program
@@ -269,19 +269,25 @@ namespace IPMAConsole
             Action completionMethod = () => Console.WriteLine("Completed Successfully");
 
             //RunAsync().Wait();
+            try
+            {
+                RunAsync().GetAwaiter().OnCompleted(completionMethod);
+                //while (true)
+                //{
+                //    if (RunAsync().IsCompleted)
+                //    {
+                //        Console.WriteLine("Finished all jobs successfully");
+                //        break;
+                //    }
 
-            RunAsync().GetAwaiter().OnCompleted(completionMethod);
-            //while (true)
-            //{
-            //    if (RunAsync().IsCompleted)
-            //    {
-            //        Console.WriteLine("Finished all jobs successfully");
-            //        break;
-            //    }
+                //}
 
-            //}
-
-            Console.ReadLine();
+                Console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception occured in main: " + e.Message.ToString());
+            }
 
 
             //System.Threading.Thread.Sleep(90000);
@@ -442,6 +448,7 @@ namespace IPMAConsole
             Taxrate Tr = new Taxrate();
             Freecashflow Fc = new Freecashflow();
             Revenue Re = new Revenue();
+
             using (client)
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "ced63a48eaa34a288772c71c62da184a");
@@ -510,7 +517,6 @@ namespace IPMAConsole
                     {
                         M.recent = 0;
                     }
-
                     var articlesN = JsonConvert.DeserializeObject<dynamic>(responseBody);
                     N.name = articlesN.NetIncome.Name;
                     JObject historicalN = articlesN.N.Recent;
@@ -640,16 +646,18 @@ namespace IPMAConsole
                     {
                         Re.recent = 0;
                     }
-
                     /*Console.WriteLine(I.name);
                     Console.WriteLine(historicalIT);
                     Console.WriteLine(historicalIT["TTM"]);
+
                     Console.WriteLine(A.name);
                     Console.WriteLine(historicalROA);
                     Console.WriteLine(historicalROA["TTM"]);
+
                     Console.WriteLine(E.name);
                     Console.WriteLine(historicalROE);
                     Console.WriteLine(historicalROE["TTM"]);
+
                     Console.WriteLine(M.name);
                     Console.WriteLine(historicalEBT);
                     Console.WriteLine(historicalEBT["TTM"]);*/
@@ -696,22 +704,18 @@ namespace IPMAConsole
             }
         }
 
-        static async Task<BalanceSheets> GetBalanceSheet(string ticker)
+        static async void GetBalanceSheet()
         {
             var client = new HttpClient();
             var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
-
-            BalanceSheets B = new BalanceSheets();
-
             using (client)
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "ced63a48eaa34a288772c71c62da184a");
-                string url = "https://services.last10k.com/v1/company/" + ticker + "/balancesheet?10-Q";
-                HttpResponseMessage response = await client.GetAsync(url);
+                HttpResponseMessage response = await client.GetAsync("https://services.last10k.com/v1/company/AAPL/balancesheet?10-Q");
 
                 response.EnsureSuccessStatusCode();
-
+                BalanceSheets B = new BalanceSheets();
 
 
                 using (HttpContent content = response.Content)
@@ -719,32 +723,28 @@ namespace IPMAConsole
                     string responseBody = await response.Content.ReadAsStringAsync();
                     Console.WriteLine(responseBody);
 
-                    return B;
-
-
-
 
 
                 }
 
             }
+
+
+
+
         }
-        static async Task<CashFlows> GetCashFlows(string ticker)
+        static async void GetCashFlow()
         {
             var client = new HttpClient();
             var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
-
-            CashFlows Cf = new CashFlows();
-
             using (client)
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "ced63a48eaa34a288772c71c62da184a");
-                string url = "https://services.last10k.com/v1/company/" + ticker + "/cashflows?10-Q";
-                HttpResponseMessage response = await client.GetAsync(url);
+                HttpResponseMessage response = await client.GetAsync("https://services.last10k.com/v1/company/AAPL/cashflows?10-Q");
 
                 response.EnsureSuccessStatusCode();
-
+                CashFlows C = new CashFlows();
 
 
                 using (HttpContent content = response.Content)
@@ -752,32 +752,26 @@ namespace IPMAConsole
                     string responseBody = await response.Content.ReadAsStringAsync();
                     Console.WriteLine(responseBody);
 
-                    return Cf;
-
-
-
 
 
                 }
 
             }
+
+
         }
-        static async Task<Income> GetIncome(string ticker)
+        static async void GetIncome()
         {
             var client = new HttpClient();
             var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
-
-            Income I = new Income();
-
             using (client)
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "ced63a48eaa34a288772c71c62da184a");
-                string url = "https://services.last10k.com/v1/company/" + ticker + "/income?10-Q";
-                HttpResponseMessage response = await client.GetAsync(url);
+                HttpResponseMessage response = await client.GetAsync("https://services.last10k.com/v1/company/AAPL/income?10-Q");
 
                 response.EnsureSuccessStatusCode();
-
+                Income Ic = new Income();
 
 
                 using (HttpContent content = response.Content)
@@ -785,15 +779,13 @@ namespace IPMAConsole
                     string responseBody = await response.Content.ReadAsStringAsync();
                     Console.WriteLine(responseBody);
 
-                    return I;
-
-
-
 
 
                 }
 
             }
+
+
         }
 
         static async void SharpeRatioCalculator(string ticker)
@@ -1061,7 +1053,7 @@ namespace IPMAConsole
             // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
             m_time_series_daily_adjustedResponse = await time_series_daily_adjusted.QueryAsync(
                  ticker).ConfigureAwait(false);
-
+            Thread.Sleep(1500);
             var data = m_time_series_daily_adjustedResponse.Data;
 
             WebClient client = new WebClient();
@@ -1136,6 +1128,8 @@ namespace IPMAConsole
                 Console.WriteLine("1");
                 Console.WriteLine("X:" + data1.ToString());
                 // Perform the TIME_SERIES_MONTHLY_ADJUSTED request and get the result
+                Thread.Sleep(1500);
+                Thread.Sleep(10000);
                 m_time_series_monthly_adjustedResponse = await data1.QueryPrimitiveAsync(ticker.ToString()).ConfigureAwait(false);
                 Console.WriteLine("2");
                 Console.WriteLine("******** STRUCTURED DATA TIME_SERIES_MONTHLY_ADJUSTED ********");
@@ -1152,7 +1146,7 @@ namespace IPMAConsole
                     foreach (var timeseries in data.TimeSeries)
                     {
                         //Grab 5 years worth of months data
-                        if (counter < 60)
+                        if (counter < 12)
                         {
                             //add raw prices to array
                             priceslastyear.Add(double.Parse(timeseries.adjustedclose, CultureInfo.InvariantCulture.NumberFormat));
@@ -1308,9 +1302,44 @@ namespace IPMAConsole
                 {
                     portfolioexpectedreturn = portfolioexpectedreturn + (weights[i] * expectedreturnforallcompanies[i]);
                 }
+                Console.WriteLine("Portfolioexpectedreturn: {0}", portfolioexpectedreturn);
 
 
                 // 2) Now lets get standard deviation of the portfolio!
+                double part1 = 0;
+                for (var i = 0; i < weights.Count(); i++)
+                {
+                    part1 = part1 + (Math.Pow(weights[i], 2) + Math.Pow(stddevforallcompanies[i], 2));
+                }
+                Console.WriteLine("Part 1: {0}", part1);
+                double part2 = 0;
+                double counter = 0;
+                for (var i = 0; i < weights.Count() - 1; i++)
+                {
+                    for (var j = i + 1; j < weights.Count(); j++)
+                    {
+                        part2 = part2 + (covariances[i] * weights[i] * weights[j] * 2);
+
+                        Console.WriteLine("calculating: {0}, {1}, {2}", weights[i], weights[j], covariances[i]);
+                        counter = counter + 1;
+
+                    }
+                }
+
+                WebClient client = new WebClient();
+                HttpClient client2 = new HttpClient();
+                Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/UploadSharpeRatio.php");
+
+                NameValueCollection parameters = new NameValueCollection();
+
+                var postData = new List<KeyValuePair<string, string>>();
+
+                postData.Add(new KeyValuePair<string, string>("portfolioname", currentportfolio.name));
+                //postData.Add(new KeyValuePair<string, string>("sharperatio", sharpeforportfolio));
+
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                var response = await client2.PostAsync(uri, content);
 
             }
             catch (Exception e)
@@ -1338,20 +1367,20 @@ namespace IPMAConsole
             foreach (var ticker in companies)
             {
                 //Console.WriteLine("there");
-                updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker.tickersymbol).ConfigureAwait(false);
+                updatersuccess = await FetchandUpdateCurrentPriceDataforCompany(ticker.tickersymbol.ToString()).ConfigureAwait(false);
             }
 
 
             //Grab ratios for all companies in ticker list and store the results in a list of Ratios
 
 
-            /*List<Ratios> ratiosfortickers = new List<Ratios>();
-            foreach(string ticker in tickers)
+            List<Ratios> ratiosfortickers = new List<Ratios>();
+            foreach (string ticker in tickers)
             {
                 Ratios tempRatio = new Ratios();
                 tempRatio = await GetRatio(ticker);
                 ratiosfortickers.Add(tempRatio);
-            }*/
+            }
 
             List<Portfolio> portfolioList = new List<Portfolio>();
             portfolioList = await FetchPortfoliosandContents().ConfigureAwait(false);
@@ -1367,6 +1396,7 @@ namespace IPMAConsole
 
             /*for(var i = 0; i<portfolioList.Count(); i++)
             {
+
             }*/
 
 
@@ -1403,6 +1433,7 @@ namespace IPMAConsole
                 double SharpeRatioForcompany = await CalculateSharpeRatioForCompany(ticker);
                 SharpeRatios.Add(SharpeRatioForcompany);
             }
+
             var ExpectedReturnOfCompanies = tickers.Zip(SharpeRatios, (k, v) => new { k, v })
               .ToDictionary(x => x.k, x => x.v);
         
@@ -1411,11 +1442,15 @@ namespace IPMAConsole
                 //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
                 Console.Write(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
             }
+
             List<Portfolio> portfolioList = new List<Portfolio>();
             portfolioList = await FetchPortfoliosandContents();
+
             //Now calculate Sharpe Ratio for Portfolio!
+
             //1) Calculate the Expected Return of the Portfolio based on weighted average of the
             // expected return of the investments within it. Make a list to store the expected return for all of our returned portfolios
+
             Dictionary<string, double> ExpectedReturnPortfolioList = new Dictionary<string, double>();
             double weights = 0;
             double tempsum = 0;
@@ -1438,10 +1473,11 @@ namespace IPMAConsole
                 //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
                 Console.Write(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
             }
+
             //Upload the SharpeRatios to our database!
             foreach(KeyValuePair<string, double> kvp in ExpectedReturnPortfolioList)
             {
-                (kvp.Key, kvp.Value);
+                UploadSharpeRatio(kvp.Key, kvp.Value);
             }
             */
 
