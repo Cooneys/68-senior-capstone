@@ -1040,6 +1040,20 @@ namespace IPMAConsole
                     }
                 }
 
+                double portfoliostddev = part1 + part2;
+                portfoliostddev = Math.Pow(portfoliostddev, 0.5);
+                portfoliostddev = portfoliostddev * 12;
+                portfoliostddev = Math.Pow(portfoliostddev, 0.5);
+
+                //3) Sharpe ratio final calculations
+
+                // Sharpe = Expected Return - Risk Free Rate/Standard Deviation 
+                double sharpeforportfolio = 0;
+                sharpeforportfolio = (portfolioexpectedreturn - 3) / portfoliostddev;
+
+
+
+
                 WebClient client = new WebClient();
                 HttpClient client2 = new HttpClient();
                 Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/UploadSharpeRatio.php");
@@ -1049,7 +1063,7 @@ namespace IPMAConsole
                 var postData = new List<KeyValuePair<string, string>>();
 
                 postData.Add(new KeyValuePair<string, string>("portfolioname", currentportfolio.name));
-                postData.Add(new KeyValuePair<string, string>("sharperatio", sharpeforportfolio);
+                postData.Add(new KeyValuePair<string, string>("sharperatio", sharpeforportfolio.ToString()));
 
                 HttpContent content = new FormUrlEncodedContent(postData);
 
