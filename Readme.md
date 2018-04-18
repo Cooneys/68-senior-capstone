@@ -47,7 +47,7 @@ Sam: Implement daily percentage change and get change since purchase working as 
 Avi: Get Last10k to display properly within the application. Start fixing bugs in the iOS version of the applicationn.   
 
 Goals for 4/24  
-Sam: Fix Scroll view for asset detail, fix color on portfolio chart to not just be red, password hashing,  
+Sam: Fix Scroll view for asset detail, fix color on portfolio chart to not just be red, password hashing, prevent sqli injections  
 
 Tyler: Auto updating on portfolio view and main view, finish r^2 and alpha  
 
