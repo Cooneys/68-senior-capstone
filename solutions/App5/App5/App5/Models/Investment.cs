@@ -11,10 +11,14 @@ namespace App5.Models
         public string tickersymbol { get; set; }
         public float numberofshares { get; set; }
         public float pricepurchased { get; set; }
+        public float totalvalue { get; set; }
+        public float recentprice { get; set; }
         public string type { get; set; }
         public Color color { get; set; }
-        public float percentChange { get; set; }
-        public Color changeColor { get; set; }
+        public float percentChangeDaily { get; set; }
+        public float percentChangeTotal { get; set; }
+        public Color changeColorDaily { get; set; }
+        public Color changeColorTotal { get; set; }
 
         public Investment() { }
 
