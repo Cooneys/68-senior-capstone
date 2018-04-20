@@ -262,6 +262,29 @@ namespace IPMAConsole
             return sum;
         }
 
+        public static double Variance(List<double> set)
+        {
+            double xbar = 0;
+
+            for (var i = 0; i < set.Count(); i++)
+            {
+                xbar = xbar + set[i];
+            }
+
+            xbar = xbar / set.Count();
+
+            double sum = 0;
+
+            for (var i = 0; i < set.Count(); i++)
+            {
+                sum = sum + (Math.Pow(set[i] - xbar, 2));
+            }
+
+            sum = sum / (set.Count() - 1);
+
+            return sum;
+        }
+
 
         static async Task<List<string>> GetTickers()
         {
@@ -911,7 +934,7 @@ namespace IPMAConsole
             }
         }
 
-        static async Task SR_CalculateSharpeforPortfolio(Portfolio currentportfolio, List<company> companies)
+        static async Task SR_CalculateSharpeforPortfolio(Portfolio currentportfolio, List<company> companies, List<double> snpdata)
         {
             try
             {
@@ -933,7 +956,7 @@ namespace IPMAConsole
 
                 //var pricingdata = new Tuple<double, double, List<double>>();
                 IAvapiConnection connection = AvapiConnection.Instance;
-                connection.Connect("7NIMRBR8G8UB7P8C");
+                connection.Connect("MPZ08O0AO11KVYYX");
                 Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted = connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();
 
 
@@ -1052,7 +1075,21 @@ namespace IPMAConsole
                 sharpeforportfolio = (portfolioexpectedreturn - 3) / portfoliostddev;
 
 
+                // NOW LETS CALCULATE ALPHA!
+                // 4) 
+                // Alpha = Expected Portfolio Return - [Risk Free Rate + Beta of Portfolio *(Expected Market Return - Risk Free Rate)]
+                // Really the only value we need to calculate here is Beta of Portfolio!
 
+                //Beta of portfolio = Individual betas for companies * weights of companies in portfolio
+                double portfoliobeta = 0;
+                for(var i = 0; i < pricingdataforcovariance.Count(); i++)
+                {
+                    portfoliobeta = portfoliobeta + (weights[i] * Covariance(pricingdataforcovariance[i], snpdata));
+                }
+
+                //Ready to calculate alpha
+                double alphaofportfolio = 0;
+                alphaofportfolio = portfolioexpectedreturn - (3 + portfoliobeta * (7 - 3));
 
                 WebClient client = new WebClient();
                 HttpClient client2 = new HttpClient();
@@ -1064,6 +1101,7 @@ namespace IPMAConsole
 
                 postData.Add(new KeyValuePair<string, string>("portfolioname", currentportfolio.name));
                 postData.Add(new KeyValuePair<string, string>("sharperatio", sharpeforportfolio.ToString()));
+                postData.Add(new KeyValuePair<string, string>("alpha", alphaofportfolio.ToString()));
 
                 HttpContent content = new FormUrlEncodedContent(postData);
 
@@ -1113,11 +1151,17 @@ namespace IPMAConsole
             List<Portfolio> portfolioList = new List<Portfolio>();
             portfolioList = await FetchPortfoliosandContents().ConfigureAwait(false);
 
-            Console.WriteLine(portfolioList[5].contents[0].tickersymbol);
+            //Console.WriteLine(portfolioList[5].contents[0].tickersymbol);
+
+            IAvapiConnection connection = AvapiConnection.Instance;
+            connection.Connect("MPZ08O0AO11KVYYX");
+            Int_TIME_SERIES_MONTHLY_ADJUSTED time_series_monthly_adjusted = connection.GetQueryObject_TIME_SERIES_MONTHLY_ADJUSTED();
+
+            Tuple<double, double, List<double>> SnPpricingdata = await SR_FetchPricingDataandExpectedReturn("SPY", time_series_monthly_adjusted).ConfigureAwait(false);
 
             foreach (Portfolio p in portfolioList)
             {
-                await SR_CalculateSharpeforPortfolio(p, companies).ConfigureAwait(false);
+                await SR_CalculateSharpeforPortfolio(p, companies, SnPpricingdata.Item3).ConfigureAwait(false);
             }
 
             //SR_CalculateSharpeforPortfolio(portfolioList[5], companies).Wait();
