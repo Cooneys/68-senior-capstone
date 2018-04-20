@@ -47,14 +47,31 @@
                             <!--TextCell Text="{Binding tickersymbol}" Detail="{Binding numberofshares}" TextColor="Black"/!-->
                             <ViewCell>
                                 <Frame Padding="0" HasShadow="True" CornerRadius="1" Margin="0, 1, 0, 1">
-                                    <StackLayout BackgroundColor="White" Orientation="Vertical">
+                                    <StackLayout BackgroundColor="White" Orientation="Vertical" HorizontalOptions="StartAndExpand">
                                         <StackLayout Orientation="Horizontal">
                                             <Frame Padding="10" BackgroundColor="{Binding color}"/>
                                             <StackLayout Orientation="Vertical">
-                                                <Label Text="{Binding tickersymbol}"/>
-                                                <Label Text="{Binding numberofshares}"/>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                                    <Label Text="{Binding tickersymbol}"/>
+                                                    <Label Text="'s Price: "/>
+                                                    <Label Text="{Binding recentprice}" TextColor="Black"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="# Owned: "/>
+                                                    <Label Text="{Binding numberofshares}" TextColor="Black"/>
+                                                </StackLayout>
                                             </StackLayout>
-                                            <Label Text="{Binding percentChange}" VerticalOptions="Center" HorizontalOptions="End" TextColor="{Binding changeColor}"/>
+                                            <Frame Opacity="0"/>
+                                            <StackLayout Orientation="Vertical">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Daily %&#x0394;: "/>
+                                                    <Label Text="{Binding percentChangeDaily}" TextColor="{Binding changeColorDaily}"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                                    <Label Text="ROA: "/>
+                                                    <Label Text="{Binding percentChangeTotal}" TextColor="{Binding changeColorTotal}"/>
+                                                </StackLayout>
+                                            </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>

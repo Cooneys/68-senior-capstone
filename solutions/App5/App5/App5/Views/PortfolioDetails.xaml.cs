@@ -59,31 +59,39 @@ namespace App5.Views
             {
                 for (var i = 0; i < investmentList.Count; i++)
                 {
-                    float recentprice = 0;
-                    //float recentprice = new float();
                     for (var j = 0; j < companyInfo.Count; j++)
                     {
                         if (investmentList[i].tickersymbol.Equals(companyInfo[j].tickersymbol))
                         {
-                            recentprice = (float)companyInfo[i].currentprice;
+                            investmentList[i].recentprice = (float)companyInfo[j].currentprice;
                         }
                     }
-                    float tempvalue = investmentList[i].numberofshares * recentprice;
-                    investmentList[i].percentChange = ((recentprice - investmentList[i].pricepurchased) / investmentList[i].pricepurchased);
-                    totalportfoliovalue = totalportfoliovalue + (recentprice * tempvalue);
+                    investmentList[i].totalvalue = investmentList[i].numberofshares * investmentList[i].recentprice;
+                    investmentList[i].percentChangeDaily = ((investmentList[i].recentprice - investmentList[i].pricepurchased) / investmentList[i].pricepurchased);
+                    totalportfoliovalue = totalportfoliovalue + (investmentList[i].totalvalue);
+
+                    investmentList[i].percentChangeTotal = ((investmentList[i].recentprice - investmentList[i].pricepurchased) / investmentList[i].pricepurchased);
+
 
                     int n = 200 / investmentList.Count;
                     investmentList[i].color = CustColors.grabColor(i * n);
-                    if (investmentList[i].percentChange >= 0)
+                    if (investmentList[i].percentChangeDaily >= 0)
                     {
-                        investmentList[i].changeColor = Color.FromRgb(0, 0, 0);
+                        investmentList[i].changeColorDaily = Color.FromRgb(0, 0, 0);
                     }
                     else
                     {
-                        investmentList[i].changeColor = Color.FromRgb(255, 0, 0);
+                        investmentList[i].changeColorDaily = Color.FromRgb(255, 0, 0);
                     }
-                    
-                    Microcharts.Entry tempEntry = new Microcharts.Entry(tempvalue)
+
+                    if (investmentList[i].percentChangeTotal >= 0) {
+                        investmentList[i].changeColorTotal = Color.FromRgb(0, 0, 0);
+                    }
+                    else {
+                        investmentList[i].changeColorTotal = Color.FromRgb(255, 0, 0);
+                    }
+
+                    Microcharts.Entry tempEntry = new Microcharts.Entry(investmentList[i].totalvalue)
                     {
                         Label = investmentList[i].tickersymbol,
                         Color = investmentList[i].color.ToSKColor()
@@ -106,6 +114,13 @@ namespace App5.Views
             {
                 Debug.WriteLine("PL returned null");
             }
+            WebClient client = new WebClient();
+            Uri uri = new Uri("http://web.engr.oregonstate.edu/~cooneys/capstone/updatePortfolioValue.php");
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("portfolioname", App.currentPortfolio.Name);
+            parameters.Add("currentuser", App.currentUser.Username);
+            parameters.Add("totalvalue", App.currentPortfolioTotalValue.ToString());
+            client.UploadValuesAsync(uri, parameters);
         }
 
         async void OnInvestmentButtonClicked(object sender, EventArgs e)
