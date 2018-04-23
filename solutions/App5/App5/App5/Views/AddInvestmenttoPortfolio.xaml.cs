@@ -77,6 +77,8 @@ namespace App5.Views
                 await Navigation.PopToRootAsync();
             }*/
             // await Navigation.PushAsync(new PortfolioDetails(App.currentPortfolio));
+            Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count()-2]);
+            Navigation.InsertPageBefore(new PortfolioDetails(App.currentPortfolio), Navigation.NavigationStack[Navigation.NavigationStack.Count()-1]);
             await Navigation.PopAsync();
         }
     }
