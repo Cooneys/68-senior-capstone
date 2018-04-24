@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,20 +56,33 @@ namespace App5.Views
 
         async void OnDoneNewInvestmentClicked(object sender, EventArgs e)
         {
-            WebClient client = new WebClient();
+            //WebClient client = new WebClient();
+            //Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/AddInvestment.php");
+
+            HttpClient client2 = new HttpClient();
             Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/AddInvestment.php");
 
             newInvestment.tickersymbol = tickerEntry.Text;
             newInvestment.pricepurchased = float.Parse(purchasepriceEntry.Text, CultureInfo.InvariantCulture.NumberFormat);
             newInvestment.numberofshares = float.Parse(numSharesEntry.Text, CultureInfo.InvariantCulture.NumberFormat);
 
-            NameValueCollection parameters = new NameValueCollection();
+            /*NameValueCollection parameters = new NameValueCollection();
             parameters.Add("portfolioname", App.currentPortfolio.Name);
             parameters.Add("tickersymbol", tickerEntry.Text);
             parameters.Add("numshares", numSharesEntry.Text);
-            parameters.Add("pricepurchased", purchasepriceEntry.Text);
+            parameters.Add("pricepurchased", purchasepriceEntry.Text);*/
 
-            client.UploadValuesAsync(uri, parameters);
+            var postData = new List<KeyValuePair<string, string>>();
+
+            postData.Add(new KeyValuePair<string, string>("portfolioname", App.currentPortfolio.Name.ToString()));
+            postData.Add(new KeyValuePair<string, string>("tickersymbol", tickerEntry.Text.ToString()));
+            postData.Add(new KeyValuePair<string, string>("numshares", numSharesEntry.Text.ToString()));
+            postData.Add(new KeyValuePair<string, string>("pricepurchased", purchasepriceEntry.Text.ToString()));
+
+            HttpContent content = new FormUrlEncodedContent(postData);
+
+            var response = await client2.PostAsync(uri, content);
+            //client.UploadValuesAsync(uri, parameters);
 
             /*var rootPage = Navigation.NavigationStack.FirstOrDefault();
             if (rootPage != null)
