@@ -71,40 +71,5 @@ namespace App5.Views
                 Entry_Password.Text = string.Empty;
             }
         }
-
-        /*async bool AreCredentialsCorrect(User user, String userparam)
-        {
-            Task<bool> correctT = restService.Login(App.currentUser, userparam);
-            await correctT;
-
-            bool correct = correctT.Result;
-            return correct;
-        }*/
-
-        /*async void SignInProcedure(object sender, EventArgs e)
-        {
-            User user = new User(Entry_Username.Text, Entry_Password.Text);
-            string userparam = "UserInfo";
-            
-            if (user.CheckInformation())
-            {
-          
-                if (await restService.Login(user, userparam))
-                {
-                    //DisplayAlert("Login", "Login Success", "Okay");
-                    //var allPortfolios = new AllPortfolios(user);
-                    //allPortfolios.BindingContext = user;
-                    Navigation.PushAsync(new AllPortfolios(user));
-                }
-                else
-                {
-                    await DisplayAlert("Login", "Login Failed: Invalid Username or Password", "Okay");
-                }
-            }
-            else
-            {
-                 await DisplayAlert("Login", "Login Incorrect: Please enter a username or password", "Okay");
-            }
-        }*/
 	}
 }

@@ -28,9 +28,14 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions!-->
         <ScrollView>
-            <StackLayout>
-                <Frame CornerRadius="2" HasShadow="True" Padding="10" HeightRequest="200">
-                    <microcharts:ChartView x:Name="chartView"/>
+            <StackLayout Margin="10">
+                <Frame CornerRadius="2" HasShadow="True" Padding="10" HeightRequest="225">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Monthly Adjusted Closing Price" HorizontalOptions="Center"/>
+                        <Frame CornerRadius="2" HasShadow="True" Padding="10" HeightRequest="200">
+                            <microcharts:ChartView x:Name="chartView"/>
+                        </Frame>
+                    </StackLayout>
                 </Frame>
                 <Frame BackgroundColor="White" CornerRadius="2" Padding="5">
                     <StackLayout Orientation="Horizontal">

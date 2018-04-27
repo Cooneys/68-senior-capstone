@@ -102,6 +102,7 @@ namespace App5.Views
                     counter = counter + 1;
                 }
             }
+            entries.Reverse();
             var chart = new LineChart() { Entries = entries, LineMode = LineMode.Straight, LineSize = 8, PointSize =18, LabelTextSize = 25};
             this.chartView.Chart = chart;
         }
