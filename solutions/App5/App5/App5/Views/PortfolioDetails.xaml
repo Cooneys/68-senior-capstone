@@ -30,13 +30,19 @@
                     <ColumnDefinition Width="33*"/>
                 </Grid.ColumnDefinitions>
                 <Frame CornerRadius="1" HasShadow="True" Padding="0" BackgroundColor="White" Grid.Column="0">
-                    <Label Text="Sharp Ratio: .8346" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label Text="Sharpe: -0.775" HorizontalOptions="Center" VerticalOptions="Center"/>
                 </Frame>
                 <Frame CornerRadius="1" HasShadow="True" Padding="0" BackgroundColor="White" Grid.Column="1">
-                    <Label Text="Returns: $0" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                        <Label Text="Returns:" HorizontalOptions="CenterAndExpand"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="$" HorizontalOptions="EndAndExpand"/>
+                            <Label x:Name="returnsLabel" HorizontalOptions="StartAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
                 </Frame>
                 <Frame CornerRadius="1" HasShadow="True" Padding="0" BackgroundColor="White" Grid.Column="2">
-                    <Label Text="Alpha: 1.2%" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label Text="Alpha: -20.5%" HorizontalOptions="Center" VerticalOptions="Center"/>
                 </Frame>
             </Grid>
 
@@ -64,12 +70,13 @@
                                             <Frame Opacity="0"/>
                                             <StackLayout Orientation="Vertical">
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Daily %&#x0394;: "/>
-                                                    <Label Text="{Binding percentChangeDaily}" TextColor="{Binding changeColorDaily}"/>
+                                                    <Label Text="Total ROA %&#x0394;: "/>
+                                                    <Label Text="{Binding type}" TextColor="{Binding changeColorTotal}"/>
+                                                    <Label Text="%"/>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                                    <Label Text="ROA: "/>
-                                                    <Label Text="{Binding percentChangeTotal}" TextColor="{Binding changeColorTotal}"/>
+                                                    <Label Text="Equity: "/>
+                                                    <Label Text="{Binding percentChangeDaily}" TextColor="Black"/>
                                                 </StackLayout>
                                             </StackLayout>
                                         </StackLayout>

@@ -55,6 +55,8 @@ namespace App5.Views
             //This is a pretty brute force method of doing this, rather than a double for loop can we override equality operator? 
             //Restructure classes? May be good enough for now
             float totalportfoliovalue = 0;
+            App.currentPortfolio.returns = 0;
+
             if (investmentList != null)
             {
                 for (var i = 0; i < investmentList.Count; i++)
@@ -67,11 +69,16 @@ namespace App5.Views
                         }
                     }
                     investmentList[i].totalvalue = investmentList[i].numberofshares * investmentList[i].recentprice;
-                    investmentList[i].percentChangeDaily = ((investmentList[i].recentprice - investmentList[i].pricepurchased) / investmentList[i].pricepurchased);
+                    //investmentList[i].percentChangeDaily = ((investmentList[i].recentprice - investmentList[i].pricepurchased) / investmentList[i].pricepurchased);
                     totalportfoliovalue = totalportfoliovalue + (investmentList[i].totalvalue);
 
-                    investmentList[i].percentChangeTotal = ((investmentList[i].recentprice - investmentList[i].pricepurchased) / investmentList[i].pricepurchased);
+                    investmentList[i].percentChangeTotal = ((investmentList[i].recentprice - investmentList[i].pricepurchased) / investmentList[i].pricepurchased) * 100;
+                    investmentList[i].percentChangeDaily = investmentList[i].recentprice * investmentList[i].numberofshares;
 
+                    investmentList[i].type = investmentList[i].percentChangeTotal.ToString("0.000");
+
+
+                    App.currentPortfolio.returns += (investmentList[i].recentprice - investmentList[i].pricepurchased) * investmentList[i].numberofshares;
 
                     int n = 200 / investmentList.Count;
                     investmentList[i].color = CustColors.grabColor(i * n);
@@ -102,6 +109,7 @@ namespace App5.Views
                 var chart = new DonutChart() { Entries = entries };
                 this.chartView.Chart = chart;
                 investmentListView.ItemsSource = investmentList;
+                returnsLabel.Text = App.currentPortfolio.returns.ToString("0.00");
                 investmentListView.ItemTapped += async (sender, args) =>
                 {
                     var item = args.Item as Investment;

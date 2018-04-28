@@ -26,8 +26,14 @@
                                 <StackLayout Orientation="Vertical">
                                     <StackLayout Orientation="Horizontal">
                                         <StackLayout Orientation="Vertical">
-                                            <Label Text="{Binding Name}"/>
-                                            <Label Text="{Binding TotalValue}"/>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Portfolio Name: "/>
+                                                <Label Text="{Binding Name}" TextColor="Black"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Total Portfolio Value:"/>
+                                                <Label Text="{Binding TotalValue}" TextColor="Black"/>
+                                            </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>

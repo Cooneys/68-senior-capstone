@@ -9,10 +9,11 @@ namespace App5.Models
         //public List<string> Owners { get; set; }
         public string Name { get; set; }
         public int TotalValue { get; set; }
+        public float returns { get; set; }
 
         public Portfolio() { }
 
-        public Portfolio(/*List<string> owners,*/ string name, int totalValue)
+        public Portfolio(/*List<string> owners,*/ string name, int totalValue, float returns)
         {
             //this.Owners = owners;
             this.Name= name;

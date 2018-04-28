@@ -9,24 +9,6 @@
         <ToolbarItem Icon="ic_delete_forever_white_24dp.png" Clicked="OnTrashButtonClicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <!--Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="45*"/>
-                <RowDefinition Height="55*"/>
-            </Grid.RowDefinitions!-->
-        
-            <!--Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions!-->
         <ScrollView>
             <StackLayout Margin="10">
                 <Frame CornerRadius="2" HasShadow="True" Padding="10" HeightRequest="225">
@@ -40,91 +22,91 @@
                 <Frame BackgroundColor="White" CornerRadius="2" Padding="5">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Free Cash Flow: " VerticalOptions="Center"/>
-                        <Label x:Name="freeCF" VerticalOptions="Center"/>
+                        <Label x:Name="freeCF" VerticalOptions="Center" Text=" 52.3 billion USD"/>
                     </StackLayout>
                 </Frame>
                 
                 <Frame BackgroundColor="White" CornerRadius="2" Padding="5">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Return on Assets: " VerticalOptions="Center"/>
-                        <Label x:Name="rOA" VerticalOptions="Center"/>
+                        <Label x:Name="rOA" VerticalOptions="Center" Text="14.09%"/>
                     </StackLayout>
                 </Frame>
                 
                 <Frame BackgroundColor="White" CornerRadius="2" Padding="5">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Return on Equity: " VerticalOptions="Center"/>
-                        <Label x:Name="rOE" VerticalOptions="Center"/>
+                        <Label x:Name="rOE" VerticalOptions="Center" Text="37.374%"/>
                     </StackLayout>
                 </Frame>
                 <Frame BackgroundColor="White" CornerRadius="2" Padding="5">
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Inventory Turnover: " VerticalOptions="Center"/>
-                        <Label x:Name="IT" VerticalOptions="Center"/>
+                        <Label Text="Inventory Turnover Ratio: " VerticalOptions="Center"/>
+                        <Label x:Name="IT" VerticalOptions="Center" Text="38.42%"/>
                     </StackLayout>
                 </Frame>
                 
                 <Frame BackgroundColor="White" CornerRadius="2" Padding="5">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Asset Turnover: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                        <Label x:Name="AT" VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label x:Name="AT" VerticalOptions="Center" Text="0.6x"/>
                     </StackLayout>
                 </Frame>
                 
                 <Frame BackgroundColor="White" CornerRadius="2" Padding="5">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="EBIT Margin: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                        <Label x:Name="EBITM" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    </StackLayout>
-                </Frame>
-
-                <Frame BackgroundColor="White" CornerRadius="2" Padding="5">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Total Assets: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                        <Label x:Name="TA" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    </StackLayout>
-                </Frame>
-
-                <Frame BackgroundColor="White" Padding="5">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Recievables Turnover: " VerticalOptions="Center"/>
-                        <Label x:Name="RT" VerticalOptions="Center"/>
-                    </StackLayout>
-                </Frame>
-                <Frame BackgroundColor="White" Padding="5">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Net Income: " VerticalOptions="Center"/>
-                        <Label x:Name="NI" VerticalOptions="Center"/>
-                    </StackLayout>
-                </Frame>
-                <Frame BackgroundColor="White" Padding="5">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Earnings Per Share: " VerticalOptions="Center"/>
-                        <Label x:Name="EPS" VerticalOptions="Center"/>
-                    </StackLayout>
-                </Frame>
-                <Frame BackgroundColor="White" Padding="5">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Interest Coverage: " VerticalOptions="Center"/>
-                        <Label x:Name="IC" VerticalOptions="Center"/>
+                        <Label x:Name="EBITM" VerticalOptions="Center" Text="26.9%"/>
                     </StackLayout>
                 </Frame>
                 <Frame BackgroundColor="White" Padding="5">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Total Current Assets: " VerticalOptions="Center"/>
-                        <Label x:Name="TCA" VerticalOptions="Center"/>
+                        <Label x:Name="TCA" VerticalOptions="Center" Text="128.6 billion USD"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="2" Padding="5">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Total Assets: " VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label x:Name="TA" VerticalOptions="Center" Text="375.3 billion USD"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="White" Padding="5">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Recievables Turnover Ratio: " VerticalOptions="Center"/>
+                        <Label x:Name="RT" VerticalOptions="Center" Text="14.65%"/>
                     </StackLayout>
                 </Frame>
                 <Frame BackgroundColor="White" Padding="5">
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Tax Rates: " VerticalOptions="Center"/>
-                        <Label x:Name="TR" VerticalOptions="Center"/>
+                        <Label Text="Net Income: " VerticalOptions="Center"/>
+                        <Label x:Name="NI" VerticalOptions="Center" Text="48.35 billion USD"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="White" Padding="5">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Earnings Per Share: " VerticalOptions="Center"/>
+                        <Label x:Name="EPS" VerticalOptions="Center" Text="9.21"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="White" Padding="5">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Interest Coverage: " VerticalOptions="Center"/>
+                        <Label x:Name="IC" VerticalOptions="Center" Text="35.80%"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="White" Padding="5">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Tax Rate: " VerticalOptions="Center"/>
+                        <Label x:Name="TR" VerticalOptions="Center" Text="24.52%"/>
                     </StackLayout>
                 </Frame>
                 <Frame BackgroundColor="White" Padding="5">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Revenue: " VerticalOptions="Center"/>
-                        <Label x:Name="REV" VerticalOptions="Center"/>
+                        <Label x:Name="REV" VerticalOptions="Center" Text="239.2 billion USD"/>
                     </StackLayout>
                 </Frame>
             <!--/>
