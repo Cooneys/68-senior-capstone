@@ -111,6 +111,9 @@ namespace App5.Data
                         //tempPortfolio.Owners.Add((string)data[i]["username"]);
                         tempPortfolio.TotalValue = ((int)portfolios[i]["totalvalue"]);
                         tempPortfolio.Name = (string)portfolios[i]["portfolioname"];
+                        tempPortfolio.sharperatio = ((double)portfolios[i]["sharperatio"]);
+                        tempPortfolio.expectedreturn = ((double)portfolios[i]["expectedreturn"]);
+                        tempPortfolio.alpha = ((double)portfolios[i]["alpha"]);
 
                         Debug.WriteLine(tempPortfolio.TotalValue);
                         Debug.WriteLine(tempPortfolio.Name);
