@@ -110,6 +110,8 @@ namespace App5.Views
                 this.chartView.Chart = chart;
                 investmentListView.ItemsSource = investmentList;
                 returnsLabel.Text = App.currentPortfolio.returns.ToString("0.00");
+                sharpeLabel.Text = App.currentPortfolio.sharperatio.ToString("0.000");
+                alphaLabel.Text = App.currentPortfolio.alpha.ToString("0.00");
                 investmentListView.ItemTapped += async (sender, args) =>
                 {
                     var item = args.Item as Investment;
