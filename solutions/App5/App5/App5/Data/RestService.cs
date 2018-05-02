@@ -69,7 +69,7 @@ namespace App5.Data
             //});
         }
 
-        public async  Task<List<Portfolio>> FetchPortfolios(User user)
+        public async Task<List<Portfolio>> FetchPortfolios(User user)
         {
             client = new HttpClient();
             //Uri mUrl = new Uri("http://web.engr.oregonstate.edu/~jonesty/api.php/UsersPortfoliosView");*/
@@ -140,10 +140,10 @@ namespace App5.Data
         {
             //string confirmString;
 
-           // wclient = new WebClient();
+            // wclient = new WebClient();
             //Uri mUrl = new Uri("http://web.engr.oregonstate.edu/~jonesty/api.php/" + parameter);
 
-           // wclient.DownloadDataCompleted += mDownloadDataCompleted;
+            // wclient.DownloadDataCompleted += mDownloadDataCompleted;
             //wclient.DownloadDataAsync(mUrl);
 
             client = new HttpClient();
@@ -234,10 +234,9 @@ namespace App5.Data
 
         }
 
-        public async Task<List<CompanyInfo>> FetchCompanyDetails()
+        public async Task<CompanyInfo> FetchCompanyDetails(string ticker)
         {
             client = new HttpClient();
-            CompanyInfo tempCompanyInfo;
             //Uri mUrl = new Uri("http://web.engr.oregonstate.edu/~jonesty/api.php/UsersPortfoliosView");*/
 
             string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/Investments";
@@ -262,27 +261,95 @@ namespace App5.Data
                 for (var i = 0; i < investments.Count; i++)
                 //Debug.WriteLine((string)data[i]["username"]);
                 {
-                    //if (ticker.Equals((string)investments[i]["tickersymbol"]))
-                    //{
+                    if (ticker.Equals((string)investments[i]["tickersymbol"]))
+                    {
                         //Debug.WriteLine((string)data[i]["username"]);
-                        tempCompanyInfo = new CompanyInfo();
+                        CompanyInfo info = new CompanyInfo();
                         //tempPortfolio.Owners.Add((string)data[i]["username"]);
-                        tempCompanyInfo.tickersymbol = ((string)investments[i]["tickersymbol"]);
-                        tempCompanyInfo.currentprice = (double)investments[i]["currentprice"];
+                        info.tickersymbol = ((string)investments[i]["tickersymbol"]);
+                        info.currentprice = (double)investments[i]["currentprice"];
+                        info.ReturnOnAssets = (double)investments[i]["ReturnOnAssets"];
+                        info.ReturnOnEquity = (double)investments[i]["ReturnOnEquity"];
+                        info.EBTMargin = (double)investments[i]["EBTMargin"];
+                        info.AssetTurnover = (double)investments[i]["AssetTurnover"];
+                        info.ReceivablesTurnover = (double)investments[i]["ReceivablesTurnover"];
+                        info.NetIncome = (double)investments[i]["NetIncome"];
+                        info.EarningsPerShare = (double)investments[i]["EarningsPerShare"];
+                        info.InterestCoverage = (double)investments[i]["InterestCoverage"];
+                        info.TotalCurrentAssets = (double)investments[i]["TotalCurrentAssets"];
+                        info.TaxRate = (double)investments[i]["TaxRate"];
+                        info.FreeCashFlow = (double)investments[i]["FreeCashFlow"];
+                        info.Revenue = (double)investments[i]["Revenue"];
 
-                        companyinfolist.Add(tempCompanyInfo);
-                    //}
-                    
+                        return info;
+                    }
+
 
                 }
 
-                return companyinfolist;
+                //return companyinfolist;
+                throw new Exception(string.Format("Cannot find company info for ticker: {0}", ticker));
 
             }
 
         }
 
+        public async Task<List<CompanyInfo>> FetchAllCompanyDetails()
+        {
+            client = new HttpClient();
+            List<CompanyInfo> infoList = new List<CompanyInfo>();
+            //Uri mUrl = new Uri("http://web.engr.oregonstate.edu/~jonesty/api.php/UsersPortfoliosView");*/
 
+            string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/Investments";
+
+            //List<Portfolio> portfolioList = new List<Portfolio>();
+            //Portfolio tempPortfolio = new Portfolio();
+            //await wclient.DownloadDataAsync(mUrl);
+
+            /*wclient.DownloadDataCompleted += mDownloadDataCompleted;
+            wclient.DownloadDataAsync(mUrl);*/
+
+            string content = await client.GetStringAsync(Url);
+            JArray investments = JArray.Parse(content);//JsonConvert.DeserializeObject<List<Portfolio>>(content);
+
+            if (investments.Count == 0)
+            {
+                return null;
+            }
+
+            else
+            {
+                for (var i = 0; i < investments.Count; i++)
+                //Debug.WriteLine((string)data[i]["username"]);
+                {
+                    //Debug.WriteLine((string)data[i]["username"]);
+                    CompanyInfo info = new CompanyInfo();
+                    //tempPortfolio.Owners.Add((string)data[i]["username"]);
+                    info.tickersymbol = ((string)investments[i]["tickersymbol"]);
+                    info.currentprice = (double)investments[i]["currentprice"];
+                    info.ReturnOnAssets = (double)investments[i]["ReturnOnAssets"];
+                    info.ReturnOnEquity = (double)investments[i]["ReturnOnEquity"];
+                    info.EBTMargin = (double)investments[i]["EBTMargin"];
+                    info.AssetTurnover = (double)investments[i]["AssetTurnover"];
+                    info.ReceivablesTurnover = (double)investments[i]["ReceivablesTurnover"];
+                    info.NetIncome = (double)investments[i]["NetIncome"];
+                    info.EarningsPerShare = (double)investments[i]["EarningsPerShare"];
+                    info.InterestCoverage = (double)investments[i]["InterestCoverage"];
+                    info.TotalCurrentAssets = (double)investments[i]["TotalCurrentAssets"];
+                    info.TaxRate = (double)investments[i]["TaxRate"];
+                    info.FreeCashFlow = (double)investments[i]["FreeCashFlow"];
+                    info.Revenue = (double)investments[i]["Revenue"];
+
+                    infoList.Add(info);
+
+                }
+
+                return infoList;
+
+            }
+
+        }
     }
+
 
 }
