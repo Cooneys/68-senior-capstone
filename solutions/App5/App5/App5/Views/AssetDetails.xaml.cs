@@ -66,18 +66,17 @@ namespace App5.Views
             if (AssetDetails != null)
             {
                 
-                    this.freeCF.Text = string.Format("${0} thousand USD", AssetDetails.FreeCashFlow);
+                    this.freeCF.Text = string.Format("${0}000 USD", AssetDetails.FreeCashFlow);
                     this.rOA.Text = string.Format("{0}%", AssetDetails.ReturnOnAssets);
                     this.rOE.Text = string.Format("{0}%", AssetDetails.ReturnOnEquity);
                     this.IT.Text = string.Format("{0}%", AssetDetails.InventoryTurnover);
                     this.AT.Text = string.Format("{0}%", AssetDetails.AssetTurnover);
                     this.EBITM.Text = string.Format("{0}%", AssetDetails.EBTMargin);
-                    this.TCA.Text = string.Format("{0} thousand", AssetDetails.TotalCurrentAssets);
-                    this.TA.Text = "100%";
+                    this.TCA.Text = string.Format("${0} USD (in thousands)", AssetDetails.TotalCurrentAssets);
                     this.RT.Text = string.Format("{0}%", AssetDetails.ReceivablesTurnover);
-                    this.NI.Text = string.Format("{0}%", AssetDetails.NetIncome);
+                    this.NI.Text = string.Format("{0}", AssetDetails.NetIncome);
                     this.EPS.Text = string.Format("${0} USD", AssetDetails.EarningsPerShare);
-                    this.REV.Text = string.Format("${0} thousand USD", AssetDetails.Revenue);
+                    this.REV.Text = string.Format("${0}000 USD", AssetDetails.Revenue);
                     this.IC.Text = string.Format("{0}%", AssetDetails.InterestCoverage);
                     this.TR.Text = string.Format("{0}%", AssetDetails.TaxRate);
 

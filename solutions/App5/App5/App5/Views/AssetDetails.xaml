@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App5.Views.AssetDetails"
@@ -65,13 +65,6 @@
                         <Label x:Name="TCA" VerticalOptions="Center" Text="128.6 billion USD"/>
                     </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="White" CornerRadius="2" Padding="5">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Total Assets: " VerticalOptions="Center" HorizontalOptions="Start"/>
-                        <Label x:Name="TA" VerticalOptions="Center" Text="375.3 billion USD"/>
-                    </StackLayout>
-                </Frame>
-
                 <Frame BackgroundColor="White" Padding="5">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Recievables Turnover Ratio: " VerticalOptions="Center"/>
