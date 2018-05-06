@@ -9,7 +9,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SkiaSharp.Views.Forms;
@@ -48,7 +47,7 @@ namespace App5.Views
             //var selectedPortfolio = sender as Portfolio;
             //investmentList = restService.FetchPortfolioDetails(App.currentPortfolio);
 
-            Task<List<CompanyInfo>> companyInfoT = restService.FetchCompanyDetails();
+            Task<List<CompanyInfo>> companyInfoT = restService.FetchAllCompanyDetails();
             await companyInfoT;
             List<CompanyInfo> companyInfo = companyInfoT.Result;
 
