@@ -278,6 +278,7 @@ namespace App5.Data
                         info.InterestCoverage = (double)investments[i]["InterestCoverage"];
                         info.TotalCurrentAssets = (double)investments[i]["TotalCurrentAssets"];
                         info.TaxRate = (double)investments[i]["TaxRate"];
+                        info.InventoryTurnover = (double)investments[i]["InventoryTurnover"];
                         info.FreeCashFlow = (double)investments[i]["FreeCashFlow"];
                         info.Revenue = (double)investments[i]["Revenue"];
 
@@ -336,6 +337,7 @@ namespace App5.Data
                     info.EarningsPerShare = (double)investments[i]["EarningsPerShare"];
                     info.InterestCoverage = (double)investments[i]["InterestCoverage"];
                     info.TotalCurrentAssets = (double)investments[i]["TotalCurrentAssets"];
+                    info.InventoryTurnover = (double)investments[i]["InventoryTurnover"];
                     info.TaxRate = (double)investments[i]["TaxRate"];
                     info.FreeCashFlow = (double)investments[i]["FreeCashFlow"];
                     info.Revenue = (double)investments[i]["Revenue"];
