@@ -66,43 +66,36 @@
 
 \tab Our project is an investment performance mobile application. Our main goal with this application is to provide users with a way to enter and track the progress of their investments, so they can gain unique financial insight about the quality of said investments. Typically, through a brokerage, for example, users may only see what investments they have, and they are not always given a composite performance, as is the goal with our project. We aim to give the user a metric for both their entire investment portfolio, as well as the ability to drill down into individual investments for a more localized look. At the beginning of development, we sat down as a group and went over the pieces of the project and what would be a good way to breakdown the work. Essentially, we decided that the project could be divided into 3 major components, being the API, the development of the UI, and the backend/database/console application. As will be discussed in this progress report, Avi has taken the lead on the API, Sam on UI development, and Tyler on the backend/database/console application.
 
-\section{Sam Cooney - UI Development}
-\subsection{Description of Current Status}
-As of our alpha release, our UI is fully functional with all pages, buttons, and placeholders for charts/data implemented. Because of issues regarding iOS testing, the initial functional UI was built using Android libraries. Since I am new to UI design, I am using the Android test function UI to learn Xamarin and layout design. Since the functional Android UI is used to test connections to other parts of our project, I decided to create a Mock Up of our planned Beta release for the UI. We are using Xamarin.Forms for the Beta release which is a set of libraries that allows for a single codebase UI that at runtime, elements are compiled into the platform specific views. The mock-up for this beta release was created using Marvel, a mobile app mock-up site, offering free mock-up design.
+\section{Sam Cooney - User Facing Logic and Interface}
 
-This is the Portfolio View where from here users can add or remove assets from their portfolio, view vital financial data from a summarized point of all the assets currently in the portfolio. Our chart is a placeholder and will be replaced with a Google Charts designed pie chart that will be received from the web APIs.  
+For this project, I focused on the development of the mobile application's front end and the logic to support it. Writing in C\# using Xamarin.Forms libraries to support the applications abilities
+was completely new to me, but it turned out very exciting. Creating all the different pages and UI elements that lived on them was a difficult but interesting task, that streched my engineering knowledge to try and solves issues and limitations that were brought up by Xamarin.Forms. Overall, the UI turned out very clean and simplistice for the application. There were issues that had to deal with the differences that Xamarin.Forms creates between the iOS and Android versions but we decided that having a single code base was more important than making one platform match the other. If we matched the UI's it would require having two separate codebases, which having a single codebase was one of the key inspirations and requirements for the project.
+
+Currently the front end is completely implemented and works very well on the Android device. There are some issues but these arrise from things like errors in API limits from AlphaVantage, and inconsistency in data provided by Last10k. However, these issues are with the tools we chose to use in the beginning of the project, and if we knew now what we knew then, we would have chosen different tools for those parts of the project as the impact on the application is large.
 
 \begin{figure}[h]
    \caption{Portfolio View Example}
    \centering
-   \includegraphics[scale=.65]{portfolio_screenshot}
+   \includegraphics[scale=.65]{spring_portfolio_screenshot}
 \end{figure}
 
-The Portfolio view will be where users spend majority of their time. Since we are looking to have design be built for quick, on-the-go access, the information in this view needs to be referenced quickly. This has created a challenge with balancing both simplicity but also retaining enough information that the user understands what they are looking at. Not having taken any graphical design or artistic classes, this is new and difficult for me but is proving to be an exciting task.
-
-Our current UI functions exactly as viewed in the mock-up, what is missing is the design and the web calls. The asset view is similarly programmed. It functions very closely to the portfolio, except the view expresses the individual asset data instead of the portfolio as a whole.
+Above is an example of the Portfolio view of the application, where a user can view their created portfolios, review provided analytical data, add new assets, or delete the portfolio. This is where we pictured the user to spend most of the time, so a lot of my focus was on trying to make the elements simplistic, yet still retaining enough information regarding the portfolio and the assets inside it. We ended up using micro charts to create the donut graph pictured above, which is the portfolio split into segments based on the equity of each asset. We decided to go with a red to white fade of color for the graph, as our client requested us to use their company colors "Red, Black, White" at the time, which is a theme I stuck with when designing the UI.
 
 \begin{figure}[h]
    \caption{Asset View Overview}
    \centering
-   \includegraphics[scale=.65]{asset_screenshot}
+   \includegraphics[scale=.65]{spring_asset_screenshot}
 \end{figure}
 
-The asset view is where users will spend the second most time. From here they can view things like volatility, price changes in the last few days, return on investment since addition, and other financial data retrieved from the API and database. Much like in the last view, it is proving to be an arduous task in balancing the design.
-
-The rest of the pages not shown here have either been fully mocked up and the functionality has been implemented. The Android functional UI was displayed in the video, as well as the rest of the Beta design. 
+The asset view is where we assume the users will spend the second most time, and as such, the goals for the portfolio view and this view, were the same. I created the cells for the data so the user could quickly index each piece of information quickly and always know where each ratio would be when they opened the page. The bar graph displays the monthly closing price of the stock for the last 12 months, and sticking with the red, black, and white theme, we chose black for this graph to help differentiate it even more from the previous page. Users can also add more of this exact type of stock here as well as delete this individual asset.
 
 \subsection{What's left to do}
 
-Our next steps are continuing development on the Beta UI release. Refactoring the Android functionality into Xamarin.Forms is proving to be a new challenge but fortunately there are lots of guides online that are extremely helpful. The portfolio view, asset view, adding new assets and portfolios all need to be implemented using Xamarin.Forms in the format of the mock-up UI. From here, we need to connect both our APIs for the charts and the financial data as well as the database storing user data - login info and portfolio/asset data. Avi and Tyler are using test UIs to plan how these connections will be made. Once these are finalized, we can begin to implement them into the Beta release.
+The remaining work for my portions are all strech goals and bug fixing. Trying to allievate some of the issues brought on by the UI's, assisting with removing hardcoded parts of the business logic, adding in dynamic drop down boxes for tickers, and dynamic updating for deleting of objects.
 
-\subsection{Problems impeding progress/Solutions}
+\subsection{Problems impeding progress}
 
-Initially we ran into research problems in early development that lead to the functional UI design using the Android UI. First, Xamarin.Forms does not have the full functionality that each individual native UI provides, and second I don't own a Mac which prevents testing deployment on the iOS platform. Since we did not want to halt development, we began work using Android libraries only. Since then I have aquired an older iMac and have since have also begun Xamarin.Forms testing on campus where Macs are available. The decision to switch to Xamarin.Forms was a group decision based off the goal to stick to our single code-base design. This on top of the fact that we are not graphic design gurus in any sense, Xamarin.Forms will not limit us in any ways in terms of development.
-
-\subsection{Other relevant/interesting information about project}
-
-Button creation has turned out to be extremely difficult. Finding the perfect mix of both small and simple but still providing enough information that the user needs to know where to navigate is very challenging. YouTube and the Xamarin guides are a nice guide but creating elements that are unique to our project is still a puzzle. This was something that I had not expected when first starting this project and so it has come as a big surprise to be one of the harder parts of the work.
+Xamarin.Forms does not have the full functionality that each individual native UI provides which proved to be a larger issue than we anticipated. It prevented me from meeting a few strech goals this term so far as the elements did not have the support from Xamarin.Forms to behave in the way that I was requiring.
 
 \section{Avi Sinha - APIs and Business Logic}
 
