@@ -1,7 +1,8 @@
 \documentclass[letterpaper,10pt,titlepage,journal,compsoc,draftclsnofoot,onecolumn]{IEEEtran}
 \linespread{1}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
-\usepackage{graphicx}                   \graphicspath{{images/}}                     
+\usepackage{graphicx}                   
+\graphicspath{{images/}}                     
 \usepackage{amssymb}                                         
 \usepackage{amsmath}                                         
 \usepackage{amsthm}                                          
@@ -51,7 +52,7 @@
 	\centering{}
     \begin{abstract}
         
-     The purpose of the following document is to review and discuss the current state of our investment performance mobile application as our development has begun over the last 6 weeks of Winter term. Our group will break down the struggles that we faced with the project as individuals, as well as struggles with the project overall.
+     The purpose of the following document is to review and discuss the current state of our investment performance mobile application as of week 6 of Spring Term. Our group will break down the struggles that we faced with the project as individuals, as well as struggles with the project overall.
         
     \end{abstract}
 \end{titlingpage}
@@ -76,15 +77,15 @@ Currently the front end is completely implemented and works very well on the And
 \begin{figure}[h]
    \caption{Portfolio View Example}
    \centering
-   \includegraphics[scale=.65]{spring_portfolio_screenshot}
+   \includegraphics[scale=.15]{spring_portfolio_screenshot}
 \end{figure}
 
-Above is an example of the Portfolio view of the application, where a user can view their created portfolios, review provided analytical data, add new assets, or delete the portfolio. This is where we pictured the user to spend most of the time, so a lot of my focus was on trying to make the elements simplistic, yet still retaining enough information regarding the portfolio and the assets inside it. We ended up using micro charts to create the donut graph pictured above, which is the portfolio split into segments based on the equity of each asset. We decided to go with a red to white fade of color for the graph, as our client requested us to use their company colors "Red, Black, White" at the time, which is a theme I stuck with when designing the UI.
+Figure 1 is an example of the Portfolio view of the application, where a user can view their created portfolios, review provided analytical data, add new assets, or delete the portfolio. This is where we pictured the user to spend most of the time, so a lot of my focus was on trying to make the elements simplistic, yet still retaining enough information regarding the portfolio and the assets inside it. We ended up using micro charts to create the donut graph pictured above, which is the portfolio split into segments based on the equity of each asset. We decided to go with a red to white fade of color for the graph, as our client requested us to use their company colors "Red, Black, White" at the time, which is a theme I stuck with when designing the UI.
 
 \begin{figure}[h]
    \caption{Asset View Overview}
    \centering
-   \includegraphics[scale=.65]{spring_asset_screenshot}
+   \includegraphics[scale=.15]{spring_asset_screenshot}
 \end{figure}
 
 The asset view is where we assume the users will spend the second most time, and as such, the goals for the portfolio view and this view, were the same. I created the cells for the data so the user could quickly index each piece of information quickly and always know where each ratio would be when they opened the page. The bar graph displays the monthly closing price of the stock for the last 12 months, and sticking with the red, black, and white theme, we chose black for this graph to help differentiate it even more from the previous page. Users can also add more of this exact type of stock here as well as delete this individual asset.
@@ -250,7 +251,7 @@ Currently, there is nothing really left to do regarding the user data portions o
 The biggest problem that we have had thus far, other than personal bottlenecks with having to ramp up our own knowledge of the technical portions, is client issues. At the start of this term, Ron and Edison, our clients, bailed out on the project. Ron left the company, and Edison said it was perhaps best to stop our calls for the time being. This wasn't so much a wrench in the project, as close to all of the work had been done by the time this happened, but was rather just a morale blow that has made the project feel aimless since it now doesn't really have a client that it's being produced for.
 
 \section{Conclusion}
-The project has taken a long time to produce, with many hours of work going into every portion of the project. Looking back, this has been an incredible learning experience. Every single component of the application was an entirely new piece of technology for all of us that required a great amount of time and self teaching to use properly. Whether it was C#, mobile applications, databases, PHP, third party web APIs, or asynchronous code, everything presented its own challenge that needed to be overcome. Moreover, this project has suffered greatly from client consistency. From Brice, our original client, dropping out in Fall term, to the change that just occured with Ron and Edison, it has required a great amount of self discipline and focus to complete this project considering the numerous challenges that we encountered. Overall, however, it has been a very rewarding experience and we are proud of the final product!
+The project has taken a long time to produce, with many hours of work going into every portion of the project. Looking back, this has been an incredible learning experience. Every single component of the application was an entirely new piece of technology for all of us that required a great amount of time and self teaching to use properly. Whether it was C\#, mobile applications, databases, PHP, third party web APIs, or asynchronous code, everything presented its own challenge that needed to be overcome. Moreover, this project has suffered greatly from client consistency. From Brice, our original client, dropping out in Fall term, to the change that just occured with Ron and Edison, it has required a great amount of self discipline and focus to complete this project considering the numerous challenges that we encountered. Overall, however, it has been a very rewarding experience and we are proud of the final product!
 
 
 \end{document}
