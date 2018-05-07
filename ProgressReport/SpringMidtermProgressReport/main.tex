@@ -107,159 +107,144 @@ Button creation has turned out to be extremely difficult. Finding the perfect mi
 \section{Avi Sinha - APIs and Business Logic}
 
 \subsection{Description of Current Status}
-The API part of the project is being utilized through the use of 2 major tools: Quandl and Google Charts. We've started with the Quandl API as it is necessary for all the latest financial data to be fed into our application.Right now our project is just past the alpha level of development where the APIs we are implementing are currently being adapted into being compatible with Xamarin. 
-The API part of the project is being utilized through the use of 2 major tools: Quandl and Google Charts. We've started with the Quandl API as it is necessary for all the latest financial data to be fed into our application. Since Xamarin is primarily written in C\# we've had to take the existing documentation for Quandl and redevelop it to be functional within the application. The API consists of both time series and tables of various stocks and options. Time series data ranges from specific ones that can be outputted as follows in JSON: 
 
-\begin{lstlisting}
+The project is currently right at release in terms of all the work we set out to complete when beginning development in January. The UI has been fully developed to what is comparable to other brokerage applications currently on the market like Robinhood or Merrill Edge. Like described in the last progress report mid development we made the switch from Quandl to Alpha Vantage and Last10k for our financial data. Alpha Vantage would output the specific stock prices and time series data which was used by Tyler do Portfolio level calculations like the sharpe ratio, overall returns, and then the Alpha of the portfolio. Last10k was used for more asset specific details that we need to show for each company. Currently we have our application displaying the monthly adjusted closing price in a graph provided from the AlphaVantage data and then we have 13 financial ratios showing the viability of owning that security. Last10k provided an intuitive API that allowed me to get all the necessary calculations and ratios needed to show the user an in depth look at the stock. The ratios that are sourced from Last10k are as follows: Free Cash Flow, Return on Assets, Return on Equity, Inventory Turnover, Asset Turnover, EBITDA Margin, Total Current Assets, Receivables Turnover, Net Income, Earnings Per Share, Interest Coverage, Tax Rate, and the Revenue. These values are then taken to the database server and from there the mobile application will pull everything to display on the asset details page for each stock. With the completion of all these parts of the project we have effectively finished all the main requirements that are needed to our end product successful. 
 
-{
-  "dataset_data":{
-     "limit":null,
-     "transform":null,
-     "column_index":null,
-     "column_names":[
-        "Date",
-        "Open",
-        "High",
-        "Low"
-     ],
-     "start_date":"2015-05-24",
-     "end_date":"2015-05-28",
-     "frequency":"daily",
-     "data":[
-        [
-           "2015-05-28",
-           9.58,
-           10.17,
-           12.96
-        ],
-        [
-           "2015-05-27",
-           9.53,
-           10.13,
-           12.97
-        ],
-        [
-           "2015-05-26",
-           9.53,
-           10.11,
-           12.98
-        ]
-     ],
-     "collapse":null,
-     "order":"desc"
-  }
-}
-
-\end{lstlisting}
-The code above shows how the data retrieved is takes a specific dataset, then outputs into the following columns: Date, Open, High, and Low. It also shows a daily frequency upload from May 26 to May 28th in a decreasing order. This JSON file will then be entered into the database and can be used for other information that the user will need to make a sound financial decision in maximizing their portfolio. 
-
- We can also send requests that will slice and customize the specific metadata of a time series data set prior to download. Using the following example  we would get this
-
-\begin{lstlisting}
-{  
-  "database":{  
-     "id":4922,
-     "database_code":"WIKI",
-     "name":"Facebook EOD Stock Prices",
-     "description":"End of day stock prices, dividends and splits for 30000 US companies 
-     curated by the Quandl community 
-     and released into the public domain.",
-     "datasets_count":3179,
-     "downloads":186224033,
-     "premium":false,
-  }
-}
-\end{lstlisting}
-With this we get the overall listing of all end of day stock prices and any stock splits that have occurred. We also are able to see how many times this particular data set has been downloaded and if a premium membership is required for this. This type of alternative data is what makes Quandl superior over other data tools because we can get various types of financial data that can influence decisions and the market as a whole. 
-
- We can get the monthly percent changes for FB’s closing price at the end of the day. All of the requests will output to a JSON file that will be accessed by the database and be visible in the user interface. The main purpose of the API is for it to provide type safety guarantees and basic validation on data before requesting. Everything is based on the concept of a request with all the download requests being implemented into a single interface.
  
 \subsection{What's left to do}
 
-In terms of what we have left for this is setting up the various requests that a user will be making for retrieving their financial data. These will consist of download, Multiset Download, Metadata Download, Favorites Download, and Search.
- 
- In addition to this we’ll also be implementing a Google Charts API which hasn’t begun development yet. Using the data from the SQL server the data will be binding the financial data together that is pulled from two major sources. The financial information provided by Quandl and then the user data of what specific investments the portfolio consists of. Using the ASP.NET environment we will use SQL to show which tables are being utilized and have the queries binded for the specific information that the chart is asking for. Then using .NET we pass the data into google charts in a JSON format. Since the ASP.NET environment will connect the SQL data.
+For what we have to do there is still some work that needs to be done with UI on the iOS side. We have made the Android version our priority the version we show at expo because of the issues we have faced with xamarin where the shared codebase is making the iOS version look a bit clunky. Once that is completed we will refine any other parts of the application where problems arise. Most of is basically complete now but if any problems arise we have between now and expo to fix them and get it ready for presentation. 
  
 \subsection{Problems impeding progress/Solutions}
 
-The main problem impeding our progress with the API is that it was started much later than both the front and back end development. Originally we were going to divide both iOS and Android development with Xamarin but then we figured out that Xamarin has a feature that allows for the same codebase to easily be shared so we began porting the existing code to forms and then starting the development. 
+Our biggest problem that has come up between now and the last progress report is that our client has departed from the project. Being the second time this has happened we weren’t too surprised as from what we have gotten from this is that HedgeServ is going through a lot of restructuring. While we had gotten a new client from the company last time this happened. This time around our previous client let us know that they won’t be a replacement as the project is nearing an end. Luckily our project is essentially dictated by how well we meet our requirements the loss of the client this time around didn’t hurt development too much other than the loss of someone who could give proper financial advice on some of the business logic. We resolved this by getting advice from Kirsten who assured us that everything is fine and happens regularly. We were able to get regular advice from her regarding some parts of the project that would normally be topics of discussion with our client. Other problems included just some issues we had with the integrating everything together from the console application to the UI to the APIs that were used with everything. 
 
 \subsection{Other relevant/interesting information about project}
+Below are some relevant pieces of code from the development of the Last10k API data retrieval and how it goes from the database to the actual mobile application. 
 
-Below we have provided a few code snippets of what the Quandl API interface will look like within the application, these functions will call additional files that will house most of the data necessary for accurate information to be provided. 
+The following code sample is from the console application where the data is pulled from Last10k's specific API call for ratios. There I parse the relevant ratios I need as out of the 30 they offer I only need around 13 of them. From here I then have it stored onto the OSU database. 
 
- \textbf{Download:} 
-\begin{lstlisting}
-using System;
-using QuandlCS.Requests;
-using QuandlCS.Types;
+       \begin{lstlisting} 
+       static async void MakeRequest()
+        {
+            var client = new System.Net.Http.HttpClient();
+            var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key",
+            "ced63a48eaa34a288772c71c62da184a");
 
-namespace QuandlCSTest
-{
-  class Program
-  {
-    static void Main(string[] args)
-    {
-      QuandlDownloadRequest request = new QuandlDownloadRequest();
-      request.APIKey = "1234-FAKE-KEY-4321";
-      request.Datacode = new Datacode("PRAGUESE", "PX"); // PRAGUESE is the source, PX is the datacode
-      request.Format = FileFormats.JSON;
-      request.Frequency = Frequencies.Monthly;
-      request.Truncation = 150;
-      request.Sort = SortOrders.Ascending;
-      request.Transformation = Transformations.Difference;
+            var uri = "https://services.last10k.com/v1/company/ratios?";
 
-      Console.WriteLine("The request string is : {0}", request.ToRequestString());
+            var response = await client.GetAsync(uri);
+        }
     }
-  }
-}
-\end{lstlisting}
-
-This specific code, shows a download request, asks for the API key, the specific datacode. The file format by default will also be in JSON and consistently updates at a frequency of once per month and ascends up. 
-
-\textbf{Metadata Download}
-
-\begin{lstlisting}
-using System;
-using QuandlCS.Requests;
-using QuandlCS.Types;
-
-namespace QuandlCSTest
-{
-  class Program
-  {
-    static void Main(string[] args)
+       
+       \end{lstlisting} 
+       
+      This establishes the connection with the API where we specifically call the ratios that are stored in their database. Next the data is parsed in pretty straightforward way where I call each of the ratio names as such and then return their outputs. 
+      
+      \begin{lstlisting}
+      internal class Ratios
     {
-      QuandlMetadataRequest request = new QuandlMetadataRequest();
-      request.APIKey = "1234-FAKE-KEY-4321";
-      request.Datacode = new Datacode("NSE", "OIL");      
-      request.Format = FileFormats.XML;
+        public string Ticker { get; set; }
+        public string InventoryTurnover { get; set; } 
+        public string ReturnOnAssets { get; set; }
+        public string ReturnOnEquity { get; set; }
+        public string EBTMargin { get; set; }
+        public string AssetTurnover { get; set; }
+        public string TotalAssets { get; set; }
+        public string ReceivablesTurnover { get; set; }
+        public string NetIncome { get; set; }
+        public string EarningsPerShare { get; set; }
+        public string InterestCoverage { get; set; }
+        public string TotalCurrentAssets { get; set; }
+        public string TaxRate { get; set; }
+        public string FreeCashFlow { get; set; }
+        public string Revenue { get; set; }
 
-      Console.WriteLine("The request string is : {0}", request.ToRequestString());
+
+        public override string ToString()
+        {
+            return $"{Ticker,20}
+                     {InventoryTurnover} 
+                     {ReturnOnAssets} 
+                     {ReturnOnEquity} 
+                     {EBTMargin} 
+                     {AssetTurnover} 
+                     {TotalAssets} {
+                     ReceivablesTurnover} 
+                     {NetIncome} 
+                     {EarningsPerShare} 
+                     {InterestCoverage} 
+                     {TotalCurrentAssets} 
+                     {TaxRate} 
+                     {FreeCashFlow} 
+                     {Revenue}  "; 
+            }
     }
-  }
-}
-\end{lstlisting}
+    
+      \end{lstlisting} 
+      
+After this is all done in the console application I then take the data from the API which has been stored on our ENGR database use that to display it on our mobile application.
 
-The multiset download is similar to the previous one but instead looks at the market as a whole and compares NASDAQ to a specific investment you want to look at. These are the first couple requests that a user will want to use and then make their portfolio more detailed while also looking at it in a macro level. 
+     \begin{lstlisting} 
+      string Url = "http://web.engr.oregonstate.edu/~jonesty/api.php/Investments";
 
-Overall the progress with the API's we need has been going smoothly in terms of getting everything set up. More than likely we will be running into hurdles with having be properly compatible with Xamarin but that can be troubleshooted. Once the API's are completed we will begin setting up the business logic of the financial data that will be displayed. We will need to set up functions that properly calculate, volatility, return on investment, risk, and any other points that will be key to having displaying proper metrics. 
+            string content = await client.GetStringAsync(Url);
+            JArray investments = JArray.Parse(content);
+
+            if (investments.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                for (var i = 0; i < investments.Count; i++)
+                {
+                    CompanyInfo info = new CompanyInfo();
+                    //tempPortfolio.Owners.Add((string)data[i]["username"]);
+                    info.tickersymbol = ((string)investments[i]["tickersymbol"]);
+                    info.currentprice = (double)investments[i]["currentprice"];
+                    info.ReturnOnAssets = (double)investments[i]["ReturnOnAssets"];
+                    info.ReturnOnEquity = (double)investments[i]["ReturnOnEquity"];
+                    info.EBTMargin = (double)investments[i]["EBTMargin"];
+                    info.AssetTurnover = (double)investments[i]["AssetTurnover"];
+                    info.ReceivablesTurnover = (double)investments[i]["ReceivablesTurnover"];
+                    info.NetIncome = (double)investments[i]["NetIncome"];
+                    info.EarningsPerShare = (double)investments[i]["EarningsPerShare"];
+                    info.InterestCoverage = (double)investments[i]["InterestCoverage"];
+                    info.TotalCurrentAssets = (double)investments[i]["TotalCurrentAssets"];
+                    info.InventoryTurnover = (double)investments[i]["InventoryTurnover"];
+                    info.TaxRate = (double)investments[i]["TaxRate"];
+                    info.FreeCashFlow = (double)investments[i]["FreeCashFlow"];
+                    info.Revenue = (double)investments[i]["Revenue"];
+
+                    infoList.Add(info);
+     
+     \end{lstlisting} 
+     
+     After calling the information from our database it would then be displayed using both a xaml file and xaml.cs file which contains most of the work required for both portfolio and asset level details. With the completion of this we were able to complete all the major parts of the project. 
+     
+     
+     
+     
+ 
+    
 
 \section{Tyler Jones - User Data and Backend}
 
 \subsection{Description of Current Status}
  Coming into this project I have never worked with mobile applications, and I haven't taken the databases course, yet I am handling the backend for a mobile application so I have had quite the ramp up time in terms of learning how to handle my portion of the work. During fall term, it was hard to gauge if my planning and research was complete, because I didn't know what I didn't know, and if there were components that I was perhaps missing or not understanding, which definitely ended up being the case. 
 
-Currently, after having learned a great deal about databases our database sctructure, if we were to start from scratch, I might change slightly, but many of the big ticket items regarding database fundamentals have been covered in our database, including avoiding SQL injection and hashing
+Currently, however, I am working on improving the database structure. As is, it has been a significant time gate for myself to research and understand how to implement our data relationship into a relational database, as well as how to effectively interact with such data from a mobile application. The basic relationship we need to have configured for our data is as follows: Multiple users can share a portfolio and a single user can have multiple portfolios. Moreover, a portfolio can and will be comprised of multiple investments, and a certain investment can belong to more than one portfolio (multiple people can buy Apple stock). Currently, with this multiple many to many relationship structure that needs to be setup, my database structure can be seen below.
 
 \begin{figure}[h]
 \caption{Database Table Overview}
 \centering
 \includegraphics[width=\textwidth]{database_screenshot}
-\end{figure} 
-
+\end{figure}
 A many to many relationship, as I have learned as I have been building my database, is best fixed by adding a 3rd joining table for the relationship. As is demonstrated by the screenshot of all the tables in my database, the naming conventions I have set up, for instance with UsersPortfolios, allows the relationship between multiple users and multiple portfolios to be achieved within the context of a relational database like MySQL. The same goes for PortfoliosInvestments when showing the multiple investments that make up a portfolio. Without going into too much detail, how the process will work, and is working currently, will be that when a user adds a new portfolio, our application will make a call to the API and push the information about that portfolio, including portfolio name and total amount invested in the portfolio into the Porfolios table, as well as insert a new entry into the UsersPortfolios table that specifies who owns that new portfolio, which could be one or multiple users. All of the data that will be queried from the database is from the pictured UsersPortfoliosView, which places all of the portfolios and their owners into a single table, or technically a view in this case, that is able to be queried by our API effectively. This same strategy is applied in the PortfoliosInvestments table, and will also have a corresponding view that allows for effective queries.
+
+Another thing that I have been working on is the interaction of this data with my database. Coming into this term, I wasn’t aware what an API was or what it was used for, but I ended up having to build and use one for our application. These first few weeks of the term have been dedicated to research, as well as constructing our REST web API on our web.engr hosted OSU site. This REST web API is based in php and returns JSON for our C\# based application to parse and display for the user.  The API is generalized so that calls are made to it in the form of “…/api.php/{TableName}”, the output from such a URL is JSON of all the content of the desired table. I felt that making my API simple enough so that calls to it can be generalized and simply return all the content from the table allows me to do my complexities involving the data  through the database and client side, rather than getting bogged down in making an overly complex API. 
 
 I was overall in charge of two more major components. The first of these components was the API that would communicate with our database. This was a simple php based web api that is housed on my engr web space that permits the user to either return the contents of a table in json format, or upload values to the database when needed within the mobile application. As stated in my previous progress report, I had never worked with API's coming into this term, so having to teach myself the concept was a significant amount of ramp up time. This REST web API is based in php and returns JSON for our C\# based application to parse and display for the user.  The API is generalized so that calls are made to it in the form of “…/api.php/{TableName}”, the output from such a URL is JSON of all the content of the desired table. I felt that making my API simple enough so that calls to it can be generalized and simply return all the content from the table allows me to do my complexities involving the data  through the database and client side, rather than getting bogged down in making an overly complex API. However, reflecting on what I know now, I would navigate away from this API. It ended up being sufficient for our needs for the project, but I have learned a lot since we first used it for our implementation, and I know of many different or better things I would want to attempt with it going forward.
 
@@ -267,17 +252,22 @@ The second major component of this project that was mine to handle was the conso
 
 \subsection{What's left to do}
 
-Currently, as of today, there is nohing really left to do regarding the user data portions of our application. The database has been configured to our standards, and is properly serving the purpose we need for within our mobile app.
+What I have left to do and where the project as a whole is going are two different things. When composing the final product and putting all of our pieces together, my backend portions will mostly be plugged in to Sam's work with the UI. The work I personally have left to do on the backend is registering a new user, adding another user to an existing portfolio, figuring out how to configure the database to handle specific numbers of shares being associated with a portfolio, and lastly, adding hashing functionality to our users' passwords, as right now they are being stored just as plain text. As far as the application as a whole is concerned, the biggest piece that we need working now are our calls to the financial API, Last10k and Alpha Vantage, that will use fetched data in order to actually allow our app to do what it was intended to do. This will be a challenge not so much from a technical standpoint, but rather from a business standpoint, and will require verification from our client going forward that we are using the correct data, and generating and showing the user their investment performance properly. Overall, as we have gotten a much better sense over these first few weeks about what degree of work is going to be required for all the components, as well as a more complete and solid picture of how our app is going to work as a complete unit, we feel confident moving forward about the state of the project.
+
+Currently, as of today, there is not much left to do regarding the user data portions of our application. The database has been configured to our standards, and is properly serving the purpose we need for within our mobile app.
 
 \subsection{Problems impeding progress/Solutions}
 
+One bottleneck and problem, as I previously mentioned, that I have experienced so far is being thrown into many components of this project that are entirely new. The paradigm of mobile development, C\# which our app is written in, MySQL for the database, php for the API, and JSON parsing within the app are all completely new tools that I am having to both learn and effectively use all without having any prior knowledge of.
 
-The biggest problem that we have had thus far, other than personal bottlenecks with having to ramp up our own knowledge of the technical portions, is client issues. At the start of this term, Ron and Edison, our clients, bailed out on the project. Ron left the company, and Edison said it was perhaps best to stop our calls for the time being. This wasn't so much a wrench in the project, as close to all of the work had been done by the time this happened, but was rather just a morale blow that has made the project feel aimless since it now doesn't really have a client that it's being produced for.
+The biggest problem that we have had thus far other than personal bottlenecks with having to ramp up our own knowledge of the technical portions is client issues. At the start of this term, Ron and Edison, our clients, sort of bailed out on the project. Ron was fired from the company, and Edison said it was perhaps best to stop our calls for the time being. This wasn't so much a wrench in the project, as close to all of the work had been done by the time this happened, but was rather just a morale blow that has made the project feel aimless since it now doesn't really have a client that it's being produced for.
+
+\subsection{Other relevant/interesting information about project}
+Regarding the work breakdown of the project, Sam, Avi, and I are all individually working on components of the application, so although we haven't put them all together yet, the act of doing so will be trivial. All of us are new to mobile development, as well as Xamarin, so we figured this work flow would be much more efficient while we more or less figure out how to get each of our necessary components working. Where my portion of the work currently stands is mostly with allowing the user to communicate with the database within the application. Currently, users have the ability to log-in, albeit insecurely at the moment, load their portfolios, and load the investments contained within said portfolios. Furthermore, Xamarin has proved to actually be an incredibly interesting tool for our development. Developing a cross-platform application in C\# feels a bit like magic at times, as neither iOS or Android use C\# natively. It has been interesting developing from the standpoint of making an app that is as cross-compatible as possible, and at times this means sacrificing some of the unique and powerful qualities that iOS and Android both uniquely offer. 
 
 
 \section{Conclusion}
-
-The project has taken a long time to produce, with many hours of work going into every aspect. Looking back, this has been an incredible learning experience. Every single component of the application was an entirely new piece of technology for all of us that required a great amount of time and self teaching to use properly. Whether it was C#, mobile applications, databases, PHP, third party web APIs, or asynchronous code, everything presented its own challenge that needed to be overcome. Moreover, this project has suffered greatly from client consistency. From Brice, our original client, dropping out in Fall term, to the change that just occured with Ron and Edison, it has required a great amount of self discipline and focus to complete this project considering the numerous challenges that we encountered. Overall, however, it has been a very rewarding experience and we are proud of the final product!
+The project so far has made nice progress and we are beginning to see the fruits of our labor. As we start bringing the individual parts of our project together for the final release, our application will feel like the real deal. As of now we are now focusing on perfecting our current product so it can be polished and ready for expo in the coming weeks. 
 
 
 \end{document}
