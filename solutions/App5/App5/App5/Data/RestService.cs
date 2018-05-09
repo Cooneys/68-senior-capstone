@@ -251,6 +251,8 @@ namespace App5.Data
             string content = await client.GetStringAsync(Url);
             JArray investments = JArray.Parse(content);//JsonConvert.DeserializeObject<List<Portfolio>>(content);
 
+			CompanyInfo info = new CompanyInfo();
+
             if (investments.Count == 0)
             {
                 return null;
@@ -259,12 +261,13 @@ namespace App5.Data
             else
             {
                 for (var i = 0; i < investments.Count; i++)
+					
                 //Debug.WriteLine((string)data[i]["username"]);
                 {
+
                     if (ticker.Equals((string)investments[i]["tickersymbol"]))
                     {
                         //Debug.WriteLine((string)data[i]["username"]);
-                        CompanyInfo info = new CompanyInfo();
                         //tempPortfolio.Owners.Add((string)data[i]["username"]);
                         info.tickersymbol = ((string)investments[i]["tickersymbol"]);
                         info.currentprice = (double)investments[i]["currentprice"];
@@ -282,14 +285,41 @@ namespace App5.Data
                         info.FreeCashFlow = (double)investments[i]["FreeCashFlow"];
                         info.Revenue = (double)investments[i]["Revenue"];
 
-                        return info;
+						break;
+                        
+                        
+                        
+
                     }
+                    
+					else 
+					{
+						//tempPortfolio.Owners.Add((string)data[i]["username"]);
+						info.tickersymbol = ticker;
+						info.currentprice = 0.00;
+						info.ReturnOnAssets = 0.00;
+						info.ReturnOnEquity = 0.00;
+						info.EBTMargin = 0.00;
+						info.AssetTurnover = 0.00;
+						info.ReceivablesTurnover = 0.00;
+						info.NetIncome = 0.00;
+						info.EarningsPerShare = 0.00;
+						info.InterestCoverage = 0.00;
+						info.TotalCurrentAssets = 0.00;
+						info.TaxRate = 0.00;
+						info.InventoryTurnover = 0.00;
+						info.FreeCashFlow = 0.00;
+						info.Revenue = 0.00;
+					}
+
 
 
                 }
+				return info;
 
+                
                 //return companyinfolist;
-                throw new Exception(string.Format("Cannot find company info for ticker: {0}", ticker));
+                //throw new Exception(string.Format("Cannot find company info for ticker: {0}", ticker));
 
             }
 
