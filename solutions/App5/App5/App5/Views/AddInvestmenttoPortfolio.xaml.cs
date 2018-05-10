@@ -56,41 +56,25 @@ namespace App5.Views
 
         async void OnDoneNewInvestmentClicked(object sender, EventArgs e)
         {
-            //WebClient client = new WebClient();
-            //Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/AddInvestment.php");
 
             HttpClient client2 = new HttpClient();
             Uri uri = new Uri("http://web.engr.oregonstate.edu/~jonesty/AddInvestment.php");
 
-            newInvestment.tickersymbol = tickerEntry.Text;
+            newInvestment.tickersymbol = tickerPicker.Item[tickerPicker.SelectedIndex].Text;
             newInvestment.pricepurchased = float.Parse(purchasepriceEntry.Text, CultureInfo.InvariantCulture.NumberFormat);
             newInvestment.numberofshares = float.Parse(numSharesEntry.Text, CultureInfo.InvariantCulture.NumberFormat);
-
-            /*NameValueCollection parameters = new NameValueCollection();
-            parameters.Add("portfolioname", App.currentPortfolio.Name);
-            parameters.Add("tickersymbol", tickerEntry.Text);
-            parameters.Add("numshares", numSharesEntry.Text);
-            parameters.Add("pricepurchased", purchasepriceEntry.Text);*/
 
             var postData = new List<KeyValuePair<string, string>>();
 
             postData.Add(new KeyValuePair<string, string>("portfolioname", App.currentPortfolio.Name.ToString()));
-            postData.Add(new KeyValuePair<string, string>("tickersymbol", tickerEntry.Text.ToString()));
+            postData.Add(new KeyValuePair<string, string>("tickersymbol", tickerPicker.Item[tickerPicker.SelectedIndex].ToString()));
             postData.Add(new KeyValuePair<string, string>("numshares", numSharesEntry.Text.ToString()));
             postData.Add(new KeyValuePair<string, string>("pricepurchased", purchasepriceEntry.Text.ToString()));
 
             HttpContent content = new FormUrlEncodedContent(postData);
 
             var response = await client2.PostAsync(uri, content);
-            //client.UploadValuesAsync(uri, parameters);
 
-            /*var rootPage = Navigation.NavigationStack.FirstOrDefault();
-            if (rootPage != null)
-            {
-                Navigation.InsertPageBefore(new PortfolioDetails(App.currentPortfolio), Navigation.NavigationStack.First());
-                await Navigation.PopToRootAsync();
-            }*/
-            // await Navigation.PushAsync(new PortfolioDetails(App.currentPortfolio));
             Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count()-2]);
             Navigation.InsertPageBefore(new PortfolioDetails(App.currentPortfolio), Navigation.NavigationStack[Navigation.NavigationStack.Count()-1]);
             await Navigation.PopAsync();

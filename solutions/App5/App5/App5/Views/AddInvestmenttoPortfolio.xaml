@@ -11,7 +11,6 @@
             <Picker x:Name="typePicker" HorizontalOptions="FillAndExpand">
                 <Picker.Items>
                     <x:String>Stock</x:String>
-                    <x:String>Stock Option</x:String>
                 </Picker.Items>
                 <Picker.SelectedIndex>
                     <x:Int32>0</x:Int32>
@@ -19,7 +18,43 @@
             </Picker>
             
             <Label Text="Ticker Symbol" />
-            <Entry x:Name="tickerEntry" Placeholder="Ex. AAPL, MSFT, TWTR, etc..." />
+            <Picker x:Name="tickerPicker" HorizontalOptions="FillAndExpand">
+                <Picker.Items>
+                    <x:String>AAPL</x:String>
+                    <x:String>AXP</x:String>
+                    <x:String>BA</x:String>
+                    <x:String>CAT</x:String>
+                    <x:String>CSCO</x:String>
+                    <x:String>CVX</x:String>
+                    <x:String>DIS</x:String>
+                    <x:String>DWDP</x:String>
+                    <x:String>GE</x:String>
+                    <x:String>GS</x:String>
+                    <x:String>HD</x:String>
+                    <x:String>IBM</x:String>
+                    <x:String>INTC</x:String>
+                    <x:String>JNJ</x:String>
+                    <x:String>JPM</x:String>
+                    <x:String>KO</x:String>
+                    <x:String>MCD</x:String>
+                    <x:String>MMM</x:String>
+                    <x:String>MRK</x:String>
+                    <x:String>MSFT</x:String>
+                    <x:String>NKE</x:String>
+                    <x:String>PFE</x:String>
+                    <x:String>PG</x:String>
+                    <x:String>TRV</x:String>
+                    <x:String>UNH</x:String>
+                    <x:String>UTX</x:String>
+                    <x:String>V</x:String>
+                    <x:String>VZ</x:String>
+                    <x:String>WMT</x:String>
+                    <x:String>XOM</x:String>
+                </Picker.Items>
+                <Picker.SelectedIndex>
+                    <x:Int32>0</x:Int32>
+                </Picker.SelectedIndex>
+            </Picker>
             
             <Label Text="Number of Shares" />
             <Entry x:Name="numSharesEntry" Placeholder="Number of Shares" />
