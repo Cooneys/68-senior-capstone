@@ -61,6 +61,7 @@ namespace App5.Views
                 newInvestment.type = picker.Items[selectedIndex];
             }*/
             purchasepriceEntry.IsVisible = !purchasepriceEntry.IsVisible;
+            customPriceLabel.IsVisible = !customPriceLabel.IsVisible;
 
         }
 
