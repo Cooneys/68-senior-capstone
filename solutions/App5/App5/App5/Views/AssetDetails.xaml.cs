@@ -72,7 +72,7 @@ namespace App5.Views
                     this.IT.Text = string.Format("{0}%", AssetDetails.InventoryTurnover);
                     this.AT.Text = string.Format("{0}%", AssetDetails.AssetTurnover);
                     this.EBITM.Text = string.Format("{0}%", AssetDetails.EBTMargin);
-                    this.TCA.Text = string.Format("{0} thousand USD ", AssetDetails.TotalCurrentAssets);
+                    this.TCA.Text = string.Format("{0} billion USD ", AssetDetails.TotalCurrentAssets);
                     this.RT.Text = string.Format("{0}%", AssetDetails.ReceivablesTurnover);
                     this.NI.Text = string.Format("{0} billion USD ", AssetDetails.NetIncome);
                     this.EPS.Text = string.Format("{0} billion USD ", AssetDetails.EarningsPerShare);
