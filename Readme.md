@@ -9,6 +9,10 @@ Documentation was not provided or very sparce on AlphaVantage's site, so this wr
 
 Quandl code also came from this source: https://github.com/HubertJ/QuandlCS/blob/master/QuandlCS/Connection/QuandlConnection.cs
 
+API.php file used to communicate with DB on queries: https://github.com/mevdschee/php-crud-api
+
+Thank you to all of our sources!
+
 *************************************************************
 
 
