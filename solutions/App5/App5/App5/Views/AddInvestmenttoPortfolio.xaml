@@ -69,7 +69,7 @@
                     <x:Int32>0</x:Int32>
                 </Picker.SelectedIndex>
             </Picker>
-            <Entry x:Name="purchasepriceEntry" Placeholder="$ / Share" />
+            <Entry x:Name="purchasepriceEntry" Placeholder="$ / Share"  IsVisible="False"/>
 
             <Button x:Name="AddDoneInvestment" Text="Done" Clicked="OnDoneNewInvestmentClicked"/>
         

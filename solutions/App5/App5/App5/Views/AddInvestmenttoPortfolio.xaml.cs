@@ -43,18 +43,25 @@ namespace App5.Views
                 picker.Items.Add(colorName);
             }
 
+            Debug.WriteLine("blah blah blah");
+
+            //pricePicker.SelectedIndexChanged += OnPickerSelectedIndexChanged;
             InitializeComponent ();
-		}
+
+            pricePicker.SelectedIndexChanged += OnPickerSelectedIndexChanged;
+        }
 
         void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
-            var picker = (Picker)sender;
+            /*var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
 
             if (selectedIndex != -1)
             {
                 newInvestment.type = picker.Items[selectedIndex];
-            }
+            }*/
+            purchasepriceEntry.IsVisible = !purchasepriceEntry.IsVisible;
+
         }
 
         async void OnDoneNewInvestmentClicked(object sender, EventArgs e)
