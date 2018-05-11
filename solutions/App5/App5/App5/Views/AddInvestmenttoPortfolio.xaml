@@ -63,7 +63,7 @@
             <Picker x:Name="pricePicker" HorizontalOptions="FillAndExpand">
                 <Picker.Items>
                     <x:String>Most Recent Daily Price (Automated)</x:String>
-                    <x:String>Custom Price (Enter price in the field below!)</x:String>
+                    <x:String>Custom Price</x:String>
                 </Picker.Items>
                 <Picker.SelectedIndex>
                     <x:Int32>0</x:Int32>
