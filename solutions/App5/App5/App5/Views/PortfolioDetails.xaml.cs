@@ -17,6 +17,7 @@ using Avapi;
 using System.Globalization;
 using System.Net;
 using System.Collections.Specialized;
+using System.Net.Http;
 
 namespace App5.Views
 {
@@ -142,13 +143,33 @@ namespace App5.Views
             var answer = await DisplayAlert("Delete", "Do you want to delete this Portfolio?", "Yes", "No");
             if (answer)
             {
-                WebClient client = new WebClient();
+                /*WebClient client = new WebClient();
                 Uri uri = new Uri("http://web.engr.oregonstate.edu/~cooneys/capstone/deletePortfolio.php");
                 NameValueCollection parameters = new NameValueCollection();
                 parameters.Add("portfolioname", App.currentPortfolio.Name);
                 parameters.Add("currentuser", App.currentUser.Username);
                 client.UploadValuesAsync(uri, parameters);
 
+                await Navigation.PopAsync();*/
+
+
+                HttpClient client2 = new HttpClient();
+                Uri uri = new Uri("http://web.engr.oregonstate.edu/~cooneys/capstone/deletePortfolio.php");
+
+                var postData = new List<KeyValuePair<string, string>>();
+
+
+                postData.Add(new KeyValuePair<string, string>("portfolioname", App.currentPortfolio.Name.ToString()));
+                postData.Add(new KeyValuePair<string, string>("currentuser", App.currentUser.Username));
+                //postData.Add(new KeyValuePair<string, string>("pricepurchased", purchasepriceEntry.Text.ToString()));
+
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                var response = await client2.PostAsync(uri, content);
+
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count() - 2]);
+                //Navigation.InsertPageBefore(new PortfolioDetails(App.currentPortfolio), Navigation.NavigationStack[Navigation.NavigationStack.Count() - 1]);
+                Navigation.InsertPageBefore(new MainPage(), this);
                 await Navigation.PopAsync();
             }
         }

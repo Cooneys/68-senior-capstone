@@ -13,6 +13,7 @@ using System.Net;
 using System.Globalization;
 using Microcharts;
 using System.Collections.Specialized;
+using System.Net.Http;
 
 namespace App5.Views
 {
@@ -39,14 +40,31 @@ namespace App5.Views
             var answer = await DisplayAlert("Delete", "Do you want to delete " + App.currentPortfolio.Name + " " + App.currentInvestment.tickersymbol, "Yes", "No");
             if (answer)
             {
-                WebClient client = new WebClient();
+                /*WebClient client = new WebClient();
                 Uri uri = new Uri("http://web.engr.oregonstate.edu/~cooneys/capstone/deleteInvestment.php");
                 NameValueCollection parameters = new NameValueCollection();
                 parameters.Add("portfolioname", App.currentPortfolio.Name);
                 parameters.Add("tickersymbol", App.currentInvestment.tickersymbol);
-                client.UploadValuesAsync(uri, parameters);
+                client.UploadValuesAsync(uri, parameters);*/
 
+                HttpClient client2 = new HttpClient();
+                Uri uri = new Uri("http://web.engr.oregonstate.edu/~cooneys/capstone/deleteInvestment.php");
+
+                var postData = new List<KeyValuePair<string, string>>();
+
+
+                postData.Add(new KeyValuePair<string, string>("portfolioname", App.currentPortfolio.Name.ToString()));
+                postData.Add(new KeyValuePair<string, string>("tickersymbol", App.currentInvestment.tickersymbol.ToString()));
+                //postData.Add(new KeyValuePair<string, string>("pricepurchased", purchasepriceEntry.Text.ToString()));
+
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                var response = await client2.PostAsync(uri, content);
+
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count() - 2]);
+                Navigation.InsertPageBefore(new PortfolioDetails(App.currentPortfolio), Navigation.NavigationStack[Navigation.NavigationStack.Count() - 1]);
                 await Navigation.PopAsync();
+                //await Navigation.PopAsync();
             }
         }
 
@@ -61,7 +79,7 @@ namespace App5.Views
             CompanyInfo AssetDetails = AssetDetailsA.Result;
 
 
-            App.currentInvestment.tickersymbol = "0";
+            //App.currentInvestment.tickersymbol = "0";
 
             if (AssetDetails != null)
             {
