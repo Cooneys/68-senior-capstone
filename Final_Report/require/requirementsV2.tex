@@ -1,0 +1,159 @@
+
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{pdfpages}
+\usepackage{geometry}
+\geometry{textheight=9.5in, textwidth=7in}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{		The Cleverly Named Team}
+\def \CapstoneTeamNumber{		68}
+\def \GroupMemberOne{			Tyler Jones}
+\def \GroupMemberTwo{			Samuel Cooney}
+\def \GroupMemberThree{			Aviral Sinha}
+\def \CapstoneProjectName{		Investment Performance Mobile App}
+\def \CapstoneSponsorCompany{	HedgeServ}
+\def \CapstoneSponsorPerson{		Edison Tsai}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{		%Problem Statement
+				Requirements Document
+				%Technology Review
+				%Design Document
+				%Progress Report
+				}
+			
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+%\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+        \hfill 
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        %\includegraphics[height=4cm]{CompanyLogo}   
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone \DocType \par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            \CapstoneTeamName\par 
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberOne}\par
+                \NameSigPair{\GroupMemberTwo}\par
+                \NameSigPair{\GroupMemberThree}\par
+            }
+            \vspace{20pt}
+        }
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+%\listoffigures
+%\listoftables
+\clearpage
+
+% 8. now you write!
+
+\section{Abstract}
+This document will outlining what we are doing for the project and what our client will get once we are finished. This will be essentially a contract of our work showing in detail. We will be detailing different tasks at the individual level and some will detail requirements at the functional level. In addition to this we will also have a detailed Gantt chart showing our timeline of the work we have to do. 
+\section{Introduction}
+
+\subsection{Purpose}
+The purpose of this mobile application will be to provide it's users insight into the quality of their investments from a portfolio level. 
+By using this application, a user will be able to track and gain valuable insight that wouldn't be possible otherwise.
+
+\subsection{Scope}
+The scope  of this project is to provide users with a method to track investment portfolios containing stocks. Users will have the ability  to enter in investments and receive detailed tracking information on these assets. Data will be displayed including prices, purchase dates, volatility, and more for both portfolio wide and individual investments.
+
+\subsection{Definitions, acronyms, and abbreviations}
+\begin{itemize}
+	\item HedgeServ: A global, independent fund administration provider headquartered in New York with
+		10 offices and 195+ clients worldwide.
+	\item Xamarin: A tool built into Microsoft Visual Studio that allows developers to deliver native 
+	   	C\# applications to Android, iOS, and Windows devices.
+	\item C\#: (pronounced as \textit{see sharp}) is a programming language developed by Microsoft. It encompasses strong typing, imperative, declarative, functional, generic,
+		object-oriented, and component-oriented programming styles.
+	\item Asset: A valuable property such as resources, estate, holdings, etc...
+	\item Investments: An asset or item puchased with the hope that it will geenerate income and is not consumed today and used to create wealth in the future.
+	\item Portfolio: A group of financial assets that are held by investors or managed by financial professionals.
+	\item Front End: The view of an application that provides the end user with a friendly interface to interact with.
+	\item Back End: The behind the scenes of an application that typically handles business logic and the storage of data.
+	\item Domain-Specific Language: (Often refered to as \textit{DSL}) A programming language that has been specialized to a particular application domain.
+	\item SQL: A domain-specific programming language used for managing data held in a database management system.
+\end{itemize}
+
+\subsection{Overview}
+
+The Investment Performance Mobile Application will allow users to view their investment portfolio on iOS and Android devices at a portfolio level. Users will receive data at a portfolio level as well as drill down to any of their specific investments.
+
+
+\subsection{Product perspective}
+
+Currently, most mobile financial applications provide investment performance information on only one investment type at a time. This project seeks to solve the current lack of a tool that concurrently tracks a variety of different investment assets in  one consolidated source. In doing so, this application will allow users to place and view all of their investments in a single location while simultaneously receiving performance updates for each individual investment and the portfolio as a whole.
+
+\subsection{Product Functions}
+This mobile app will provide users investment performance from a portfolio level. The user will be able to enter investments, either  in bulk or individually, and have their portfolio be displayed all together. Then users will have the ability to view different data points about their portfolio as well as drill down into individual investments in order to get further data on a single asset.
+
+While in the portfolio view, users will see a pie chart with their portfolio split up into percentages. 
+For instance, if a user owns \$1000 worth of assets, these may be across different stocks and the pie chart will reflect this division. Additionally, the user will be able to retrieve benchmarks on their entire portfolio. The S\&P 500 or Dow Jones Index, for example, would provide the user with a benchmark by which they could compare the performance of their entire portfolio against.  Moreover, the user will be able to dissect the performance of their entire portfolio based off a variety of time intervals. The user will see the aggregate 
+performance of their investments over time intervals ranging from a week all the way to multiple years+. Lastly, the user will be able to see their Sharpe ratio and volatility of their portfolio. 
+The user will also be able to see all of this data at an individual investment level. This means that this app should provide the user financial ratios, investment level balance sheets, income statements, and cash flows. We would also show how the portfolio against benchmarks specifically against index funds that track the market as a whole. 
+
+
+\section{Specific requirements}
+
+\subsection{Backend}
+
+\begin{itemize}
+\item There must be no longer than a 3 second response time on any given query to the database. If queries fail, the data should be blank or missing,rather than inaccurate. Users should be able to rely on 100\% accurate pricing data, even if not 100\% up to date; inaccurate pricing is not an option. Crashing is better than showing incorrect data, however this crash rate should be low. Moreover, the crash rate will be measured as the number of crashes relative to the number of queries to the database, rather than crashes relative to unit time.
+
+\item Database must be able to accommodate users having more than one portfolio/account
+\item Database must be able to accommodate users having a joint portfolio/investment.
+\item All transactions must be stored in the database
+\item The final product must be secure. Usernames and passwords must be safely stored in the database, and prevent hacking attempts such as SQL injections. 
+\item Investment prices stored in the database should be automatically updated regularly and store old data so that portfolios can track historical data. 
+\end{itemize}
+
+\subsection{Frontend}
+\begin{itemize}
+	\item Front end development will be written in C\# through Xamarin Forms which allows for cross platform compatibility. 
+	\item Investments must be able to be removed from the portfolio, as the user should 
+		have complete control over what they track. 
+	\item Portfolio level will allow the user to see a pie chart of their total assets with each section being an individual investment.
+	\item The portfolio will have relative benchmarks to industry standard sources like the S\&P500.
+	\item An option to view the portfolio's history in a graph must be displayed with a variety of time intervals ranging from a day to weeks to multiple years.
+	\item The portfolio should display the current Sharpe Ratio as well as its volatility.
+	\item Users must be able to enter data through the application one investment at a time manually added in using the user-friendly interface. 
+	\item Investments should list purchase price and quantity, at a minimum.
+	\item Both the portfolio and individual investments should show returns based off time and purchase price.
+	\item Stock splits should properly increase investment quantity and reduce price when such event occurs (investment value should remain unchanged).
+
+	
+\end{itemize}
+\section{Timeline}
+
+
+
+\end{document}

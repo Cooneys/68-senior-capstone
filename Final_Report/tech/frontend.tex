@@ -1,0 +1,249 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{pdfpages}
+\usepackage{geometry}
+\geometry{textheight=9.5in, textwidth=7in}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{		IMPA}
+\def \CapstoneTeamNumber{		68}
+\def \GroupMemberTwo{			Samuel Cooney}
+\def \CapstoneProjectName{		Investment Performance Mobile App}
+\def \CapstoneSponsorCompany{	HedgeServ}
+\def \CapstoneSponsorPerson{		Edison Tsai}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{		%Problem Statement
+				%Requirements Document
+				Technology Review
+				%Design Document
+				%Progress Report
+				}
+			
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+%\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+        \hfill 
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        %\includegraphics[height=4cm]{CompanyLogo}   
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone \DocType \par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            \CapstoneTeamName\par 
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberTwo}\par
+            }
+            \vspace{20pt}
+        }
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+%\listoffigures
+%\listoftables
+\clearpage
+
+% 8. now you write!
+\begin{singlespace}
+\section{Introduction}
+
+The Investment Performance Mobile Application is at a broad view a tool users will be able to track and receive insightful data about their asset portfolios. Users will be have the ability
+to track stocks and stock options through their mobile devices using either iOS and Android phones. The application will connect to web services to run calculations on information it is retrieving from the database.
+My role in this project will  be to develop the front end of the application which entails creating all the 
+interfaces that the user will interact with as well as implementing the connections to the web services.
+
+\section{Piece One: Development Platform}
+\subsection{Overview}
+Development platforms are one of the foundations to creating a strong and secure application. Every development platform has its benefits and downsides, and choosing
+one before beginning design can limit the decisions that will be made during development. Some development platforms can easily be integrated with other tools like Git for
+version control, native device APIs for increased integration to mobile platforms, and various open-sources iOS and Android libraries that have numerous capabilities that give increased
+functionality. These integrations as well as the platforms base abilities have to be weighed before selection or there could be walls that are run into during development.
+
+\subsection{Criteria}
+Development platforms will be compared on the following criteria:
+\begin{itemize}
+	\item Developed code can be shared on both iOS and Android devices. Our project is required to deploy onto both of these platforms, and so the tool needs match the job.
+	\item Free to Use. There  is no funding for our project, so we need free software that we can work with that will not inhibit our work cycle.
+	\item Git Integration. Our code lives on an external GitHub repository and since we are working as a team, quick roll-outs to our code base need to be made seamlessly.
+	\item Code Compiler. The development platform needs to be able to compile our code for deployment, without this the code is not usable.
+\end{itemize}
+\subsection{Potential Choices}
+\subsubsection{Xamarin}
+
+Xamarin is a development platform built with the goal of writing native Android, iOS, and Windows applications with a shared code base. Microsoft acquired Xamarin 
+in February of 2016 in which they open-sourced the Xamarian SDK and bundled it within Visual Studio, another Microsoft product. Visual Studio Community is free
+which allows the development within Xamarin for no cost. Development code is written in C\# which allows for sharing a single code base across the different platforms.
+Xamarin also has built-in compilers that generate the platform specific needs: ARM assembly for iOS, IL with packaging by MonoVM and JIT'ing for Android, and IL for Windows.
+However, Xamarin does remove some classes from various frameworks during compilation which could decrease usability. Visual Studio Community does have Git built directly into the IDE.
+This allows for quicker saving of changes and removes the need for exiting the development platform to push changes to a remote repository. This is advantageous when working with
+a team as well as keeping a change log for possible rollbacks. Overall, Xamarin meets all criteria with the only downside being possible loss of features when compiling.
+
+\subsubsection{PhoneGap}
+
+PhoneGap is an open source framework built on Cordova and is owned by Adobe. It allows for development of hybrid mobile applications using HTML, CSS, and Javascript and a single code base.
+Since PhoneGap is open source, the platform is free to use with an easy application install that also comes with a Developer App that gives the ability to preview the applications on a desktop.
+Adobe offers services alongside the framework that make PhoneGap a powerful tool, the Developer App being one of these add on services. PhoneGap Build is another service that allows developers to
+compile their applications on cloud services. This removes the need to configure manual environments for compilation on each platform. PhoneGap unfortunately does not have any built in Git integration
+which forces the need to use a separate tool to save and push changes to a remote repository. Overall, the base PhoneGap meets half of the requirements missing the Git integration and some
+of the services the Adobe offers to make this a full tool have high subscription costs.
+
+\subsubsection{MonoCross}
+
+MonoCross is an open source framework that uses C\#, .NET, and the Mono framework to give developers the ability to create cross platform mobile applications. Development with MonoCross is
+done in C\# with full access to native device APIs. MonoCross also supports development in HTML, CSS, and JavaScript for hybrid web applications for developers who have a strong web background.
+MonoCross is free to use and can be integrated into Visual Studio.
+Since Visual Studio is free, this gives developers the ability to compile their code for all platforms without having to leave their development environment. This also allows for the ability to have built in Git
+integration which removes the need to swap applications to save and push changes to a remote repository. Overall, MonoCross meets all of the requirements with the biggest downside being that the product
+is not developed directly for Visual Studio.
+
+\subsection{Discussion}
+
+Comparing the three development platforms, one stands out clearly as being weaker than the rest, PhoneGap. 
+PhoneGap requires additional services from Adobe to bring in the same capabilities that MonoCross and Xamarin bring to the table. It requires the use of PhoneGap Build, a cloud service building enviorment,
+which causes the developer to purchase a subscription to Adobe to compile their code. This and the lack of Git integration makes PhoneGap a poor choice for the development platform.
+The other potential choices, MonoCross and Xamarin are very similar when it comes to meeting the criteria. Both of these platforms can be integrated into Visual Studio Community which gives them 
+the ability to compile their single codebase into the various mobile platforms and have built in git integration. MonoCross does have the ability to build hybrid applications using HTML, CSS, and JavaScript. Xamarin
+does have this functionality as well but it is not as well integrated as MonoCross. Xamarin does have an advantage when it comes to Visual Studio integration compared to MonoCross since Xamarin is owned by Microsoft, the same
+company that owns Visual Studio. As such, when it comes to online support and built in compilation within Visual Studio, Xamarin has an edge over MonoCross.
+
+\subsection{Conclusion}
+Since PhoneGap is a clear outlier, MonoCross or Xamarin are the strongest choices. Both have very similar capabilities, with MonoCross having a slight edge with hybrid applications.
+But since we are not partial to web development, we decided to go with the choice that our client recommended, Xamarin. Xamarin has a smoother integration with Visual Studio which 
+allows for development code to be compiled on all the required devices. It also gives integrated Git support for faster sharing and logging of work,
+which is neccesary when developing with a team. Finally, Xamarin is free to use with all the required needs and more being available without any subscriptions or extra services required. 
+
+
+\section{Piece Two: Development Language}
+\subsection{Overview}
+
+Programming languages are tools built to allow the developer to communicate with the computer at a higher level. Each tool has its different strengths and weaknesses both of
+which affect projects in many ways. Just a few of these ways include integration with applications, modularity, and readability. Some languages are built in such a way that it 
+can drastically affect the way the project will be designed. Because of this, jumping right into using a particular tool could lock a developer into a corner only to realize
+5 months into the development cycle that they chose a hammer when they needed an axe. To alleviate this issue, putting time into the selection of which programming language can save
+huge amounts of back-peddling later on down the road.
+
+\subsection{Criteria}
+Programming Languages will be compared on the following criteria:
+\begin{itemize}
+	\item iOS and Android Compatible. Our client requires deployment to both platforms, and as such, we need to ensure our language can do the same.
+	\item Optimized for User Interface Creation. The front end of this application will be a UI for our web services and database and the language needs to  have this as a  primary  use.
+	\item Compact Structure and Size. Code development can be hard if the work is not legible or enormous. The language needs to be human readable and compact where possible.
+\end{itemize}
+
+\subsection{Potential Choices}
+\subsubsection{C\#}
+C\# (pronounced "C sharp") was first released in 2000 from Microsoft as a simple, object oriented programming language. Since then, it has received numerous updates
+and changes to evolve it into the widely used development language it is today. Many well known pieces of software use C\# as a code base, like Unity game engine, Microsoft Sharepoint and Office 365,
+and thousands of iOS, Android, and Windows applications. C\# has a huge collection of libraries that provide many useful and well-implemented solutions to issues which makes it very practical to use
+in almost any situation. Since C\# is developed by Microsoft, alongside and for .NET, it has the best integration with the .NET Framework and other APIs that allow for developers to have a strong 
+foundation to build applications on. C\# also integrates very well with SQL, since to start working with SQL connections it's as simple as adding a single line to the top of the C\# file. Overall, C\#,
+while its code is  not as compact and human readble as others, has a very strong compatibility with both iOS and Android devices and it is one of the  best tools for designing a Stateful UI.
+
+\subsubsection{HTML, CSS, JavaScript}
+Hybrid applications developed using a combination of HTML, CSS, and JavaScript allow for a wide use of these applications on many different platforms. This is not true for native applications built in
+programming languages like C\# or F\# who are limited to certain devices. JavaScript is a high-level, weakly typed, scripting language that works alongside HTML, a markup language read by web browsers, and CSS, a style sheet language
+for telling the web browser how to present a document written in a markup language. These three technologies are the core of a vast section of the Internet's web interface. Using frameworks like 
+PhoneGap, web developers can create hybrid mobile applications using this triad of tools that can compete with the UI capabilities that come with native applications. And with optimization, this trio 
+can come close to the speed that is received when using C\# or F\#. However, HTML is arguably very unreadable which increases problems in the development cycle. Overall, the trio of  HTML, CSS, and JavaScript
+have a wide variety of platforms they can be implemented onto, more so than just iOS and Android, but they do not have the direct access to native UI features that other programing languages have, as well
+as the trio's code size can become very large and unreadable which hinders development.
+
+\subsubsection{F\#}
+F\# is a functional programming language developed by F\# Software Foundation, Microsoft and open contributors. It is commonly used as a cross platform CLI (Common Language Infrastructure) and was orignally
+created as a .NET Framework implementation of another programming language. From its creation in 2005, it has evolved into a strongly typed, multi-paradigm language that is fully supported by Visual Studio and Xamarin.
+Many big pieces of software use F\#, some include various Facebook social games, many business intelligence platforms, and some machine learning pieces. Recently, F\# has been developed to be an optimized
+replacement to C\#. With its strong scripting ability and growing inter-language compatibility to Microsoft tools, many developers have switched from C\# to F\#. Xamarin and Visual Studio however do require 
+additional setup to get compilation working on Windows machines for F\#, which increases setup time. Overall, F\# is a strong tool that works on both iOS and Android, can be used to create UI but requires much more manual
+work, but the arguably cleaner, more compact and human readable code makes F\# a strong choice for programming language.
+
+\subsection{Discussion}
+The most important criteria is compatibility with both iOS and Android devices, and all three choices can do just that. HTML, CSS, and Javascript are designed for web development which removes the ability
+to work with native UI structures, thus making a hybrid application a clear disadvantage since we do not have strong web development skills. The trio of tools are also comparitively slower in response time
+when matched against F\# and C\#. The other two choices, F\# and C\# have access to native UI features on both iOS and Android devices as well as having a smaller code structure when compared to HTML and CSS.
+F\# generally has a more compact and readable code size over C\#, but with the increased requirements to make F\# work into a successful UI, C\# seems to be a better choice. 
+
+\subsection{Conclusion}
+C\# is widely used by many large applications and small hobbyists around the globe with a strong network of pre-built APIs making it a strong choice for our project. It meets all our criteria and can provide our
+application with the strong native UI framework that would be lacking in a hybrid application developed from HTML, CSS, and JavaScript. F\# also meets the requirements and has strong advantages over C\# in some areas
+like readability and simplicity, but it lacks some abilities when working with UI. Because of these reasons and C\#'s out-of-the-box development in Xamarin, C\# will be used for the front end development of the
+Investment Performance Mobile Application.
+
+\section{Piece Three: Automated Testing}
+\subsection{Overview}
+Testing is a  key part of any development cycle. In mobile development, a core testing style is acceptance testing where application abilities are ensured that they are working properly. Features like scrolling through
+the page, tapping on navigation buttons, adding data into text boxes, are all functions that require testing. As new functions are added, they can interfere with features that have already been tested and  implemented, which
+delays development time. To alleviate this issue, many teams have implemented automated  testing software into the development cycle. These automated  tests can  be run within minutes instead of the tedious manual  testing that
+can take hours or days to complete. Some development tools have these automated testing built side by side to the tool itself which further increases speed in rolling out new features.
+
+\subsection{Criteria}
+Automated Testing Software will be analyzed on the following criteria:
+\begin{itemize}
+   	\item Price. Our project is not funded in any way. A product with a price would be a non-contender in selection.
+	\item C\# Compatible. All our development will be done in C\# and so our testing software needs to be able to handle this  language.
+	\item Integration within Development Cycle. Automated testing needs to save time. If the time spent setting up or using the automated framework is longer than manual testing, there is serious quesetions as to why  we are using it.
+\end{itemize}
+\subsection{Potential Choices}
+\subsubsection{Appium}
+Appium is a test automation framework that is built for native, hybrid, and mobile web applications for  iOS, Android, and Windows devices. It is an open source software that runs using WebDriver, a Selenium API.
+Appium is very flexible with language requirements with the ability to handle tests written in C\#, JavaScript, Ruby, and many other programming languages. It is also platform independent with the functionality being
+the same regardless of developing on Windows or Mac OSX. Testing can be done directly beside code development and run in a separate command line interface. A key feature is that to  run the testing software, there is 
+no requirement of recompiling the full mobile application, which saves precious time during development. There is some heavy setup required before beginning testing which could cause issues when working in different environments.
+Overall, Appium is a strong choice for automating testing for iOS and Android devices that meets all criteria with a few hiccups in the beginning of development.
+
+\subsubsection{Xamarin.UITest and NUnit Test Adapter}
+
+Xamarin.UITest is a framework built for testing and allows automated UI acceptance tests to be developed. These tests are written in NUnit which allows them to be run on both iOS and Android devices, but not Windows 
+or other platforms. It works very well alongside iOS and Android projects being developed with Xamarin but requires a third party test runner, with the recommended being NUnit Test Adapter, a free package for Visual 
+Studio. NUnit Test Adapter can be installed into Visual Studio for centralized development and testing. Xamarin.UITest uses separate classes for iOS and  Android testing, which would require doubling the amount of tests
+so both platforms are tested effectively and thoroghly. However, if creating the tests in Visual Studio and using NUnit Test Adapter, the  developer does not need to use Xamarin Test Cloud to run tests on devices 
+which is normally  required.. Being Xamarin based, Xamarin.UITest is fully compatible with a C\# code base and NUnit is  completely written to support all .NET applications. 
+Overall, Xamarin.UITest and NUnit Test Adapter are difficult to set up, but integrate extremely well into Visual Studio development and are free to use with Xamarin.
+
+\subsubsection{Coded UI Tests and CUIT Builder}
+Visual Studio Enterprise offers built in UI testing with Coded UI Tests and the CUIT Builder. These tools are enable right in Visual Studio Enterprise, a paid for product by Microsoft. It allows developers to generate UI test
+code right inside the development environment, customize the code to be more specific, then run the tests through Test Explorer all in one centralized location. Since this tool works through Visual Studio, it has full
+integration with Xamarin and C\# which allows for development of both Android and iOS devices. Setup is very minimal as it is fully packaged  through Visual Studio Enterprise and would require minimal learning on new tools.
+The biggest downside to this solution is the price, with a copy of Visual Studio  Enterprise 2017 costing 499USD. This is extremely outside the budget for the Investment Performance Mobile Application. Overall, Microsoft's CUIT
+framework, Builder, and Test Explorer are a strong automated alternative to manual testing and it supports C\# but with the high price to Visual Studio Enterprise, this choice is not possible.
+
+\subsection{Discussion}
+Automated UI testing plays a key role in product development and the open source options available, like Appium and Xamarin.UITest, do a great job at providing users with all the means neccesary to develop iOS and Android devices
+with C\#. They do the same job as paid products like Microsoft's CUIT with slightly less integration into the development enviorment. Appium, being a third party framework, takes more time and effort to set up then
+Xamarin.UITest since it does not integrate directly with Visual Studio. However, it does have the advantage of having both it's iOS and Android packages bundled together into one API that simplifies development, compared to
+Xamarin.UITest which has two different classes for iOS and Android. Microsoft's CUIT and CUIT Builder  work extremely effectively alongside C\# development and is the most integrated of the three choices, with no need
+to install any third party software to test the application. But at its high price,  CUIT and CUIT Builder are not feesible for a project of this size.
+
+\subsection{Conclusion}
+Since we are a small project with no funding, we decided to choose an open source framework and software for automated testing. Appium and Xamarin.UITest both have very different strengths and weaknesses that offer
+trade offs in the development cycle. So, for its close integration with Xamarin and Visual Studio, we will use Xamarin.UITest and NUnit Test Adapter as our testing solution. It provides us with C\# compatibility, 
+quick and easy integration into our work schedule and keeps testing time low. It achieves all the criteria and with the numerous  sources of  guides and documents provided by Xamarin, we can efficiently bring testing
+into the development cycle.
+
+\end{singlespace}
+\end{document}
