@@ -1298,7 +1298,7 @@ The remaining components of the application enable the user-facing front end to 
 
 
 \subsection{How does one install our software, if any?}
-For the application the user needs to download the latest version of Microsoft Visual Studio and enable Xamarin on it so they can not only run the application but be able to look at the source code that we provide. From that the user can either download the application as an APK file and upload it to their Android device or take it through the procedure of uploading to the iOS App Store or the Google Play store. 
+From an installation perspective, our project can be installed on a user's actual phone if they have an Android device, or if they go through the proper procedure of uploading to the App Store or Google Play store if they have an iOS device. In the case that live deployment is not possible, it is necessary to add the NuGet packages "Avapi" and "Newtonsoft.Json" to their solution file that they download from our GitHub. The project will not run on an emulator without these packages installed. Users can easily install and uninstall NuGet packages from Visual Studio directly with the NuGet package manager.
 \subsection{How does one run it?}
 A user would run our application by first ensuring they have Visual Studio with Xamarin downloaded. Both pieces of software are free to download. After this, the user would simply download our .sln file and open it in a Xamarin project within Visual Studio, and begin running the emulator with a fresh build of our project.
 \subsection{Are there any special requirements to run our software?}
