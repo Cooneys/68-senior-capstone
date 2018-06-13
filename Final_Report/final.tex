@@ -1288,8 +1288,8 @@ Final report work.
 \includegraphics[scale=.25, angle=90]{poster.jpg}
 
 \newpage
-\subsection{Project Documentation}
-\subsubsection{How does our project work?}
+\section{Project Documentation}
+\subsection{How does our project work?}
 Our project is a cross platform mobile application that utilizes Xamarin. Xamarin is a Microsoft owned piece of development software that enabled us to develop our application for both Android and iOS with one unanimous code base. Rather than writing our code in Java or Swift, as would be the case of typical Android or iOS applications, Xamarin enabled us to use C\# for all of our development.
 
 From a birds-eye view, there are 3 major components to our application. The first and most obvious is the user-facing application. The application seeks to allow users to track the progress of their investment portfolios, as well as see the performance of companies contained within their portfolio. The user has to ability to see individual data sets provided for companies that are listed in the DOW Jones index, as well as gain insight into their investment choices through the use of Jensen's Alpha, r\^2, and the portfolio's realized returns.
@@ -1297,52 +1297,54 @@ From a birds-eye view, there are 3 major components to our application. The firs
 The remaining components of the application enable the user-facing front end to be useful. All of the user data for a given portfolio, as well as any company specific data are stored in a MySQL instance. Pricing data that is Incorporated into the calculation of alpha and r\^2 is retrieved from a third party free web API called Alpha Vantage. 
 
 
-\subsubsection{How does one install our software, if any?}
+\subsection{How does one install our software, if any?}
 For the application the user needs to download the latest version of Microsoft Visual Studio and enable Xamarin on it so they can not only run the application but be able to look at the source code that we provide. From that the user can either download the application as an APK file and upload it to their Android device or take it through the procedure of uploading to the iOS App Store or the Google Play store. 
-\subsubsection{How does one run it?}
+\subsection{How does one run it?}
 A user would run our application by first ensuring they have Visual Studio with Xamarin downloaded. Both pieces of software are free to download. After this, the user would simply download our .sln file and open it in a Xamarin project within Visual Studio, and begin running the emulator with a fresh build of our project.
-\subsubsection{Are there any special requirements to run our software?}
+\subsection{Are there any special requirements to run our software?}
 Due to our project being a mobile application, a user would need to ensure that they have downloaded and installed a working Android or iOS emulator, depending on their native environment. If a user has an Android phone, Xamarin also supports direct deployment of the actual application onto the phone.
 
 \newpage
 
-\subsection{Conclusions and Reflections}
-\subsubsection{Tyler Jones}
-\paragraph{What technical information did you learn?}
+\section{Recommended Technical Resources for Learning More}
+Candidly, there weren't many helpful technical resources available to us, or that were needed for us to get what we needed out of our utilized technologies. Overall, as far as documentation and formal help went, Xamarin's home page and documentation, YouTube tutorial videos, and Microsoft's home documentation for asynchronous behavior proved to be more helpful than anything. There weren't too many specific, nuanced technologies that we needed a designated expert to help us with. Nearly this entire project was self taught.
+\section{Conclusions and Reflections}
+\subsection{Tyler Jones}
+\subsubsection{What technical information did you learn?}
 I learned a remarkable amount of technical information over the course of this project. Every single component of this project was a new piece of technology for me that I have yet to receive formal training in. Databases, C\#, mobile applications, asynchronous behavior, and APIs were all my main components I interacted with, and each of them was brand new to me. I had the added benefit of the fact that I also taught myself enough about each of these concepts to meet the project goals, and I think I am much better off than my peers due to the increased retention that self-teaching offers over a class room setting.
-\paragraph{What non-technical information did you learn?}
+\subsubsection{What non-technical information did you learn?}
 I learned that sometimes the real world is really messy and can get in the way of your goals. Repeatedly, over and over, our project took massive hits. Whether it was severe client disconnect, TA absence, or seemingly insurmountable technical barriers, it seemed that our project was doomed at times. However, I learned that facing these obstacles head on and readjusting the vision of the project when necessary is what is required in order to to complete a project that was as fragmented as ours was at times. In the real world, there are so many factors that will be out of my control as an engineer, and I will need to roll with the punches. This project has given me the opportunity to learn a great deal about myself and my work ethic when faced with such challenges.
-\paragraph{What have you learned about project work?}
+\subsubsection{What have you learned about project work?}
 I have learned that project work needs good planning. I think many things were out of my control regarding the track of the project, such as consistent client issues, but others were in my control to minimize the effect that such an issue would have on the project. I learned that by starting early, and really making sure my plan and design are thought out and sound will save me countless hours as the project progresses. I also learned that project work needs time and attention. As simple as this seems, this lesson really resonated with me as the year progressed. Unlike my other course work, which comes and goes, and is only dependent on you to complete, project work comes with a variety of other challenges that require patience and time, especially in the case where you are providing a service to an external client, and not just a professor.
-\paragraph{What have you learned about project management?}
+\subsubsection{What have you learned about project management?}
 Overall, the biggest thing I have learned is the importance of planning. Forgetting all of the misfortune that seemingly fell on our project, I feel as if the impact of such misfortune could have been minimized had I taken the planning process more seriously. Often, its difficult to put in hours of planning to something that you don't know how to do, as was the case with my components of this project, and with other outside factors demanding your attention, it is easy to shortcut the process or "just get it done". I have learned that a massive amount of time and worry can be spent on trying to compensate for the lack of planning, and the project and decisions made down the road may end up not being ideal due to the haste under which they were made. Planning is so crucial to any project, especially when typically your specs are not your own. If an outside, sometimes not technical, source is dictating the requirements of the project, it is necessary to truly make sure that you and the client understand the limitations of the software being used, and what exact goals you are seeking to meet.
-\paragraph{What have you learned about working in teams?}
+\subsubsection{What have you learned about working in teams?}
 Regarding project management, the biggest thing I have learned is that, ultimately, people are going to be a real limiting factor in the course of a project. Sometimes, as an individual, no matter how well or early a plan is created, team dynamics or personality types can really play an unexpected role in the vitality of the project. If one team member slacks, or feels entitled, or feels that they have done the lion's share of the work, these feelings can result in a toxicity level that can ruin the project from the inside out. I feel its necessary with project management to get a good handle on what each member is good at, and what each member is bad at, and to be candid about such answers yourself. Distributing work and managing expectations of individual team members is necessary for the health of the project to remain in tact.
-\paragraph{If you could do it all over, what would you do differently?}
+\subsubsection{If you could do it all over, what would you do differently?}
 If I could do this project all over, as I touched on previously, I would make sure that I knew what the project truly entailed as we went into winter term. The planning process on my end was not exhaustive enough to truly give a good sense of what was required of the project. Especially considering the nature of the components that I was responsible for being all completely new technologies, taking advantage of the allotted 10 weeks to really make sure I knew what was common practice with these technologies, how they worked, and how they could be used best to suit our needs would have saved me countless hours of stress and late nights in Winter term. Such planning mishaps as I experienced resulted in the "wrong" kind of difficult during our development process. Rather than being able to focus on the nuance of the technologies and meeting stretch goals and having a great sense of what was possible and not possible, so many hours on my end went into teaching myself how to use any of these technologies from the most basic level before I could even begin to consider thinking about how to implement them under the context of our project. This resulted in a certain kind of inefficiency and stress that I hope to avoid at all costs going forward with future projects.
 
-\subsubsection{Aviral Sinha}
+\subsection{Aviral Sinha}
 
-\paragraph{What technical information did you learn?} 
+\subsubsection{What technical information did you learn?} 
 I learned a lot about software and mobile development, agile development, version control, REST APIs, C\# and SQL.
 
-\paragraph{What non-technical information did you learn?} 
+\subsubsection{What non-technical information did you learn?} 
 I learned a lot about combining finance with software development. Portfolio and Asset level calculations being taken from their native excel environment and adapting them into our environment for the application.
 
     
-\paragraph{What have you learned about project work?} 
+\subsubsection{What have you learned about project work?} 
 I learned a lot about working with various other parties both in the immediate development group as well as with a boss(client) and other significant individuals(TA). We were able to delegate work properly and it was up to us to set deadlines and make progress and complete the project by the time it was expo. 
     
-\paragraph{What have you learned about project management?} 
+\subsubsection{What have you learned about project management?} 
 My skills in project management only improved with capstone. I learned how to manage tasks that I had weekly as well as delegate tasks. I learned how to properly use tools like github and slack  to make sure all of our work was able to stay on track and we could see each others progress.
     
-\paragraph{What have you learned about working in teams?}
+\subsubsection{What have you learned about working in teams?}
 Working as a team I learned a lot about how dynamics can be affected over the course of a year and how we have to constantly be planning ahead. Our issues with the client through the year caused a lot of distress as they kept on disappearing so we had to constantly communicate among each other so the project could progress and be completed 
     
-\paragraph{If you could do it all over, what would you do differently?}
+\subsubsection{If you could do it all over, what would you do differently?}
 If we could do it differently then I would definitely have started development either fall term or during winter break because while 10 solid weeks of development is enough time having extra time in the end to debug any issues would have been very helpful. I also should have done more research in what APIs we were using because none of the ones we chose in fall term seemed viable for our final product. Our client recommended Quandl but the data needed from the service was only available to premium members and our visualization tool was replaced with Xamarin’s own charts tool which we learned about as we understood Xamarin even more. 
 
-\subsubsection{Samuel Cooney - Conclusion}
+\subsection{Samuel Cooney}
 Being new to mobile development, database work, and visual studio, I learned many new languages during this project. XAML is a markup language that was used to develop majority of the User Interface elements
 displayed in  the application. C\# was used to create the front-end logic and also created some of the UI elements. SQL and PHP was learned to allow users the ability to delete assets and portfolios from their
 account. Besides languages, I learned about integrating databases with consol and web applications as well as with a running mobile application.
